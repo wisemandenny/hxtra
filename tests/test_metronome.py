@@ -50,6 +50,41 @@ def test_every_other_block_keeps_its_category(slot, preset_id):
     assert slot(preset_id, 5) == 5
 
 
+STUBS = {stub for _, _, stub, _ in mt.LOOPER_TESTS}
+
+
+def category_load(m4emu, stub, preset_id, category):
+    """A looper test site's stand-in in unicorn, with the caller's block info where its stub name says (reg, category offset)."""
+    code, sym = m4emu.assemble('src/m4/metronome.s', MODS, IDS)
+    m = m4emu.M4(code, CODE)
+    reg, off = stub.split('_')[2:]
+    info = bytearray(0x34)
+    struct.pack_into('<BI', info, 0, 1, preset_id & 0xffffffff)
+    info[0xc] = category
+    m.write(m4emu.STACK_TOP + int(off, 16) - 0xc, info)
+    m.call(CODE + sym[stub])
+    return m.reg(reg)
+
+
+@pytest.mark.parametrize('stub', sorted(STUBS))
+def test_the_looper_tests_see_the_metronome_as_a_plain_effect(m4emu, stub):
+    assert category_load(m4emu, stub, patch_click.PRESET_ID, LOOPER) not in (LOOPER, 0)
+
+
+@pytest.mark.parametrize('stub', sorted(STUBS))
+@pytest.mark.parametrize('preset_id', (patch_click.PRESET_ID + 0x100, 0x1b5 + 0x10000, 509, 0, -1))
+def test_the_looper_tests_see_every_other_block_as_it_is(m4emu, stub, preset_id):
+    assert category_load(m4emu, stub, preset_id, LOOPER) == LOOPER
+    assert category_load(m4emu, stub, preset_id, VOLUME_PAN) == VOLUME_PAN
+
+
+def test_each_looper_test_site_loads_the_category_its_stub_reads():
+    for site, stock, stub, _ in mt.LOOPER_TESTS:
+        reg, off = stub.split('_')[2:]
+        ldrb = bytes.fromhex(stock)
+        assert ldrb[:2] == bytes.fromhex('9df8') and ldrb[2] == int(off, 16) and ldrb[3] >> 4 == int(reg[1:]), hex(site)
+
+
 def test_its_constants_are_the_click_tools():
     asm = open(pm.ROOT + '/src/m4/metronome.s').read()
     assert int(re.search(r'\.equ PRESET_ID, (\d+)', asm).group(1)) == patch_click.PRESET_ID
@@ -64,6 +99,8 @@ def test_build_sends_the_slot_category_load_to_the_module(m4emu):
     module = branch_target(mt.SLOT_CATEGORY, read(mt.SLOT_CATEGORY, 4)) - sym['metronome_slot']
     assert read(module, len(code)) == code
     assert read(mt.SLOT_CATEGORY + 4, 4) == bytes.fromhex('83f8 3720'), 'the stock strb.w r2, [r3, #0x37] follows'
+    for site, _, stub, what in mt.LOOPER_TESTS:
+        assert branch_target(site, read(site, 4)) == module + sym[stub], what
 
 
 @pytest.mark.firmware
@@ -82,3 +119,5 @@ def test_without_the_flag_both_stay_stock():
     assert 'metronome' not in on
     assert read(mt.SLOT_CATEGORY, 4) == mt.SLOT_CATEGORY_STOCK
     assert read(mt.CATEGORIES + 0x2c * mt.METRONOME, 0x2c) == mt.UNKNOWN_STOCK
+    for site, stock, _, what in mt.LOOPER_TESTS:
+        assert read(site, 4) == bytes.fromhex(stock), what
