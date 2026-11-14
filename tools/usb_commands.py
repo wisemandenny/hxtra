@@ -13,6 +13,7 @@ COUNT = 0x7c                        # it refuses higher numbers
 FREE = (0x13, 0x1d, 0x1f, 0x20, 0x26, 0x2c, 0x36, 0x37, 0x4f, 0x50, 0x51, 0x52, 0x64, 0x65)   # registered by no stock stub
 
 COMMANDS = (   # (command, the feature using it or None, what it does)
+    (0x51, 'usb_input', 'UI events from the host into the key queue, as the controls give them (src/m4/usb_input.s)'),
     (0x52, 'screen_mirror', 'the frame on the LCD, run-length coded (src/m4/screen_mirror.s)'),
 )
 

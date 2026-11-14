@@ -5,8 +5,14 @@ The commands HX Edit sends on its editor stream (service 6) and how the firmware
 ## The command table [verified offline, disassembly]
 
 - At boot, `0x28d96adc` calls `0x28e1661c`, which calls one small stub per command. Each stub calls **`0x28e165f0(command, &{handler, check, 0})`**: it refuses a command above `0x7b` and copies the 12 bytes into a table of 20-byte rows at `0x2844ea2c` (`{u8 command, pad, handler, check, 0}`), row = command.
-- 110 of the 124 numbers are registered. **Free in stock 3.80: `0x13`, `0x1d`, `0x1f`, `0x20`, `0x26`, `0x2c`, `0x36`, `0x37`, `0x4f`..`0x52`, `0x64`, `0x65`**. Claim one on its line in `tools/usb_commands.py`, the ledger (`tests/test_hxtra.py` fails on a duplicate or a number stock uses, and checks its free list against the stock file); the [screen mirror](../features/screen-mirror.md) has `0x52`.
+- 110 of the 124 numbers are registered. **Free in stock 3.80: `0x13`, `0x1d`, `0x1f`, `0x20`, `0x26`, `0x2c`, `0x36`, `0x37`, `0x4f`..`0x52`, `0x64`, `0x65`**. Claim one on its line in `tools/usb_commands.py`, the ledger (`tests/test_hxtra.py` fails on a duplicate or a number stock uses, and checks its free list against the stock file); the [screen mirror](../features/screen-mirror.md) has `0x52`, [USB input](../features/usb-input.md) `0x51`.
 - `check` validates the parameters; `0x28e19205` (`movs r0, #0; bx lr`) is the one for commands without parameters. Get edit buffer (`0x16`) is registered by the stub at `0x28e1e430` with handler `0x28e1c55d` and that check.
+
+## The dispatch [verified offline, disassembly]
+
+- `0x28e16354(stream, bytes, count, state)` reads a request's map: key `0x66` the seq, `0x64` the command, `0x65` the offset of the parameter (its value is not read here, so it must come last, as hx_ctl packs it). The request it hands on is `{+0 the bytes, +4 their count, +8 the parameter's offset, +0xc u16 seq}`, and a command may keep what it parses at `+0x10` on.
+- For row `{first, then, deferred}` it calls `first(stream, request)`; if that is negative it sends the error reply `0x28e15c54(stream, seq, error)` itself. Otherwise it calls `then(stream, request)` when set (negative: the same error reply), else takes a deferred path through the third word (not followed).
+- So a command with parameters parses them in `first` and acts and replies in `then`: move a block (`0x2b`) has `first` `0x28e18565` (reads keys `0x4b`, `0x4c` into `+0x10`, `+0x14`) and `then` `0x28e1c491`, which replies with **`0x28e15b30(stream, seq, status, result, [sp] its bytes)`**, a whole reply: `result` a MessagePack nil (`0xc0`) and 1 here. HXtra's commands do it all in `first` and give `0x28e19205` (returns 0) as `then`. The usb-editor names "handler" and "check" below are `first` and `then`.
 
 ## A handler [verified offline, disassembly]
 

@@ -21,6 +21,7 @@ Protocol (as seen from the host and checked on the unit):
      0x17 get current preset -> {0x6b: setlist, 0x6c: preset, 0x6d: name, 0x75: modified?, ...}
      0x2b move a block {0x4b: from, 0x4c: to} (grid positions = preset[0][22] indices:
           10 * path + slot + 1 on the Stomp)
+     0x51 UI events <8 bytes each> (HXtra builds with HX_USB_INPUT=1: tools/hx_input.py)
   Librarian (service 2): 0x01 preset list {0x6b: setlist}.
   Nothing here saves to the unit's storage (HX Edit's "save" is a separate command that
   this tool does not send).
@@ -70,6 +71,7 @@ K_SETLIST, K_PRESET, K_NAME, K_PBLOB = 0x6B, 0x6C, 0x6D, 0x6E
 
 CMD_LOAD_PRESET, CMD_SET_EDITBUF, CMD_GET_EDITBUF, CMD_GET_CURRENT = 0x14, 0x15, 0x16, 0x17
 CMD_MOVE_BLOCK = 0x2B
+CMD_INPUT = 0x51                       # HXtra builds with HX_USB_INPUT=1: UI events (tools/usb_commands.py, tools/hx_input.py)
 K_MOVE_FROM, K_MOVE_TO = 0x4B, 0x4C
 CMD_LIB_PRESET_LIST = 0x01
 
@@ -653,6 +655,10 @@ class HxCtl:
         """Move the block at grid position src (a preset[0][22] index) to dst, as HX Edit does."""
         self.ed.request(CMD_MOVE_BLOCK, {K_MOVE_FROM: src, K_MOVE_TO: dst}, timeout=max(self.timeout, 10))
         self._complete(max(settle, 1.0)) if self.nf is not None else self.ed.idle(settle)
+
+    def send_events(self, blob):
+        """UI events, 8 bytes each, for the unit to queue as its controls queue theirs (a build with HX_USB_INPUT=1)."""
+        self.ed.request(CMD_INPUT, bytes(blob))
 
     # -- librarian
     def preset_list(self, setlist=None):

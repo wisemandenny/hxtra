@@ -31,6 +31,9 @@ The repository's tools and the build switches. Status tags as in [conventions.md
 | `tools/features/screen_mirror.py`, `src/m4/screen_mirror.s` | The screen mirror (`HX_SCREEN_MIRROR=1`, not on the web page): HX Edit's editor service answers command 0x52 with the frame on the LCD. |
 | `tools/hx_mirror.py`, `tools/mac/mirror_mac.swift` | The HX Stomp's screen on a Mac from a screen mirror build: a PNG (`shot`), a live window (`view`), an H.264 `.mov` with the controls used (`view --record`), the event codes of each control (`events`, `learn`), and `Session` for a script that drives the unit while it records. |
 | `tools/mac/stomp_render.swift`, `tools/mac/skins/` | A recording set into a photo of the HX Stomp (photos in `build/art/`, out of git), its controls moving as they were used, as an MP4 small enough to attach on GitHub, or with `--gif` a looping 480 × 360 GIF of part of it (`hx_mirror.py gif`). |
+| `tools/features/usb_input.py`, `src/m4/usb_input.s` | USB input (`HX_USB_INPUT=1`, not on the web page): HX Edit's editor service takes command 0x51, UI events the unit queues as its own controls do. |
+| `tools/hx_input.py` | Presses, holds and turns the HX Stomp's footswitches, knobs and buttons from a USB input build; `Input(ctl)` for scripts. |
+| `tools/hx_devtest.py`, `tools/mac/ocr_mac.swift` | A test of each feature on the running unit, pressing its controls (`hx_input.py`) and reading its screen (`hx_mirror.py`, text by macOS Vision); never boots it. `QA.md` has how to run it. |
 
 Build commands:
 

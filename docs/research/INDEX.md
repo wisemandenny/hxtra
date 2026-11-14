@@ -64,6 +64,7 @@ Before writing anything, read [conventions.md](conventions.md): the status tags,
 | [features/tap-color.md](features/tap-color.md) | Tap LED Color: the TAP ring, icon and label in a palette colour | working on the TAP footswitch's look |
 | [features/boot-splash.md](features/boot-splash.md) | a custom boot picture, the boot line's text, colour emoji | working on the boot screen |
 | [features/screen-mirror.md](features/screen-mirror.md) | the screen on a computer: the command, the frame coding, the Mac viewer and recorder | working on the screen mirror, or recording a demo |
+| [features/usb-input.md](features/usb-input.md) | footswitches, knobs and buttons pressed from a computer: the command, the key queue, `tools/hx_input.py` | driving the unit from a script or a test |
 
 ## Other docs
 

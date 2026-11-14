@@ -48,6 +48,25 @@ python3 tools/hx_reamp.py build/HX_Stomp_v3.80.0_HXtra.hxf dry 555:4 555:4,555:5
 
 Each case is a list of `preset_id:model` blocks on path A, or `dry` for a volume block alone. In this build, NAM is preset ID 555.
 
+## The feature tests
+
+`tools/hx_devtest.py` tests each HXtra feature on the unit the way you would: it presses the footswitches, knobs and buttons over USB and reads the screen. It tests the build that is already running and never starts, flashes or restarts the unit, so start it yourself first:
+
+```sh
+HX_TUNER=1 HX_TAP_COLOR=1 HX_BPM=1 HX_GR=1 HX_BREATHING_LINE=1 HX_DSP_METER=1 HX_LONG_PRESS=1 HX_CLICK=1 \
+HX_MORE_SNAPSHOTS=1 HX_REAL_NAMES=1 HX_SCREEN_MIRROR=1 HX_USB_INPUT=1 python3 build.py HX_Stomp_v3.80.0_0x103966115.hxf
+tools/hx_ramrun.sh build/HX_Stomp_v3.80.0_HXtra.hxf
+python3 tools/hx_devtest.py                      # every case, about 2 minutes
+python3 tools/hx_devtest.py --only bpm,tuner     # some; --list names them all
+python3 tools/hx_devtest.py --record devtest     # and a recording of the run, as hx_mirror.py view --record
+```
+
+- **What it needs:** a build with `HX_SCREEN_MIRROR=1` (the screen, over USB) and `HX_USB_INPUT=1` (the controls, over USB), on a Mac (it reads the screen's text with macOS's Vision). Close HX Edit. Leave the unit on its Home screen in Stomp footswitch mode, on a preset with a TAP/TUNER footswitch, an empty block and no unsaved changes.
+- **What it checks:** BPM Display (taps move the tempo, Font Size Off hides it), Tap LED Color (the TAP ring turns green), Breathing Line (the divider moves, Type Off stills it), the DSP usage display (the Edit view's total out of 75), Real block names (no stock title the feature renames), the tuner's settings page, Long press's settings, More snapshots (the lit footswitch flips to 4..6 and back), and the Metronome, NAM and GR meter blocks, added from the model browser with their knobs read.
+- **What it leaves:** each case puts back every setting it changes, and the run loads the preset again at the end, as it was saved, so its edits are gone. A preset with unsaved changes of yours is not loaded again: the cases that add blocks skip instead. Nothing is saved.
+- **Results:** `PASS`, `FAIL` or `SKIP` a case, `build/devtest/report.json`, and the screen of each failure as `build/devtest/<case>.png`. Exit status 0 when nothing failed.
+- **Not covered:** the GR meter's lights (they need sound through the compressor) and the boot screen (seen only at power-on).
+
 ## The factory-preset sweep (Test A)
 
 Does any stock preset leave something running that writes into NAM's memory? `tools/qa/preset_sweep.py` selects each of the unit's 126 presets in turn, then loads NAM alone with the input on USB 5/6 and nothing playing. With no input, NAM outputs a constant (its bias), and any corruption would move or disturb it. `preset_sweep2.py` does the same with three NAMs and a stock EQ, at default knobs and with the tone knobs moved.
@@ -75,6 +94,8 @@ python3 tools/hx_ctl.py set-model --slot 0 --model-id 555 --clear-after --clear-
 python3 tools/hx_ctl.py load-preset cur.json
 python3 tools/hx_ctl.py --dry-run set-model --slot 0 --model-id 182    # prints, sends nothing
 ```
+
+`tools/hx_input.py` presses the unit's controls on a build with `HX_USB_INPUT=1`: `press fs2`, `hold fs1`, `turn knob3 -4`, `touch fs1`, `press view` (also `action`, `page_left`, `page_right`, `knob1`..`knob5`).
 
 `tools/hx_dfu_reboot.py` restarts the running Stomp in update mode, as Line 6 Updater does (`--dry-run` prints the exchange). `tools/hx_ramrun.sh IMAGE` does the whole RAM run in one step.
 
