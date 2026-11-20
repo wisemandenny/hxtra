@@ -10,7 +10,8 @@
 //
 // Every other core (other compressors, the 3-Band Comp's nine, the Busy One amps, the Sweep Echo) goes straight to the stock
 // code: a preset near the DSP limit has no room for this wrapper's work on each of them (issue #84 froze the unit). With no
-// metered core the frames carry no marker, and the M4 turns the meter off after 1024 frames.
+// metered core running nothing writes the tail, but the stock sender keeps sending the last words written, marker included: the
+// M4 turns the meter off once word 250 has not changed for 1024 frames.
 
 .equ MAGIC1,  0xFACEF00D
 .equ MAGIC2,  0xF00DFACE

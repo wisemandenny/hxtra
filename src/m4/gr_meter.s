@@ -1,6 +1,6 @@
 @ gr_meter.s - a ten-light gain-reduction meter on the Home divider or along an edge of the screen, for the Deluxe Comp.
 @ Set by the compressor block's GR knobs, sent by the DSP in frame word 218 (tagged 0x6B): Mtr Size (Off, S, M, L, XL; Off, no knobs yet,
-@ or no compressor heard from lately turns it off), GR Position (Middle, Top, Left, Bottom, Right) and GR Direction (Normal is
+@ or no new window from the compressor lately turns it off), GR Position (Middle, Top, Left, Bottom, Right) and GR Direction (Normal is
 @ left to right or top to bottom, Reverse the other way). Middle, Top and Bottom are
 @ 30 px lights at a 32 px pitch, Middle on the divider line in place of its four segments; Left and Right are 21 px lights at a 24 px
 @ pitch, clear of the divider, which then stays stock.
@@ -27,18 +27,24 @@ frame:                              @ r1 the frame
     bne nomark
     movs r1, #1
     str r1, [r4, #12]
-    str r0, [r4, #4]                @ heard from the compressor just now
     ldr.w r1, [r7, #872]            @ word 218: the block's GR knobs, tagged 0x6B
     ror.w r1, r1, #16
     str r1, [r4, #32]
+    ldr.w r1, [r7, #1000]           @ word 250: a stopped core's words stay in the stock send buffer, marker and all
+    ldr r2, [r4, #24]
+    cmp r1, r2
+    beq count
+    str r0, [r4, #4]                @ a new window: the compressor still runs
     b heard
 nomark:
     ldr r1, [r4, #12]
     cmp r1, #0
     beq leave                       @ until the DSP has been heard from, the UI may not be up
+count:
     ldr r1, [r4, #4]
     adds r1, #1
-    str r1, [r4, #4]
+    it ne
+    strne r1, [r4, #4]              @ stops at its top: a wrap to 0 would show a gone core's meter again
 heard:
     ldr r0, [r4, #28]
     adds r0, #1
@@ -786,7 +792,7 @@ colours:                            @ lights 1..10
 comps:                              @ the compressor models' names, from gr.inc
     COMP_NAMES
 .balign 4
-data:                               @ 0 shown reduction (Q16), 4 frames since the compressor, 8 marker, 12 latch, 16 repaint,
+data:                               @ 0 shown reduction (Q16), 4 frames since a new window, 8 marker, 12 latch, 16 repaint,
     .space 52                       @ 20 ours shown, 24 the last window seen, 28 frames, 32 the block's knobs (word 218), 36 relayout at frame, 40 layout,
                                     @ 44 the selected divider segment, 48 the layout the Edit view shows
 want:                               @ colour, x, y, w, h
