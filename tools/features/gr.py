@@ -5,15 +5,25 @@ No Global Settings: the knobs live in the blocks. The DSP side (src/sharc/frame_
 NAM's third slot would take (tools/block3.py)."""
 FLAG = 'HX_GR'
 WEB = 'dsp'
-ORDER = 90                          # before the breathing line, which reads SHOWN
+ORDER = 90                          # before the breathing line, which reads SHOWN, and the EXP display, which reads LAYOUT too
 MODULE = 'src/m4/gr_meter.s'
 SHOWN = 20                          # data + 20 in the module: nonzero while the meter shows
+LAYOUT = 40                         # data + 40, while SHOWN: Position (POSITIONS) in bits 8..15, Mtr Size in px in bits 24..30
+POSITIONS = ('Middle', 'Top', 'Left', 'Bottom', 'Right')
+SIZES = (5, 10, 15, 20)             # Mtr Size S, M, L and XL in px
 
 RX_CB_LIT, RX_CB = 0x28da6134, 0x10001095                   # the receive callback of the DSP stream (frames of 256 words)
 HOME_CTOR_CALL, HOME_CTOR = 0x28d96c44, 0x28dc91d0          # bl to the Home view's constructor at boot
 HOME_PAINT_LIT, HOME_PAINT = 0x28d96e28, 0x28dc8d39         # the Home view's paint function, as registered
 EDIT_PAINT_LIT, EDIT_PAINT = 0x28d96da0, 0x28dc27f9         # the Edit view top half's paint (list B), shared with dsp_meter
 VIEW_PAINT_LIT, VIEW_PAINT = 0x28d96e38, 0x28d947c9         # the generic list A paint: the Edit view's bottom half and nine others
+
+
+def middle_rows(t):
+    """The lowest and highest row the lights cover at Middle and Mtr Size t px: gr_meter.s's layout puts each at y (t + 1) // 2 + 118,
+    t px high, and a rectangle widget's layer 6 fills rows [y - t, y)."""
+    top = (t + 1) // 2 + 117
+    return top - t + 1, top
 
 
 def comp_names(e3):

@@ -74,6 +74,8 @@ VIRTUAL = (   # (virtual ID, container ID, first bit, bits, the '<feature>.<key>
     (0xe3, 107, 4, 4, 'dsp_meter.blocks', "past 0xd1's bits, which units may hold the removed DSP Display in"),
     (0xe4, 107, 8, 4, 'dsp_meter.total', ''),
     (0xe5, 107, 12, 4, 'dsp_meter.browser', ''),
+    (0xe9, 116, 0, 8, 'exp_display.left', 'eight bits so later sources (a MIDI CC number) fit without moving the ID'),
+    (0xea, 116, 8, 8, 'exp_display.right', ''),
 )
 
 

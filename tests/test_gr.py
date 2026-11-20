@@ -791,6 +791,40 @@ def test_m4_shown_word_says_whether_the_meter_shows(m4emu):
     assert m.word('data', gr.SHOWN // 4) == 0
 
 
+def test_m4_layout_word_says_where_the_meter_shows_and_how_thick(m4emu):
+    """The EXP display reads data + gr.LAYOUT while data + gr.SHOWN is set (tools/features/exp_display.py): Position, as
+    gr.POSITIONS names it, in bits 8..15 and Mtr Size in px in bits 24..30."""
+    import features.gr as gr
+    assert gr.POSITIONS == ('Middle', 'Top', 'Left', 'Bottom', 'Right')
+    m = Meter(m4emu)
+    window = 0
+    for pos, want in ((0, 0), (1, 1), (2, 2), (3, 3), (4, 4), (6, 4)):
+        for thk, px in ((1, 5), (2, 10), (3, 15), (4, 20), (7, 20)):
+            window += 1
+            m.frame(1.0, 0.5, window=window, pos=pos, thk=thk)
+            layout = m.word('data', gr.LAYOUT // 4)
+            assert m.word('data', gr.SHOWN // 4) == 1 and layout >> 31 == 1
+            assert (layout >> 8 & 0xff, layout >> 24 & 0x7f) == (want, px), (pos, thk)
+    m.frame(1.0, 0.5, window=window + 1, pos=2, thk=0)
+    assert m.word('data', gr.SHOWN // 4) == 0 and m.word('data', gr.LAYOUT // 4) == 0
+    m.frame(1.0, 0.5, window=window + 2, pos=2, thk=4)
+    m.frame(1.0, 0.5, window=window + 3, knobs=False)
+    assert m.word('data', gr.SHOWN // 4) == 0 and m.word('data', gr.LAYOUT // 4) == 0
+
+
+def test_m4_middle_rows_are_the_rows_the_middle_lights_fill(m4emu):
+    """gr.middle_rows(t), which the EXP display keeps its value clear of: each Middle light's widget, as layout places it, at y and
+    t px high, which the rectangle widgets' layer 6 (the ROM fill's anchor 6) fills over rows [y - t, y)."""
+    import features.gr as gr
+    m = Meter(m4emu)
+    for window, (thk, t) in enumerate(zip((1, 2, 3, 4), gr.SIZES), 1):
+        m.frame(1.0, 0.5, window=window, pos=0, thk=thk)
+        widgets = [DIVIDER + 0x1c * k for k in range(4)] + [MODULE + m.sym['widgets'] + 0x1c * (40 + k) for k in range(6)]
+        for w in widgets:
+            y, _, h = struct.unpack('<3I', m.m.read(w + 8, 12))
+            assert (h, y - h, y - 1) == (t, *gr.middle_rows(t)), (t, hex(w))
+
+
 def test_m4_off_without_knobs_or_at_thickness_0(m4emu):
     m = Meter(m4emu)
     m.frame(1.0, 0.1, window=1, pos=1, thk=0)

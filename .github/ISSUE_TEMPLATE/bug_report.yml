@@ -64,6 +64,7 @@ body:
         - label: Input Sidechain on the Noise Gate block (HX_GATE_SC)
         - label: "USB monitoring: Path A Out (HX_USB_MONITOR)"
         - label: Real block names (HX_REAL_NAMES)
+        - label: EXP display (HX_EXP_DISPLAY)
   - type: dropdown
     id: features
     attributes:
@@ -78,6 +79,7 @@ body:
         - Preset LED color
         - Tap command
         - Breathing line
+        - EXP display
         - Metronome
         - Gain-reduction meter
         - Tuner settings

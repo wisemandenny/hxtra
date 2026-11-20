@@ -44,6 +44,7 @@ To add features, set their switches (the [features page](https://wisemandenny.gi
 | [Preset Mode LED Color](https://wisemandenny.github.io/hxtra/web/features.html#preset-led-color) | `HX_PRESET_COLOR=1` |
 | [Tap Command](https://wisemandenny.github.io/hxtra/web/features.html#tap-command) | `HX_CC_TAP=1` |
 | [Real Block Names](https://wisemandenny.github.io/hxtra/web/features.html#real-block-names) | `HX_REAL_NAMES=1` |
+| [EXP Display](https://wisemandenny.github.io/hxtra/web/features.html#exp-display) | `HX_EXP_DISPLAY=1` |
 | [FX Loop Noise Gate](https://wisemandenny.github.io/hxtra/web/features.html#fx-loop-gate) | `HX_FX_GATE=1` |
 | [Noise Gate Input Sidechain](https://wisemandenny.github.io/hxtra/web/features.html#gate-sidechain) | `HX_GATE_SC=1` |
 | [Foot Switch Long Press](https://wisemandenny.github.io/hxtra/web/features.html#long-press) | `HX_LONG_PRESS=1` |
@@ -57,7 +58,7 @@ To add features, set their switches (the [features page](https://wisemandenny.gi
 Switches combine. The Metronome, the FX Loop gate, the GR meter, USB & Send Routing and Input Sidechain put code on the DSP, in the room NAM A2 Lite's blocks leave (`python3 tools/block3.py` prints it): `HX_NAM_SLOTS=3`, `2`, `1` or `0` sets how many NAM blocks can play at once (`0`: no NAM A2 Lite, which skips steps 1, 2 and 4), and unset, `build.py` takes the most that leave room for the features you turned on. A build whose DSP features don't fit beside `HX_NAM_SLOTS` stops with what they take and what is left. For example, every feature but the boot picture:
 
 ```sh
-HX_TUNER=1 HX_BPM=1 HX_DSP_METER=1 HX_BREATHING_LINE=1 HX_LONG_PRESS=1 HX_MORE_SNAPSHOTS=1 HX_CLICK=1 HX_GR=1 HX_TAP_COLOR=1 HX_PRESET_COLOR=1 HX_CC_TAP=1 HX_REAL_NAMES=1 \
+HX_TUNER=1 HX_BPM=1 HX_DSP_METER=1 HX_BREATHING_LINE=1 HX_LONG_PRESS=1 HX_MORE_SNAPSHOTS=1 HX_CLICK=1 HX_GR=1 HX_TAP_COLOR=1 HX_PRESET_COLOR=1 HX_CC_TAP=1 HX_REAL_NAMES=1 HX_EXP_DISPLAY=1 \
   python3 build.py path/to/HX_Stomp_v3.80.0_0x103966115.hxf
 ```
 
@@ -82,7 +83,7 @@ This also changes the image store (part 8 of the 15), and with emoji, the font t
 
 ## Build in the browser
 
-The setup page, **[wisemandenny.github.io/hxtra](https://wisemandenny.github.io/hxtra/web/)**, does the same build in the browser, and your file never leaves your computer: you drop your stock `.hxf` and download `HXtra_v<version>.hxf` (e.g. `HXtra_v1.2.0.hxf`), with every feature on and the ones you tick: the DSP features (how many NAM A2 Lite blocks, the GR meter, the Metronome block, the FX Loop gate, USB & Send Routing, Input Sidechain), which share the DSP memory and show what is left as you tick, and the others (Real block names). It also runs the build from RAM and converts `.nam` captures, and it reads in 10 languages. It runs `build.py`'s own commands in [Pyodide](https://pyodide.org) (`web/firmware-worker.js`); its builds have the same MD5s as `build.py`'s.
+The setup page, **[wisemandenny.github.io/hxtra](https://wisemandenny.github.io/hxtra/web/)**, does the same build in the browser, and your file never leaves your computer: you drop your stock `.hxf` and download `HXtra_v<version>.hxf` (e.g. `HXtra_v1.2.0.hxf`), with every feature on and the ones you tick: the DSP features (how many NAM A2 Lite blocks, the GR meter, the Metronome block, the FX Loop gate, USB & Send Routing, Input Sidechain), which share the DSP memory and show what is left as you tick, and the others (Real block names, EXP Display). It also runs the build from RAM and converts `.nam` captures, and it reads in 10 languages. It runs `build.py`'s own commands in [Pyodide](https://pyodide.org) (`web/firmware-worker.js`); its builds have the same MD5s as `build.py`'s.
 
 The browser has no clang to assemble the features' M4 code, so each release brings that code made in advance: `tools/m4cache.py` runs the page's features on the stock file and keeps what each module assembled to, in `m4cache.json`, with the MD5 of the build, and `tools/m4asm.py` reads it when `HX_M4_CACHE` names it. The page compares its build with that MD5 and says **Verified**. The page runs `build.py`'s other steps for them too: the Metronome block (`tools/patch_click.py`), the FX Loop gate (`tools/patch_gate.py`), and the GR meter's knobs and DSP code (`tools/patch_comp.py`). `m4cache.json` also holds the DSP memory each NAM slot count leaves and each DSP feature's cost (`"dsp"`), and the MD5 of every combination that fits. A copy of the page served from a checkout (`python3 -m http.server`, then `/web/`) has no `m4cache.json` and builds without features, unless you make one: `python3 tools/m4cache.py path/to/HX_Stomp_v3.80.0_0x103966115.hxf -o m4cache.json`.
 

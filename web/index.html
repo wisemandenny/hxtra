@@ -375,6 +375,10 @@
           <ul data-i18n="feat.namesS"></ul>
           <a class="more" href="features.html#real-block-names" target="_blank" rel="noopener" data-i18n="feat.more"></a>
         </div>
+        <div class="feat" data-option="HX_EXP_DISPLAY" hidden><label><input type="checkbox"> <span data-i18n="feat.exp"></span></label>
+          <ul data-i18n="feat.expS"></ul>
+          <a class="more" href="features.html#exp-display" target="_blank" rel="noopener" data-i18n="feat.more"></a>
+        </div>
       </div>
     </div>
     <p class="tip" id="featNone" hidden data-i18n="feat.none"></p>
@@ -583,6 +587,8 @@ var EN = {
   "opt.title": "Select features",
   "feat.names": "<b>Real block names</b>",
   "feat.namesS": "\n          <li>Renames blocks to the gear they were based on: e.g. Deez One Mod becomes Boss DS-1 Mod.</li>\n        ",
+  "feat.exp": "<b>EXP display</b>",
+  "feat.expS": "\n          <li>Shows where EXP 1 and EXP 2 are on the Home screen: a bar at each edge and the value from 0 to 100, in the pedal's colour. Pick each side's pedal in Global Settings › Displays.</li>\n        ",
   "feat.gate": "<b>Noise gate in the FX Loop and Return blocks</b>",
   "feat.gateS": "\n            <li>Adds Gate, Threshold and Decay knobs to the FX Loop and Return blocks, like the Input block's gate.</li>\n            <li>Each of those blocks then uses 0.2% (mono) or 0.4% (stereo) more DSP.</li>\n          ",
   "feat.sc": "<b>Input Sidechain on the Noise Gate block</b>",
@@ -941,6 +947,8 @@ var LANGS = {
     "ram.err.other": "No se ha escrito nada en el HX Stomp. Apágalo y enciéndelo (arranca lo instalado) y vuelve a intentarlo; los detalles técnicos de abajo dicen qué pasó. Si no aparece, enciéndelo con Page › pulsado (modo de actualización) y pulsa Ejecutar desde RAM.",
     "feat.names": "<b>Nombres reales de los bloques</b>",
     "feat.namesS": "\n          <li>Cambia el nombre de los bloques por el del equipo en que se basan: p. ej., Deez One Mod pasa a ser Boss DS-1 Mod.</li>\n        ",
+    "feat.exp": "<b>Indicador EXP</b>",
+    "feat.expS": "\n          <li>Muestra dónde están EXP 1 y EXP 2 en la pantalla de inicio: una barra en cada borde y el valor de 0 a 100, en el color del pedal. Elige el pedal de cada lado en Global Settings › Displays.</li>\n        ",
     "feat.gate": "<b>Puerta de ruido en los bloques FX Loop y Return</b>",
     "feat.gateS": "\n            <li>Añade los controles Gate, Threshold y Decay a los bloques FX Loop y Return, como la puerta del bloque Input.</li>\n            <li>Cada uno de esos bloques usa entonces un 0,2 % (mono) o un 0,4 % (estéreo) más de DSP.</li>\n          ",
     "feat.sc": "<b>Input Sidechain en el bloque Noise Gate</b>",
@@ -1133,6 +1141,8 @@ var LANGS = {
     "ram.err.other": "Nada foi gravado no HX Stomp. Desligue e ligue (ele inicia o que está instalado) e tente de novo; os detalhes técnicos abaixo dizem o que aconteceu. Se ele não aparecer, ligue-o segurando Page › (modo de atualização) e clique em Rodar da RAM.",
     "feat.names": "<b>Nomes reais dos blocos</b>",
     "feat.namesS": "\n          <li>Renomeia os blocos com o nome do equipamento em que se basearam: p. ex., Deez One Mod vira Boss DS-1 Mod.</li>\n        ",
+    "feat.exp": "<b>Indicador EXP</b>",
+    "feat.expS": "\n          <li>Mostra onde estão EXP 1 e EXP 2 na tela inicial: uma barra em cada borda e o valor de 0 a 100, na cor do pedal. Escolha o pedal de cada lado em Global Settings › Displays.</li>\n        ",
     "feat.gate": "<b>Noise gate nos blocos FX Loop e Return</b>",
     "feat.gateS": "\n            <li>Adiciona os controles Gate, Threshold e Decay aos blocos FX Loop e Return, como o gate do bloco Input.</li>\n            <li>Cada um desses blocos passa a usar 0,2% (mono) ou 0,4% (estéreo) a mais de DSP.</li>\n          ",
     "feat.sc": "<b>Input Sidechain no bloco Noise Gate</b>",
@@ -1325,6 +1335,8 @@ var LANGS = {
     "ram.err.other": "Rien n'a été écrit sur le HX Stomp. Éteignez-le et rallumez-le (il démarre ce qui est installé) et réessayez ; les détails techniques ci-dessous disent ce qui s'est passé. S'il n'est pas trouvé, allumez-le avec Page › maintenu (mode mise à jour) et cliquez sur Lancer en RAM.",
     "feat.names": "<b>Vrais noms des blocs</b>",
     "feat.namesS": "\n          <li>Renomme les blocs d'après le matériel dont ils s'inspirent : p. ex. Deez One Mod devient Boss DS-1 Mod.</li>\n        ",
+    "feat.exp": "<b>Affichage EXP</b>",
+    "feat.expS": "\n          <li>Montre où en sont EXP 1 et EXP 2 sur l'écran d'accueil : une barre sur chaque bord et la valeur de 0 à 100, dans la couleur de la pédale. Choisissez la pédale de chaque côté dans Global Settings › Displays.</li>\n        ",
     "feat.gate": "<b>Noise gate dans les blocs FX Loop et Return</b>",
     "feat.gateS": "\n            <li>Ajoute les réglages Gate, Threshold et Decay aux blocs FX Loop et Return, comme le gate du bloc Input.</li>\n            <li>Chacun de ces blocs utilise alors 0,2 % (mono) ou 0,4 % (stéréo) de DSP en plus.</li>\n          ",
     "feat.sc": "<b>Input Sidechain dans le bloc Noise Gate</b>",
@@ -1517,6 +1529,8 @@ var LANGS = {
     "ram.err.other": "Auf den HX Stomp wurde nichts geschrieben. Schalte ihn aus und wieder ein (er startet, was installiert ist) und versuche es erneut; die technischen Details unten zeigen, was passiert ist. Wird er nicht gefunden, schalte ihn mit gedrücktem Page › ein (Update-Modus) und klicke auf Aus RAM starten.",
     "feat.names": "<b>Echte Blocknamen</b>",
     "feat.namesS": "\n          <li>Benennt Blöcke nach dem Gerät um, auf dem sie basieren: z. B. wird aus Deez One Mod Boss DS-1 Mod.</li>\n        ",
+    "feat.exp": "<b>EXP-Anzeige</b>",
+    "feat.expS": "\n          <li>Zeigt auf dem Home-Bildschirm, wo EXP 1 und EXP 2 stehen: einen Balken an jedem Rand und den Wert von 0 bis 100, in der Farbe des Pedals. Das Pedal jeder Seite wählst du in Global Settings › Displays.</li>\n        ",
     "feat.gate": "<b>Noise Gate in den FX-Loop- und Return-Blöcken</b>",
     "feat.gateS": "\n            <li>Fügt den FX-Loop- und Return-Blöcken die Regler Gate, Threshold und Decay hinzu, wie beim Gate des Input-Blocks.</li>\n            <li>Jeder dieser Blöcke braucht dann 0,2 % (mono) oder 0,4 % (stereo) mehr DSP.</li>\n          ",
     "feat.sc": "<b>Input Sidechain im Noise-Gate-Block</b>",
@@ -1709,6 +1723,8 @@ var LANGS = {
     "ram.err.other": "Sull'HX Stomp non è stato scritto nulla. Spegnilo e riaccendilo (parte ciò che è installato) e riprova; i dettagli tecnici qui sotto dicono cosa è successo. Se non viene trovato, accendilo tenendo premuto Page › (modalità aggiornamento) e fai clic su Avvia dalla RAM.",
     "feat.names": "<b>Nomi reali dei blocchi</b>",
     "feat.namesS": "\n          <li>Rinomina i blocchi con il nome dell'apparecchio a cui si ispirano: ad es. Deez One Mod diventa Boss DS-1 Mod.</li>\n        ",
+    "feat.exp": "<b>Indicatore EXP</b>",
+    "feat.expS": "\n          <li>Mostra dove si trovano EXP 1 ed EXP 2 nella schermata Home: una barra su ciascun bordo e il valore da 0 a 100, nel colore del pedale. Scegli il pedale di ciascun lato in Global Settings › Displays.</li>\n        ",
     "feat.gate": "<b>Noise gate nei blocchi FX Loop e Return</b>",
     "feat.gateS": "\n            <li>Aggiunge i controlli Gate, Threshold e Decay ai blocchi FX Loop e Return, come il gate del blocco Input.</li>\n            <li>Ognuno di questi blocchi usa poi lo 0,2% (mono) o lo 0,4% (stereo) di DSP in più.</li>\n          ",
     "feat.sc": "<b>Input Sidechain nel blocco Noise Gate</b>",
@@ -1901,6 +1917,8 @@ var LANGS = {
     "ram.err.other": "HX Stomp には何も書き込んでいません。電源を入れ直し（インストール済みのものが起動します）、もう一度試してください。何が起きたかは下の技術的な詳細にあります。見つからない場合は Page › を押したまま電源を入れ（アップデート・モード）、RAM で起動 をクリックしてください。",
     "feat.names": "<b>ブロックの実機名</b>",
     "feat.namesS": "\n          <li>ブロックの名前を、元になった実機の名前に変えます。例：Deez One Mod は Boss DS-1 Mod に。</li>\n        ",
+    "feat.exp": "<b>EXP 表示</b>",
+    "feat.expS": "\n          <li>EXP 1 と EXP 2 の位置をホーム画面に表示します。左右の端のバーと 0〜100 の値を、ペダルの色で出します。左右に出すペダルは Global Settings › Displays で選びます。</li>\n        ",
     "feat.gate": "<b>FX Loop・Return ブロックのノイズゲート</b>",
     "feat.gateS": "\n            <li>FX Loop と Return ブロックに、Input ブロックのゲートと同じ Gate・Threshold・Decay のノブを追加します。</li>\n            <li>これらのブロックはそれぞれ DSP を 0.2%（モノ）または 0.4%（ステレオ）多く使います。</li>\n          ",
     "feat.sc": "<b>Noise Gate ブロックの Input Sidechain</b>",
@@ -2093,6 +2111,8 @@ var LANGS = {
     "ram.err.other": "没有向 HX Stomp 写入任何内容。请关机再开机（它会启动已安装的固件）后重试；下面的技术细节说明了发生了什么。如果找不到它，请按住 Page › 开机（更新模式），然后点击 从 RAM 运行。",
     "feat.names": "<b>模块的真实名称</b>",
     "feat.namesS": "\n          <li>将模块重命名为其原型设备的名称：例如 Deez One Mod 变为 Boss DS-1 Mod。</li>\n        ",
+    "feat.exp": "<b>EXP 显示</b>",
+    "feat.expS": "\n          <li>在主屏幕上显示 EXP 1 和 EXP 2 的位置：左右两边各一条竖条和 0 到 100 的数值，用踏板的颜色。每一侧显示哪个踏板，在 Global Settings › Displays 中选择。</li>\n        ",
     "feat.gate": "<b>FX Loop 和 Return 模块内置噪声门</b>",
     "feat.gateS": "\n            <li>为 FX Loop 和 Return 模块添加 Gate、Threshold 和 Decay 旋钮，与 Input 模块的噪声门相同。</li>\n            <li>这些模块每个会多占用 0.2%（单声道）或 0.4%（立体声）的 DSP。</li>\n          ",
     "feat.sc": "<b>Noise Gate 模块的 Input Sidechain</b>",
@@ -2285,6 +2305,8 @@ var LANGS = {
     "ram.err.other": "HX Stomp에는 아무것도 쓰지 않았습니다. 껐다 켜고(설치된 것이 시작됩니다) 다시 시도하세요. 무슨 일이 있었는지는 아래 기술 정보에 있습니다. 찾을 수 없으면 Page ›를 누른 채 켜고(업데이트 모드) RAM에서 실행을 클릭하세요.",
     "feat.names": "<b>블록의 실제 이름</b>",
     "feat.namesS": "\n          <li>블록 이름을 원본 장비의 이름으로 바꿉니다. 예: Deez One Mod는 Boss DS-1 Mod가 됩니다.</li>\n        ",
+    "feat.exp": "<b>EXP 표시</b>",
+    "feat.expS": "\n          <li>홈 화면에 EXP 1과 EXP 2의 위치를 보여 줍니다. 좌우 가장자리의 막대와 0~100 값을 페달 색으로 표시합니다. 각 쪽에 표시할 페달은 Global Settings › Displays에서 고릅니다.</li>\n        ",
     "feat.gate": "<b>FX Loop·Return 블록의 노이즈 게이트</b>",
     "feat.gateS": "\n            <li>FX Loop와 Return 블록에 Input 블록의 게이트처럼 Gate, Threshold, Decay 노브를 추가합니다.</li>\n            <li>이 블록들은 각각 DSP를 0.2%(모노) 또는 0.4%(스테레오) 더 사용합니다.</li>\n          ",
     "feat.sc": "<b>Noise Gate 블록의 Input Sidechain</b>",
@@ -2477,6 +2499,8 @@ var LANGS = {
     "ram.err.other": "На HX Stomp ничего не записано. Выключите и включите его (он запустит установленное) и попробуйте снова; технические подробности ниже объясняют, что случилось. Если он не находится, включите его, удерживая Page › (режим обновления), и нажмите Запустить из RAM.",
     "feat.names": "<b>Настоящие названия блоков</b>",
     "feat.namesS": "\n          <li>Переименовывает блоки по названиям приборов, на которых они основаны: например, Deez One Mod становится Boss DS-1 Mod.</li>\n        ",
+    "feat.exp": "<b>Индикатор EXP</b>",
+    "feat.expS": "\n          <li>Показывает на главном экране, где стоят EXP 1 и EXP 2: полоску у каждого края и значение от 0 до 100 цветом педали. Педаль для каждой стороны выбирается в Global Settings › Displays.</li>\n        ",
     "feat.gate": "<b>Нойз-гейт в блоках FX Loop и Return</b>",
     "feat.gateS": "\n            <li>Добавляет в блоки FX Loop и Return ручки Gate, Threshold и Decay, как у гейта блока Input.</li>\n            <li>Каждый из этих блоков тогда использует на 0,2% (моно) или 0,4% (стерео) больше DSP.</li>\n          ",
     "feat.sc": "<b>Input Sidechain в блоке Noise Gate</b>",

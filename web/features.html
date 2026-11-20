@@ -145,6 +145,12 @@
     <td data-i18n="gr-meter.where">The compressor's Mtr Size, Mtr Pos and Mtr Dir knobs, on the Deluxe, LA Studio, Kinky, Ampeg Opto, Rochester and Red Squeeze compressors</td>
     </tr>
     <tr>
+    <td><a href="#exp-display" data-i18n="exp-display.name">EXP Display</a></td>
+    <td data-i18n="exp-display.desc">Shows where EXP 1 and EXP 2 are on the Home screen: a bar at each edge of the screen and the value from 0 to 100 above the line across the middle, in the pedal's colour.</td>
+    <td data-i18n="exp-display.floc">Home screen: the left and right edges, and beside the signal flow</td>
+    <td data-i18n="exp-display.where">Global Settings &gt; Displays, pages 2 and 3</td>
+    </tr>
+    <tr>
     <td><a href="#dsp-usage-display" data-i18n="dsp-usage-display.name">DSP Usage Display</a></td>
     <td data-i18n="dsp-usage-display.desc">Shows each block's share of the DSP on the Edit view's blocks and in the model browser, and the total in the top right corner.</td>
     <td data-i18n="dsp-usage-display.floc">Edit view and model browser</td>
@@ -367,6 +373,43 @@
         <td><strong>Mtr Dir</strong></td>
         <td><strong>Normal</strong>, Reverse</td>
         <td data-i18n="gr-meter.what3">Normal fills left to right or top to bottom; Reverse the other way.</td>
+        </tr>
+        </tbody>
+        </table></div>
+      </div>
+    </section>
+
+    <section class="card feat" id="exp-display">
+      <h2><img class="ico" src="../docs/assets/icons/exp-display.svg" width="28" height="28" alt=""><span data-i18n="exp-display.name">EXP Display</span></h2>
+      <p data-i18n="exp-display.p1">Where your expression pedals are, at a glance: a bar at each edge of the Home screen, from 0 at the bottom of the screen to 100 just under the line across the middle, and above that line, beside the signal flow, EXP1 or EXP2 over the value from 0 to 100. Both are in the pedal's colour: EXP 1 red, EXP 2 green, as TogglEXP lights them. Off unless you tick it on the setup page.</p>
+  <ul>
+  <li data-i18n="exp-display.li1"><strong>The value</strong> is the one your blocks get from EXP 1 or EXP 2, in the HX Stomp's 1% steps. MIDI CC 1 and 2, which move EXP 1 and EXP 2, move it too. A pedal reads 0 (100 with its Polarity Inverted) until you first sweep it after plugging it in, as the HX Stomp sends that to your blocks. With EXP 1 or EXP 2 Position saved per preset or per snapshot (Global Settings &gt; EXP Pedals), changing preset, or snapshot when it is per snapshot, gives your blocks the saved position: the bar then shows only its outline, in the pedal's colour, until you move the pedal, while the value shows where the pedal is.</li>
+  <li data-i18n="exp-display.li2"><strong>With TogglEXP</strong> and one pedal, the side the pedal no longer moves turns grey and keeps its last value.</li>
+  <li data-i18n="exp-display.li3"><strong>With no pedal</strong> (or its jack set to a footswitch) and nothing from MIDI in the last 3 seconds, a side shows an empty bar and --.</li>
+  <li data-i18n="exp-display.li4"><strong>With the <a href="#gr-meter">gain reduction meter</a></strong> on the Home screen, the bars and values move aside for it: at Bottom the bars start just above it, at Left or Right that side moves in, and at Middle the bars end just below it.</li>
+  <li data-i18n="exp-display.li5"><strong>Where it shows:</strong> on the Home screen only. A long footswitch name can run under the inner edge of a bar.</li>
+  </ul>
+      <div class="settings">
+        <h3 data-i18n="settings">Settings</h3>
+        <p class="where" data-i18n="exp-display.where">Global Settings &gt; Displays, pages 2 and 3</p>
+        <div class="tbl"><table>
+        <thead>
+        <tr>
+        <th data-i18n="th.setting">Setting</th>
+        <th data-i18n="th.values">Values</th>
+        <th data-i18n="th.what">What it does</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><strong>Home EXP Left</strong></td>
+        <td>Off, <strong>EXP 1</strong>, EXP 2</td>
+        <td data-i18n="exp-display.what1">What the bar at the left edge and the value at the left show. Off shows nothing there.</td>
+        </tr>
+        <tr>
+        <td><strong>Home EXP Right</strong></td>
+        <td>Off, EXP 1, <strong>EXP 2</strong></td>
+        <td data-i18n="exp-display.what2">The same for the right edge. With both Off the Home screen looks stock.</td>
         </tr>
         </tbody>
         </table></div>
@@ -868,6 +911,10 @@ var LANGS = {
     "gr-meter.desc": "Muestra cuánto está trabajando un compresor, en la pantalla de inicio y en su vista Edit, para que ajustes Threshold, Ratio, Attack y Release mientras tocas.",
     "gr-meter.floc": "Pantalla de inicio y vista Edit del compresor",
     "gr-meter.where": "Las perillas Mtr Size, Mtr Pos y Mtr Dir del compresor, en los compresores Deluxe, LA Studio, Kinky, Ampeg Opto, Rochester y Red Squeeze",
+    "exp-display.name": "Indicador EXP",
+    "exp-display.desc": "Muestra dónde están EXP 1 y EXP 2 en la pantalla de inicio: una barra en cada borde de la pantalla y el valor de 0 a 100 sobre la línea que cruza el centro, en el color del pedal.",
+    "exp-display.floc": "Pantalla de inicio: los bordes izquierdo y derecho, y junto al flujo de señal",
+    "exp-display.where": "Global Settings &gt; Displays, páginas 2 y 3",
     "dsp-usage-display.name": "Indicador de uso de DSP",
     "dsp-usage-display.alt2": "Los amplis de bajo del navegador de modelos, cada uno con su parte de DSP entre el icono y el nombre",
     "dsp-usage-display.desc": "Muestra la parte del DSP que usa cada bloque, en los bloques de la vista Edit y en el navegador de modelos, y el total en la esquina superior derecha.",
@@ -957,6 +1004,14 @@ var LANGS = {
     "gr-meter.what1": "El grosor del medidor: 5, 10, 15 o 20 píxeles. Un preset guardado con el Mtr Thk de una versión anterior dibuja el medidor en S con 1 px, M con 2, L con 3 y XL con 4 o más.",
     "gr-meter.what2": "Dónde se enciende el medidor en la pantalla de inicio y en la vista Edit. Middle ocupa el lugar de la línea que cruza el centro.",
     "gr-meter.what3": "Normal llena de izquierda a derecha o de arriba abajo; Reverse, al revés.",
+    "exp-display.p1": "Dónde están tus pedales de expresión, de un vistazo: una barra en cada borde de la pantalla de inicio, de 0 abajo del todo a 100 justo debajo de la línea que cruza el centro, y sobre esa línea, junto al flujo de señal, EXP1 o EXP2 encima del valor de 0 a 100. Ambos van en el color del pedal: EXP 1 en rojo, EXP 2 en verde, como los ilumina TogglEXP. Viene desactivado salvo que lo marques en la página de instalación.",
+    "exp-display.li1": "<strong>El valor</strong> es el que reciben tus bloques de EXP 1 o EXP 2, en los pasos de 1% del HX Stomp. MIDI CC 1 y 2, que mueven EXP 1 y EXP 2, también lo mueven. Un pedal marca 0 (100 con su Polarity en Inverted) hasta que lo recorres por primera vez tras conectarlo, porque eso es lo que el HX Stomp envía a tus bloques. Con EXP 1 o EXP 2 Position guardado por preset o por snapshot (Global Settings &gt; EXP Pedals), al cambiar de preset, o de snapshot si está guardado por snapshot, tus bloques reciben la posición guardada: la barra muestra entonces solo su contorno, en el color del pedal, hasta que muevas el pedal, mientras el valor muestra dónde está el pedal.",
+    "exp-display.li2": "<strong>Con TogglEXP</strong> y un solo pedal, el lado que el pedal ya no mueve se vuelve gris y conserva su último valor.",
+    "exp-display.li3": "<strong>Sin pedal</strong> (o con su jack configurado como footswitch) y sin nada por MIDI en los últimos 3 segundos, un lado muestra una barra vacía y --.",
+    "exp-display.li4": "<strong>Con el <a href=\"#gr-meter\">medidor de reducción de ganancia</a></strong> en la pantalla de inicio, las barras y los valores se apartan para dejarle sitio: en Bottom las barras empiezan justo encima, en Left o Right ese lado se desplaza hacia dentro, y en Middle las barras terminan justo debajo.",
+    "exp-display.li5": "<strong>Dónde aparece:</strong> solo en la pantalla de inicio. Un nombre de footswitch largo puede pasar por debajo del borde interior de una barra.",
+    "exp-display.what1": "Lo que muestran la barra del borde izquierdo y el valor de la izquierda. Off no muestra nada ahí.",
+    "exp-display.what2": "Lo mismo para el borde derecho. Con los dos en Off, la pantalla de inicio queda como en el original.",
     "dsp-usage-display.alt1": "Vista Edit, bloque a bloque: la parte de DSP de cada bloque y el total arriba a la derecha",
     "dsp-usage-display.p1": "En la vista Edit, cada bloque de la fila del flujo de señal muestra su parte del DSP en porcentaje, en negro sobre el bloque. La esquina superior derecha muestra el total de los bloques sobre 75, p. ej. <code>47/75</code>.",
     "dsp-usage-display.p2": "En el navegador de modelos, cada modelo muestra la parte que ocuparía, en blanco entre su icono y su nombre, y la esquina superior derecha muestra el total como en la vista Edit.",
@@ -1084,6 +1139,10 @@ var LANGS = {
     "gr-meter.desc": "Mostra o quanto um compressor está trabalhando, na tela inicial e na tela Edit dele, para você ajustar Threshold, Ratio, Attack e Release enquanto toca.",
     "gr-meter.floc": "Tela inicial e tela Edit do compressor",
     "gr-meter.where": "Os knobs Mtr Size, Mtr Pos e Mtr Dir do compressor, nos compressores Deluxe, LA Studio, Kinky, Ampeg Opto, Rochester e Red Squeeze",
+    "exp-display.name": "Indicador EXP",
+    "exp-display.desc": "Mostra onde estão EXP 1 e EXP 2 na tela inicial: uma barra em cada borda da tela e o valor de 0 a 100 acima da linha no meio da tela, na cor do pedal.",
+    "exp-display.floc": "Tela inicial: as bordas esquerda e direita, e ao lado do fluxo de sinal",
+    "exp-display.where": "Global Settings &gt; Displays, páginas 2 e 3",
     "dsp-usage-display.name": "Medidor de uso de DSP",
     "dsp-usage-display.alt2": "Os amplificadores de baixo do navegador de modelos, cada um com a sua parte do DSP entre o ícone e o nome",
     "dsp-usage-display.desc": "Mostra a parte do DSP que cada bloco usa, nos blocos da tela Edit e no navegador de modelos, e o total no canto superior direito.",
@@ -1173,6 +1232,14 @@ var LANGS = {
     "gr-meter.what1": "A espessura do medidor: 5, 10, 15 ou 20 pixels. Um preset salvo com o Mtr Thk de uma versão anterior desenha o medidor em S para 1 px, M para 2, L para 3 e XL para 4 ou mais.",
     "gr-meter.what2": "Onde o medidor acende na tela inicial e na tela Edit. Middle ocupa o lugar da linha no meio da tela.",
     "gr-meter.what3": "Normal preenche da esquerda para a direita ou de cima para baixo; Reverse, no sentido contrário.",
+    "exp-display.p1": "Onde estão seus pedais de expressão, num relance: uma barra em cada borda da tela inicial, de 0 no pé da tela a 100 logo abaixo da linha no meio, e acima dessa linha, ao lado do fluxo de sinal, EXP1 ou EXP2 sobre o valor de 0 a 100. Os dois ficam na cor do pedal: EXP 1 em vermelho, EXP 2 em verde, como o TogglEXP os acende. Vem desligado, a menos que você o marque na página de instalação.",
+    "exp-display.li1": "<strong>O valor</strong> é o que seus blocos recebem de EXP 1 ou EXP 2, nos passos de 1% do HX Stomp. MIDI CC 1 e 2, que movem EXP 1 e EXP 2, também o movem. Um pedal marca 0 (100 com o Polarity em Inverted) até você percorrê-lo pela primeira vez depois de conectá-lo, porque é isso que o HX Stomp envia aos seus blocos. Com EXP 1 ou EXP 2 Position salvo por preset ou por snapshot (Global Settings &gt; EXP Pedals), ao trocar de preset, ou de snapshot quando está salvo por snapshot, seus blocos recebem a posição salva: a barra passa a mostrar só o contorno, na cor do pedal, até você mover o pedal, enquanto o valor mostra onde o pedal está.",
+    "exp-display.li2": "<strong>Com TogglEXP</strong> e um só pedal, o lado que o pedal deixou de mover fica cinza e guarda o último valor.",
+    "exp-display.li3": "<strong>Sem pedal</strong> (ou com o jack configurado como footswitch) e sem nada vindo do MIDI nos últimos 3 segundos, o lado mostra uma barra vazia e --.",
+    "exp-display.li4": "<strong>Com o <a href=\"#gr-meter\">medidor de redução de ganho</a></strong> na tela inicial, as barras e os valores abrem espaço para ele: em Bottom as barras começam logo acima dele, em Left ou Right aquele lado vai para dentro, e em Middle as barras terminam logo abaixo dele.",
+    "exp-display.li5": "<strong>Onde aparece:</strong> só na tela inicial. Um nome de footswitch longo pode passar por baixo da borda interna de uma barra.",
+    "exp-display.what1": "O que a barra da borda esquerda e o valor à esquerda mostram. Off não mostra nada ali.",
+    "exp-display.what2": "O mesmo para a borda direita. Com os dois em Off, a tela inicial fica como no original.",
     "dsp-usage-display.alt1": "Visão Edit, bloco a bloco: a parte do DSP de cada bloco e o total no canto superior direito",
     "dsp-usage-display.p1": "Na tela Edit, cada bloco da fileira do fluxo de sinal mostra a sua parte do DSP em porcentagem, em preto sobre o bloco. O canto superior direito mostra o total dos blocos sobre 75, p. ex. <code>47/75</code>.",
     "dsp-usage-display.p2": "No navegador de modelos, cada modelo mostra a parte que ocuparia, em branco entre o ícone e o nome, e o canto superior direito mostra o total como na tela Edit.",
@@ -1300,6 +1367,10 @@ var LANGS = {
     "gr-meter.desc": "Montre à quel point un compresseur travaille, sur l'écran d'accueil et dans sa vue Edit, pour régler Threshold, Ratio, Attack et Release tout en jouant.",
     "gr-meter.floc": "Écran d'accueil et vue Edit du compresseur",
     "gr-meter.where": "Les potentiomètres Mtr Size, Mtr Pos et Mtr Dir du compresseur, sur les compresseurs Deluxe, LA Studio, Kinky, Ampeg Opto, Rochester et Red Squeeze",
+    "exp-display.name": "Affichage EXP",
+    "exp-display.desc": "Montre où en sont EXP 1 et EXP 2 sur l'écran d'accueil : une barre sur chaque bord de l'écran et la valeur de 0 à 100 au-dessus de la ligne qui traverse le milieu, dans la couleur de la pédale.",
+    "exp-display.floc": "Écran d'accueil : les bords gauche et droit, et à côté du flux du signal",
+    "exp-display.where": "Global Settings &gt; Displays, pages 2 et 3",
     "dsp-usage-display.name": "Affichage de l'utilisation DSP",
     "dsp-usage-display.alt2": "Les amplis basse du navigateur de modèles, chacun avec sa part de DSP entre l'icône et le nom",
     "dsp-usage-display.desc": "Affiche la part du DSP de chaque bloc sur les blocs de la vue Edit et dans le navigateur de modèles, et le total dans le coin supérieur droit.",
@@ -1389,6 +1460,14 @@ var LANGS = {
     "gr-meter.what1": "L'épaisseur de l'indicateur : 5, 10, 15 ou 20 pixels. Un preset enregistré avec le Mtr Thk d'une ancienne version dessine l'indicateur en S pour 1 px, M pour 2, L pour 3 et XL pour 4 ou plus.",
     "gr-meter.what2": "L'endroit de l'écran d'accueil et de la vue Edit où l'indicateur s'allume. Middle prend la place de la ligne qui traverse le milieu.",
     "gr-meter.what3": "Normal remplit de gauche à droite ou de haut en bas ; Reverse dans l'autre sens.",
+    "exp-display.p1": "La position de vos pédales d'expression, d'un coup d'œil : une barre sur chaque bord de l'écran d'accueil, de 0 tout en bas à 100 juste sous la ligne qui traverse le milieu, et au-dessus de cette ligne, à côté du flux du signal, EXP1 ou EXP2 sur la valeur de 0 à 100. Les deux sont dans la couleur de la pédale : EXP 1 en rouge, EXP 2 en vert, comme TogglEXP les allume. Désactivé sauf si vous le cochez sur la page d'installation.",
+    "exp-display.li1": "<strong>La valeur</strong> est celle que vos blocs reçoivent d'EXP 1 ou d'EXP 2, par pas de 1 % comme sur le HX Stomp. Les MIDI CC 1 et 2, qui pilotent EXP 1 et EXP 2, la font bouger aussi. Une pédale indique 0 (100 avec sa Polarity sur Inverted) jusqu'à ce que vous la parcouriez une première fois après l'avoir branchée, car c'est ce que le HX Stomp envoie à vos blocs. Si EXP 1 ou EXP 2 Position est enregistré par preset ou par snapshot (Global Settings &gt; EXP Pedals), un changement de preset, ou de snapshot s'il est enregistré par snapshot, donne à vos blocs la position enregistrée : la barre n'affiche alors que son contour, dans la couleur de la pédale, jusqu'à ce que vous bougiez la pédale, tandis que la valeur indique où se trouve la pédale.",
+    "exp-display.li2": "<strong>Avec TogglEXP</strong> et une seule pédale, le côté que la pédale ne pilote plus passe au gris et garde sa dernière valeur.",
+    "exp-display.li3": "<strong>Sans pédale</strong> (ou avec son jack réglé en footswitch) et sans rien reçu en MIDI depuis 3 secondes, un côté montre une barre vide et --.",
+    "exp-display.li4": "<strong>Avec l'<a href=\"#gr-meter\">indicateur de réduction de gain</a></strong> sur l'écran d'accueil, les barres et les valeurs lui laissent la place : en Bottom les barres commencent juste au-dessus, en Left ou Right ce côté se décale vers l'intérieur, et en Middle les barres s'arrêtent juste en dessous.",
+    "exp-display.li5": "<strong>Où il s'affiche :</strong> sur l'écran d'accueil uniquement. Un nom de footswitch long peut passer sous le bord intérieur d'une barre.",
+    "exp-display.what1": "Ce que montrent la barre du bord gauche et la valeur de gauche. Off n'y affiche rien.",
+    "exp-display.what2": "Pareil pour le bord droit. Avec les deux sur Off, l'écran d'accueil reste d'origine.",
     "dsp-usage-display.alt1": "Vue Edit, bloc après bloc : la part de DSP de chaque bloc, et le total en haut à droite",
     "dsp-usage-display.p1": "Dans la vue Edit, chaque bloc de la rangée du flux du signal affiche sa part du DSP en pour cent, en noir sur le bloc. Le coin supérieur droit affiche le total des blocs sur 75, p. ex. <code>47/75</code>.",
     "dsp-usage-display.p2": "Dans le navigateur de modèles, chaque modèle affiche la part qu'il prendrait, en blanc entre son icône et son nom, et le coin supérieur droit affiche le total comme dans la vue Edit.",
@@ -1516,6 +1595,10 @@ var LANGS = {
     "gr-meter.desc": "Zeigt, wie stark ein Kompressor arbeitet, auf dem Home-Bildschirm und in seiner Edit-Ansicht, damit du Threshold, Ratio, Attack und Release beim Spielen einstellen kannst.",
     "gr-meter.floc": "Home-Bildschirm und die Edit-Ansicht des Kompressors",
     "gr-meter.where": "Die Regler Mtr Size, Mtr Pos und Mtr Dir des Kompressors, bei den Kompressoren Deluxe, LA Studio, Kinky, Ampeg Opto, Rochester und Red Squeeze",
+    "exp-display.name": "EXP-Anzeige",
+    "exp-display.desc": "Zeigt auf dem Home-Bildschirm, wo EXP 1 und EXP 2 stehen: einen Balken an jedem Bildschirmrand und den Wert von 0 bis 100 über der Linie quer durch die Mitte, in der Farbe des Pedals.",
+    "exp-display.floc": "Home-Bildschirm: der linke und der rechte Rand und neben dem Signalfluss",
+    "exp-display.where": "Global Settings &gt; Displays, Seiten 2 und 3",
     "dsp-usage-display.name": "DSP-Anzeige",
     "dsp-usage-display.alt2": "Die Bass-Amps im Modell-Browser, jeder mit seinem DSP-Anteil zwischen Symbol und Name",
     "dsp-usage-display.desc": "Zeigt den DSP-Anteil jedes Blocks auf den Blöcken der Edit-Ansicht und im Modell-Browser, dazu die Summe oben rechts.",
@@ -1605,6 +1688,14 @@ var LANGS = {
     "gr-meter.what1": "Die Dicke der Anzeige: 5, 10, 15 oder 20 Pixel. Ein Preset, das mit Mtr Thk eines älteren Builds gespeichert wurde, zeichnet die Anzeige mit S bei 1 px, M bei 2, L bei 3 und XL bei 4 oder mehr.",
     "gr-meter.what2": "Wo auf dem Home-Bildschirm und in der Edit-Ansicht die Anzeige leuchtet. Middle ersetzt die Linie quer durch die Mitte.",
     "gr-meter.what3": "Normal füllt von links nach rechts bzw. von oben nach unten; Reverse andersherum.",
+    "exp-display.p1": "Wo deine Expression-Pedale stehen, auf einen Blick: ein Balken an jedem Rand des Home-Bildschirms, von 0 ganz unten bis 100 direkt unter der Linie quer durch die Mitte, und über dieser Linie, neben dem Signalfluss, EXP1 oder EXP2 über dem Wert von 0 bis 100. Beides in der Farbe des Pedals: EXP 1 rot, EXP 2 grün, wie TogglEXP sie leuchten lässt. Aus, außer du setzt auf der Einrichtungsseite das Häkchen.",
+    "exp-display.li1": "<strong>Der Wert</strong> ist der, den deine Blöcke von EXP 1 oder EXP 2 bekommen, in den 1%-Schritten des HX Stomp. MIDI CC 1 und 2, die EXP 1 und EXP 2 bewegen, bewegen ihn auch. Ein Pedal zeigt 0 (100 bei Polarity Inverted), bis du es nach dem Einstecken einmal ganz durchtrittst, denn das schickt der HX Stomp an deine Blöcke. Ist EXP 1 oder EXP 2 Position pro Preset oder pro Snapshot gespeichert (Global Settings &gt; EXP Pedals), bekommen deine Blöcke beim Wechsel des Presets (bei Speicherung pro Snapshot auch beim Wechsel des Snapshots) die gespeicherte Position: Der Balken zeigt dann nur seinen Umriss in der Farbe des Pedals, bis du das Pedal bewegst, während der Wert zeigt, wo das Pedal steht.",
+    "exp-display.li2": "<strong>Mit TogglEXP</strong> und einem Pedal wird die Seite, die das Pedal nicht mehr bewegt, grau und behält ihren letzten Wert.",
+    "exp-display.li3": "<strong>Ohne Pedal</strong> (oder mit der Buchse als Fußschalter eingestellt) und ohne MIDI in den letzten 3 Sekunden zeigt eine Seite einen leeren Balken und --.",
+    "exp-display.li4": "<strong>Mit der <a href=\"#gr-meter\">Gain-Reduction-Anzeige</a></strong> auf dem Home-Bildschirm machen Balken und Werte ihr Platz: bei Bottom beginnen die Balken direkt darüber, bei Left oder Right rückt diese Seite nach innen, und bei Middle enden die Balken direkt darunter.",
+    "exp-display.li5": "<strong>Wo sie erscheint:</strong> nur auf dem Home-Bildschirm. Ein langer Fußschalter-Name kann unter den inneren Rand eines Balkens laufen.",
+    "exp-display.what1": "Was der Balken am linken Rand und der Wert links zeigen. Off zeigt dort nichts.",
+    "exp-display.what2": "Dasselbe für den rechten Rand. Mit beiden auf Off sieht der Home-Bildschirm wie im Original aus.",
     "dsp-usage-display.alt1": "Edit-Ansicht, Block für Block: der DSP-Anteil jedes Blocks und die Summe oben rechts",
     "dsp-usage-display.p1": "In der Edit-Ansicht zeigt jeder Block in der Signalfluss-Zeile seinen DSP-Anteil in Prozent, schwarz auf dem Block. Oben rechts steht die Summe der Blöcke von 75, z. B. <code>47/75</code>.",
     "dsp-usage-display.p2": "Im Modell-Browser zeigt jedes Modell den Anteil, den es belegen würde, weiß zwischen Symbol und Name, und oben rechts steht die Summe wie in der Edit-Ansicht.",
@@ -1732,6 +1823,10 @@ var LANGS = {
     "gr-meter.desc": "Mostra quanto lavora un compressore, nella schermata Home e nella sua vista Edit, così puoi regolare Threshold, Ratio, Attack e Release mentre suoni.",
     "gr-meter.floc": "Schermata Home e vista Edit del compressore",
     "gr-meter.where": "Le manopole Mtr Size, Mtr Pos e Mtr Dir del compressore, sui compressori Deluxe, LA Studio, Kinky, Ampeg Opto, Rochester e Red Squeeze",
+    "exp-display.name": "Indicatore EXP",
+    "exp-display.desc": "Mostra dove si trovano EXP 1 ed EXP 2 nella schermata Home: una barra su ciascun bordo dello schermo e il valore da 0 a 100 sopra la linea al centro, nel colore del pedale.",
+    "exp-display.floc": "Schermata Home: i bordi sinistro e destro, e accanto al flusso del segnale",
+    "exp-display.where": "Global Settings &gt; Displays, pagine 2 e 3",
     "dsp-usage-display.name": "Indicatore di uso del DSP",
     "dsp-usage-display.alt2": "Gli ampli per basso nel browser dei modelli, ciascuno con la sua quota di DSP tra icona e nome",
     "dsp-usage-display.desc": "Mostra la quota di DSP di ogni blocco sui blocchi della vista Edit e nel browser dei modelli, e il totale nell'angolo in alto a destra.",
@@ -1821,6 +1916,14 @@ var LANGS = {
     "gr-meter.what1": "Lo spessore dell'indicatore: 5, 10, 15 o 20 pixel. Un preset salvato con il Mtr Thk di una build precedente disegna l'indicatore in S per 1 px, M per 2, L per 3 e XL per 4 o più.",
     "gr-meter.what2": "Dove si accende l'indicatore nella schermata Home e nella vista Edit. Middle prende il posto della linea al centro.",
     "gr-meter.what3": "Normal si riempie da sinistra a destra o dall'alto in basso; Reverse nel verso opposto.",
+    "exp-display.p1": "Dove sono i tuoi pedali d'espressione, a colpo d'occhio: una barra su ciascun bordo della schermata Home, da 0 in fondo allo schermo a 100 subito sotto la linea al centro, e sopra quella linea, accanto al flusso del segnale, EXP1 o EXP2 sopra il valore da 0 a 100. Entrambi nel colore del pedale: EXP 1 rosso, EXP 2 verde, come li accende TogglEXP. Disattivato a meno che tu non lo spunti nella pagina di installazione.",
+    "exp-display.li1": "<strong>Il valore</strong> è quello che i tuoi blocchi ricevono da EXP 1 o EXP 2, nei passi dell'1% dell'HX Stomp. Anche i MIDI CC 1 e 2, che muovono EXP 1 ed EXP 2, lo muovono. Un pedale segna 0 (100 con Polarity su Inverted) finché non lo percorri la prima volta dopo averlo collegato, perché è ciò che l'HX Stomp invia ai tuoi blocchi. Con EXP 1 o EXP 2 Position salvato per preset o per snapshot (Global Settings &gt; EXP Pedals), cambiando preset, o snapshot se è per snapshot, i tuoi blocchi ricevono la posizione salvata: la barra mostra allora solo il contorno, nel colore del pedale, finché non muovi il pedale, mentre il valore mostra dove si trova il pedale.",
+    "exp-display.li2": "<strong>Con TogglEXP</strong> e un solo pedale, il lato che il pedale non muove più diventa grigio e mantiene il suo ultimo valore.",
+    "exp-display.li3": "<strong>Senza pedale</strong> (o con il suo jack impostato come footswitch) e senza nulla via MIDI negli ultimi 3 secondi, un lato mostra una barra vuota e --.",
+    "exp-display.li4": "<strong>Con l'<a href=\"#gr-meter\">indicatore di riduzione del guadagno</a></strong> nella schermata Home, barre e valori gli fanno spazio: con Bottom le barre partono subito sopra, con Left o Right quel lato si sposta verso l'interno, e con Middle le barre finiscono subito sotto.",
+    "exp-display.li5": "<strong>Dove appare:</strong> solo nella schermata Home. Un nome di footswitch lungo può passare sotto il bordo interno di una barra.",
+    "exp-display.what1": "Cosa mostrano la barra sul bordo sinistro e il valore a sinistra. Off non mostra nulla lì.",
+    "exp-display.what2": "Lo stesso per il bordo destro. Con entrambi su Off la schermata Home resta come in origine.",
     "dsp-usage-display.alt1": "Vista Edit, blocco per blocco: la quota di DSP di ogni blocco e il totale in alto a destra",
     "dsp-usage-display.p1": "Nella vista Edit, ogni blocco nella riga del flusso del segnale mostra la sua quota di DSP in percentuale, in nero sul blocco. L'angolo in alto a destra mostra il totale dei blocchi su 75, ad es. <code>47/75</code>.",
     "dsp-usage-display.p2": "Nel browser dei modelli, ogni modello mostra la quota che occuperebbe, in bianco tra l'icona e il nome, e l'angolo in alto a destra mostra il totale come nella vista Edit.",
@@ -1948,6 +2051,10 @@ var LANGS = {
     "gr-meter.desc": "コンプレッサーのかかり具合をホーム画面とその Edit 画面に表示するので、演奏しながら Threshold、Ratio、Attack、Release を追い込めます。",
     "gr-meter.floc": "ホーム画面と、コンプレッサーの Edit 画面",
     "gr-meter.where": "コンプレッサーの Mtr Size、Mtr Pos、Mtr Dir ノブ（Deluxe、LA Studio、Kinky、Ampeg Opto、Rochester、Red Squeeze の各コンプレッサー）",
+    "exp-display.name": "EXP 表示",
+    "exp-display.desc": "EXP 1 と EXP 2 の位置をホーム画面に表示します。画面の左右の端にバーを 1 本ずつ、中央を横切るラインの上に 0〜100 の値を、ペダルの色で出します。",
+    "exp-display.floc": "ホーム画面：左右の端と、シグナルフローの横",
+    "exp-display.where": "Global Settings &gt; Displays、2 ページ目と 3 ページ目",
     "dsp-usage-display.name": "DSP 使用率表示",
     "dsp-usage-display.alt2": "モデルブラウザのベースアンプ。アイコンと名前の間にそれぞれの DSP 使用率",
     "dsp-usage-display.desc": "Edit 画面の各ブロックとモデルブラウザに各ブロックの DSP 使用率を、右上隅に合計を表示します。",
@@ -2037,6 +2144,14 @@ var LANGS = {
     "gr-meter.what1": "メーターの太さ：5、10、15、20 ピクセル。古いビルドの Mtr Thk で保存したプリセットは、1 px なら S、2 なら M、3 なら L、4 以上なら XL でメーターを描きます。",
     "gr-meter.what2": "ホーム画面と Edit 画面のどこでメーターを点灯させるか。Middle は中央を横切るラインの位置に表示します。",
     "gr-meter.what3": "Normal は左から右、または上から下へ伸び、Reverse はその逆です。",
+    "exp-display.p1": "エクスプレッション・ペダルの位置がひと目でわかります。ホーム画面の左右の端に、画面の下端を 0、中央を横切るラインのすぐ下を 100 とするバーを 1 本ずつ出し、ラインの上のシグナルフローの横に、EXP1 または EXP2 と 0〜100 の値を出します。どちらもペダルの色で、TogglEXP の点灯と同じく EXP 1 は赤、EXP 2 は緑です。セットアップページでチェックを入れたときだけ有効になります。",
+    "exp-display.li1": "<strong>値</strong>は、ブロックが EXP 1 または EXP 2 から受け取る値で、HX Stomp と同じ 1% 刻みです。EXP 1 と EXP 2 を動かす MIDI CC 1 と 2 でも動きます。ペダルを挿したあと一度かかとからつま先まで踏むまでは 0（Polarity が Inverted なら 100）を示します。HX Stomp がブロックに送っている値がそれだからです。EXP 1・EXP 2 Position をプリセットごとかスナップショットごとに保存する設定（Global Settings &gt; EXP Pedals）では、プリセットを切り替えると（スナップショットごとならスナップショットの切り替えでも）ブロックは保存された位置を受け取ります。そのときバーはペダルを動かすまでペダルの色の枠だけになり、値はペダルの位置を示します。",
+    "exp-display.li2": "<strong>TogglEXP</strong> でペダル 1 本を切り替えて使うときは、ペダルが動かさなくなった側がグレーになり、最後の値を残します。",
+    "exp-display.li3": "<strong>ペダルがなく</strong>（またはそのジャックがフットスイッチ設定で）、直近 3 秒間に MIDI も来ていない側は、空のバーと -- を表示します。",
+    "exp-display.li4": "<strong>ホーム画面に<a href=\"#gr-meter\">ゲインリダクション・メーター</a>が出ているとき</strong>は、バーと値がメーターをよけます。Bottom ではバーがメーターのすぐ上から始まり、Left や Right ではその側が内側へ寄り、Middle ではバーがメーターのすぐ下で終わります。",
+    "exp-display.li5": "<strong>表示される場所：</strong>ホーム画面のみです。長いフットスイッチ名はバーの内側の端にかかることがあります。",
+    "exp-display.what1": "左端のバーと左側の値に出すもの。Off ではそこに何も出しません。",
+    "exp-display.what2": "右端について同じ設定です。両方 Off にするとホーム画面は純正のままです。",
     "dsp-usage-display.alt1": "Edit ビューでブロックを順に選択：各ブロックの DSP 使用率と、右上の合計",
     "dsp-usage-display.p1": "Edit 画面では、シグナルフローの列にある各ブロックに、DSP の使用率がパーセントで黒く表示されます。右上隅には、75 のうちのブロックの合計が <code>47/75</code> のように表示されます。",
     "dsp-usage-display.p2": "モデルブラウザでは、各モデルを追加した場合の使用率がアイコンと名前の間に白で表示され、右上隅には Edit 画面と同様に合計が表示されます。",
@@ -2164,6 +2279,10 @@ var LANGS = {
     "gr-meter.desc": "在主屏幕和压缩器的 Edit 界面显示压缩器的压缩程度，让你边弹边调 Threshold、Ratio、Attack 和 Release。",
     "gr-meter.floc": "主屏幕和压缩器的 Edit 界面",
     "gr-meter.where": "压缩器的 Mtr Size、Mtr Pos 和 Mtr Dir 旋钮，Deluxe、LA Studio、Kinky、Ampeg Opto、Rochester 和 Red Squeeze 压缩器都有",
+    "exp-display.name": "EXP 显示",
+    "exp-display.desc": "在主屏幕上显示 EXP 1 和 EXP 2 的位置：屏幕左右两边各一条竖条，中间横线上方显示 0 到 100 的数值，都用踏板的颜色。",
+    "exp-display.floc": "主屏幕：左右两边，以及信号链旁边",
+    "exp-display.where": "Global Settings &gt; Displays，第 2 和第 3 页",
     "dsp-usage-display.name": "DSP 占用显示",
     "dsp-usage-display.alt2": "模型浏览器中的贝斯放大器，图标和名称之间显示各自的 DSP 占用",
     "dsp-usage-display.desc": "在 Edit 界面的各模块上和模型浏览器中显示每个模块占用的 DSP 比例，并在右上角显示总量。",
@@ -2253,6 +2372,14 @@ var LANGS = {
     "gr-meter.what1": "表的粗细：5、10、15 或 20 像素。用旧版本的 Mtr Thk 保存的预设，绘制表时 1 px 对应 S，2 对应 M，3 对应 L，4 及以上对应 XL。",
     "gr-meter.what2": "表在主屏幕和 Edit 界面上亮起的位置。Middle 取代中间那条横线。",
     "gr-meter.what3": "Normal 从左到右或从上到下填充；Reverse 方向相反。",
+    "exp-display.p1": "一眼看出表情踏板的位置：主屏幕左右两边各一条竖条，屏幕底边为 0，中间横线正下方为 100；横线上方、信号链旁边显示 EXP1 或 EXP2 和 0 到 100 的数值。两者都用踏板的颜色：EXP 1 红色，EXP 2 绿色，与 TogglEXP 亮起的颜色相同。默认关闭，需在安装页面勾选。",
+    "exp-display.li1": "<strong>数值</strong>就是你的模块从 EXP 1 或 EXP 2 得到的值，与 HX Stomp 一样以 1% 为步进。控制 EXP 1 和 EXP 2 的 MIDI CC 1 和 2 也会让它变化。插上踏板后第一次踩到底之前，踏板显示 0（Polarity 为 Inverted 时为 100），因为 HX Stomp 发给模块的就是这个值。当 EXP 1 或 EXP 2 Position 设为按预设或按快照保存（Global Settings &gt; EXP Pedals）时，切换预设（按快照保存时切换快照也一样）后模块会得到保存的位置：这时在你移动踏板之前，竖条只显示踏板颜色的边框，而数值显示踏板所在的位置。",
+    "exp-display.li2": "<strong>使用 TogglEXP</strong> 且只有一个踏板时，踏板不再控制的那一侧变为灰色，并保留最后的数值。",
+    "exp-display.li3": "<strong>没有踏板</strong>（或其插孔设为脚踏开关）且最近 3 秒内没有 MIDI 时，该侧显示空的竖条和 --。",
+    "exp-display.li4": "<strong>主屏幕上显示<a href=\"#gr-meter\">增益衰减表</a>时</strong>，竖条和数值会为它让位：Bottom 时竖条从表的正上方开始，Left 或 Right 时那一侧向内移，Middle 时竖条在表的正下方结束。",
+    "exp-display.li5": "<strong>显示位置：</strong>仅在主屏幕上。较长的脚踏开关名称可能延伸到竖条内侧边缘下面。",
+    "exp-display.what1": "左边竖条和左侧数值显示的内容。Off 时那里什么都不显示。",
+    "exp-display.what2": "右边同上。两侧都为 Off 时，主屏幕保持原样。",
     "dsp-usage-display.alt1": "Edit 视图，逐个模块：每个模块的 DSP 占用，以及右上角的总量",
     "dsp-usage-display.p1": "在 Edit 界面中，信号链那一排的每个模块都会以黑字在模块上显示它的 DSP 占用百分比。右上角显示所有模块的总量（上限 75），例如 <code>47/75</code>。",
     "dsp-usage-display.p2": "在模型浏览器中，每个模型在图标和名称之间以白字显示它将占用的比例，右上角则与 Edit 界面一样显示总量。",
@@ -2380,6 +2507,10 @@ var LANGS = {
     "gr-meter.desc": "컴프레서가 얼마나 세게 작동하는지 홈 화면과 해당 블록의 Edit 화면에 보여 주므로, 연주하면서 Threshold, Ratio, Attack, Release를 맞출 수 있습니다.",
     "gr-meter.floc": "홈 화면과 컴프레서의 Edit 화면",
     "gr-meter.where": "컴프레서의 Mtr Size, Mtr Pos, Mtr Dir 노브 (Deluxe, LA Studio, Kinky, Ampeg Opto, Rochester, Red Squeeze 컴프레서)",
+    "exp-display.name": "EXP 표시",
+    "exp-display.desc": "홈 화면에 EXP 1과 EXP 2의 위치를 보여 줍니다. 화면 좌우 가장자리에 막대 하나씩, 가운데를 가로지르는 선 위에 0~100 값을 페달 색으로 표시합니다.",
+    "exp-display.floc": "홈 화면: 좌우 가장자리와 신호 흐름 옆",
+    "exp-display.where": "Global Settings &gt; Displays, 2페이지와 3페이지",
     "dsp-usage-display.name": "DSP 사용량 표시",
     "dsp-usage-display.alt2": "모델 브라우저의 베이스 앰프, 아이콘과 이름 사이에 각각의 DSP 비율",
     "dsp-usage-display.desc": "Edit 화면의 블록과 모델 브라우저에 각 블록이 차지하는 DSP 비율을, 오른쪽 위 모서리에 합계를 표시합니다.",
@@ -2469,6 +2600,14 @@ var LANGS = {
     "gr-meter.what1": "미터의 두께: 5, 10, 15, 20 px. 이전 빌드의 Mtr Thk로 저장한 프리셋은 1 px이면 S, 2이면 M, 3이면 L, 4 이상이면 XL로 미터를 그립니다.",
     "gr-meter.what2": "홈 화면과 Edit 화면에서 미터가 켜지는 위치. Middle은 가운데를 가로지르는 선 자리에 표시됩니다.",
     "gr-meter.what3": "Normal은 왼쪽에서 오른쪽, 위에서 아래로 채우고, Reverse는 반대로 채웁니다.",
+    "exp-display.p1": "익스프레션 페달 위치를 한눈에 볼 수 있습니다. 홈 화면 좌우 가장자리에 화면 아래 끝이 0, 가운데를 가로지르는 선 바로 아래가 100인 막대를 하나씩 두고, 그 선 위 신호 흐름 옆에 EXP1 또는 EXP2와 0~100 값을 표시합니다. 둘 다 페달 색이며, TogglEXP가 켜는 색과 같이 EXP 1은 빨간색, EXP 2는 초록색입니다. 설치 페이지에서 체크해야 켜집니다.",
+    "exp-display.li1": "<strong>값</strong>은 블록이 EXP 1이나 EXP 2에서 받는 값으로, HX Stomp와 같은 1% 단위입니다. EXP 1과 EXP 2를 움직이는 MIDI CC 1과 2로도 움직입니다. 페달을 꽂은 뒤 처음 끝까지 밟기 전까지는 0(Polarity가 Inverted면 100)을 표시합니다. HX Stomp가 블록에 보내는 값이 그 값이기 때문입니다. EXP 1이나 EXP 2 Position을 프리셋별 또는 스냅샷별로 저장하는 설정(Global Settings &gt; EXP Pedals)에서는 프리셋을 바꾸면(스냅샷별이면 스냅샷을 바꿔도) 블록은 저장된 위치를 받습니다. 이때 막대는 페달을 움직일 때까지 페달 색의 테두리만 표시하고, 값은 페달의 위치를 표시합니다.",
+    "exp-display.li2": "<strong>TogglEXP</strong>로 페달 하나를 전환해 쓸 때는, 페달이 더 이상 움직이지 않는 쪽이 회색이 되고 마지막 값을 유지합니다.",
+    "exp-display.li3": "<strong>페달이 없고</strong>(또는 잭이 풋스위치로 설정되어 있고) 최근 3초 동안 MIDI도 오지 않은 쪽은 빈 막대와 --를 표시합니다.",
+    "exp-display.li4": "<strong>홈 화면에 <a href=\"#gr-meter\">게인 리덕션 미터</a>가 있으면</strong> 막대와 값이 미터를 비켜 갑니다. Bottom이면 막대가 미터 바로 위에서 시작하고, Left나 Right면 그쪽이 안쪽으로 들어오며, Middle이면 막대가 미터 바로 아래에서 끝납니다.",
+    "exp-display.li5": "<strong>표시되는 곳:</strong> 홈 화면에서만 표시됩니다. 긴 풋스위치 이름은 막대 안쪽 가장자리에 걸칠 수 있습니다.",
+    "exp-display.what1": "왼쪽 가장자리 막대와 왼쪽 값에 표시할 것. Off면 그곳에 아무것도 표시하지 않습니다.",
+    "exp-display.what2": "오른쪽 가장자리도 마찬가지입니다. 둘 다 Off면 홈 화면은 순정 그대로입니다.",
     "dsp-usage-display.alt1": "Edit 화면에서 블록을 하나씩: 각 블록의 DSP 비율과 오른쪽 위의 합계",
     "dsp-usage-display.p1": "Edit 화면에서는 신호 흐름 줄의 각 블록 위에 그 블록의 DSP 비율이 퍼센트로, 검은 글씨로 표시됩니다. 오른쪽 위 모서리에는 블록들의 합계가 75 기준으로 표시됩니다(예: <code>47/75</code>).",
     "dsp-usage-display.p2": "모델 브라우저에서는 각 모델이 차지할 비율이 아이콘과 이름 사이에 흰 글씨로 표시되고, 오른쪽 위 모서리에는 Edit 화면처럼 합계가 표시됩니다.",
@@ -2596,6 +2735,10 @@ var LANGS = {
     "gr-meter.desc": "Показывает, насколько сильно работает компрессор, на главном экране и в его окне Edit, чтобы вы могли настраивать Threshold, Ratio, Attack и Release прямо во время игры.",
     "gr-meter.floc": "Главный экран и окно Edit компрессора",
     "gr-meter.where": "Ручки Mtr Size, Mtr Pos и Mtr Dir компрессора — на компрессорах Deluxe, LA Studio, Kinky, Ampeg Opto, Rochester и Red Squeeze",
+    "exp-display.name": "Индикатор EXP",
+    "exp-display.desc": "Показывает на главном экране, где стоят EXP 1 и EXP 2: полоску у каждого края экрана и значение от 0 до 100 над линией посередине, цветом педали.",
+    "exp-display.floc": "Главный экран: левый и правый края и рядом со схемой сигнала",
+    "exp-display.where": "Global Settings &gt; Displays, страницы 2 и 3",
     "dsp-usage-display.name": "Индикатор загрузки DSP",
     "dsp-usage-display.alt2": "Басовые усилители в браузере моделей, у каждого доля DSP между значком и названием",
     "dsp-usage-display.desc": "Показывает долю DSP каждого блока на блоках в окне Edit и в браузере моделей, а общую сумму — в правом верхнем углу.",
@@ -2685,6 +2828,14 @@ var LANGS = {
     "gr-meter.what1": "Толщина индикатора: 5, 10, 15 или 20 пикселей. Пресет, сохранённый с Mtr Thk из более старой сборки, рисует индикатор как S для 1 px, M для 2, L для 3 и XL для 4 и больше.",
     "gr-meter.what2": "Где на главном экране и в окне Edit загорается индикатор. Middle встаёт на место линии посередине.",
     "gr-meter.what3": "Normal заполняется слева направо или сверху вниз; Reverse — в обратную сторону.",
+    "exp-display.p1": "Положение педалей экспрессии с одного взгляда: полоска у каждого края главного экрана, от 0 у нижнего края до 100 сразу под линией посередине, а над этой линией, рядом со схемой сигнала, EXP1 или EXP2 над значением от 0 до 100. И то и другое цветом педали: EXP 1 красным, EXP 2 зелёным, как их подсвечивает TogglEXP. Выключено, пока вы не отметите его на странице установки.",
+    "exp-display.li1": "<strong>Значение</strong> — то, что ваши блоки получают от EXP 1 или EXP 2, с шагом 1%, как у HX Stomp. MIDI CC 1 и 2, которые двигают EXP 1 и EXP 2, тоже его меняют. После подключения педаль показывает 0 (100 при Polarity Inverted), пока вы впервые не пройдёте её до упора, потому что именно это HX Stomp отправляет блокам. Если EXP 1 или EXP 2 Position сохраняется для каждого пресета или снапшота (Global Settings &gt; EXP Pedals), при смене пресета (а при сохранении для каждого снапшота — и снапшота) блоки получают сохранённое положение: полоска тогда показывает только контур цветом педали, пока вы не сдвинете педаль, а значение показывает, где стоит педаль.",
+    "exp-display.li2": "<strong>С TogglEXP</strong> и одной педалью сторона, которую педаль больше не двигает, становится серой и сохраняет последнее значение.",
+    "exp-display.li3": "<strong>Без педали</strong> (или если её гнездо настроено как футсвич) и без MIDI за последние 3 секунды сторона показывает пустую полоску и --.",
+    "exp-display.li4": "<strong>Когда на главном экране <a href=\"#gr-meter\">индикатор компрессии</a></strong>, полоски и значения уступают ему место: при Bottom полоски начинаются сразу над ним, при Left или Right эта сторона сдвигается внутрь, при Middle полоски заканчиваются сразу под ним.",
+    "exp-display.li5": "<strong>Где виден:</strong> только на главном экране. Длинное название футсвича может заходить под внутренний край полоски.",
+    "exp-display.what1": "Что показывают полоска у левого края и значение слева. Off ничего там не показывает.",
+    "exp-display.what2": "То же для правого края. Если обе стороны Off, главный экран выглядит как стоковый.",
     "dsp-usage-display.alt1": "Вид Edit, блок за блоком: доля DSP каждого блока и сумма в правом верхнем углу",
     "dsp-usage-display.p1": "В окне Edit каждый блок в ряду схемы сигнала показывает свою долю DSP в процентах, чёрным на блоке. В правом верхнем углу — сумма блоков из 75, например <code>47/75</code>.",
     "dsp-usage-display.p2": "В браузере моделей у каждой модели белым между иконкой и названием указана доля, которую она займёт, а в правом верхнем углу — сумма, как в окне Edit.",
