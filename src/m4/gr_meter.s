@@ -211,9 +211,17 @@ shown:
     uxtb r5, r5                     @ the lights lit
     adr.w r7, want                  @ slot j counts left to right or top to bottom; it shows light j, or 9 - j in Reverse
     ldr r0, [sp, #12]
-    cmp r0, #0
+    cbz r0, midwide
+    bl stockdiv                     @ Middle uses the divider's own segments
+    b slots0
+midwide:
+    bl widget
+    ldr r0, [r0, #0xc]
+    subs r0, #30
     it ne
-    blne stockdiv                   @ Middle uses the divider's own segments
+    movne r0, #1
+    str r0, [sp, #0]                @ not 30 wide: a stock layout ran; its erases or a mode change's clear black out our lights
+slots0:
     movs r6, #0
 slot:
     ldr r2, [sp, #16]
@@ -289,6 +297,24 @@ fit:
     ldr r0, [sp, #12]
     cmp r0, #0
     bne edgepark
+    ldr r1, [sp, #0]
+    cbz r1, midpark                 @ marked after the slots: a setter on a dirty node adds the node's old damage
+    adr.w r1, widgets
+    addw r1, r1, #40 * 0x1c
+    adr.w r2, nodes
+    addw r2, r2, #40 * 0x28
+    movs r3, #6
+midmark:
+    ldr r5, [r1]
+    cbz r5, midnext                 @ only the lit: a dark one drawn again would black out the labels' lowest rows at XL
+    movs r5, #1
+    strb r5, [r2, #0x24]
+midnext:
+    adds r1, #0x1c
+    adds r2, #0x28
+    subs r3, #1
+    bne midmark
+midpark:
     movs r1, #40
     bl park
     b laid
