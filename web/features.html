@@ -223,6 +223,24 @@
     <td data-i18n="usb-monitoring.where">Global Settings &gt; Ins/Outs, page 3</td>
     </tr>
     <tr>
+    <td><a href="#footswitch-view" data-i18n="footswitch-view.name">Footswitch View</a></td>
+    <td data-i18n="footswitch-view.desc">A third screen on VIEW that shows your footswitches as the HX Stomp XL does: FS1–FS3 and the virtual FS6–FS8, each with its block's name and colour, lit when on.</td>
+    <td data-i18n="footswitch-view.floc">The VIEW button</td>
+    <td data-i18n="footswitch-view.where">No settings</td>
+    </tr>
+    <tr>
+    <td><a href="#midi-block" data-i18n="midi-block.name">MIDI Block</a></td>
+    <td data-i18n="midi-block.desc">A block that sends a MIDI CC or PC out of MIDI Out and USB when it turns on or off, or when a preset loads with it.</td>
+    <td data-i18n="midi-block.floc">Model browser: Modulation &gt; MIDI</td>
+    <td data-i18n="midi-block.where">The block's Chan, Type, Num, On and Off knobs</td>
+    </tr>
+    <tr>
+    <td><a href="#phones-block" data-i18n="phones-block.name">Phones Block</a></td>
+    <td data-i18n="phones-block.desc">A block that sends its input to the headphones only, and a Phones Monitor choice, HP Block, with which the phones play the Phones blocks and nothing else.</td>
+    <td data-i18n="phones-block.floc">Model browser: Send/Return &gt; Phones</td>
+    <td data-i18n="phones-block.where">The block's Level and Dry Thru knobs; Global Settings &gt; Ins/Outs &gt; Phones Monitor</td>
+    </tr>
+    <tr>
     <td><a href="#virtual-footswitches" data-i18n="virtual-footswitches.name">Virtual Footswitches (FS6&#8209;10)</a></td>
     <td data-i18n="virtual-footswitches.desc">FS6–FS10, footswitches without a switch: assign blocks to them in Bypass Assign (MIDI In), and switch them by holding FS1–FS5 or with MIDI CC 20–24. Each can instead run a footswitch function, such as Bank, Snapshot or Global EQ.</td>
     <td data-i18n="virtual-footswitches.floc">A block's Bypass Assign &gt; MIDI In, or Controller Assign</td>
@@ -805,6 +823,111 @@
       </div>
     </section>
 
+    <section class="card feat" id="footswitch-view">
+      <h2><img class="ico" src="../docs/assets/icons/footswitch-view.svg" width="28" height="28" alt=""><span data-i18n="footswitch-view.name">Footswitch View</span></h2>
+      <p data-i18n="footswitch-view.p1">Press <strong>VIEW</strong> to go from the Play view to the Edit view, then to the Footswitches screen, then back to Play. The screen shows the preset's number and name over two rows of tiles laid out like an HX Stomp XL's switches: FS6, FS7 and FS8 on top, FS1, FS2 and FS3 below. Tick Footswitch View on the setup page to get it.</p>
+  <ul>
+  <li data-i18n="footswitch-view.li1"><strong>Each tile</strong> shows its block's name, lit in the block's category colour while the block is on and dimmed while it is off. FS1–FS3 show what the Play view's own labels show.</li>
+  <li data-i18n="footswitch-view.li2"><strong>FS6–FS8</strong> are the <a href="#virtual-footswitches">virtual footswitches</a>: each tile shows the block whose Bypass Assign has MIDI In set to FS6, FS7 or FS8 (MIDI CC 20–22). The Metronome, MIDI and Phones blocks show no name there.</li>
+  <li data-i18n="footswitch-view.li3"><strong>The footswitches and knobs</strong> work as they do in the Play view while the screen is up.</li>
+  </ul>
+      <div class="settings">
+        <h3 data-i18n="settings">Settings</h3>
+        <p class="where" data-i18n="nosettings">No settings</p>
+      </div>
+    </section>
+
+    <section class="card feat" id="midi-block">
+      <h2><img class="ico" src="../docs/assets/icons/midi-block.svg" width="28" height="28" alt=""><span data-i18n="midi-block.name">MIDI Block</span></h2>
+      <p data-i18n="midi-block.p1">Add it from the model browser, Modulation &gt; MIDI &gt; MIDI. Your sound passes through it unchanged. When the block turns on or off (with a footswitch, Bypass Assign or a snapshot), and when you load a preset that has it, it sends a MIDI message out of the MIDI Out jack and USB, the way the HX Stomp's own MIDI goes out: to switch another pedal or an amp's channel along with your blocks.</p>
+  <ul>
+  <li data-i18n="midi-block.li1"><strong>CC</strong>: turning on sends CC Num with the On value, turning off sends it with the Off value.</li>
+  <li data-i18n="midi-block.li2"><strong>PC</strong>: turning on sends program change Num; turning off sends nothing.</li>
+  <li data-i18n="midi-block.li3"><strong>All</strong> on Chan sends the message on all 16 channels. Each MIDI block in a preset sends its own message.</li>
+  <li data-i18n="midi-block.li4"><strong>Not on the setup page yet:</strong> build it yourself with <code>HX_MIDI_BLOCK=1 python3 build.py</code> (see <a href="https://github.com/wisemandenny/hxtra/blob/main/docs/building.md">Building HXtra</a>). Beside NAM A2 Lite there is room for it and the Phones block together, but neither fits with the Metronome.</li>
+  </ul>
+      <div class="settings">
+        <h3 data-i18n="settings">Settings</h3>
+        <p class="where" data-i18n="midi-block.where">The block's Chan, Type, Num, On and Off knobs</p>
+        <div class="tbl"><table>
+        <thead>
+        <tr>
+        <th data-i18n="th.knob">Knob</th>
+        <th data-i18n="th.values">Values</th>
+        <th data-i18n="th.what">What it does</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><strong>Chan</strong></td>
+        <td>All, <strong>1</strong> … 16</td>
+        <td data-i18n="midi-block.what1">The MIDI channel the message goes out on. All sends it on every channel.</td>
+        </tr>
+        <tr>
+        <td><strong>Type</strong></td>
+        <td><strong>CC</strong>, PC</td>
+        <td data-i18n="midi-block.what2">A control change or a program change.</td>
+        </tr>
+        <tr>
+        <td><strong>Num</strong></td>
+        <td><strong>0</strong> … 127</td>
+        <td data-i18n="midi-block.what3">The CC number or the program number.</td>
+        </tr>
+        <tr>
+        <td><strong>On</strong></td>
+        <td>0 … <strong>127</strong></td>
+        <td data-i18n="midi-block.what4">The CC's value when the block turns on.</td>
+        </tr>
+        <tr>
+        <td><strong>Off</strong></td>
+        <td><strong>0</strong> … 127</td>
+        <td data-i18n="midi-block.what5">The CC's value when the block turns off.</td>
+        </tr>
+        </tbody>
+        </table></div>
+      </div>
+    </section>
+
+    <section class="card feat" id="phones-block">
+      <h2><img class="ico" src="../docs/assets/icons/phones-block.svg" width="28" height="28" alt=""><span data-i18n="phones-block.name">Phones Block</span></h2>
+      <p data-i18n="phones-block.p1">Set <strong>Phones Monitor</strong> (Global Settings &gt; Ins/Outs) to <strong>HP Block</strong> and put a Phones block (Send/Return &gt; Phones &gt; Phones) where the headphones should hear from. The phones then play what the Phones blocks send them and nothing else, still through the Volume knob, while Main L/R, the Send jacks and USB play as usual: for example a click or a backing track only you hear, or your amp before the effects the audience gets.</p>
+  <ul>
+  <li data-i18n="phones-block.li1"><strong>Level</strong> is what the block sends to the phones, on both sides; <strong>Dry Thru</strong> is what it passes on down the chain. At −60 dB each is off: with Dry Thru off the block is a dead end, as a Send block is.</li>
+  <li data-i18n="phones-block.li2"><strong>Main L/R and Send</strong> are the stock choices and work as before; the Phones blocks then send nowhere. Several Phones blocks add up.</li>
+  <li data-i18n="phones-block.li3"><strong>Not with USB &amp; Send Routing,</strong> which tells the DSP its setting the same way, and not on the setup page yet: build it yourself with <code>HX_PHONES_BLOCK=1 python3 build.py</code>.</li>
+  </ul>
+      <div class="settings">
+        <h3 data-i18n="settings">Settings</h3>
+        <p class="where" data-i18n="phones-block.where">The block's Level and Dry Thru knobs; Global Settings &gt; Ins/Outs &gt; Phones Monitor</p>
+        <div class="tbl"><table>
+        <thead>
+        <tr>
+        <th data-i18n="th.setting">Setting</th>
+        <th data-i18n="th.values">Values</th>
+        <th data-i18n="th.what">What it does</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><strong>Level</strong></td>
+        <td>−60 … <strong>0</strong> … +6 dB</td>
+        <td data-i18n="phones-block.what1">What the block sends to the phones.</td>
+        </tr>
+        <tr>
+        <td><strong>Dry Thru</strong></td>
+        <td>−60 … <strong>0</strong> … +6 dB</td>
+        <td data-i18n="phones-block.what2">What it passes on down the chain.</td>
+        </tr>
+        <tr>
+        <td><strong>Phones Monitor</strong></td>
+        <td><strong>Main L/R</strong>, Send, HP Block</td>
+        <td data-i18n="phones-block.what3">What the phones play: Main L/R or Send as stock, or with HP Block the Phones blocks alone.</td>
+        </tr>
+        </tbody>
+        </table></div>
+      </div>
+    </section>
+
     <section class="card feat" id="virtual-footswitches">
       <h2><img class="ico" src="../docs/assets/icons/long-press.svg" width="28" height="28" alt=""><span data-i18n="virtual-footswitches.name">Virtual Footswitches (FS6&#8209;10)</span></h2>
       <!-- demo: virtual-footswitches -->
@@ -1059,7 +1182,40 @@ var LANGS = {
     "footer.1": "Crea e instala HXtra en la página de instalación",
     "footer.2": "HXtra en GitHub",
     "doc.title": "Recorrido por las funciones de HXtra",
-    "lang": "Idioma"
+    "lang": "Idioma",
+    "footswitch-view.name": "Vista de footswitches",
+    "footswitch-view.desc": "Una tercera pantalla en VIEW que muestra tus footswitches como el HX Stomp XL: FS1–FS3 y los virtuales FS6–FS8, cada uno con el nombre y el color de su bloque, encendido cuando está activo.",
+    "footswitch-view.floc": "El botón VIEW",
+    "footswitch-view.where": "Sin ajustes",
+    "footswitch-view.p1": "Pulsa <strong>VIEW</strong> para pasar de la vista Play a la vista Edit, luego a la pantalla de footswitches y de vuelta a Play. La pantalla muestra el número y el nombre del preset sobre dos filas de casillas dispuestas como los footswitches de un HX Stomp XL: FS6, FS7 y FS8 arriba, FS1, FS2 y FS3 abajo. Marca Footswitch View en la página de instalación para tenerla.",
+    "footswitch-view.li1": "<strong>Cada casilla</strong> muestra el nombre de su bloque, iluminada en el color de la categoría del bloque mientras está activo y atenuada mientras está apagado. FS1–FS3 muestran lo mismo que las etiquetas de la vista Play.",
+    "footswitch-view.li2": "<strong>FS6–FS8</strong> son los <a href=\"#virtual-footswitches\">footswitches virtuales</a>: cada casilla muestra el bloque cuyo Bypass Assign tiene MIDI In en FS6, FS7 o FS8 (MIDI CC 20–22). Los bloques Metronome, MIDI y Phones no muestran nombre ahí.",
+    "footswitch-view.li3": "<strong>Los footswitches y los mandos</strong> funcionan como en la vista Play mientras la pantalla está visible.",
+    "midi-block.name": "Bloque MIDI",
+    "midi-block.desc": "Un bloque que envía un CC o PC de MIDI por MIDI Out y USB cuando se activa o se apaga, o cuando se carga un preset que lo tiene.",
+    "midi-block.floc": "Navegador de modelos: Modulation &gt; MIDI",
+    "midi-block.where": "Los mandos Chan, Type, Num, On y Off del bloque",
+    "midi-block.p1": "Añádelo desde el navegador de modelos, Modulation &gt; MIDI &gt; MIDI. Tu sonido pasa por él sin cambios. Cuando el bloque se activa o se apaga (con un footswitch, Bypass Assign o un snapshot), y cuando cargas un preset que lo tiene, envía un mensaje MIDI por la toma MIDI Out y por USB, igual que el MIDI propio del HX Stomp: para cambiar otro pedal o el canal de un ampli junto con tus bloques.",
+    "midi-block.li1": "<strong>CC</strong>: al activarse envía el CC Num con el valor On; al apagarse, con el valor Off.",
+    "midi-block.li2": "<strong>PC</strong>: al activarse envía el cambio de programa Num; al apagarse no envía nada.",
+    "midi-block.li3": "<strong>All</strong> en Chan envía el mensaje por los 16 canales. Cada bloque MIDI de un preset envía su propio mensaje.",
+    "midi-block.li4": "<strong>Aún no está en la página de instalación:</strong> compílalo tú mismo con <code>HX_MIDI_BLOCK=1 python3 build.py</code> (consulta <a href=\"https://github.com/wisemandenny/hxtra/blob/main/docs/building.md\">Building HXtra</a>). Junto a NAM A2 Lite hay espacio para él y el bloque Phones juntos, pero ninguno cabe con el Metronome.",
+    "midi-block.what1": "El canal MIDI por el que sale el mensaje. All lo envía por todos los canales.",
+    "midi-block.what2": "Un cambio de control o un cambio de programa.",
+    "midi-block.what3": "El número de CC o el número de programa.",
+    "midi-block.what4": "El valor del CC cuando el bloque se activa.",
+    "midi-block.what5": "El valor del CC cuando el bloque se apaga.",
+    "phones-block.name": "Bloque Phones",
+    "phones-block.desc": "Un bloque que envía su entrada solo a los auriculares, y una opción de Phones Monitor, HP Block, con la que los auriculares reproducen los bloques Phones y nada más.",
+    "phones-block.floc": "Navegador de modelos: Send/Return &gt; Phones",
+    "phones-block.where": "Los mandos Level y Dry Thru del bloque; Global Settings &gt; Ins/Outs &gt; Phones Monitor",
+    "phones-block.p1": "Pon <strong>Phones Monitor</strong> (Global Settings &gt; Ins/Outs) en <strong>HP Block</strong> y coloca un bloque Phones (Send/Return &gt; Phones &gt; Phones) donde los auriculares deban escuchar. Los auriculares reproducen entonces lo que les envían los bloques Phones y nada más, aún a través del mando Volume, mientras Main L/R, las salidas Send y USB suenan como siempre: por ejemplo, un clic o una pista de acompañamiento que solo oyes tú, o tu ampli antes de los efectos que recibe el público.",
+    "phones-block.li1": "<strong>Level</strong> es lo que el bloque envía a los auriculares, por ambos lados; <strong>Dry Thru</strong> es lo que deja pasar por la cadena. A −60 dB cada uno está apagado: con Dry Thru apagado, el bloque es un callejón sin salida, como un bloque Send.",
+    "phones-block.li2": "<strong>Main L/R y Send</strong> son las opciones de fábrica y funcionan como antes; los bloques Phones no envían entonces a ningún sitio. Varios bloques Phones se suman.",
+    "phones-block.li3": "<strong>No funciona junto con Enrutamiento de USB y Send,</strong> que comunica su ajuste al DSP de la misma manera, y aún no está en la página de instalación: compílalo tú mismo con <code>HX_PHONES_BLOCK=1 python3 build.py</code>.",
+    "phones-block.what1": "Lo que el bloque envía a los auriculares.",
+    "phones-block.what2": "Lo que deja pasar por la cadena.",
+    "phones-block.what3": "Lo que reproducen los auriculares: Main L/R o Send como de fábrica, o con HP Block solo los bloques Phones."
   },
   "pt": {
     "title": "Tour pelos recursos",
@@ -1275,7 +1431,40 @@ var LANGS = {
     "footer.1": "Gere e instale o HXtra na página de instalação",
     "footer.2": "HXtra no GitHub",
     "doc.title": "Tour pelos recursos do HXtra",
-    "lang": "Idioma"
+    "lang": "Idioma",
+    "footswitch-view.name": "Tela dos footswitches",
+    "footswitch-view.desc": "Uma terceira tela no VIEW que mostra seus footswitches como o HX Stomp XL: FS1–FS3 e os virtuais FS6–FS8, cada um com o nome e a cor do seu bloco, aceso quando ligado.",
+    "footswitch-view.floc": "O botão VIEW",
+    "footswitch-view.where": "Sem ajustes",
+    "footswitch-view.p1": "Aperte <strong>VIEW</strong> para ir da visão Play para a visão Edit, depois para a tela dos footswitches e de volta para Play. A tela mostra o número e o nome do preset sobre duas fileiras de quadros dispostas como os footswitches de um HX Stomp XL: FS6, FS7 e FS8 em cima, FS1, FS2 e FS3 embaixo. Marque Footswitch View na página de instalação para tê-la.",
+    "footswitch-view.li1": "<strong>Cada quadro</strong> mostra o nome do seu bloco, aceso na cor da categoria do bloco enquanto ele está ligado e escurecido enquanto está desligado. FS1–FS3 mostram o mesmo que as etiquetas da visão Play.",
+    "footswitch-view.li2": "<strong>FS6–FS8</strong> são os <a href=\"#virtual-footswitches\">footswitches virtuais</a>: cada quadro mostra o bloco cujo Bypass Assign tem MIDI In em FS6, FS7 ou FS8 (MIDI CC 20–22). Os blocos Metronome, MIDI e Phones não mostram nome ali.",
+    "footswitch-view.li3": "<strong>Os footswitches e os knobs</strong> funcionam como na visão Play enquanto a tela está aberta.",
+    "midi-block.name": "Bloco MIDI",
+    "midi-block.desc": "Um bloco que envia um CC ou PC de MIDI pelo MIDI Out e pelo USB quando liga ou desliga, ou quando um preset com ele é carregado.",
+    "midi-block.floc": "Navegador de modelos: Modulation &gt; MIDI",
+    "midi-block.where": "Os knobs Chan, Type, Num, On e Off do bloco",
+    "midi-block.p1": "Adicione-o pelo navegador de modelos, Modulation &gt; MIDI &gt; MIDI. Seu som passa por ele sem mudanças. Quando o bloco liga ou desliga (com um footswitch, Bypass Assign ou um snapshot), e quando você carrega um preset que o tem, ele envia uma mensagem MIDI pela saída MIDI Out e pelo USB, como sai o MIDI do próprio HX Stomp: para mudar outro pedal ou o canal de um amp junto com seus blocos.",
+    "midi-block.li1": "<strong>CC</strong>: ao ligar envia o CC Num com o valor On; ao desligar, com o valor Off.",
+    "midi-block.li2": "<strong>PC</strong>: ao ligar envia a troca de programa Num; ao desligar não envia nada.",
+    "midi-block.li3": "<strong>All</strong> em Chan envia a mensagem nos 16 canais. Cada bloco MIDI de um preset envia sua própria mensagem.",
+    "midi-block.li4": "<strong>Ainda não está na página de instalação:</strong> compile você mesmo com <code>HX_MIDI_BLOCK=1 python3 build.py</code> (veja <a href=\"https://github.com/wisemandenny/hxtra/blob/main/docs/building.md\">Building HXtra</a>). Junto ao NAM A2 Lite há espaço para ele e o bloco Phones juntos, mas nenhum dos dois cabe com o Metronome.",
+    "midi-block.what1": "O canal MIDI pelo qual a mensagem sai. All a envia em todos os canais.",
+    "midi-block.what2": "Uma mudança de controle ou uma troca de programa.",
+    "midi-block.what3": "O número do CC ou o número do programa.",
+    "midi-block.what4": "O valor do CC quando o bloco liga.",
+    "midi-block.what5": "O valor do CC quando o bloco desliga.",
+    "phones-block.name": "Bloco Phones",
+    "phones-block.desc": "Um bloco que envia sua entrada só para os fones, e uma opção do Phones Monitor, HP Block, com a qual os fones tocam os blocos Phones e mais nada.",
+    "phones-block.floc": "Navegador de modelos: Send/Return &gt; Phones",
+    "phones-block.where": "Os knobs Level e Dry Thru do bloco; Global Settings &gt; Ins/Outs &gt; Phones Monitor",
+    "phones-block.p1": "Coloque o <strong>Phones Monitor</strong> (Global Settings &gt; Ins/Outs) em <strong>HP Block</strong> e ponha um bloco Phones (Send/Return &gt; Phones &gt; Phones) onde os fones devem ouvir. Os fones então tocam o que os blocos Phones lhes enviam e mais nada, ainda pelo knob Volume, enquanto Main L/R, as saídas Send e o USB tocam como sempre: por exemplo, um clique ou uma faixa de apoio que só você ouve, ou seu amp antes dos efeitos que o público recebe.",
+    "phones-block.li1": "<strong>Level</strong> é o que o bloco envia aos fones, nos dois lados; <strong>Dry Thru</strong> é o que ele passa adiante na cadeia. Em −60 dB cada um fica desligado: com Dry Thru desligado o bloco é um beco sem saída, como um bloco Send.",
+    "phones-block.li2": "<strong>Main L/R e Send</strong> são as opções originais e funcionam como antes; os blocos Phones então não enviam para lugar nenhum. Vários blocos Phones se somam.",
+    "phones-block.li3": "<strong>Não funciona junto com Roteamento para USB e Send,</strong> que informa seu ajuste ao DSP do mesmo jeito, e ainda não está na página de instalação: compile você mesmo com <code>HX_PHONES_BLOCK=1 python3 build.py</code>.",
+    "phones-block.what1": "O que o bloco envia aos fones.",
+    "phones-block.what2": "O que ele passa adiante na cadeia.",
+    "phones-block.what3": "O que os fones tocam: Main L/R ou Send como no original, ou com HP Block só os blocos Phones."
   },
   "fr": {
     "title": "Visite des fonctions",
@@ -1491,7 +1680,40 @@ var LANGS = {
     "footer.1": "Créer et installer HXtra sur la page d'installation",
     "footer.2": "HXtra sur GitHub",
     "doc.title": "Visite des fonctions HXtra",
-    "lang": "Langue"
+    "lang": "Langue",
+    "footswitch-view.name": "Vue des footswitches",
+    "footswitch-view.desc": "Un troisième écran sur VIEW qui montre vos footswitches comme le HX Stomp XL : FS1–FS3 et les virtuels FS6–FS8, chacun avec le nom et la couleur de son bloc, allumé quand il est actif.",
+    "footswitch-view.floc": "Le bouton VIEW",
+    "footswitch-view.where": "Aucun réglage",
+    "footswitch-view.p1": "Appuyez sur <strong>VIEW</strong> pour passer de la vue Play à la vue Edit, puis à l'écran des footswitches, puis de nouveau à Play. L'écran affiche le numéro et le nom du preset au-dessus de deux rangées de cases disposées comme les footswitches d'un HX Stomp XL : FS6, FS7 et FS8 en haut, FS1, FS2 et FS3 en bas. Cochez Footswitch View sur la page d'installation pour l'avoir.",
+    "footswitch-view.li1": "<strong>Chaque case</strong> affiche le nom de son bloc, allumée dans la couleur de la catégorie du bloc quand il est actif et atténuée quand il est coupé. FS1–FS3 affichent la même chose que les étiquettes de la vue Play.",
+    "footswitch-view.li2": "<strong>FS6–FS8</strong> sont les <a href=\"#virtual-footswitches\">footswitches virtuels</a> : chaque case montre le bloc dont le Bypass Assign a MIDI In sur FS6, FS7 ou FS8 (MIDI CC 20–22). Les blocs Metronome, MIDI et Phones n'y affichent pas de nom.",
+    "footswitch-view.li3": "<strong>Les footswitches et les boutons</strong> fonctionnent comme dans la vue Play tant que l'écran est affiché.",
+    "midi-block.name": "Bloc MIDI",
+    "midi-block.desc": "Un bloc qui envoie un CC ou un PC MIDI par MIDI Out et USB quand il s'active ou se coupe, ou quand un preset qui le contient est chargé.",
+    "midi-block.floc": "Navigateur de modèles : Modulation &gt; MIDI",
+    "midi-block.where": "Les boutons Chan, Type, Num, On et Off du bloc",
+    "midi-block.p1": "Ajoutez-le depuis le navigateur de modèles, Modulation &gt; MIDI &gt; MIDI. Votre son le traverse sans changement. Quand le bloc s'active ou se coupe (par un footswitch, Bypass Assign ou un snapshot), et quand vous chargez un preset qui le contient, il envoie un message MIDI par la prise MIDI Out et par USB, comme le MIDI du HX Stomp lui-même : pour commuter une autre pédale ou le canal d'un ampli avec vos blocs.",
+    "midi-block.li1": "<strong>CC</strong> : à l'activation il envoie le CC Num avec la valeur On, à la coupure avec la valeur Off.",
+    "midi-block.li2": "<strong>PC</strong> : à l'activation il envoie le changement de programme Num ; à la coupure, rien.",
+    "midi-block.li3": "<strong>All</strong> sur Chan envoie le message sur les 16 canaux. Chaque bloc MIDI d'un preset envoie son propre message.",
+    "midi-block.li4": "<strong>Pas encore sur la page d'installation :</strong> compilez-le vous-même avec <code>HX_MIDI_BLOCK=1 python3 build.py</code> (voir <a href=\"https://github.com/wisemandenny/hxtra/blob/main/docs/building.md\">Building HXtra</a>). À côté de NAM A2 Lite, il y a de la place pour lui et le bloc Phones ensemble, mais aucun des deux ne tient avec le Metronome.",
+    "midi-block.what1": "Le canal MIDI sur lequel part le message. All l'envoie sur tous les canaux.",
+    "midi-block.what2": "Un changement de contrôle ou un changement de programme.",
+    "midi-block.what3": "Le numéro de CC ou le numéro de programme.",
+    "midi-block.what4": "La valeur du CC quand le bloc s'active.",
+    "midi-block.what5": "La valeur du CC quand le bloc se coupe.",
+    "phones-block.name": "Bloc Phones",
+    "phones-block.desc": "Un bloc qui envoie son entrée au casque seulement, et un choix de Phones Monitor, HP Block, avec lequel le casque joue les blocs Phones et rien d'autre.",
+    "phones-block.floc": "Navigateur de modèles : Send/Return &gt; Phones",
+    "phones-block.where": "Les boutons Level et Dry Thru du bloc ; Global Settings &gt; Ins/Outs &gt; Phones Monitor",
+    "phones-block.p1": "Réglez <strong>Phones Monitor</strong> (Global Settings &gt; Ins/Outs) sur <strong>HP Block</strong> et placez un bloc Phones (Send/Return &gt; Phones &gt; Phones) là où le casque doit écouter. Le casque joue alors ce que les blocs Phones lui envoient et rien d'autre, toujours via le bouton Volume, pendant que Main L/R, les sorties Send et USB jouent comme d'habitude : par exemple un clic ou une piste d'accompagnement que vous seul entendez, ou votre ampli avant les effets que reçoit le public.",
+    "phones-block.li1": "<strong>Level</strong> est ce que le bloc envoie au casque, des deux côtés ; <strong>Dry Thru</strong> est ce qu'il transmet à la suite de la chaîne. À −60 dB chacun est coupé : avec Dry Thru coupé, le bloc est une impasse, comme un bloc Send.",
+    "phones-block.li2": "<strong>Main L/R et Send</strong> sont les choix d'origine et fonctionnent comme avant ; les blocs Phones n'envoient alors nulle part. Plusieurs blocs Phones s'additionnent.",
+    "phones-block.li3": "<strong>Pas avec le Routage USB &amp; Send,</strong> qui transmet son réglage au DSP de la même façon, et pas encore sur la page d'installation : compilez-le vous-même avec <code>HX_PHONES_BLOCK=1 python3 build.py</code>.",
+    "phones-block.what1": "Ce que le bloc envoie au casque.",
+    "phones-block.what2": "Ce qu'il transmet à la suite de la chaîne.",
+    "phones-block.what3": "Ce que joue le casque : Main L/R ou Send comme d'origine, ou avec HP Block les blocs Phones seuls."
   },
   "de": {
     "title": "Funktionsübersicht",
@@ -1707,7 +1929,40 @@ var LANGS = {
     "footer.1": "HXtra auf der Einrichtungsseite bauen und installieren",
     "footer.2": "HXtra auf GitHub",
     "doc.title": "HXtra Funktionsübersicht",
-    "lang": "Sprache"
+    "lang": "Sprache",
+    "footswitch-view.name": "Footswitch-Ansicht",
+    "footswitch-view.desc": "Ein dritter Bildschirm auf VIEW, der deine Footswitches wie das HX Stomp XL zeigt: FS1–FS3 und die virtuellen FS6–FS8, jeder mit Name und Farbe seines Blocks, hell, wenn er an ist.",
+    "footswitch-view.floc": "Die VIEW-Taste",
+    "footswitch-view.where": "Keine Einstellungen",
+    "footswitch-view.p1": "Drücke <strong>VIEW</strong>, um von der Play-Ansicht zur Edit-Ansicht, dann zum Footswitch-Bildschirm und zurück zu Play zu wechseln. Der Bildschirm zeigt Nummer und Name des Presets über zwei Reihen von Kacheln, angeordnet wie die Schalter eines HX Stomp XL: oben FS6, FS7 und FS8, unten FS1, FS2 und FS3. Hake auf der Setup-Seite Footswitch View an, um ihn zu bekommen.",
+    "footswitch-view.li1": "<strong>Jede Kachel</strong> zeigt den Namen ihres Blocks, in der Farbe seiner Kategorie hell, solange er an ist, und gedimmt, solange er aus ist. FS1–FS3 zeigen dasselbe wie die Beschriftungen der Play-Ansicht.",
+    "footswitch-view.li2": "<strong>FS6–FS8</strong> sind die <a href=\"#virtual-footswitches\">virtuellen Footswitches</a>: Jede Kachel zeigt den Block, dessen Bypass Assign MIDI In auf FS6, FS7 oder FS8 hat (MIDI CC 20–22). Die Blöcke Metronome, MIDI und Phones zeigen dort keinen Namen.",
+    "footswitch-view.li3": "<strong>Footswitches und Regler</strong> funktionieren wie in der Play-Ansicht, solange der Bildschirm angezeigt wird.",
+    "midi-block.name": "MIDI-Block",
+    "midi-block.desc": "Ein Block, der über MIDI Out und USB einen MIDI-CC oder -PC sendet, wenn er an- oder ausgeht oder ein Preset mit ihm geladen wird.",
+    "midi-block.floc": "Modell-Browser: Modulation &gt; MIDI",
+    "midi-block.where": "Die Regler Chan, Type, Num, On und Off des Blocks",
+    "midi-block.p1": "Füge ihn im Modell-Browser hinzu: Modulation &gt; MIDI &gt; MIDI. Dein Sound geht unverändert hindurch. Wenn der Block an- oder ausgeht (per Footswitch, Bypass Assign oder Snapshot) und wenn du ein Preset mit ihm lädst, sendet er eine MIDI-Nachricht über die MIDI-Out-Buchse und USB, so wie das HX Stomp sein eigenes MIDI sendet: um ein anderes Pedal oder den Kanal eines Amps zusammen mit deinen Blöcken umzuschalten.",
+    "midi-block.li1": "<strong>CC</strong>: Beim Einschalten sendet er CC Num mit dem Wert On, beim Ausschalten mit dem Wert Off.",
+    "midi-block.li2": "<strong>PC</strong>: Beim Einschalten sendet er Program Change Num, beim Ausschalten nichts.",
+    "midi-block.li3": "<strong>All</strong> bei Chan sendet die Nachricht auf allen 16 Kanälen. Jeder MIDI-Block in einem Preset sendet seine eigene Nachricht.",
+    "midi-block.li4": "<strong>Noch nicht auf der Setup-Seite:</strong> Baue ihn selbst mit <code>HX_MIDI_BLOCK=1 python3 build.py</code> (siehe <a href=\"https://github.com/wisemandenny/hxtra/blob/main/docs/building.md\">Building HXtra</a>). Neben NAM A2 Lite ist Platz für ihn und den Phones-Block zusammen, aber keiner von beiden passt zum Metronome.",
+    "midi-block.what1": "Der MIDI-Kanal, auf dem die Nachricht gesendet wird. All sendet sie auf allen Kanälen.",
+    "midi-block.what2": "Ein Control Change oder ein Program Change.",
+    "midi-block.what3": "Die CC-Nummer oder die Programmnummer.",
+    "midi-block.what4": "Der Wert des CC, wenn der Block angeht.",
+    "midi-block.what5": "Der Wert des CC, wenn der Block ausgeht.",
+    "phones-block.name": "Phones-Block",
+    "phones-block.desc": "Ein Block, der sein Eingangssignal nur an die Kopfhörer schickt, und eine Phones-Monitor-Option, HP Block, mit der die Kopfhörer nur die Phones-Blöcke spielen.",
+    "phones-block.floc": "Modell-Browser: Send/Return &gt; Phones",
+    "phones-block.where": "Die Regler Level und Dry Thru des Blocks; Global Settings &gt; Ins/Outs &gt; Phones Monitor",
+    "phones-block.p1": "Stelle <strong>Phones Monitor</strong> (Global Settings &gt; Ins/Outs) auf <strong>HP Block</strong> und setze einen Phones-Block (Send/Return &gt; Phones &gt; Phones) dorthin, wo die Kopfhörer zuhören sollen. Die Kopfhörer spielen dann, was die Phones-Blöcke ihnen schicken, und sonst nichts, weiterhin über den Volume-Regler, während Main L/R, die Send-Ausgänge und USB wie gewohnt spielen: zum Beispiel ein Klick oder ein Backing-Track, den nur du hörst, oder dein Amp vor den Effekten, die das Publikum bekommt.",
+    "phones-block.li1": "<strong>Level</strong> ist, was der Block an die Kopfhörer schickt, auf beide Seiten; <strong>Dry Thru</strong> ist, was er in der Kette weitergibt. Bei −60 dB ist jeweils aus: Mit Dry Thru aus ist der Block eine Sackgasse, wie ein Send-Block.",
+    "phones-block.li2": "<strong>Main L/R und Send</strong> sind die Werksoptionen und funktionieren wie bisher; die Phones-Blöcke senden dann nirgendwohin. Mehrere Phones-Blöcke addieren sich.",
+    "phones-block.li3": "<strong>Nicht zusammen mit USB- &amp; Send-Routing,</strong> das seine Einstellung auf demselben Weg an den DSP gibt, und noch nicht auf der Setup-Seite: Baue ihn selbst mit <code>HX_PHONES_BLOCK=1 python3 build.py</code>.",
+    "phones-block.what1": "Was der Block an die Kopfhörer schickt.",
+    "phones-block.what2": "Was er in der Kette weitergibt.",
+    "phones-block.what3": "Was die Kopfhörer spielen: Main L/R oder Send wie ab Werk, oder mit HP Block nur die Phones-Blöcke."
   },
   "it": {
     "title": "Tour delle funzioni",
@@ -1923,7 +2178,40 @@ var LANGS = {
     "footer.1": "Crea e installa HXtra dalla pagina di installazione",
     "footer.2": "HXtra su GitHub",
     "doc.title": "Tour delle funzioni di HXtra",
-    "lang": "Lingua"
+    "lang": "Lingua",
+    "footswitch-view.name": "Vista dei footswitch",
+    "footswitch-view.desc": "Una terza schermata su VIEW che mostra i footswitch come l'HX Stomp XL: FS1–FS3 e i virtuali FS6–FS8, ciascuno con il nome e il colore del suo blocco, acceso quando è attivo.",
+    "footswitch-view.floc": "Il tasto VIEW",
+    "footswitch-view.where": "Nessuna impostazione",
+    "footswitch-view.p1": "Premi <strong>VIEW</strong> per passare dalla vista Play alla vista Edit, poi alla schermata dei footswitch e di nuovo a Play. La schermata mostra il numero e il nome del preset sopra due file di riquadri disposti come i footswitch di un HX Stomp XL: FS6, FS7 e FS8 in alto, FS1, FS2 e FS3 in basso. Spunta Footswitch View nella pagina di installazione per averla.",
+    "footswitch-view.li1": "<strong>Ogni riquadro</strong> mostra il nome del suo blocco, acceso nel colore della categoria del blocco quando è attivo e attenuato quando è spento. FS1–FS3 mostrano lo stesso delle etichette della vista Play.",
+    "footswitch-view.li2": "<strong>FS6–FS8</strong> sono i <a href=\"#virtual-footswitches\">footswitch virtuali</a>: ogni riquadro mostra il blocco il cui Bypass Assign ha MIDI In su FS6, FS7 o FS8 (MIDI CC 20–22). I blocchi Metronome, MIDI e Phones lì non mostrano il nome.",
+    "footswitch-view.li3": "<strong>I footswitch e le manopole</strong> funzionano come nella vista Play finché la schermata è visibile.",
+    "midi-block.name": "Blocco MIDI",
+    "midi-block.desc": "Un blocco che invia un CC o un PC MIDI da MIDI Out e USB quando si attiva o si spegne, o quando si carica un preset che lo contiene.",
+    "midi-block.floc": "Browser dei modelli: Modulation &gt; MIDI",
+    "midi-block.where": "Le manopole Chan, Type, Num, On e Off del blocco",
+    "midi-block.p1": "Aggiungilo dal browser dei modelli, Modulation &gt; MIDI &gt; MIDI. Il tuo suono lo attraversa invariato. Quando il blocco si attiva o si spegne (con un footswitch, Bypass Assign o uno snapshot), e quando carichi un preset che lo contiene, invia un messaggio MIDI dalla presa MIDI Out e da USB, come il MIDI dell'HX Stomp stesso: per commutare un altro pedale o il canale di un ampli insieme ai tuoi blocchi.",
+    "midi-block.li1": "<strong>CC</strong>: all'attivazione invia il CC Num con il valore On, allo spegnimento con il valore Off.",
+    "midi-block.li2": "<strong>PC</strong>: all'attivazione invia il program change Num; allo spegnimento non invia nulla.",
+    "midi-block.li3": "<strong>All</strong> su Chan invia il messaggio su tutti i 16 canali. Ogni blocco MIDI di un preset invia il proprio messaggio.",
+    "midi-block.li4": "<strong>Non ancora nella pagina di installazione:</strong> compilalo da solo con <code>HX_MIDI_BLOCK=1 python3 build.py</code> (vedi <a href=\"https://github.com/wisemandenny/hxtra/blob/main/docs/building.md\">Building HXtra</a>). Accanto a NAM A2 Lite c'è spazio per lui e il blocco Phones insieme, ma nessuno dei due entra con il Metronome.",
+    "midi-block.what1": "Il canale MIDI su cui esce il messaggio. All lo invia su tutti i canali.",
+    "midi-block.what2": "Un control change o un program change.",
+    "midi-block.what3": "Il numero del CC o il numero del programma.",
+    "midi-block.what4": "Il valore del CC quando il blocco si attiva.",
+    "midi-block.what5": "Il valore del CC quando il blocco si spegne.",
+    "phones-block.name": "Blocco Phones",
+    "phones-block.desc": "Un blocco che invia il suo ingresso solo alle cuffie, e una scelta di Phones Monitor, HP Block, con cui le cuffie suonano i blocchi Phones e nient'altro.",
+    "phones-block.floc": "Browser dei modelli: Send/Return &gt; Phones",
+    "phones-block.where": "Le manopole Level e Dry Thru del blocco; Global Settings &gt; Ins/Outs &gt; Phones Monitor",
+    "phones-block.p1": "Imposta <strong>Phones Monitor</strong> (Global Settings &gt; Ins/Outs) su <strong>HP Block</strong> e metti un blocco Phones (Send/Return &gt; Phones &gt; Phones) dove le cuffie devono ascoltare. Le cuffie suonano allora ciò che i blocchi Phones mandano loro e nient'altro, sempre tramite la manopola Volume, mentre Main L/R, le uscite Send e USB suonano come sempre: per esempio un click o una base che senti solo tu, o il tuo ampli prima degli effetti che riceve il pubblico.",
+    "phones-block.li1": "<strong>Level</strong> è ciò che il blocco manda alle cuffie, su entrambi i lati; <strong>Dry Thru</strong> è ciò che passa avanti nella catena. A −60 dB ciascuno è spento: con Dry Thru spento il blocco è un vicolo cieco, come un blocco Send.",
+    "phones-block.li2": "<strong>Main L/R e Send</strong> sono le scelte originali e funzionano come prima; i blocchi Phones allora non mandano da nessuna parte. Più blocchi Phones si sommano.",
+    "phones-block.li3": "<strong>Non insieme a Instradamento USB e Send,</strong> che comunica la sua impostazione al DSP nello stesso modo, e non ancora nella pagina di installazione: compilalo da solo con <code>HX_PHONES_BLOCK=1 python3 build.py</code>.",
+    "phones-block.what1": "Ciò che il blocco manda alle cuffie.",
+    "phones-block.what2": "Ciò che passa avanti nella catena.",
+    "phones-block.what3": "Ciò che suonano le cuffie: Main L/R o Send come in origine, o con HP Block solo i blocchi Phones."
   },
   "ja": {
     "title": "機能ツアー",
@@ -2139,7 +2427,40 @@ var LANGS = {
     "footer.1": "セットアップページで HXtra をビルドしてインストール",
     "footer.2": "GitHub の HXtra",
     "doc.title": "HXtra 機能ツアー",
-    "lang": "言語"
+    "lang": "言語",
+    "footswitch-view.name": "フットスイッチ画面",
+    "footswitch-view.desc": "VIEW に3つ目の画面を追加し、HX Stomp XL のようにフットスイッチを表示します。FS1–FS3 と仮想の FS6–FS8 を、それぞれブロックの名前と色で、オンのときは明るく表示します。",
+    "footswitch-view.floc": "VIEW ボタン",
+    "footswitch-view.where": "設定なし",
+    "footswitch-view.p1": "<strong>VIEW</strong> を押すと、Play ビューから Edit ビュー、フットスイッチ画面へと進み、Play に戻ります。画面にはプリセットの番号と名前、その下に HX Stomp XL のスイッチのように並んだ2段のタイルが表示されます。上段が FS6、FS7、FS8、下段が FS1、FS2、FS3 です。セットアップページで Footswitch View にチェックを入れると使えます。",
+    "footswitch-view.li1": "<strong>各タイル</strong>にはブロックの名前が表示され、ブロックがオンのときはカテゴリーの色で明るく、オフのときは暗くなります。FS1–FS3 には Play ビュー自身のラベルと同じ内容が表示されます。",
+    "footswitch-view.li2": "<strong>FS6–FS8</strong> は<a href=\"#virtual-footswitches\">仮想フットスイッチ</a>です。各タイルには、Bypass Assign の MIDI In が FS6、FS7、FS8（MIDI CC 20–22）になっているブロックが表示されます。Metronome、MIDI、Phones ブロックは名前が表示されません。",
+    "footswitch-view.li3": "画面の表示中も、<strong>フットスイッチとノブ</strong>は Play ビューと同じように動作します。",
+    "midi-block.name": "MIDI ブロック",
+    "midi-block.desc": "オン／オフしたとき、またはそのブロックを含むプリセットを読み込んだときに、MIDI Out と USB から MIDI の CC または PC を送るブロックです。",
+    "midi-block.floc": "モデルブラウザ：Modulation &gt; MIDI",
+    "midi-block.where": "ブロックの Chan、Type、Num、On、Off ノブ",
+    "midi-block.p1": "モデルブラウザの Modulation &gt; MIDI &gt; MIDI から追加します。音はそのまま通過します。ブロックがオン／オフしたとき（フットスイッチ、Bypass Assign、スナップショット）と、そのブロックを含むプリセットを読み込んだときに、HX Stomp 自身の MIDI と同じように MIDI Out 端子と USB から MIDI メッセージを送ります。ブロックと一緒に別のペダルやアンプのチャンネルを切り替えるのに使えます。",
+    "midi-block.li1": "<strong>CC</strong>：オンにすると CC Num を On の値で、オフにすると Off の値で送ります。",
+    "midi-block.li2": "<strong>PC</strong>：オンにするとプログラムチェンジ Num を送り、オフにしても何も送りません。",
+    "midi-block.li3": "Chan を <strong>All</strong> にすると、16チャンネルすべてに送ります。プリセット内の MIDI ブロックはそれぞれ自分のメッセージを送ります。",
+    "midi-block.li4": "<strong>まだセットアップページにはありません：</strong><code>HX_MIDI_BLOCK=1 python3 build.py</code> で自分でビルドしてください（<a href=\"https://github.com/wisemandenny/hxtra/blob/main/docs/building.md\">Building HXtra</a> を参照）。NAM A2 Lite と並べて、このブロックと Phones ブロックを一緒に入れる余裕はありますが、どちらも Metronome とは一緒に入りません。",
+    "midi-block.what1": "メッセージを送る MIDI チャンネル。All はすべてのチャンネルに送ります。",
+    "midi-block.what2": "コントロールチェンジまたはプログラムチェンジ。",
+    "midi-block.what3": "CC 番号またはプログラム番号。",
+    "midi-block.what4": "ブロックがオンになったときの CC の値。",
+    "midi-block.what5": "ブロックがオフになったときの CC の値。",
+    "phones-block.name": "Phones ブロック",
+    "phones-block.desc": "入力をヘッドホンだけに送るブロックと、Phones Monitor の選択肢 HP Block。HP Block ではヘッドホンから Phones ブロックの音だけが鳴ります。",
+    "phones-block.floc": "モデルブラウザ：Send/Return &gt; Phones",
+    "phones-block.where": "ブロックの Level と Dry Thru ノブ、Global Settings &gt; Ins/Outs &gt; Phones Monitor",
+    "phones-block.p1": "<strong>Phones Monitor</strong>（Global Settings &gt; Ins/Outs）を <strong>HP Block</strong> にして、ヘッドホンで聴きたい位置に Phones ブロック（Send/Return &gt; Phones &gt; Phones）を置きます。するとヘッドホンからは Phones ブロックが送った音だけが、これまでどおり Volume ノブを通して鳴り、Main L/R、Send 端子、USB はいつもどおりに鳴ります。たとえば自分だけに聞こえるクリックやバッキングトラック、観客に届くエフェクトの前のアンプの音などに使えます。",
+    "phones-block.li1": "<strong>Level</strong> はブロックがヘッドホンの左右に送る量、<strong>Dry Thru</strong> はチェーンの先へ渡す量です。どちらも −60 dB でオフになります。Dry Thru をオフにすると、Send ブロックのようにそこで音が止まります。",
+    "phones-block.li2": "<strong>Main L/R と Send</strong> は元からの選択肢で、これまでどおり動作します。そのとき Phones ブロックの音はどこにも送られません。Phones ブロックを複数置くと足し合わされます。",
+    "phones-block.li3": "<strong>USB &amp; Send Routing とは同時に使えません。</strong>どちらも同じ方法で DSP に設定を伝えるためです。またまだセットアップページにはないので、<code>HX_PHONES_BLOCK=1 python3 build.py</code> で自分でビルドしてください。",
+    "phones-block.what1": "ブロックがヘッドホンに送る量。",
+    "phones-block.what2": "チェーンの先へ渡す量。",
+    "phones-block.what3": "ヘッドホンで鳴らすもの：元どおりの Main L/R か Send、または HP Block で Phones ブロックだけ。"
   },
   "zh": {
     "title": "功能导览",
@@ -2355,7 +2676,40 @@ var LANGS = {
     "footer.1": "在安装页面制作并安装 HXtra",
     "footer.2": "GitHub 上的 HXtra",
     "doc.title": "HXtra 功能导览",
-    "lang": "语言"
+    "lang": "语言",
+    "footswitch-view.name": "脚踏开关视图",
+    "footswitch-view.desc": "在 VIEW 上增加第三个画面，像 HX Stomp XL 那样显示脚踏开关：FS1–FS3 和虚拟的 FS6–FS8，每个都带有其模块的名称和颜色，开启时点亮。",
+    "footswitch-view.floc": "VIEW 按钮",
+    "footswitch-view.where": "无设置",
+    "footswitch-view.p1": "按 <strong>VIEW</strong> 从 Play 视图进入 Edit 视图，再进入脚踏开关画面，然后回到 Play。画面显示预设的编号和名称，下方是两排按 HX Stomp XL 开关布局排列的方块：上排 FS6、FS7、FS8，下排 FS1、FS2、FS3。在设置页面勾选 Footswitch View 即可获得。",
+    "footswitch-view.li1": "<strong>每个方块</strong>显示其模块的名称，模块开启时以其类别颜色点亮，关闭时变暗。FS1–FS3 显示的内容与 Play 视图自身的标签相同。",
+    "footswitch-view.li2": "<strong>FS6–FS8</strong> 是<a href=\"#virtual-footswitches\">虚拟脚踏开关</a>：每个方块显示 Bypass Assign 中 MIDI In 设为 FS6、FS7 或 FS8（MIDI CC 20–22）的模块。Metronome、MIDI 和 Phones 模块在那里不显示名称。",
+    "footswitch-view.li3": "画面显示时，<strong>脚踏开关和旋钮</strong>的工作方式与 Play 视图相同。",
+    "midi-block.name": "MIDI 模块",
+    "midi-block.desc": "一个在开启或关闭时、或加载含有它的预设时，通过 MIDI Out 和 USB 发送 MIDI CC 或 PC 的模块。",
+    "midi-block.floc": "模型浏览器：Modulation &gt; MIDI",
+    "midi-block.where": "模块的 Chan、Type、Num、On 和 Off 旋钮",
+    "midi-block.p1": "从模型浏览器 Modulation &gt; MIDI &gt; MIDI 添加。你的声音原样通过它。当模块开启或关闭时（通过脚踏开关、Bypass Assign 或快照），以及加载含有它的预设时，它会像 HX Stomp 自身的 MIDI 一样，从 MIDI Out 接口和 USB 发出一条 MIDI 消息：用来随你的模块一起切换另一块效果器或音箱的通道。",
+    "midi-block.li1": "<strong>CC</strong>：开启时以 On 的值发送 CC Num，关闭时以 Off 的值发送。",
+    "midi-block.li2": "<strong>PC</strong>：开启时发送程序变更 Num，关闭时不发送任何内容。",
+    "midi-block.li3": "Chan 设为 <strong>All</strong> 时，会在全部 16 个通道上发送。预设中的每个 MIDI 模块各自发送自己的消息。",
+    "midi-block.li4": "<strong>尚未加入设置页面：</strong>请用 <code>HX_MIDI_BLOCK=1 python3 build.py</code> 自行构建（参见 <a href=\"https://github.com/wisemandenny/hxtra/blob/main/docs/building.md\">Building HXtra</a>）。在 NAM A2 Lite 旁边，有空间同时放下它和 Phones 模块，但两者都不能与 Metronome 一起放入。",
+    "midi-block.what1": "消息发送所用的 MIDI 通道。All 会在所有通道上发送。",
+    "midi-block.what2": "控制变更或程序变更。",
+    "midi-block.what3": "CC 编号或程序编号。",
+    "midi-block.what4": "模块开启时 CC 的值。",
+    "midi-block.what5": "模块关闭时 CC 的值。",
+    "phones-block.name": "Phones 模块",
+    "phones-block.desc": "一个只把输入送到耳机的模块，以及 Phones Monitor 的一个选项 HP Block：选它时耳机只播放 Phones 模块的声音。",
+    "phones-block.floc": "模型浏览器：Send/Return &gt; Phones",
+    "phones-block.where": "模块的 Level 和 Dry Thru 旋钮；Global Settings &gt; Ins/Outs &gt; Phones Monitor",
+    "phones-block.p1": "把 <strong>Phones Monitor</strong>（Global Settings &gt; Ins/Outs）设为 <strong>HP Block</strong>，并在希望耳机听到的位置放一个 Phones 模块（Send/Return &gt; Phones &gt; Phones）。这样耳机只播放 Phones 模块送来的声音，仍经过 Volume 旋钮，而 Main L/R、Send 接口和 USB 照常播放：例如只有你听得到的节拍声或伴奏，或观众听到的效果之前的音箱声音。",
+    "phones-block.li1": "<strong>Level</strong> 是模块送往耳机（左右两侧）的量，<strong>Dry Thru</strong> 是它传给信号链下游的量。两者在 −60 dB 时关闭：Dry Thru 关闭时，模块像 Send 模块一样成为终点。",
+    "phones-block.li2": "<strong>Main L/R 和 Send</strong> 是原厂选项，工作方式不变；此时 Phones 模块不送往任何地方。多个 Phones 模块会叠加。",
+    "phones-block.li3": "<strong>不能与 USB 和 Send 路由同时使用，</strong>两者以同一种方式把设置告知 DSP；它也尚未加入设置页面：请用 <code>HX_PHONES_BLOCK=1 python3 build.py</code> 自行构建。",
+    "phones-block.what1": "模块送往耳机的量。",
+    "phones-block.what2": "传给信号链下游的量。",
+    "phones-block.what3": "耳机播放的内容：与原厂相同的 Main L/R 或 Send，或选 HP Block 时只播放 Phones 模块。"
   },
   "ko": {
     "title": "기능 둘러보기",
@@ -2571,7 +2925,40 @@ var LANGS = {
     "footer.1": "설치 페이지에서 HXtra 빌드 및 설치",
     "footer.2": "GitHub의 HXtra",
     "doc.title": "HXtra 기능 둘러보기",
-    "lang": "언어"
+    "lang": "언어",
+    "footswitch-view.name": "풋스위치 화면",
+    "footswitch-view.desc": "VIEW에 세 번째 화면을 추가해 HX Stomp XL처럼 풋스위치를 보여 줍니다. FS1–FS3과 가상 FS6–FS8을 각 블록의 이름과 색으로, 켜져 있으면 밝게 표시합니다.",
+    "footswitch-view.floc": "VIEW 버튼",
+    "footswitch-view.where": "설정 없음",
+    "footswitch-view.p1": "<strong>VIEW</strong>를 누르면 Play 화면에서 Edit 화면, 풋스위치 화면으로 넘어가고 다시 Play로 돌아옵니다. 화면에는 프리셋 번호와 이름 아래에 HX Stomp XL의 스위치처럼 배치된 두 줄의 타일이 나옵니다. 위쪽이 FS6, FS7, FS8, 아래쪽이 FS1, FS2, FS3입니다. 설정 페이지에서 Footswitch View를 체크하면 들어갑니다.",
+    "footswitch-view.li1": "<strong>각 타일</strong>에는 블록 이름이 나오며, 블록이 켜져 있으면 카테고리 색으로 밝게, 꺼져 있으면 어둡게 표시됩니다. FS1–FS3에는 Play 화면의 라벨과 같은 내용이 나옵니다.",
+    "footswitch-view.li2": "<strong>FS6–FS8</strong>은 <a href=\"#virtual-footswitches\">가상 풋스위치</a>입니다. 각 타일에는 Bypass Assign의 MIDI In이 FS6, FS7, FS8(MIDI CC 20–22)로 설정된 블록이 나옵니다. Metronome, MIDI, Phones 블록은 이름이 나오지 않습니다.",
+    "footswitch-view.li3": "화면이 떠 있는 동안 <strong>풋스위치와 노브</strong>는 Play 화면에서처럼 동작합니다.",
+    "midi-block.name": "MIDI 블록",
+    "midi-block.desc": "켜지거나 꺼질 때, 또는 이 블록이 있는 프리셋을 불러올 때 MIDI Out과 USB로 MIDI CC나 PC를 보내는 블록입니다.",
+    "midi-block.floc": "모델 브라우저: Modulation &gt; MIDI",
+    "midi-block.where": "블록의 Chan, Type, Num, On, Off 노브",
+    "midi-block.p1": "모델 브라우저의 Modulation &gt; MIDI &gt; MIDI에서 추가합니다. 소리는 그대로 통과합니다. 블록이 켜지거나 꺼질 때(풋스위치, Bypass Assign, 스냅샷), 그리고 이 블록이 있는 프리셋을 불러올 때 HX Stomp 자체 MIDI처럼 MIDI Out 단자와 USB로 MIDI 메시지를 보냅니다. 블록과 함께 다른 페달이나 앰프 채널을 바꾸는 데 씁니다.",
+    "midi-block.li1": "<strong>CC</strong>: 켜면 CC Num을 On 값으로, 끄면 Off 값으로 보냅니다.",
+    "midi-block.li2": "<strong>PC</strong>: 켜면 프로그램 체인지 Num을 보내고, 끌 때는 아무것도 보내지 않습니다.",
+    "midi-block.li3": "Chan을 <strong>All</strong>로 하면 16개 채널 모두로 보냅니다. 프리셋의 MIDI 블록은 각자 자기 메시지를 보냅니다.",
+    "midi-block.li4": "<strong>아직 설정 페이지에는 없습니다:</strong> <code>HX_MIDI_BLOCK=1 python3 build.py</code>로 직접 빌드하세요(<a href=\"https://github.com/wisemandenny/hxtra/blob/main/docs/building.md\">Building HXtra</a> 참고). NAM A2 Lite 옆에 이 블록과 Phones 블록을 함께 넣을 공간은 있지만, 둘 다 Metronome과는 함께 들어가지 않습니다.",
+    "midi-block.what1": "메시지를 보낼 MIDI 채널입니다. All은 모든 채널로 보냅니다.",
+    "midi-block.what2": "컨트롤 체인지 또는 프로그램 체인지입니다.",
+    "midi-block.what3": "CC 번호 또는 프로그램 번호입니다.",
+    "midi-block.what4": "블록이 켜질 때 CC 값입니다.",
+    "midi-block.what5": "블록이 꺼질 때 CC 값입니다.",
+    "phones-block.name": "Phones 블록",
+    "phones-block.desc": "입력을 헤드폰으로만 보내는 블록과 Phones Monitor의 선택지 HP Block입니다. HP Block이면 헤드폰에서 Phones 블록 소리만 나옵니다.",
+    "phones-block.floc": "모델 브라우저: Send/Return &gt; Phones",
+    "phones-block.where": "블록의 Level, Dry Thru 노브; Global Settings &gt; Ins/Outs &gt; Phones Monitor",
+    "phones-block.p1": "<strong>Phones Monitor</strong>(Global Settings &gt; Ins/Outs)를 <strong>HP Block</strong>으로 하고, 헤드폰으로 듣고 싶은 위치에 Phones 블록(Send/Return &gt; Phones &gt; Phones)을 놓습니다. 그러면 헤드폰에서는 Phones 블록이 보낸 소리만 여전히 Volume 노브를 거쳐 나오고, Main L/R, Send 단자, USB는 평소처럼 나옵니다. 예를 들어 나만 듣는 클릭이나 반주, 관객에게 가는 이펙트 앞의 앰프 소리에 씁니다.",
+    "phones-block.li1": "<strong>Level</strong>은 블록이 헤드폰 양쪽으로 보내는 양이고, <strong>Dry Thru</strong>는 체인 뒤로 넘기는 양입니다. 둘 다 −60 dB에서 꺼집니다. Dry Thru를 끄면 Send 블록처럼 신호가 거기서 끝납니다.",
+    "phones-block.li2": "<strong>Main L/R와 Send</strong>는 원래 있던 선택지로 전과 같이 동작하며, 이때 Phones 블록은 아무 데도 보내지 않습니다. Phones 블록을 여러 개 두면 합쳐집니다.",
+    "phones-block.li3": "<strong>USB 및 Send 라우팅과는 함께 쓸 수 없습니다.</strong> 둘 다 같은 방식으로 DSP에 설정을 알리기 때문입니다. 아직 설정 페이지에도 없으니 <code>HX_PHONES_BLOCK=1 python3 build.py</code>로 직접 빌드하세요.",
+    "phones-block.what1": "블록이 헤드폰으로 보내는 양입니다.",
+    "phones-block.what2": "체인 뒤로 넘기는 양입니다.",
+    "phones-block.what3": "헤드폰에서 나오는 소리: 원래처럼 Main L/R 또는 Send, 또는 HP Block이면 Phones 블록만."
   },
   "ru": {
     "title": "Обзор функций",
@@ -2787,7 +3174,40 @@ var LANGS = {
     "footer.1": "Соберите и установите HXtra на странице установки",
     "footer.2": "HXtra на GitHub",
     "doc.title": "Обзор функций HXtra",
-    "lang": "Язык"
+    "lang": "Язык",
+    "footswitch-view.name": "Экран футсвитчей",
+    "footswitch-view.desc": "Третий экран по кнопке VIEW, который показывает футсвитчи, как HX Stomp XL: FS1–FS3 и виртуальные FS6–FS8, каждый с названием и цветом своего блока, яркий, когда блок включён.",
+    "footswitch-view.floc": "Кнопка VIEW",
+    "footswitch-view.where": "Без настроек",
+    "footswitch-view.p1": "Нажмите <strong>VIEW</strong>, чтобы перейти из вида Play в вид Edit, затем на экран футсвитчей и обратно в Play. На экране номер и название пресета над двумя рядами плиток, расположенных как футсвитчи HX Stomp XL: сверху FS6, FS7 и FS8, снизу FS1, FS2 и FS3. Отметьте Footswitch View на странице установки, чтобы получить его.",
+    "footswitch-view.li1": "<strong>Каждая плитка</strong> показывает название своего блока: она горит цветом категории блока, пока он включён, и тускнеет, пока он выключен. FS1–FS3 показывают то же, что подписи вида Play.",
+    "footswitch-view.li2": "<strong>FS6–FS8</strong> — это <a href=\"#virtual-footswitches\">виртуальные футсвитчи</a>: каждая плитка показывает блок, у которого в Bypass Assign параметр MIDI In равен FS6, FS7 или FS8 (MIDI CC 20–22). Блоки Metronome, MIDI и Phones там без названия.",
+    "footswitch-view.li3": "Пока экран открыт, <strong>футсвитчи и ручки</strong> работают так же, как в виде Play.",
+    "midi-block.name": "Блок MIDI",
+    "midi-block.desc": "Блок, который отправляет MIDI CC или PC через MIDI Out и USB, когда он включается или выключается, или когда загружается пресет с ним.",
+    "midi-block.floc": "Браузер моделей: Modulation &gt; MIDI",
+    "midi-block.where": "Ручки блока Chan, Type, Num, On и Off",
+    "midi-block.p1": "Добавьте его из браузера моделей: Modulation &gt; MIDI &gt; MIDI. Звук проходит через него без изменений. Когда блок включается или выключается (футсвитчем, через Bypass Assign или снапшотом) и когда вы загружаете пресет с ним, он отправляет MIDI-сообщение через разъём MIDI Out и USB, как собственный MIDI HX Stomp: чтобы переключать другую педаль или канал усилителя вместе с вашими блоками.",
+    "midi-block.li1": "<strong>CC</strong>: при включении отправляется CC Num со значением On, при выключении — со значением Off.",
+    "midi-block.li2": "<strong>PC</strong>: при включении отправляется смена программы Num, при выключении ничего.",
+    "midi-block.li3": "<strong>All</strong> в Chan отправляет сообщение на все 16 каналов. Каждый блок MIDI в пресете отправляет своё сообщение.",
+    "midi-block.li4": "<strong>Пока нет на странице установки:</strong> соберите прошивку сами командой <code>HX_MIDI_BLOCK=1 python3 build.py</code> (см. <a href=\"https://github.com/wisemandenny/hxtra/blob/main/docs/building.md\">Building HXtra</a>). Рядом с NAM A2 Lite хватает места для него и блока Phones вместе, но ни один из них не помещается вместе с Metronome.",
+    "midi-block.what1": "MIDI-канал, по которому уходит сообщение. All отправляет его на все каналы.",
+    "midi-block.what2": "Смена контроллера или смена программы.",
+    "midi-block.what3": "Номер CC или номер программы.",
+    "midi-block.what4": "Значение CC при включении блока.",
+    "midi-block.what5": "Значение CC при выключении блока.",
+    "phones-block.name": "Блок Phones",
+    "phones-block.desc": "Блок, который отправляет свой вход только в наушники, и вариант Phones Monitor — HP Block, при котором наушники играют только блоки Phones.",
+    "phones-block.floc": "Браузер моделей: Send/Return &gt; Phones",
+    "phones-block.where": "Ручки блока Level и Dry Thru; Global Settings &gt; Ins/Outs &gt; Phones Monitor",
+    "phones-block.p1": "Установите <strong>Phones Monitor</strong> (Global Settings &gt; Ins/Outs) в <strong>HP Block</strong> и поставьте блок Phones (Send/Return &gt; Phones &gt; Phones) туда, откуда должны слушать наушники. Тогда наушники играют только то, что им отправляют блоки Phones, по-прежнему через ручку Volume, а Main L/R, выходы Send и USB звучат как обычно: например, клик или минусовка, которые слышите только вы, или ваш усилитель до эффектов, которые получает зал.",
+    "phones-block.li1": "<strong>Level</strong> — то, что блок отправляет в наушники, на обе стороны; <strong>Dry Thru</strong> — то, что он передаёт дальше по цепи. При −60 дБ каждый выключен: с выключенным Dry Thru блок становится тупиком, как блок Send.",
+    "phones-block.li2": "<strong>Main L/R и Send</strong> — заводские варианты, они работают как раньше; блоки Phones тогда никуда не отправляют. Несколько блоков Phones складываются.",
+    "phones-block.li3": "<strong>Несовместим с маршрутизацией USB и Send,</strong> которая передаёт свою настройку в DSP тем же способом, и пока нет на странице установки: соберите прошивку сами командой <code>HX_PHONES_BLOCK=1 python3 build.py</code>.",
+    "phones-block.what1": "То, что блок отправляет в наушники.",
+    "phones-block.what2": "То, что он передаёт дальше по цепи.",
+    "phones-block.what3": "Что играют наушники: Main L/R или Send, как в заводской прошивке, или с HP Block только блоки Phones."
   }
 };
 // LANGS-END

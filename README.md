@@ -189,6 +189,33 @@ The meter also shows while you edit the compressor, so you can dial in Threshold
   - **Main+Snd**: Main L/R as usual, plus a copy to the Send jacks and USB 3/4.
 - Don't use Send/USB or Main+Snd in a preset with an FX Loop block: it feeds back.
 
+### <img src="docs/assets/icons/footswitch-view.svg" width="28" height="28" align="top" alt=""> Footswitch View
+
+*The VIEW button: tick Footswitch View on the setup page*
+
+- **VIEW** steps Play › Edit › Footswitches › Play. The Footswitches screen shows your switches as the HX Stomp XL does: FS6, FS7 and FS8 on top, FS1, FS2 and FS3 below, each with its block's name, lit in the block's colour when it's on and dimmed when it's off.
+- **FS6 … FS8** are the virtual footswitches: they show the blocks whose Bypass Assign has MIDI In set to FS6 … FS8 (MIDI CC 20 … 22).
+- The footswitches and knobs work as in Play while the screen is up.
+
+### <img src="docs/assets/icons/midi-block.svg" width="28" height="28" align="top" alt=""> MIDI Block
+
+*New block: Modulation › MIDI. Build it with `HX_MIDI_BLOCK=1 python3 build.py` (not with the Metronome)*
+
+Sends a MIDI message out of MIDI Out and USB when the block turns on or off (a footswitch, Bypass Assign, a snapshot) and when a preset loads with it. Your sound passes through unchanged.
+
+- **Chan** (All, 1 … 16): the MIDI channel. All sends on every channel.
+- **Type** (CC, PC): CC sends CC Num with On when the block turns on and with Off when it turns off; PC sends program change Num when it turns on.
+- **Num** (0 … 127): the CC or program number.
+- **On**, **Off** (0 … 127): the CC's value as the block turns on and off.
+
+### <img src="docs/assets/icons/phones-block.svg" width="28" height="28" align="top" alt=""> Phones Block
+
+*New block: Send/Return › Phones, and Global Settings › Ins/Outs › Phones Monitor. Build it with `HX_PHONES_BLOCK=1 python3 build.py`*
+
+- **Phones Monitor** (Main L/R, Send, HP Block): HP Block makes the phones play only what the Phones blocks send them, still through the Volume knob. Main L/R, the Send jacks and USB play as usual. Main L/R and Send are the stock choices.
+- **Level** (−60 … +6 dB): what the block sends to the phones. **Dry Thru** (−60 … +6 dB): what it passes on down the chain. −60 dB is off.
+- It can't be built with USB & Send Routing or the Metronome.
+
 ### <img src="docs/assets/icons/real-names.svg" width="28" height="28" align="top" alt=""> Real Block Names
 
 *No settings*
@@ -349,6 +376,7 @@ HXtra itself doesn't: it runs on the processor that drives the screen and footsw
 - **FX Loop Noise Gate**, on each FX Loop and Return block
 - **Noise Gate Input Sidechain**, on each Noise Gate block
 - **USB & Send Routing**, to move path A's output
+- **MIDI Block** and **Phones Block**, while the block is in a preset (and Phones Monitor's HP Block, on the phones' two gains)
 - **NAM A2 Lite** blocks, like any amp block
 
 If you hear crackling, leave those out on the setup page.
@@ -359,7 +387,7 @@ If you hear crackling, leave those out on the setup page.
 <td valign="top">
 
 ### <img src="docs/assets/icons/faq-choose.svg" width="28" height="28" align="top" alt=""> Can I choose which features I get?
-Partly. On the setup page you pick the **DSP features**: how many NAM A2 Lite blocks (3, 2, 1 or none), the gain reduction meter, the Metronome, the FX Loop gate, USB & Send Routing and Input Sidechain. They share the HX Stomp's spare DSP memory, so the page shows what's left as you tick, and fewer NAM blocks leave room for more of the others. Real block names is a box too. Every other feature is always in; to leave one of those out, [build it yourself](docs/building.md).
+Partly. On the setup page you pick the **DSP features**: how many NAM A2 Lite blocks (3, 2, 1 or none), the gain reduction meter, the Metronome, the FX Loop gate, USB & Send Routing and Input Sidechain. They share the HX Stomp's spare DSP memory, so the page shows what's left as you tick, and fewer NAM blocks leave room for more of the others. Real block names and Footswitch View are boxes too; the MIDI and Phones blocks are built with `build.py` for now. Every other feature is always in; to leave one of those out, [build it yourself](docs/building.md).
 
 &nbsp;
 

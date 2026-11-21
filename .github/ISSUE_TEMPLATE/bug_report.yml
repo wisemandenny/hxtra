@@ -64,6 +64,7 @@ body:
         - label: Input Sidechain on the Noise Gate block (HX_GATE_SC)
         - label: "USB monitoring: Path A Out (HX_USB_MONITOR)"
         - label: Real block names (HX_REAL_NAMES)
+        - label: Footswitch View (HX_FOOTSWITCH_VIEW)
   - type: dropdown
     id: features
     attributes:
