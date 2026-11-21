@@ -514,6 +514,15 @@ def foot_hold(u, fs, seconds=1.5, look=None, settle=SETTLE):
     u.s.wait(settle)
 
 
+def foot_tap(u, fs, settle=SETTLE):
+    """fs tapped as a foot taps it, its touch sensor with the press and let go with the release (hx_input.press sends no touch)."""
+    i = u.input
+    i.send(hx_input.key(fs, hx_input.PRESS, 'touch'), hx_input.key(fs, hx_input.PRESS))
+    u.s.wait(hx_input.CLICK_S)
+    i.send(hx_input.key(fs, hx_input.RELEASE), hx_input.key(fs, hx_input.RELEASED), hx_input.key(fs, hx_input.RELEASE, 'touch'))
+    u.s.wait(settle)
+
+
 def label_knob(u, label, steps=6):
     """Pages a Global Settings section to the knob labelled label, matched on the label's last line so a value that reads the same
     (FS1 Hold's FS6) is not it; returns the knob's number."""
@@ -655,8 +664,9 @@ def t_preset_color(u):
             u.press('page_right', settle=0.6)
 
 
-@case('more_snapshots', 'More snapshots: in Snapshot mode the lit footswitch again flips to snapshots 4..6 and back')
-def t_more_snapshots(u):
+def snapshot_flips(u, there, back):
+    """In Snapshot footswitch mode, with fs the lit footswitch and unchanged() true while the camera icon's number is as it was:
+    there(fs, unchanged) must change the number, then back(fs) must bring it back."""
     u.home()
     u.press('page_left', settle=0.6)            # the footswitch mode, from Stomp to Snapshot
     try:
@@ -666,14 +676,53 @@ def t_more_snapshots(u):
         fs = f'fs{lit[0] + 1}'
         camera = (262, 0, 58, 40)               # the snapshot's number in the camera icon, which Vision does not read
         a = u.pixels(camera)
-        u.press(fs, settle=0.6)
-        if np.array_equal(u.pixels(camera), a):
-            raise Fail(f'the camera icon did not change when the lit {fs} was pressed again')
-        u.press(fs, settle=0.6)
-        if not np.array_equal(u.pixels(camera), a):
-            raise Fail(f'pressing {fs} once more did not bring snapshots 1..3 back')
+
+        def unchanged():
+            return np.array_equal(u.pixels(camera), a)
+        there(fs, unchanged)
+        if unchanged():
+            raise Fail(f'the camera icon did not change: {fs} did not select in snapshots 4..6')
+        back(fs)
+        if not unchanged():
+            raise Fail(f'{fs} did not bring snapshots 1..3 back')
     finally:
         u.press('page_right', settle=0.6)
+        u.home()
+
+
+@case('more_snapshots', 'More snapshots: in Snapshot mode, FS2 held then the lit footswitch tapped is 4..6; FS1 held and a tap, back')
+def t_more_snapshots(u):
+    def there(fs, unchanged):
+        foot_hold(u, 'fs2', settle=0.6)         # Snapshot BankSel on Hold: the footswitches select in 4..6
+        if not unchanged():
+            raise Fail('the camera icon changed when FS2 was held: a hold changes no snapshot')
+        foot_tap(u, fs, settle=0.6)
+
+    def back(fs):
+        foot_hold(u, 'fs1', settle=1.5)         # in 4..6: the footswitches stay on 1..3 until the tap, not just after the hold
+        foot_tap(u, fs, settle=0.6)
+    sel = ('Hold', 'Tap')
+    u.global_settings('Footswitches')
+    was = u.dial(label_knob(u, 'BankSel'), 'Hold', sel)
+    try:
+        snapshot_flips(u, there, back)
+    finally:
+        u.global_settings('Footswitches')
+        u.dial(label_knob(u, 'BankSel'), was, sel)
+        u.home()
+
+
+@case('more_snapshots_tap', 'More snapshots, Snapshot BankSel on Tap: in Snapshot mode the lit footswitch again flips to 4..6 '
+      'and back')
+def t_more_snapshots_tap(u):
+    sel = ('Hold', 'Tap')
+    u.global_settings('Footswitches')
+    was = u.dial(label_knob(u, 'BankSel'), 'Tap', sel)
+    try:
+        snapshot_flips(u, lambda fs, unchanged: foot_tap(u, fs, settle=0.6), lambda fs: foot_tap(u, fs, settle=0.6))
+    finally:
+        u.global_settings('Footswitches')
+        u.dial(label_knob(u, 'BankSel'), was, sel)
         u.home()
 
 
