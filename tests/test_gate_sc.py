@@ -264,7 +264,8 @@ def test_dsp_sits_at_the_bottom_of_the_room():
     assert dm + n_dm == pg.nw(pm) and pm % 2 == 0
     usb_dm, _ = block3.place('HX_USB_MONITOR', env)
     assert pg.nw(pm + n_pm) <= usb_dm and dm >= block3.room(2)[0]
-    assert block3.FEATURES[-1] == ('HX_GATE_SC', 'patch_sidechain')
+    after = block3.FEATURES[block3.FEATURES.index(('HX_GATE_SC', 'patch_sidechain')) + 1:]
+    assert [f for f, _ in after] == ['HX_MIDI_BLOCK', 'HX_PHONES_BLOCK'], 'the last on the page; only build.py\'s blocks below it'
 
 
 # ---- the firmware tools/patch_sidechain.py builds

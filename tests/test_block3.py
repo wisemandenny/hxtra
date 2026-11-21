@@ -11,6 +11,8 @@ import nam_multi
 
 ROOT = Path(__file__).resolve().parent.parent
 EVERY = [f for f, _ in block3.FEATURES]
+BUILD_ONLY = ['HX_MIDI_BLOCK', 'HX_PHONES_BLOCK']     # WEB False: build.py only, not on the page
+WEB = [f for f in EVERY if f not in BUILD_ONLY]
 
 
 def env_of(flags, slots=None):
@@ -64,7 +66,7 @@ def test_room_ends_at_an_even_instruction():
 
 def test_costs_are_whole_instruction_pairs():
     assert {f: block3.cost(f) for f in EVERY} == {'HX_CLICK': 213, 'HX_FX_GATE': 291, 'HX_GR': 780, 'HX_USB_MONITOR': 414,
-                                                        'HX_GATE_SC': 324}
+                                                        'HX_GATE_SC': 324, 'HX_MIDI_BLOCK': 45, 'HX_PHONES_BLOCK': 435}
     for f in EVERY:
         n_dm, n_pm = block3.size(f)
         assert block3.cost(f) % 3 == 0 and block3.cost(f) >= n_dm + n_pm * 3 // 2
@@ -87,8 +89,8 @@ def test_every_selection_that_fits_places_clear_of_each_other_and_inside_the_roo
 
 
 def test_features_pack_down_from_the_top_in_order():
-    env = env_of(EVERY, 2)
-    click, gate, gr, usb, sc = (ranges(f, env) for f in EVERY)
+    env = env_of(WEB, 2)
+    click, gate, gr, usb, sc = (ranges(f, env) for f in WEB)
     assert click[1][1] == block3.room(2)[1]
     assert sc[0][1] <= sc[1][0] <= sc[1][1] <= usb[0][0]
     assert usb[0][1] <= usb[1][0] <= usb[1][1] <= gr[0][0]
@@ -106,11 +108,12 @@ def test_slots_unset_is_the_most_that_fit():
     assert block3.slots({}) == 3
     assert block3.slots(env_of(['HX_CLICK', 'HX_FX_GATE'])) == 3
     assert block3.slots(env_of(['HX_GR'])) == 2
-    assert block3.slots(env_of(EVERY)) == 2
+    assert block3.slots(env_of(WEB)) == 2
 
 
 def test_slots_set_is_checked():
     assert block3.slots(env_of(EVERY, 0)) == 0
+    assert block3.slots(env_of(BUILD_ONLY)) == 3
     with pytest.raises(SystemExit, match='HX_NAM_SLOTS is one of 3, 2, 1, 0'):
         block3.slots({block3.VAR: '4'})
     with pytest.raises(SystemExit, match='HX_GR take 780 words of Block 3; 3 NAM slots leave 512'):
@@ -118,7 +121,7 @@ def test_slots_set_is_checked():
 
 
 def test_features_are_the_web_pages_dsp_features():
-    assert sorted(EVERY) == sorted(m4cache.web_dsp())
+    assert sorted(WEB) == sorted(m4cache.web_dsp())
 
 
 def test_build_py_kernel_takes_the_slot_count():
