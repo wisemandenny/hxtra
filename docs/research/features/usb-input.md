@@ -14,7 +14,7 @@ The HX Stomp's footswitches, knobs and buttons pressed and turned from a compute
 ## Using it
 
 - Build with `HX_USB_INPUT=1` (with `HX_SCREEN_MIRROR=1` to see what it does) and run it from RAM. Close HX Edit: it uses the editor stream.
-- `python3 tools/hx_input.py press fs2`, `press view+action` (controls joined by `+` are pressed together), `hold fs1 --seconds 1.5`, `turn knob3 -4`, `touch fs1`, `press view` (also `action`, `page_left`, `page_right`, `knob1`..`knob5`). Not the volume knob: it sets only the headphone level, with its own physical marker.
+- `python3 tools/hx_input.py press fs2`, `press view+action` (controls joined by `+` are pressed together), `hold fs1 --seconds 1.5`, `turn knob3 -4`, `touch fs1`, `press view` (also `action`, `page_left`, `page_right`, `knob1`..`knob5`). Not the volume knob (class 4, with its own physical marker): it sets the phones' level, and Main's too unless Volume Knob Controls (Global Settings > Ins/Outs) is Phones [hypothesis: offline only; Main+HP not measured on the unit] ([sharc/usb-routing.md](../sharc/usb-routing.md)).
 - From a script: `hx_input.Input(ctl)` with an `hx_ctl.HxCtl`, or `Input(s.ctl)` inside an `hx_mirror.Session`, whose ctl calls take turns with the frames.
 
 - A script that prints while an `hx_mirror.Session` runs loses lines: hx_ctl's quiet mode swaps `sys.stdout` around every frame's request. Write with `os.write(1, ...)` or to a file.

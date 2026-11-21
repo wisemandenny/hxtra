@@ -14,7 +14,7 @@ What each control of the HX Stomp does in the stock 3.80 UI, every button combin
 | VIEW (the house icon, "home") | `view` | 5 | |
 | ACTION | `action` | 6 | |
 | PAGE◀, PAGE▶ | `page_left`, `page_right` | 7, 8 | |
-| VOLUME | not sendable: class 4, and it sets only the headphone level ([usb-input.md](../features/usb-input.md)) | | |
+| VOLUME | not sendable: class 4 ([usb-input.md](../features/usb-input.md)). It sets the phones' level, and Main's too unless Volume Knob Controls (Ins/Outs) is Phones [hypothesis: offline only; Main+HP not measured on the unit] ([sharc/usb-routing.md](../sharc/usb-routing.md)) | | |
 
 The Upper and Lower Knob roles are [verified on unit] (`knob4` steps the Edit view's block and Global Settings' sections, `knob5`'s press opens the model browser). The manual's "Menu" icon (☰) means PAGE◀ and PAGE▶ pressed together.
 

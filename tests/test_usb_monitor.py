@@ -1,7 +1,8 @@
 """tools/features/usb_monitor.py and src/m4/usb_monitor.s: the handlers in unicorn (path A's Main sent as Send while the setting says
 Send/USB or USB Only, everything else untouched; the setting sent after path A's destination inside USB Input Trim; a turn
-or a reset sending path A again only when the destination or the mode changes), and the firmware it builds (its setting in
-Ins/Outs, the virtual setting, the hooks)."""
+or a reset sending path A again only when the destination or the mode changes), the firmware it builds (its setting in
+Ins/Outs, the virtual setting, the hooks), and the stock facts the trim rests on (USB In 1/2 Trim is I/O setting 0x99, read from
+the I/O store as the stock setters send it)."""
 import struct
 
 import pytest
@@ -10,8 +11,9 @@ import features
 import setting_ids
 from features import usb_monitor as um
 import patch_menu as pm
-from firmware import assert_virtual, branch_target, built, built_e0
+from firmware import assert_virtual, branch_target, built, built_e0, reader, stock_e0
 from test_hxtra import page_table
+from test_virtual_settings import MEMCPY, MUTEX_LOCK, MUTEX_UNLOCK, stock_m4
 
 MODS = features.load()
 IDS = setting_ids.by_name()
@@ -21,7 +23,10 @@ GET_VALUE = 0x28e1f844
 STOCK = 0x28e70000                          # stands in for the moved prologue of 0x28df5760
 ENGINE, SET_OUTPUT = 0x28d92a98, 0x28e03c68
 PARAM_FIND, PARAM_SEND = 0x28df35a0, 0x28df35e8
-TRIM_NAME, TRIM_ID, TRIM_TYPE = 4209, 3, 1          # usbInGain0_1, its Global Setting, a stand-in for its store's type
+TRIM_NAME, TRIM_ID, TRIM_TYPE = 4209, 0x99, 1       # usbInGain0_1, USB In 1/2 Trim, a stand-in for its store's type
+IO_FIRST, IO_LAST = 0x96, 0xa4              # the I/O settings, which GET_VALUE reads from the I/O store
+IO_STORE, IO_RECORD = 0x2845e98c, 0x2c      # their records: the type byte at +4, the value at +8, the app parameter's handle at +0x1c
+IO_LABELS, IO_KEYS = 0x28e252f4, 0x28e3ec68     # by ID - IO_FIRST: their labels (char[27]) and app parameters (i32 string indices)
 DATA = 0x30000000                           # a context and an app for um_send to read
 CTX, APP, PCTX, INST, HANDLE = DATA, DATA + 0x100, DATA + 0x2000, 0x7777, 0x5150
 MAIN, SEND = 1, 6
@@ -29,8 +34,14 @@ SEND_USB, USB_ONLY, MAIN_SEND = 1, 2, 3
 _code = {}
 
 
+def io_record(pid):
+    return IO_STORE + IO_RECORD * (pid - IO_FIRST)
+
+
 class Monitor:
-    """usb_monitor.s in tests/m4emu.py's M4: GET_VALUE answers self.value (None: unset); the stock send, ENGINE and SET_OUTPUT logged."""
+    """usb_monitor.s in tests/m4emu.py's M4: GET_VALUE answers self.value (None: unset) for the setting, and an I/O setting from its
+    record in the I/O store, as the stock getter does; self.trim is USB In 1/2 Trim's record (None: GET_VALUE fails); the stock
+    send, ENGINE and SET_OUTPUT logged."""
 
     def __init__(self, m4emu):
         if 'um' not in _code:
@@ -61,15 +72,26 @@ class Monitor:
         code = round(value / 1000)
         self.modes.append((kind, code - 1, value - 1000 * code))
 
+    @property
+    def trim(self):
+        return self._trim
+
+    @trim.setter
+    def trim(self, value):
+        self._trim = value
+        self.m.write(io_record(TRIM_ID) + 4, struct.pack('<B3xf', TRIM_TYPE, value or 0.0))
+
     def get_value(self, m):
-        if m.reg('r0') == TRIM_ID:
+        pid, out = m.reg('r0'), m.reg('r1')
+        if pid != ID:
+            assert IO_FIRST <= pid <= IO_LAST, f'GET_VALUE({pid:#x}): not an I/O setting'
             if self.trim is None:
-                m.reg('r0', -1)
-            else:
-                m.write(m.reg('r1'), struct.pack('<If', TRIM_TYPE, self.trim))
-                m.reg('r0', 0)
+                m.reg('r0', -3)
+                return
+            m.u8(out, m.read(io_record(pid) + 4, 1)[0])     # the type byte alone, as the stock getter stores it
+            m.write(out + 4, m.read(io_record(pid) + 8, 4))
+            m.reg('r0', 0)
             return
-        assert m.reg('r0') == ID
         if self.value is None:
             m.reg('r0', -1)
         else:
@@ -244,3 +266,94 @@ def test_ins_outs_last_empty_slot_holds_the_setting():
         assert struct.unpack('<9H', read(table, 18)) == (*stock_ids, ID), site
     pages = struct.unpack('<I', read(pm.ARRAYS['pages'][1][0], 4))[0]
     assert read(pages, 4) == struct.pack('<I', 3), 'Ins/Outs keeps its three pages'
+
+
+# the stock facts the trim rests on
+
+LABEL, STEP = 0x28d97634, 0x28e20158       # (ID, dst, n): a setting's label; (ID, delta, how): a Global Settings knob's turn
+STEP_SET, SET, RESET = setting_ids.SETTERS  # (ctx, ID, &{type, value}, how): the step's, other code's; (ctx, ID, how): a click's
+MEMSET, APP_INSTANCE, CHANGE_MESSAGE = 0x28e24b78, 0x28df3550, 0x28e04ea8   # stubs: (dst, byte, n); (ctx, 0); (0, ID, &value)
+OUT, DST, SCTX = 0x28f10000, 0x28f10100, 0x28f10200
+
+
+def stock_code(m4emu):
+    """The stock Entry 0's code in unicorn, the mutex and memcpy as stubs."""
+    m = stock_m4(m4emu)
+    for fn in (MUTEX_LOCK, MUTEX_UNLOCK):
+        m.stub(fn)
+    m.stub(MEMCPY, lambda m: m.write(m.reg('r0'), m.read(m.reg('r1'), m.reg('r2'))))
+    return m
+
+
+@pytest.mark.firmware
+def test_trim_id_is_usb_in_1_2_trim(m4emu):
+    """TRIM_ID is USB In 1/2 Trim, and its app parameter is the one um_mode sends: the long-label function takes an I/O setting's
+    label from IO_LABELS (shown 'USB In 1/2' over 'Trim'), and IO_KEYS gives usbInGain0_1 (string 4209, tests/test_usbmon.py) for
+    it. ID 3, which um_mode read before, is Send/Return R in the main store."""
+    read = reader(stock_e0())
+    assert read(IO_LABELS + pm.NAME_LEN * (TRIM_ID - IO_FIRST), pm.NAME_LEN).split(b'\0')[0] == b'Trim\nUSB In 1/2'
+    assert struct.unpack('<i', read(IO_KEYS + 4 * (TRIM_ID - IO_FIRST), 4)) == (TRIM_NAME,)
+    m = stock_code(m4emu)
+    for pid, label in ((TRIM_ID, b'Trim\nUSB In 1/2'), (3, b'Return R\nSend/')):
+        m.write(DST, b'\0' * pm.NAME_LEN)
+        assert m.call(LABEL, pid, DST, pm.NAME_LEN) == 0
+        assert m.read(DST, pm.NAME_LEN).split(b'\0')[0] == label, hex(pid)
+
+
+@pytest.mark.firmware
+def test_get_value_reads_the_io_settings_from_the_io_store(m4emu):
+    """The stock GET_VALUE takes IDs IO_FIRST..IO_LAST from their records in the I/O store, as Monitor's stub does: the type byte at
+    +4 into out (that byte alone) and the value at +8 into out + 4. The IDs either side of the range have no value."""
+    m = stock_code(m4emu)
+    for pid in range(IO_FIRST, IO_LAST + 1):
+        m.write(io_record(pid) + 4, struct.pack('<B3xI', pid - IO_FIRST + 1, 0x5a5a0000 + pid))
+    for pid in range(IO_FIRST - 1, IO_LAST + 2):
+        m.write(OUT, b'\xee' * 8)
+        r0 = m.call(GET_VALUE, pid, OUT)
+        if IO_FIRST <= pid <= IO_LAST:
+            assert (r0, m.read(OUT, 8)) == (0, struct.pack('<B3sI', pid - IO_FIRST + 1, b'\xee' * 3, 0x5a5a0000 + pid)), hex(pid)
+        else:
+            assert (r0, m.read(OUT, 8)) == ((-3) & 0xffffffff, b'\xee' * 8), hex(pid)
+
+
+CALLER = {STEP_SET: STEP + 0xde, SET: 0x28d93dac, RESET: 0x28dceea6}  # a bl to each: the step's, 0x28d93d8c's (masterVolume), a click's
+
+
+@pytest.mark.firmware
+@pytest.mark.parametrize('setter', setting_ids.SETTERS, ids=('step', 'set', 'reset'))
+def test_each_stock_setter_sends_the_trim_as_it_stores_it(m4emu, setter):
+    """A turn of USB In 1/2 Trim goes through the step (the turn's b.w at 0x28dcefc0) to STEP_SET, and a click to RESET, which takes
+    the record's default ({type +0x18, value +0x28}); other code, 0x28d93d8c for one, sets I/O settings with SET. Each sends the
+    {type, value} to the app parameter with PARAM_SEND, under the handle in the record (+0x1c), then stores that type and value in
+    the record: so GET_VALUE hands um_mode the number the stock last sent, and the DSP gets the trim as it would without the
+    feature."""
+    read = reader(stock_e0())
+    assert branch_target(0x28dcefc0, read(0x28dcefc0, 4)) == STEP
+    assert branch_target(CALLER[setter], read(CALLER[setter], 4)) == setter
+    m = stock_code(m4emu)
+    m.stub(MEMSET, lambda m: m.write(m.reg('r0'), bytes([m.reg('r1') & 0xff]) * m.reg('r2')))
+    m.stub(APP_INSTANCE, lambda m: m.reg('r0', INST))
+    m.stub(CHANGE_MESSAGE, lambda m: m.reg('r0', 0))
+    sent = []
+
+    def param_send(m):
+        sent.append((m.reg('r0'), m.reg('r1'), m.reg('r2'), m.read(m.reg('r3'), 8)))
+        m.reg('r0', 0)
+    m.stub(PARAM_SEND, param_send)
+    m.u32(io_record(TRIM_ID) + 0x1c, HANDLE)
+    m.u32(SCTX + 0xc, PCTX - 4)
+    m.write(io_record(TRIM_ID) + 4, struct.pack('<B3xf', TRIM_TYPE + 1, -6.0))
+    m.u8(io_record(TRIM_ID) + 0x18, TRIM_TYPE)
+    m.write(io_record(TRIM_ID) + 0x28, struct.pack('<f', 0.0))
+    if setter == RESET:
+        trim = 0.0
+        assert m.call(RESET, SCTX, TRIM_ID, 1) == 0
+    else:
+        trim = -19.4
+        m.write(OUT, struct.pack('<B3xf', TRIM_TYPE, trim))
+        assert m.call(setter, SCTX, TRIM_ID, OUT, 1) == 0
+    value = struct.pack('<B3xf', TRIM_TYPE, trim)
+    assert [(ctx, inst, handle, v[0], v[4:]) for ctx, inst, handle, v in sent] == [(PCTX, INST, HANDLE, TRIM_TYPE, value[4:])]
+    assert m.read(io_record(TRIM_ID) + 4, 8) == value
+    m.write(DST, b'\xee' * 8)
+    assert m.call(GET_VALUE, TRIM_ID, DST) == 0 and m.read(DST, 8) == struct.pack('<B3sf', TRIM_TYPE, b'\xee' * 3, trim)
