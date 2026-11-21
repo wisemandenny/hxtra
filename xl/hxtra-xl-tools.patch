@@ -1,0 +1,377 @@
+diff --git a/tools/features/dsp_meter.py b/tools/features/dsp_meter.py
+index 1a7d79a..6649ed8 100644
+--- a/tools/features/dsp_meter.py
++++ b/tools/features/dsp_meter.py
+@@ -1,6 +1,19 @@
+ """DSP meter: each block in the Edit view shows its share of the DSP in per cent, and the top right corner the blocks' total as used/75;
+-the model browser shows each listed model's share between its icon and name."""
++the model browser shows each listed model's share between its icon and name.
++
++Global Settings > DSP Usage Display: Model Browser and Edit Blocks (On, Off) turn the numbers on or off in the model browser and
++the Edit view's blocks; Total (Small, Large, Off) the corner's
++used/75: Small, the default, draws it in the meter's 3x5 digits at 2x, Large in the title's font, as before these settings,
++Off not at all, leaving the corner to the title."""
++from features import Setting
++
+ FLAG = 'HX_DSP_METER'
++TITLE = 'DSP Usage Display'
++SETTINGS = (
++    Setting('browser', b'Browser\nModel', (b'On', b'Off')),     # On first: 0 is what a unit that set 0xd1 reads here
++    Setting('blocks', b'Blocks\nEdit', (b'On', b'Off')),
++    Setting('total', b'Total', (b'Small', b'Large', b'Off')),     # Small first: 0 is what a unit that set 0xd1 reads here
++)
+ 
+ EDIT_PAINT_LIT, EDIT_PAINT = 0x28d96da0, 0x28dc27f9     # the Edit view top half's paint function (block slots), as registered
+ BROWSER_PAINT_LIT, BROWSER_PAINT = 0x28d96df0, 0x28dc4dd1   # the model browser's paint function, as registered
+diff --git a/tools/features/preset_color.py b/tools/features/preset_color.py
+new file mode 100644
+index 0000000..ef44000
+--- /dev/null
++++ b/tools/features/preset_color.py
+@@ -0,0 +1,7 @@
++from features import Setting, tap_color
++
++COLORS = tap_color.SETTINGS[0].values[:10]
++SETTINGS = (
++    Setting("color", b"Color\nPreset LED", COLORS),
++    Setting("this", b"Preset\nThis", (b"None",) + COLORS),
++)
+diff --git a/tools/features/usb_monitor.py b/tools/features/usb_monitor.py
+new file mode 100644
+index 0000000..551411b
+--- /dev/null
++++ b/tools/features/usb_monitor.py
+@@ -0,0 +1,37 @@
++"""USB Monitor: Global Settings > Ins/Outs > Path A Out picks where path A's Output block goes: Main L/R (stock), Send/USB (the
++Send bus: the Send jacks and USB 3/4 to the computer), USB Only (USB 3/4 alone, the Send jacks silent) or Main+Snd (Main L/R, and
++the Send bus too, on top of what goes there already: issue #93). With Send/USB or USB Only a DAW records and monitors the processed
++sound while Main and the phones play only what it sends back on USB 1/2: software monitoring (issue #81). The stock firmware lets only path B reach the Send bus, and only by moving its merge to the end.
++
++src/m4/usb_monitor.s owns the function that sends a path's destination to the DSP: it sends Send for path A's Main, and after it
++the setting inside USB Input Trim (trim + 1000 * (mode + 1)), which src/sharc/usb_monitor.asm takes back out into its mode word
++(tools/patch_usbmon.py; USB Only silences the Send jacks' writer, Main+Snd adds Main into the Send jacks' words). A preset saved meanwhile holds Send for path A, which a stock unit refuses on load, leaving path
++A on Main. A turn or a reset of the setting sends path A's destination again at once. A checkbox in the web page's DSP features
++(WEB 'dsp': its DSP code takes Block 3 room, tools/block3.py) and HX_USB_MONITOR for build.py."""
++from features import Setting
++import patch_menu as pm
++
++FLAG = 'HX_USB_MONITOR'
++WEB = 'dsp'
++MENU = 'Ins/Outs'
++SETTINGS = (     # Ins/Outs' last empty slot; a label's last line shows on top
++    Setting('path_a', b'Out\nPath A', (b'Main L/R', b'Send/USB', b'USB Only', b'Main+Snd')),
++)
++
++SEND_FN = 0x28df5760                # (ctx, app, path, value): a path's destination to the DSP, after 0x28e002a8's range check
++SEND_FN_STOCK = bytes.fromhex('f0b5 85b0')          # push {r4-r7, lr}; sub sp, #0x14
++CHANGED = 0x28dceb30                # (view, ID): the Global Settings slot repaint after a change, stock or virtual
++CHANGED_STOCK = bytes.fromhex('70b5 1029')          # push {r4-r6, lr}; cmp r1, #0x10
++PAGE = 0x28dce854                   # (view): the Global Settings page repaint, as after a click's reset
++PAGE_STOCK = bytes.fromhex('2de9 f047')             # push.w {r4-r10, lr}
++
++
++def apply(p):
++    hook = p.own_entry(SEND_FN, SEND_FN_STOCK, 'the send of a path\'s destination to the DSP')
++    m = p.module('src/m4/usb_monitor.s')
++    p.chain_entry(CHANGED, CHANGED_STOCK, after=m['um_changed'])
++    p.chain_entry(PAGE, PAGE_STOCK, after=m['um_page'])
++    a = pm.Asm(p.next())
++    a.movw_movt(12, hook.stock | 1)
++    a.bw(m['um_send'])
++    hook.to(p.add(a.bytes()))
+diff --git a/tools/hxf_ram.py b/tools/hxf_ram.py
+index daee47c..d7ae05a 100644
+--- a/tools/hxf_ram.py
++++ b/tools/hxf_ram.py
+@@ -154,13 +154,13 @@ def seg_patch(segs, addr, data):
+     fail(f"{addr:#x}: not in the application")
+ 
+ 
+-def overlay(stock, new):
++def overlay(stock, new, full_entries=()):
+     """[(sector, data)] for every sector of entries 1.. that differs from stock,
+     and a line per changed entry."""
+     out, notes = [], []
+     for i in range(1, len(new)):
+         a, b = stock[i], new[i]
+-        if a == b:
++        if a == b and i not in full_entries:
+             continue
+         if i == 1:
+             fail("entry 1 (the bootloader) differs from stock: not something to run from RAM")
+@@ -171,7 +171,7 @@ def overlay(stock, new):
+         for k in range(0, len(b), SECTOR):
+             sb = b[k:k + SECTOR].ljust(SECTOR, b"\0")
+             sa = a[k:k + SECTOR]
+-            if len(sa) < SECTOR or sa != sb:      # past stock's end the card holds nothing we know
++            if i in full_entries or len(sa) < SECTOR or sa != sb:      # past stock's end the card holds nothing we know
+                 out.append((PAYLOAD[i] + k // SECTOR, sb))
+                 n += 1
+         notes.append((i, len(a), len(b), n))
+@@ -188,7 +188,7 @@ def runs_of(sectors):
+     return runs
+ 
+ 
+-def plan(firmware, stock_path, writes="ram", pool_sectors=4096, hook_bin=None):
++def plan(firmware, stock_path, writes="ram", pool_sectors=4096, hook_bin=None, *, full_entries=()):
+     """Everything to load: regions [(addr, bytes, label)], the stock entries,
+     the checks of the eMMC [(first sector, count, crc)] and a summary."""
+     stock, new = load(stock_path, stock=True), load(firmware)
+@@ -214,7 +214,7 @@ def plan(firmware, stock_path, writes="ram", pool_sectors=4096, hook_bin=None):
+         target = struct.unpack_from("<I", hook, H_READ if name == "read" else H_WRITE)[0]
+         seg_patch(segs, fn, bytes.fromhex("dff800f0") + struct.pack("<I", target))
+ 
+-    sectors, notes = overlay(stock, new)
++    sectors, notes = overlay(stock, new, full_entries)
+     runs = runs_of(sectors)
+     table = RB_HOOK_BASE + ((len(hook) + 15) & ~15)
+     data = (table + 4 + 12 * len(runs) + 15) & ~15
+@@ -256,12 +256,21 @@ def plan(firmware, stock_path, writes="ram", pool_sectors=4096, hook_bin=None):
+     regions.append((RB_HOOK_BASE, hook_region, "hook, overlay table and sectors"))
+     regions.append((RB_DESC, desc, "boot descriptor"))
+ 
+-    checks = []                                 # the sectors the overlay leaves to the card must be stock
+-    for i, la, lb, n in notes:
+-        full = la // SECTOR
+-        for k in range(0, full, 2048):
+-            c = min(2048, full - k)
+-            checks.append((PAYLOAD[i] + k, c, zlib.crc32(stock[i][k * SECTOR:(k + c) * SECTOR]), i))
++    checks = []
++    covered = {sector for sector, _ in sectors}
++    for i, _, size, _ in notes:
++        full = size // SECTOR
++        first = 0
++        while first < full:
++            if PAYLOAD[i] + first in covered:
++                first += 1
++                continue
++            stop = first + 1
++            while stop < min(first + 2048, full) and PAYLOAD[i] + stop not in covered:
++                stop += 1
++            data = new[i][first * SECTOR:stop * SECTOR]
++            checks.append((PAYLOAD[i] + first, stop - first, zlib.crc32(data), i))
++            first = stop
+     summary = {
+         "entry": entry, "segments": [(a, len(b)) for a, b in segs], "changed": notes,
+         "overlay_sectors": len(sectors), "runs": len(runs), "table": table, "pool": (pslots, pdata, pool_sectors),
+@@ -522,7 +531,8 @@ def cmd_info(args):
+ 
+ 
+ def cmd_plan(args):
+-    regions, checks, summary = plan(args.firmware, args.stock, args.writes, args.pool)
++    regions, checks, summary = plan(args.firmware, args.stock, args.writes, args.pool,
++                                    full_entries=getattr(args, "full_entries", ()))
+     describe(summary, checks)
+     total = sum(len(b) for _, b, _ in regions)
+     print(f"[+] {total / 1024:.0f} KiB to send in {len(regions)} regions")
+@@ -538,7 +548,8 @@ def cmd_plan(args):
+ 
+ 
+ def cmd_run(args):
+-    regions, checks, summary = plan(args.firmware, args.stock, args.writes, args.pool)
++    regions, checks, summary = plan(args.firmware, args.stock, args.writes, args.pool,
++                                    full_entries=getattr(args, "full_entries", ()))
+     describe(summary, checks)
+     d = Loader()
+     i = d.info
+diff --git a/tools/l6ia_verify.py b/tools/l6ia_verify.py
+index a035a5e..e91702b 100644
+--- a/tools/l6ia_verify.py
++++ b/tools/l6ia_verify.py
+@@ -13,9 +13,21 @@ def fletcher_words(buf):                      # a += w ; b += a   (mod 2^32), BE
+     b = int((w * np.arange(n, 0, -1, dtype=np.uint64) & m).sum() & m)
+     return a, b
+ 
++if len(A) < 0x1c or A[:4] != b'L6IA' or be(0x14) == 0:
++    sys.exit('Malformed or empty L6IA archive')
+ off, ok = 0x1c, True
+-for n in range(be(0x14)):
++count = be(0x14)
++if count > (len(A) - 0x18) // 0x224:
++    sys.exit('Entry count exceeds archive size')
++for n in range(count):
++    if off + 0x224 > len(A) or be(off - 4) != n or be(off) != 0x03800000:
++        sys.exit(f'Malformed entry header at {off:#x}')
+     etype, words, h1, h2 = be(off+4), be(off+0xc), be(off+0x10), be(off+0x14)
++    end = off + 0x20 + words * 4
++    if words < 0x81 or end > len(A) or be(off + 0x20) != 0x56112603:
++        sys.exit(f'Malformed entry body at {off:#x}')
++    if be(off + 0x2c) != words * 4 - 0x200:
++        sys.exit(f'Inconsistent payload length at {off:#x}')
+     body = A[off+0x20: off+0x20+words*4]      # starts at the 0x56112603 word
+     a, b = fletcher_words(body)
+     crc_stored, plen = be(off+0x28), be(off+0x2c)
+@@ -26,6 +38,8 @@ for n in range(be(0x14)):
+     magic = struct.unpack_from('<I', swapped, 0)[0]
+     if magic == 0x230b0c5e:     # LPC image header
+         _, size, icrc, ver = struct.unpack_from('<4I', swapped, 0)
++        if not 0x34 <= size <= len(swapped):
++            sys.exit(f"Invalid LPC image size in entry {n}")
+         c2 = zlib.crc32(swapped[0x34:size])
+         line += f" image(size={size:#x}) crc32={'OK' if c2==icrc else 'BAD'}"
+         ok &= c2 == icrc
+@@ -43,3 +57,5 @@ for n in range(be(0x14)):
+     print(line)
+     off += 0x24 + words*4
+ print('ALL OK' if ok else 'MISMATCH')
++
++sys.exit(0 if ok else 1)
+diff --git a/tools/patch_click.py b/tools/patch_click.py
+index bb5876e..8091e91 100644
+--- a/tools/patch_click.py
++++ b/tools/patch_click.py
+@@ -194,7 +194,7 @@ def pm_base(n_insns, lay=None):
+     return base
+ 
+ 
+-def add_click(l6ia_bytes, log=print):
++def add_click(l6ia_bytes, log=print, *, layout=None):
+     """The Metronome model and its kernel. Returns (new l6ia bytes, info dict)."""
+     e0 = kit.get_entry_swapped(l6ia_bytes, 0)
+     e3 = kit.get_entry_swapped(l6ia_bytes, 3)
+@@ -246,7 +246,7 @@ def add_click(l6ia_bytes, log=print):
+     e2_raw, _ = kit.expand_sharc_blob0_buffer(e2_raw)
+     out, _, _ = l6ia.rebuild_archive(l6ia_bytes, {0: bytes(new_e0), 2: l6ia.swap32(e2_raw), 3: new_e3, 4: new_e4})
+ 
+-    base = pm_base(kernel_size())
++    base = pm_base(kernel_size(), layout)
+     out, kinfo = kit.patch_kernel(out, open(ASM).read(), 'click.asm', prim=PRIM, pm_base=base, relocate=False, log=log)
+     return out, {'model_id': model_id, 'blob': blob, 'composite': comp, 'preset_id': pid, 'pm_base': base,
+                  'entry': kinfo['entry'], 'params': params}
+diff --git a/tools/patch_comp.py b/tools/patch_comp.py
+index 4377927..e9cc0f5 100644
+--- a/tools/patch_comp.py
++++ b/tools/patch_comp.py
+@@ -35,7 +35,7 @@ COMP_MODELS = (   # (model, its compressor core's primitive: one of WRAPS)
+ GR_KNOBS = (   # (name, displayName, displayNameShort, value labels, default): integer lists, as Ratio
+     ('GRPosition', 'Mtr Position', 'Mtr Pos', ('Middle', 'Top', 'Left', 'Bottom', 'Right'), 0),
+     ('GRDirection', 'Mtr Direction', 'Mtr Dir', ('Normal', 'Reverse'), 0),
+-    ('GRThickness', 'Mtr Thickness', 'Mtr Thk', tuple(str(k) for k in range(21)), 0),    # 0 is off: the meter is opt-in
++    ('GRThickness', 'Mtr Size', 'Mtr Size', ('Off', 'S', 'M', 'L', 'XL'), 0),
+ )
+ INT_INPUT_OP = 0x0b
+ GR_PID = 100                    # src/sharc/frame_probe.asm's GR_PID: past every core's own pids (the LA Studio Comp's go to 14)
+@@ -77,7 +77,9 @@ def e3_add_strings(e3, wanted):
+         return bytes(e3), index
+     n = nstr + len(added) // 12
+     section = struct.pack('<2I', n, 8 + 12 * n + len(data)) + recs + added + data
+-    if str_off < STOCK_E3_END:
++    if str_off == STR_HOME and h[6] >= STOCK_E3_END and STR_HOME + len(section) <= h[8]:
++        out = e3[:STR_HOME] + section + bytes(h[8] - STR_HOME - len(section)) + e3[h[8]:]
++    elif str_off < STOCK_E3_END:
+         out = e3 + bytes(pa._align(len(e3), 0x200) - len(e3))
+         h[3] = len(out)
+         out += section
+@@ -320,9 +322,10 @@ def e0_set_param_counts(e0, name_idx, old, new):
+     return bytes(e0)
+ 
+ 
+-def dsp_asm(dm, pm):
++def dsp_asm(dm, pm, source=None):
+     """frame_probe.asm with its data at dm and its code at pm."""
+-    return open(ASM).read().replace('GR_DM_BASE', f'{dm:#x}').replace('GR_PM_BASE', f'{pm:#x}')
++    source = open(ASM).read() if source is None else source
++    return source.replace('GR_DM_BASE', f'{dm:#x}').replace('GR_PM_BASE', f'{pm:#x}')
+ 
+ 
+ def nw(pm):
+@@ -330,11 +333,11 @@ def nw(pm):
+     return nam_multi.NW3 + (pm - nam_multi.NW3) * 3 // 2
+ 
+ 
+-def dsp_place():
++def dsp_place(layout=None, source=None):
+     """(DM base, PM base) of frame_probe.asm: its data right above NAM's slots, then its code, clear of the
+     Metronome's kernel under NAM's cold code (there in every build, so GR builds share one layout)."""
+-    lay = patch_click.nam_layout(gr=True)
+-    secs, _ = pa.sasm.assemble(dsp_asm(nam_multi.B3, nam_multi.NW3), 'frame_probe.asm')
++    lay = layout or patch_click.nam_layout(gr=True)
++    secs, _ = pa.sasm.assemble(dsp_asm(nam_multi.B3, nam_multi.NW3, source), 'frame_probe.asm')
+     n_dm, n_pm = (sum(len(s.words) for s in secs if s.kind == k) for k in ('dm', 'pm'))
+     dm = lay.b3_to
+     pm = nam_multi.NW3 - (-(dm + n_dm - nam_multi.NW3) * 2 // 3)
+@@ -346,10 +349,10 @@ def dsp_place():
+     return dm, pm
+ 
+ 
+-def patch_dsp(l6ia_bytes, log=print):
++def patch_dsp(l6ia_bytes, log=print, *, layout=None, source=None):
+     """Entry 2: frame_probe.asm at dsp_place(), and each core of WRAPS entering it, its control function too."""
+-    dm, pm = dsp_place()
+-    secs, syms = pa.sasm.assemble(dsp_asm(dm, pm), 'frame_probe.asm')
++    dm, pm = dsp_place(layout, source)
++    secs, syms = pa.sasm.assemble(dsp_asm(dm, pm, source), 'frame_probe.asm')
+     entries = pa.l6ia.parse(l6ia_bytes)
+     e2 = l6ia_bytes[entries[2]['payload_off']: entries[2]['payload_off'] + entries[2]['payload_len']]
+     ldr = []
+diff --git a/tools/patch_menu.py b/tools/patch_menu.py
+index 6b87fa4..0bac913 100644
+--- a/tools/patch_menu.py
++++ b/tools/patch_menu.py
+@@ -191,7 +191,7 @@ def dispatch_cave(at, site, tables, stub=None):
+     return a.bytes()
+ 
+ 
+-def text_cave(at, tables):
++def text_cave(at, tables, *, continuation=TEXT_FN_CONT, copy_text=STRCPY):
+     """Runs the two instructions the hook replaced, then answers our IDs (ID -> (strings, max, default)) and leaves others to stock."""
+     a = Asm(at)
+     a.raw(bytes.fromhex('30b5 85b0'))       # push {r4,r5,lr}; sub sp,#0x14
+@@ -205,11 +205,11 @@ def text_cave(at, tables):
+         a.movw_movt(1, table)
+         a.bw('common')
+         a.label(f'not{pid}')
+-    a.bw(TEXT_FN_CONT)
++    a.bw(continuation)
+     a.label('common')
+     a.h(0x4610, 0x461a)                     # mov r0,r2 (dst); mov r2,r3 (len)
+     a.h(0xeb04, 0x0484, 0xeb01, 0x0184)     # r4 *= 5; r1 += r4 * 4: table + 20 * value
+-    a.bl(STRCPY)
++    a.bl(copy_text)
+     a.h(0x2000, 0xb005, 0xbd30)             # movs r0,#0; add sp,#0x14; pop {r4,r5,pc}
+     return a.bytes()
+ 
+@@ -342,7 +342,7 @@ def add_strip(p, icons):
+         p.put(at, a.bytes(), 'the icon strip')
+ 
+ 
+-def hxtra_inc(mods, ids, virt_set=None):
++def hxtra_inc(mods, ids, virt_set=None, *, getter=GET_VALUE, context=SETTER_CONTEXT, setter_fn=SETTER):
+     """The text of hxtra.inc: every setting's ID, max and default, and the HXTRA_SETTING_GET and HXTRA_SETTING_SET macros;
+     virt_set, the virtual settings engine's store, when the build has one."""
+     lines = ['@ hxtra.inc - generated by tools/patch_menu.py from tools/features and tools/setting_ids.py']
+@@ -352,7 +352,7 @@ def hxtra_inc(mods, ids, virt_set=None):
+             if name in ids:
+                 sym = 'SETTING_' + name.replace('.', '_').upper()
+                 lines += [f'.equ {sym}, {ids[name]}', f'.equ {sym}_MAX, {s.max}', f'.equ {sym}_DEFAULT, {s.default}']
+-    get = GET_VALUE | 1
++    get = getter | 1
+     lines += [
+         '.macro HXTRA_SETTING_GET',
+         '.thumb_func',
+@@ -389,7 +389,7 @@ def hxtra_inc(mods, ids, virt_set=None):
+             '    blx r3',
+             '    b 2f',
+         ]
+-    ctx, setter = SETTER_CONTEXT | 1, SETTER | 1
++    ctx, setter = context | 1, setter_fn | 1
+     lines += [
+         '1:  mov r4, r0',
+         '    movs r2, #2',
+diff --git a/tools/setting_ids.py b/tools/setting_ids.py
+index 36c6a88..c565a19 100644
+--- a/tools/setting_ids.py
++++ b/tools/setting_ids.py
+@@ -68,6 +68,12 @@ VIRTUAL = (   # (virtual ID, container ID, first bit, bits, the '<feature>.<key>
+     (0xdd, 110, 12, 4, 'long_press.fs9_function', ''),
+     (0xde, 110, 16, 4, 'long_press.fs10_function', ''),
+     (0xdf, 111, 0, 4, 'tap_color.color', ''),
++    (0xe0, 112, 0, 2, 'usb_monitor.path_a', ''),
++    (0xe1, 113, 0, 4, 'preset_color.color', ''),
++    (0xe2, 113, 4, 4, 'preset_color.this', ''),
++    (0xe3, 107, 4, 4, 'dsp_meter.blocks', ''),
++    (0xe4, 107, 8, 4, 'dsp_meter.total', ''),
++    (0xe5, 107, 12, 4, 'dsp_meter.browser', ''),
+ )
+ 
+ 
