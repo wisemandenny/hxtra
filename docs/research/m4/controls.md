@@ -115,9 +115,9 @@ PAGE◀ and PAGE▶ on Home step the footswitch mode through Stomp, Scroll, Pres
 | Command Center | Knob 1 Copy Command, Knob 2 Copy All Commands, Knob 3 Paste; PAGE▶: Knob 1 Clear Command, Knob 2 Clear All Commands, Knob 3 OK |
 | Favorites (in the model list) | Clear, Reorder (a turn) and Rename Favorite |
 
-## Looper on a footswitch [hypothesis]
+## Looper on a footswitch
 
-The 1 Switch Looper's footswitch: press records, plays, then toggles play and overdub; hold 1 s while playing undoes, again redoes; a quick double press stops; hold while stopped erases. The Shuffling Looper: press records, plays, then reshuffles; double press stops; hold erases. Over USB a double press is two `Input.press` calls (`CLICK_S` + `GAP_S` apart); the double-press window is not known.
+The 1 Switch Looper's footswitch: press records, plays, then toggles play and overdub; hold 1 s while playing undoes [verified offline, footswitches.md], again redoes [hypothesis]. A quick double press stops when its second press comes within 20 ticks (200 ms) of the first press, while a press on a playing loop starts an overdub 21 ticks after its release, so a second press between the two overdubs instead of stopping (HXtra's Looper DblPress keeps the window open until the overdub); a hold while stopped erases only as the second press of a double press, so a press and hold on a stopped loop plays it for the second it is held, then erases it [verified offline, by disassembly; this note had "hold while stopped erases" and the window unknown]: [footswitches.md](footswitches.md#the-1-switch-loopers-footswitch-verified-offline). The Shuffling Looper: press records, plays, then reshuffles; double press stops; hold erases [hypothesis]. Over USB a double press is two `Input.press` calls (`CLICK_S` + `GAP_S` apart).
 
 ## Out of reach
 

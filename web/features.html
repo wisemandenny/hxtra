@@ -169,6 +169,12 @@
     <td data-i18n="fx-loop-gate.where">The block's Gate, Threshold and Decay knobs</td>
     </tr>
     <tr>
+    <td><a href="#looper" data-i18n="looper.name">Looper</a></td>
+    <td data-i18n="looper.desc">Lets a stopped loop of the 1 Switch Looper start when you lift its footswitch instead of when you press it (Looper Stop&gt;Ply: Release), so holding the footswitch clears the loop without playing it first, and makes a quick double press stop the loop whenever its second press comes before the overdub would start (Looper DblPress: Release).</td>
+    <td data-i18n="looper.floc">The 1 Switch Looper's footswitch</td>
+    <td data-i18n="looper.where">Global Settings &gt; Footswitches, pages 5 and 6 (page 2 in a build without Foot Switch Long Press)</td>
+    </tr>
+    <tr>
     <td><a href="#metronome" data-i18n="metronome.name">Metronome</a></td>
     <td data-i18n="metronome.desc">A click track in time with the tempo, as a block: set its beat, level and an accented downbeat, and play it under your signal or on its own.</td>
     <td data-i18n="metronome.floc">Model browser: Looper &gt; Metronome</td>
@@ -523,6 +529,43 @@
         <td><strong>Decay</strong></td>
         <td>0.01 … <strong>0.1</strong> … 1 s</td>
         <td data-i18n="fx-loop-gate.what3">How fast the gate closes.</td>
+        </tr>
+        </tbody>
+        </table></div>
+      </div>
+    </section>
+
+    <section class="card feat" id="looper">
+      <h2><img class="ico" src="../docs/assets/icons/looper.svg" width="28" height="28" alt=""><span data-i18n="looper.name">Looper</span></h2>
+      <p data-i18n="looper.p1">On a stock HX Stomp, pressing the 1 Switch Looper's footswitch while the loop is stopped plays it at once, and a hold clears the loop only when that press started it, so holding the footswitch to clear a stopped loop plays it for a second first. With <strong>Stop&gt;Ply</strong> on <strong>Release</strong>, the default, a stopped loop starts when the footswitch comes up instead.</p>
+  <ul>
+  <li data-i18n="looper.li1"><strong>A tap</strong> on a stopped loop plays it as you lift the footswitch: later than on stock, by as long as your foot is down.</li>
+  <li data-i18n="looper.li2"><strong>A 1 s hold</strong> on a stopped loop clears it without playing it.</li>
+  <li data-i18n="looper.li5"><strong>While a loop plays</strong>, a double press whose second press you hold clears it without playing it again, as on a stock HX Stomp: the second press stops the loop and the hold clears it. Stop&gt;Ply's Release is for clearing a stopped loop without hearing it.</li>
+  <li data-i18n="looper.li3"><strong>Everything else</strong> works as stock, but for the double press below: recording starts and the loop closes on the press, a press while playing starts an overdub, a double press and hold clears, and a hold while playing undoes an overdub. The Shuffling Looper, MIDI and the Command Center's Looper commands are unchanged.</li>
+  </ul>
+  <p data-i18n="looper.p2">On a stock HX Stomp, a quick double press stops the loop only if the second press comes within about 0.2 s of the first press, and a press on a playing loop starts an overdub about 0.2 s after you lift it. A second press between the two does nothing, and the overdub starts about 0.2 s after you lift it, so a double press whose first press you hold a moment overdubs instead of stopping. With <strong>DblPress</strong> on <strong>Release</strong>, the default, a second press stops the loop until the moment the overdub would start, and a press after that ends the overdub as stock.</p>
+      <div class="settings">
+        <h3 data-i18n="settings">Settings</h3>
+        <p class="where" data-i18n="looper.where">Global Settings &gt; Footswitches, pages 5 and 6 (page 2 in a build without Foot Switch Long Press)</p>
+        <div class="tbl"><table>
+        <thead>
+        <tr>
+        <th data-i18n="th.setting">Setting</th>
+        <th data-i18n="th.values">Values</th>
+        <th data-i18n="th.what">What it does</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><strong>Looper Stop&gt;Ply</strong></td>
+        <td>Press, <strong>Release</strong></td>
+        <td data-i18n="looper.what1">When a press of the 1 Switch Looper's footswitch starts a stopped loop: Press on the press, as stock; Release on the release, so a hold clears the loop without playing it.</td>
+        </tr>
+        <tr>
+        <td><strong>Looper DblPress</strong></td>
+        <td><strong>Release</strong>, Stock</td>
+        <td data-i18n="looper.what2">How long a second press stops the loop: Release until about 0.2 s after you lift the first press, when its overdub would start; Stock within about 0.2 s of the first press, as stock.</td>
         </tr>
         </tbody>
         </table></div>
@@ -886,6 +929,10 @@ var LANGS = {
     "fx-loop-gate.desc": "Una puerta de ruido sobre lo que vuelve del loop, como la del bloque Input, para que un pedal ruidoso en el loop ya no necesite un bloque Noise Gate.",
     "fx-loop-gate.floc": "Los bloques FX Loop y Return",
     "fx-loop-gate.where": "Las perillas Gate, Threshold y Decay del bloque",
+    "looper.name": "Looper",
+    "looper.desc": "Permite que un loop detenido del 1 Switch Looper arranque al soltar su footswitch en lugar de al pulsarlo (Looper Stop&gt;Ply: Release), así que mantenerlo pulsado borra el loop sin reproducirlo antes, y hace que una doble pulsación rápida detenga el loop siempre que la segunda pulsación llegue antes de que empiece el overdub (Looper DblPress: Release).",
+    "looper.floc": "El footswitch del 1 Switch Looper",
+    "looper.where": "Global Settings &gt; Footswitches, páginas 5 y 6 (página 2 en un build sin Pulsación larga de footswitch)",
     "metronome.name": "Metrónomo",
     "metronome.desc": "Una pista de clic al tempo, como bloque: ajusta su pulso, su nivel y un tiempo fuerte acentuado, y tócalo bajo tu señal o solo.",
     "metronome.floc": "Navegador de modelos: Looper &gt; Metronome",
@@ -982,6 +1029,14 @@ var LANGS = {
     "fx-loop-gate.what1": "Activa la puerta. En Off, el bloque suena como con el firmware original.",
     "fx-loop-gate.what2": "Por debajo de este nivel, la señal que vuelve se silencia.",
     "fx-loop-gate.what3": "Lo rápido que se cierra la puerta.",
+    "looper.p1": "En un HX Stomp original, pulsar el footswitch del 1 Switch Looper con el loop detenido lo reproduce al instante, y mantenerlo pulsado solo borra el loop si esa pulsación lo puso en marcha, así que mantener el footswitch para borrar un loop detenido lo reproduce un segundo antes. Con <strong>Stop&gt;Ply</strong> en <strong>Release</strong>, el valor por defecto, un loop detenido arranca al soltar el footswitch.",
+    "looper.li1": "<strong>Un toque</strong> con el loop detenido lo reproduce al soltar el footswitch: más tarde que en el original, tanto como lo mantengas pulsado.",
+    "looper.li2": "<strong>Mantenerlo 1 s</strong> con el loop detenido lo borra sin reproducirlo.",
+    "looper.li5": "<strong>Durante la reproducción</strong>, una doble pulsación con la segunda pulsación mantenida borra el loop sin volver a reproducirlo, como en el original: la segunda pulsación lo detiene y al mantenerla se borra. El Release de Stop&gt;Ply sirve para borrar un loop detenido sin oírlo.",
+    "looper.li3": "<strong>Todo lo demás</strong> funciona como en el original, salvo la doble pulsación (abajo): la grabación empieza y el loop se cierra al pulsar, una pulsación durante la reproducción inicia un overdub, una doble pulsación mantenida lo borra y mantenerlo pulsado durante la reproducción deshace un overdub. El Shuffling Looper, el MIDI y los comandos Looper del Command Center no cambian.",
+    "looper.p2": "En un HX Stomp original, una doble pulsación rápida solo detiene el loop si la segunda pulsación llega en unos 0,2 s desde la primera, y una pulsación con el loop sonando inicia un overdub unos 0,2 s después de soltarla. Una segunda pulsación entre ambos momentos no hace nada, y el overdub empieza unos 0,2 s después de soltarla, así que una doble pulsación cuya primera pulsación mantienes un instante graba un overdub en lugar de detener el loop. Con <strong>DblPress</strong> en <strong>Release</strong>, el valor por defecto, una segunda pulsación detiene el loop hasta el momento en que empezaría el overdub, y una pulsación posterior termina el overdub como en el original.",
+    "looper.what1": "Cuándo una pulsación del footswitch del 1 Switch Looper inicia un loop detenido: Press al pulsar, como en el original; Release al soltar, de modo que mantenerlo pulsado borra el loop sin reproducirlo.",
+    "looper.what2": "Hasta cuándo una segunda pulsación detiene el loop: Release, hasta unos 0,2 s después de soltar la primera pulsación, cuando empezaría su overdub; Stock, en unos 0,2 s desde la primera pulsación, como en el original.",
     "metronome.p1": "Una pista de clic al tempo, como bloque: añádelo desde el navegador de modelos, Looper &gt; Metronome &gt; Metronome, en cualquier punto del flujo de señal. Es un bloque de efecto mono, listado en Looper para que sea fácil de encontrar; no es un looper. En el flujo de señal es verde azulado, encendido cuando está activo y atenuado cuando no, y su icono es un metrónomo.",
     "metronome.li1": "<strong>El pulso</strong> empieza cuando empieza el bloque, y un tempo o un Time nuevos cuentan desde el último pulso. Marcar el tempo aún no ajusta el pulso a tus toques, y el punto del <a href=\"#bpm\">Indicador de BPM</a> parpadea con el anillo de TAP, no con el clic.",
     "metronome.li2": "<strong>Los presets</strong> guardan el bloque como modelo 181, igual que las versiones anteriores que lo listaban en Modulation, así que los presets hechos con ellas lo conservan.",
@@ -1102,6 +1157,10 @@ var LANGS = {
     "fx-loop-gate.desc": "Um noise gate no sinal que volta do loop, como o do bloco Input, para que um pedal ruidoso no loop não precise mais de um bloco Noise Gate.",
     "fx-loop-gate.floc": "Os blocos FX Loop e Return",
     "fx-loop-gate.where": "Os knobs Gate, Threshold e Decay do bloco",
+    "looper.name": "Looper",
+    "looper.desc": "Permite que um loop parado do 1 Switch Looper comece quando você solta o footswitch, e não quando o pressiona (Looper Stop&gt;Ply: Release), então segurar o footswitch apaga o loop sem tocá-lo antes, e faz uma pressão dupla rápida parar o loop sempre que a segunda pressão vem antes de o overdub começar (Looper DblPress: Release).",
+    "looper.floc": "O footswitch do 1 Switch Looper",
+    "looper.where": "Global Settings &gt; Footswitches, páginas 5 e 6 (página 2 numa build sem Pressão longa nos footswitches)",
     "metronome.name": "Metrônomo",
     "metronome.desc": "Um click no andamento, em forma de bloco: ajuste a batida, o nível e um tempo forte acentuado, e ouça-o junto com o seu sinal ou sozinho.",
     "metronome.floc": "Navegador de modelos: Looper &gt; Metronome",
@@ -1198,6 +1257,14 @@ var LANGS = {
     "fx-loop-gate.what1": "Liga o gate. Em Off, o bloco soa como no firmware original.",
     "fx-loop-gate.what2": "Abaixo deste nível, o sinal que volta é silenciado.",
     "fx-loop-gate.what3": "A velocidade com que o gate fecha.",
+    "looper.p1": "Num HX Stomp original, pressionar o footswitch do 1 Switch Looper com o loop parado o toca na hora, e segurar só apaga o loop se essa pressão o iniciou, então segurar o footswitch para apagar um loop parado o toca por um segundo antes. Com <strong>Stop&gt;Ply</strong> em <strong>Release</strong>, o padrão, um loop parado começa quando você solta o footswitch.",
+    "looper.li1": "<strong>Um toque</strong> com o loop parado o toca quando você solta o footswitch: mais tarde que no original, pelo tempo que você o mantém pressionado.",
+    "looper.li2": "<strong>Segurar por 1 s</strong> com o loop parado o apaga sem tocá-lo.",
+    "looper.li5": "<strong>Com o loop tocando</strong>, uma pressão dupla com a segunda pressão segurada apaga o loop sem tocá-lo de novo, como no original: a segunda pressão para o loop e segurá-la o apaga. O Release de Stop&gt;Ply serve para apagar um loop parado sem ouvi-lo.",
+    "looper.li3": "<strong>Todo o resto</strong> funciona como no original, exceto a pressão dupla (abaixo): a gravação começa e o loop fecha ao pressionar, uma pressão durante a reprodução inicia um overdub, uma pressão dupla segurada apaga e segurar durante a reprodução desfaz um overdub. O Shuffling Looper, o MIDI e os comandos Looper do Command Center não mudam.",
+    "looper.p2": "Num HX Stomp original, uma pressão dupla rápida só para o loop se a segunda pressão vier em cerca de 0,2 s depois da primeira, e uma pressão com o loop tocando inicia um overdub cerca de 0,2 s depois que você a solta. Uma segunda pressão entre os dois momentos não faz nada, e o overdub começa cerca de 0,2 s depois que você a solta, então uma pressão dupla em que você segura a primeira pressão por um instante grava um overdub em vez de parar. Com <strong>DblPress</strong> em <strong>Release</strong>, o padrão, uma segunda pressão para o loop até o momento em que o overdub começaria, e uma pressão depois disso encerra o overdub como no original.",
+    "looper.what1": "Quando uma pressão no footswitch do 1 Switch Looper inicia um loop parado: Press ao pressionar, como no original; Release ao soltar, para que segurar apague o loop sem tocá-lo.",
+    "looper.what2": "Até quando uma segunda pressão para o loop: Release, até cerca de 0,2 s depois que você solta a primeira pressão, quando o overdub dela começaria; Stock, em cerca de 0,2 s depois da primeira pressão, como no original.",
     "metronome.p1": "Um click no andamento, em forma de bloco: adicione-o pelo navegador de modelos, Looper &gt; Metronome &gt; Metronome, em qualquer ponto do fluxo de sinal. É um bloco de efeito mono, listado em Looper para ser fácil de achar; não é um looper. No fluxo de sinal ele é verde-azulado, aceso quando ligado e esmaecido quando desligado, e o ícone é um metrônomo.",
     "metronome.li1": "<strong>A batida</strong> começa quando o bloco começa, e um novo andamento ou Time conta a partir da última batida. Bater o andamento no TAP ainda não alinha a batida com os seus toques, e o ponto do <a href=\"#bpm\">Indicador de BPM</a> pisca com o anel do TAP, não com o click.",
     "metronome.li2": "<strong>Presets</strong> guardam o bloco como modelo 181, como faziam as versões anteriores que o listavam em Modulation, então os presets feitos com elas o mantêm.",
@@ -1318,6 +1385,10 @@ var LANGS = {
     "fx-loop-gate.desc": "Un noise gate sur ce qui revient de la boucle, comme celui du bloc Input : une pédale bruyante dans la boucle n'occupe plus de bloc Noise Gate.",
     "fx-loop-gate.floc": "Les blocs FX Loop et Return",
     "fx-loop-gate.where": "Les potentiomètres Gate, Threshold et Decay du bloc",
+    "looper.name": "Looper",
+    "looper.desc": "Permet de lancer une boucle arrêtée du 1 Switch Looper au relâchement de son footswitch plutôt qu'à l'appui (Looper Stop&gt;Ply : Release), pour qu'un maintien efface la boucle sans la jouer d'abord, et fait qu'un double appui rapide arrête la boucle chaque fois que le second appui arrive avant le début de l'overdub (Looper DblPress : Release).",
+    "looper.floc": "Le footswitch du 1 Switch Looper",
+    "looper.where": "Global Settings &gt; Footswitches, pages 5 et 6 (page 2 dans un build sans Appui long sur les footswitchs)",
     "metronome.name": "Métronome",
     "metronome.desc": "Un clic calé sur le tempo, sous forme de bloc : réglez sa pulsation, son niveau et un premier temps accentué, et jouez-le sous votre signal ou seul.",
     "metronome.floc": "Navigateur de modèles : Looper &gt; Metronome",
@@ -1414,6 +1485,14 @@ var LANGS = {
     "fx-loop-gate.what1": "Active le gate. Sur Off, le bloc sonne comme sur le firmware d'origine.",
     "fx-loop-gate.what2": "Sous ce niveau, le signal de retour est coupé.",
     "fx-loop-gate.what3": "La vitesse de fermeture du gate.",
+    "looper.p1": "Sur un HX Stomp d'origine, appuyer sur le footswitch du 1 Switch Looper quand la boucle est arrêtée la joue aussitôt, et un maintien n'efface la boucle que si cet appui l'a lancée : maintenir le footswitch pour effacer une boucle arrêtée la joue donc une seconde d'abord. Avec <strong>Stop&gt;Ply</strong> sur <strong>Release</strong>, la valeur par défaut, une boucle arrêtée démarre au relâchement du footswitch.",
+    "looper.li1": "<strong>Un appui bref</strong> sur une boucle arrêtée la joue au relâchement du footswitch : plus tard que d'origine, d'autant que vous le gardez enfoncé.",
+    "looper.li2": "<strong>Un maintien de 1 s</strong> sur une boucle arrêtée l'efface sans la jouer.",
+    "looper.li5": "<strong>Pendant la lecture</strong>, un double appui dont on maintient le second appui efface la boucle sans la rejouer, comme d'origine : le second appui arrête la boucle et le maintien l'efface. Le Release de Stop&gt;Ply sert à effacer une boucle arrêtée sans l'entendre.",
+    "looper.li3": "<strong>Tout le reste</strong> fonctionne comme d'origine, sauf le double appui (ci-dessous) : l'enregistrement démarre et la boucle se ferme à l'appui, un appui pendant la lecture lance un overdub, un double appui maintenu efface et un maintien pendant la lecture annule un overdub. Le Shuffling Looper, le MIDI et les commandes Looper du Command Center ne changent pas.",
+    "looper.p2": "Sur un HX Stomp d'origine, un double appui rapide n'arrête la boucle que si le second appui arrive dans les 0,2 s environ qui suivent le premier, et un appui pendant la lecture lance un overdub environ 0,2 s après son relâchement. Un second appui entre les deux ne fait rien, et l'overdub commence environ 0,2 s après son relâchement : un double appui dont on garde le premier appui un instant enregistre donc un overdub au lieu d'arrêter. Avec <strong>DblPress</strong> sur <strong>Release</strong>, la valeur par défaut, un second appui arrête la boucle jusqu'au moment où l'overdub commencerait, et un appui ensuite termine l'overdub comme d'origine.",
+    "looper.what1": "Quand un appui sur le footswitch du 1 Switch Looper lance une boucle arrêtée : Press à l'appui, comme d'origine ; Release au relâchement, pour qu'un maintien efface la boucle sans la jouer.",
+    "looper.what2": "Jusqu'à quand un second appui arrête la boucle : Release, jusqu'à environ 0,2 s après le relâchement du premier appui, quand son overdub commencerait ; Stock, dans les 0,2 s environ qui suivent le premier appui, comme d'origine.",
     "metronome.p1": "Un clic calé sur le tempo, sous forme de bloc : ajoutez-le depuis le navigateur de modèles, Looper &gt; Metronome &gt; Metronome, n'importe où dans le flux du signal. C'est un bloc d'effet mono, rangé sous Looper pour être facile à trouver ; ce n'est pas un looper. Dans le flux du signal, il est bleu canard, allumé quand il est actif et atténué quand il ne l'est pas, et son icône est un métronome.",
     "metronome.li1": "<strong>La pulsation</strong> démarre avec le bloc, et un nouveau tempo ou un nouveau Time compte à partir du dernier temps. Battre le tempo ne cale pas encore la pulsation sur vos taps, et le point de l'<a href=\"#bpm\">Affichage du BPM</a> clignote avec l'anneau TAP, pas avec le clic.",
     "metronome.li2": "<strong>Les presets</strong> stockent le bloc comme modèle 181, comme les versions précédentes qui le rangeaient sous Modulation : les presets créés avec elles le conservent.",
@@ -1534,6 +1613,10 @@ var LANGS = {
     "fx-loop-gate.desc": "Ein Noise Gate für das, was aus dem Loop zurückkommt, wie das des Input-Blocks, sodass ein rauschendes Pedal im Loop keinen eigenen Noise-Gate-Block mehr braucht.",
     "fx-loop-gate.floc": "Die Blöcke FX Loop und Return",
     "fx-loop-gate.where": "Die Regler Gate, Threshold und Decay des Blocks",
+    "looper.name": "Looper",
+    "looper.desc": "Lässt einen gestoppten Loop des 1 Switch Looper beim Loslassen seines Fußschalters statt beim Drücken starten (Looper Stop&gt;Ply: Release), sodass Halten den Loop löscht, ohne ihn vorher abzuspielen, und lässt einen schnellen Doppeldruck den Loop immer stoppen, wenn der zweite Druck vor dem Start des Overdubs kommt (Looper DblPress: Release).",
+    "looper.floc": "Der Fußschalter des 1 Switch Looper",
+    "looper.where": "Global Settings &gt; Footswitches, Seiten 5 und 6 (Seite 2 in einem Build ohne „Langes Drücken der Fußschalter“)",
     "metronome.name": "Metronom",
     "metronome.desc": "Ein Click-Track im Tempo, als Block: Stell den Schlag, die Lautstärke und einen betonten Schlag ein und spiel ihn unter deinem Signal oder allein.",
     "metronome.floc": "Modell-Browser: Looper &gt; Metronome",
@@ -1630,6 +1713,14 @@ var LANGS = {
     "fx-loop-gate.what1": "Schaltet das Gate ein. Auf Off klingt der Block wie mit Original-Firmware.",
     "fx-loop-gate.what2": "Unterhalb dieses Pegels wird das zurückkommende Signal stummgeschaltet.",
     "fx-loop-gate.what3": "Wie schnell das Gate schließt.",
+    "looper.p1": "Auf einem originalen HX Stomp spielt ein Druck auf den Fußschalter des 1 Switch Looper einen gestoppten Loop sofort ab, und Halten löscht den Loop nur, wenn dieser Druck ihn gestartet hat: Wer einen gestoppten Loop durch Halten löschen will, hört ihn also erst eine Sekunde lang. Mit <strong>Stop&gt;Ply</strong> auf <strong>Release</strong>, der Voreinstellung, startet ein gestoppter Loop erst beim Loslassen des Fußschalters.",
+    "looper.li1": "<strong>Kurzes Antippen</strong> bei gestopptem Loop spielt ihn beim Loslassen ab: später als im Original, um so lange, wie du den Fußschalter gedrückt hältst.",
+    "looper.li2": "<strong>1 s Halten</strong> bei gestopptem Loop löscht ihn, ohne ihn abzuspielen.",
+    "looper.li5": "<strong>Während der Loop läuft</strong>, löscht ein Doppeldruck mit gehaltenem zweitem Druck ihn, ohne ihn erneut abzuspielen, wie im Original: Der zweite Druck stoppt den Loop, das Halten löscht ihn. Release bei Stop&gt;Ply ist dafür da, einen gestoppten Loop zu löschen, ohne ihn zu hören.",
+    "looper.li3": "<strong>Alles andere</strong> funktioniert wie im Original, bis auf den Doppeldruck (unten): Die Aufnahme beginnt und der Loop schließt sich beim Drücken, ein Druck während der Wiedergabe startet ein Overdub, ein Doppeldruck mit Halten löscht und Halten während der Wiedergabe macht ein Overdub rückgängig. Der Shuffling Looper, MIDI und die Looper-Befehle des Command Center bleiben unverändert.",
+    "looper.p2": "Auf einem originalen HX Stomp stoppt ein schneller Doppeldruck den Loop nur, wenn der zweite Druck innerhalb von etwa 0,2 s nach dem ersten kommt, und ein Druck während der Wiedergabe startet etwa 0,2 s nach dem Loslassen ein Overdub. Ein zweiter Druck dazwischen bewirkt nichts, und das Overdub startet etwa 0,2 s nach seinem Loslassen: Wer beim Doppeldruck den ersten Druck einen Moment hält, nimmt also ein Overdub auf, statt zu stoppen. Mit <strong>DblPress</strong> auf <strong>Release</strong>, der Voreinstellung, stoppt ein zweiter Druck den Loop bis zu dem Moment, in dem das Overdub starten würde, und ein Druck danach beendet das Overdub wie im Original.",
+    "looper.what1": "Wann ein Druck auf den Fußschalter des 1 Switch Looper einen gestoppten Loop startet: Press beim Drücken, wie im Original; Release beim Loslassen, sodass Halten den Loop löscht, ohne ihn abzuspielen.",
+    "looper.what2": "Wie lange ein zweiter Druck den Loop stoppt: Release bis etwa 0,2 s nach dem Loslassen des ersten Drucks, wenn dessen Overdub starten würde; Stock innerhalb von etwa 0,2 s nach dem ersten Druck, wie im Original.",
     "metronome.p1": "Ein Click-Track im Tempo, als Block: Füg ihn aus dem Modell-Browser hinzu, Looper &gt; Metronome &gt; Metronome, an beliebiger Stelle im Signalfluss. Es ist ein Mono-Effektblock, der unter Looper steht, damit man ihn leicht findet; ein Looper ist er nicht. Im Signalfluss ist er türkis, hell, wenn er an ist, und gedimmt, wenn er aus ist, und sein Symbol ist ein Metronom.",
     "metronome.li1": "<strong>Der Schlag</strong> beginnt, wenn der Block startet, und ein neues Tempo oder eine neue Time zählt ab dem letzten Schlag. Tempo-Tappen legt den Schlag noch nicht auf deine Taps, und der Punkt der <a href=\"#bpm\">BPM-Anzeige</a> blinkt mit dem TAP-Ring, nicht mit dem Klick.",
     "metronome.li2": "<strong>Presets</strong> speichern den Block als Modell 181, wie schon die früheren Builds, die ihn unter Modulation führten, sodass damit erstellte Presets ihn behalten.",
@@ -1750,6 +1841,10 @@ var LANGS = {
     "fx-loop-gate.desc": "Un noise gate su ciò che torna dal loop, come quello del blocco Input, così un pedale rumoroso nel loop non richiede più un blocco Noise Gate.",
     "fx-loop-gate.floc": "I blocchi FX Loop e Return",
     "fx-loop-gate.where": "Le manopole Gate, Threshold e Decay del blocco",
+    "looper.name": "Looper",
+    "looper.desc": "Permette di avviare un loop fermo del 1 Switch Looper quando rilasci il suo footswitch invece che quando lo premi (Looper Stop&gt;Ply: Release), così tenerlo premuto cancella il loop senza prima riprodurlo, e fa sì che una doppia pressione rapida fermi il loop ogni volta che la seconda pressione arriva prima che parta l'overdub (Looper DblPress: Release).",
+    "looper.floc": "Il footswitch del 1 Switch Looper",
+    "looper.where": "Global Settings &gt; Footswitches, pagine 5 e 6 (pagina 2 in una build senza Pressione lunga dei footswitch)",
     "metronome.name": "Metronomo",
     "metronome.desc": "Un click a tempo, sotto forma di blocco: imposta la suddivisione, il livello e l'accento sul battere, e suonalo sotto il tuo segnale o da solo.",
     "metronome.floc": "Browser dei modelli: Looper &gt; Metronome",
@@ -1846,6 +1941,14 @@ var LANGS = {
     "fx-loop-gate.what1": "Attiva il gate. Su Off, il blocco suona come con il firmware originale.",
     "fx-loop-gate.what2": "Sotto questo livello il segnale di ritorno viene silenziato.",
     "fx-loop-gate.what3": "Quanto velocemente si chiude il gate.",
+    "looper.p1": "Su un HX Stomp originale, premere il footswitch del 1 Switch Looper con il loop fermo lo riproduce subito, e tenerlo premuto cancella il loop solo se quella pressione lo ha avviato: tenere premuto il footswitch per cancellare un loop fermo lo riproduce quindi per un secondo. Con <strong>Stop&gt;Ply</strong> su <strong>Release</strong>, il valore predefinito, un loop fermo parte quando rilasci il footswitch.",
+    "looper.li1": "<strong>Un tocco</strong> con il loop fermo lo riproduce al rilascio del footswitch: più tardi che in origine, di quanto lo tieni premuto.",
+    "looper.li2": "<strong>Tenerlo premuto 1 s</strong> con il loop fermo lo cancella senza riprodurlo.",
+    "looper.li5": "<strong>Mentre il loop suona</strong>, una doppia pressione con la seconda pressione tenuta lo cancella senza riprodurlo di nuovo, come in origine: la seconda pressione ferma il loop e tenerla premuta lo cancella. Il Release di Stop&gt;Ply serve a cancellare un loop fermo senza sentirlo.",
+    "looper.li3": "<strong>Tutto il resto</strong> funziona come in origine, tranne la doppia pressione (sotto): la registrazione inizia e il loop si chiude alla pressione, una pressione durante la riproduzione avvia un overdub, una doppia pressione tenuta cancella e tenerlo premuto durante la riproduzione annulla un overdub. Lo Shuffling Looper, il MIDI e i comandi Looper del Command Center non cambiano.",
+    "looper.p2": "Su un HX Stomp originale, una doppia pressione rapida ferma il loop solo se la seconda pressione arriva entro circa 0,2 s dalla prima, e una pressione con il loop in riproduzione avvia un overdub circa 0,2 s dopo il rilascio. Una seconda pressione tra i due momenti non fa nulla, e l'overdub parte circa 0,2 s dopo il suo rilascio: una doppia pressione in cui tieni la prima pressione per un istante registra quindi un overdub invece di fermare. Con <strong>DblPress</strong> su <strong>Release</strong>, il valore predefinito, una seconda pressione ferma il loop fino al momento in cui partirebbe l'overdub, e una pressione successiva termina l'overdub come in origine.",
+    "looper.what1": "Quando una pressione del footswitch del 1 Switch Looper avvia un loop fermo: Press alla pressione, come in origine; Release al rilascio, così tenerlo premuto cancella il loop senza riprodurlo.",
+    "looper.what2": "Fino a quando una seconda pressione ferma il loop: Release fino a circa 0,2 s dopo il rilascio della prima pressione, quando partirebbe il suo overdub; Stock entro circa 0,2 s dalla prima pressione, come in origine.",
     "metronome.p1": "Un click a tempo, sotto forma di blocco: aggiungilo dal browser dei modelli, Looper &gt; Metronome &gt; Metronome, in qualsiasi punto del flusso del segnale. È un blocco effetto mono, elencato sotto Looper perché sia facile da trovare; non è un looper. Nel flusso del segnale è verde acqua, acceso quando è attivo e attenuato quando è spento, e la sua icona è un metronomo.",
     "metronome.li1": "<strong>Il battito</strong> parte quando parte il blocco, e un nuovo tempo o Time conta dall'ultimo battito. Battere il tempo non allinea ancora il battito ai tuoi tap, e il punto dell'<a href=\"#bpm\">Indicatore BPM</a> lampeggia con l'anello di TAP, non con il click.",
     "metronome.li2": "<strong>I preset</strong> memorizzano il blocco come modello 181, come facevano le build precedenti che lo elencavano sotto Modulation, quindi i preset creati con quelle lo conservano.",
@@ -1966,6 +2069,10 @@ var LANGS = {
     "fx-loop-gate.desc": "Input ブロックと同様のノイズゲートを、ループから戻ってくる信号にかけます。ループ内のノイズの多いペダルのために Noise Gate ブロックを使う必要がなくなります。",
     "fx-loop-gate.floc": "FX Loop ブロックと Return ブロック",
     "fx-loop-gate.where": "ブロックの Gate、Threshold、Decay ノブ",
+    "looper.name": "ルーパー",
+    "looper.desc": "Looper Stop&gt;Ply を Release にすると、停止中の 1 Switch Looper のループはフットスイッチを押したときではなく離したときに再生されます。そのため、長押しでループを先に再生せずに消去できます。また Looper DblPress を Release にすると、2 回目をオーバーダブが始まる前に押せば、すばやい 2 回押しで必ずループが止まります。",
+    "looper.floc": "1 Switch Looper のフットスイッチ",
+    "looper.where": "Global Settings &gt; Footswitches、5 ページ目と 6 ページ目（フットスイッチ長押しのないビルドでは 2 ページ目）",
     "metronome.name": "メトロノーム",
     "metronome.desc": "テンポに合わせて鳴るクリック・トラックをブロックとして使えます。拍の間隔、音量、アクセントを付けるダウンビートを設定し、自分の音の下で鳴らすことも、クリックだけを鳴らすこともできます。",
     "metronome.floc": "モデルブラウザ：Looper &gt; Metronome",
@@ -2062,6 +2169,14 @@ var LANGS = {
     "fx-loop-gate.what1": "ゲートをオンにします。Off では純正ファームウェアと同じ音になります。",
     "fx-loop-gate.what2": "このレベルを下回ると、戻ってきた信号がミュートされます。",
     "fx-loop-gate.what3": "ゲートが閉じる速さ。",
+    "looper.p1": "純正の HX Stomp では、ループが止まっているときに 1 Switch Looper のフットスイッチを押すとすぐに再生されます。長押しでループが消去されるのは、そのフットスイッチを押したことで再生が始まったときだけです。そのため、停止中のループを長押しで消去しようとすると、1 秒ほど再生されてから消えます。<strong>Stop&gt;Ply</strong> を <strong>Release</strong>（初期値）にすると、停止中のループはフットスイッチを離したときに再生されます。",
+    "looper.li1": "<strong>タップする</strong>と、停止中のループはフットスイッチを離したときに再生されます。純正より、押していた時間だけ遅れて始まります。",
+    "looper.li2": "<strong>1 秒長押しする</strong>と、停止中のループは再生されずに消去されます。",
+    "looper.li5": "<strong>再生中のループ</strong>は、純正でも 2 回押して 2 回目を長押しすれば、もう一度再生されることなく消去されます。2 回目を押した時点でループが止まり、そのまま長押しすると消えます。Stop&gt;Ply の Release は、止まっているループを聞かずに消去するための設定です。",
+    "looper.li3": "<strong>それ以外</strong>は、下で説明する 2 回押しを除いて純正どおりです。録音の開始とループの確定は押したときに行われ、再生中に押すとオーバーダブが始まり、2 回押して 2 回目を長押しすると消去され、再生中に長押しするとオーバーダブを取り消します。Shuffling Looper、MIDI、Command Center の Looper コマンドは変わりません。",
+    "looper.p2": "純正の HX Stomp では、すばやく 2 回押してループが止まるのは、2 回目が 1 回目から約 0.2 秒以内のときだけです。一方、再生中に押したときのオーバーダブは、フットスイッチを離してから約 0.2 秒後に始まります。その間に 2 回目を押しても何も起きず、2 回目を離してから約 0.2 秒後にオーバーダブが始まります。そのため、1 回目を少し長めに押すと、2 回押しが停止ではなくオーバーダブになります。<strong>DblPress</strong> を <strong>Release</strong>（初期値）にすると、オーバーダブが始まるはずの時点までは 2 回目を押すとループが止まり、それより後に押すと純正どおりオーバーダブが終わります。",
+    "looper.what1": "1 Switch Looper のフットスイッチで停止中のループの再生を始めるタイミングです。Press は純正どおり押したとき、Release は離したときに再生するので、長押しでループを再生せずに消去できます。",
+    "looper.what2": "2 回目を押してループが止まる期間です。Release は 1 回目を離してから約 0.2 秒後、オーバーダブが始まるはずの時点まで、Stock は純正どおり 1 回目を押してから約 0.2 秒以内です。",
     "metronome.p1": "テンポに合わせたクリック・トラックをブロックとして使えます。モデルブラウザの Looper &gt; Metronome &gt; Metronome から、シグナルフローのどこにでも追加できます。モノのエフェクト・ブロックで、見つけやすいよう Looper の下に置いていますが、ルーパーではありません。シグナルフロー上では青緑色で、オンのときは点灯、オフのときは暗くなり、アイコンはメトロノームです。",
     "metronome.li1": "<strong>拍</strong>はブロックがオンになったときに始まり、テンポや Time を変えると直前の拍から数え直します。テンポをタップしても、まだ拍はタップに合わせて移動しません。また、<a href=\"#bpm\">BPM 表示</a>のドットはクリックではなく TAP リングと一緒に点滅します。",
     "metronome.li2": "<strong>プリセット</strong>にはブロックがモデル 181 として保存されます。Modulation の下に置いていた以前のビルドと同じなので、それらで作ったプリセットでもブロックは残ります。",
@@ -2182,6 +2297,10 @@ var LANGS = {
     "fx-loop-gate.desc": "为从效果回路返回的信号加上噪声门，与 Input 模块的噪声门相同，这样回路里有噪声较大的单块时，也不必再占用一个 Noise Gate 模块。",
     "fx-loop-gate.floc": "FX Loop 和 Return 模块",
     "fx-loop-gate.where": "模块的 Gate、Threshold 和 Decay 旋钮",
+    "looper.name": "循环器",
+    "looper.desc": "将 Looper Stop&gt;Ply 设为 Release 后，停止的 1 Switch Looper 循环会在松开脚踏开关时开始播放，而不是在踩下时，这样按住脚踏开关即可清除循环，不会先播放一遍；将 Looper DblPress 设为 Release 后，只要第二次踩下发生在叠录开始之前，快速双踩就一定会停止循环。",
+    "looper.floc": "1 Switch Looper 的脚踏开关",
+    "looper.where": "Global Settings &gt; Footswitches，第 5 和第 6 页（在不含脚踏开关长按的构建中为第 2 页）",
     "metronome.name": "节拍器",
     "metronome.desc": "以模块形式提供、与速度同步的节拍音：设置节拍、音量和加重音的强拍，可以叠在你的信号下播放，也可以单独播放。",
     "metronome.floc": "模型浏览器：Looper &gt; Metronome",
@@ -2278,6 +2397,14 @@ var LANGS = {
     "fx-loop-gate.what1": "开启噪声门。设为 Off 时，模块的声音与原厂固件相同。",
     "fx-loop-gate.what2": "返回信号低于此电平时会被静音。",
     "fx-loop-gate.what3": "噪声门关闭的速度。",
+    "looper.p1": "在原厂 HX Stomp 上，循环停止时踩下 1 Switch Looper 的脚踏开关会立即播放，而按住只有在这次踩下启动了播放时才会清除循环，所以按住脚踏开关来清除停止的循环会先播放一秒。把 <strong>Stop&gt;Ply</strong> 设为 <strong>Release</strong>（默认值）后，停止的循环会在松开脚踏开关时开始播放。",
+    "looper.li1": "<strong>轻踩一下</strong>停止的循环，会在松开脚踏开关时播放，比原厂晚，晚的时间就是踩住的时间。",
+    "looper.li2": "<strong>按住 1 s</strong> 停止的循环，会将其清除而不播放。",
+    "looper.li5": "<strong>循环播放时</strong>，双踩并按住第二次踩下即可清除循环，不会再次播放，原厂即是如此：第二次踩下停止循环，按住则将其清除。Stop&gt;Ply 的 Release 用于清除已停止的循环而不必听到它。",
+    "looper.li3": "<strong>其他操作</strong>除下文所述的双踩外都与原厂相同：踩下时开始录音、闭合循环，播放中踩下开始叠录，双踩并按住清除，播放中按住撤销叠录。Shuffling Looper、MIDI 和 Command Center 的 Looper 命令不受影响。",
+    "looper.p2": "在原厂 HX Stomp 上，只有第二次踩下发生在第一次踩下后约 0.2 秒内，快速双踩才会停止循环；而播放中踩下脚踏开关，会在松开约 0.2 秒后开始叠录。在这两个时刻之间第二次踩下不起作用，松开它约 0.2 秒后开始叠录，所以第一次踩下稍微停留一下的双踩会变成叠录而不是停止。将 <strong>DblPress</strong> 设为 <strong>Release</strong>（默认值）后，在叠录本应开始之前，第二次踩下都会停止循环；之后再踩下则与原厂一样结束叠录。",
+    "looper.what1": "踩下 1 Switch Looper 的脚踏开关时，停止的循环何时开始播放：Press 与原厂相同，在踩下时；Release 在松开时，因此按住可以清除循环而不播放。",
+    "looper.what2": "第二次踩下在多长时间内可停止循环：Release 直到松开第一次踩下约 0.2 秒后、其叠录本应开始之时；Stock 与原厂相同，在第一次踩下后约 0.2 秒内。",
     "metronome.p1": "以模块形式提供、与速度同步的节拍音：从模型浏览器的 Looper &gt; Metronome &gt; Metronome 添加，可放在信号链的任意位置。它是单声道效果模块，放在 Looper 下只是为了方便查找，并不是乐句循环器。在信号链中它显示为青绿色，开启时亮、关闭时暗，图标是一个节拍器。",
     "metronome.li1": "<strong>节拍</strong>从模块开启时开始，更改速度或 Time 后从上一拍起重新计数。目前敲击速度还不会让节拍对齐到你的敲击上，而且<a href=\"#bpm\">BPM 显示</a>的节拍点随 TAP 灯环闪烁，而不是随咔嗒声。",
     "metronome.li2": "<strong>预设</strong>将该模块存为模型 181，与早期把它列在 Modulation 下的版本相同，因此用那些版本制作的预设仍会保留它。",
@@ -2398,6 +2525,10 @@ var LANGS = {
     "fx-loop-gate.desc": "루프에서 돌아오는 신호에 거는 노이즈 게이트입니다. Input 블록의 게이트와 같아서, 루프에 노이즈가 많은 페달이 있어도 Noise Gate 블록을 따로 쓸 필요가 없습니다.",
     "fx-loop-gate.floc": "FX Loop와 Return 블록",
     "fx-loop-gate.where": "블록의 Gate, Threshold, Decay 노브",
+    "looper.name": "루퍼",
+    "looper.desc": "Looper Stop&gt;Ply를 Release로 하면 정지된 1 Switch Looper 루프를 풋스위치를 누를 때가 아니라 뗄 때 재생하므로, 길게 누르면 루프를 먼저 재생하지 않고 지울 수 있습니다. 또 Looper DblPress를 Release로 하면 두 번째 누르기가 오버더빙이 시작되기 전이기만 하면 빠르게 두 번 눌렀을 때 항상 루프가 정지합니다.",
+    "looper.floc": "1 Switch Looper의 풋스위치",
+    "looper.where": "Global Settings &gt; Footswitches, 5페이지와 6페이지(풋스위치 길게 누르기가 없는 빌드에서는 2페이지)",
     "metronome.name": "메트로놈",
     "metronome.desc": "템포에 맞춰 울리는 클릭 트랙 블록입니다. 박자, 레벨, 강세를 줄 첫 박을 정하고, 내 신호 아래에 깔거나 클릭만 단독으로 재생합니다.",
     "metronome.floc": "모델 브라우저: Looper &gt; Metronome",
@@ -2494,6 +2625,14 @@ var LANGS = {
     "fx-loop-gate.what1": "게이트를 켭니다. Off이면 블록은 순정 펌웨어와 똑같은 소리를 냅니다.",
     "fx-loop-gate.what2": "이 레벨 아래로 떨어진 리턴 신호는 음소거됩니다.",
     "fx-loop-gate.what3": "게이트가 닫히는 속도.",
+    "looper.p1": "순정 HX Stomp에서는 루프가 정지된 상태에서 1 Switch Looper의 풋스위치를 누르면 바로 재생되고, 길게 누르면 그 누르기로 재생이 시작된 경우에만 루프가 지워집니다. 그래서 정지된 루프를 풋스위치를 길게 눌러 지우려 하면 1초 동안 재생된 뒤에 지워집니다. <strong>Stop&gt;Ply</strong>를 <strong>Release</strong>(기본값)로 하면 정지된 루프는 풋스위치를 뗄 때 재생됩니다.",
+    "looper.li1": "<strong>짧게 탭하면</strong> 정지된 루프가 풋스위치를 뗄 때 재생됩니다. 순정보다 누르고 있던 시간만큼 늦게 시작합니다.",
+    "looper.li2": "<strong>1 s 길게 누르면</strong> 정지된 루프를 재생하지 않고 지웁니다.",
+    "looper.li5": "<strong>루프가 재생 중일 때</strong>는 순정에서도 두 번 누르고 두 번째를 그대로 누르고 있으면 다시 재생하지 않고 지웁니다. 두 번째 누르기로 루프가 정지하고, 그대로 누르고 있으면 지워집니다. Stop&gt;Ply의 Release는 정지된 루프를 듣지 않고 지우기 위한 설정입니다.",
+    "looper.li3": "<strong>나머지는</strong> 아래에서 설명하는 두 번 누르기를 빼면 순정과 같습니다. 녹음 시작과 루프 닫기는 누를 때 일어나고, 재생 중에 누르면 오버더빙이 시작되며, 두 번 누르고 그대로 누르고 있으면 지우며, 재생 중에 길게 누르면 오버더빙을 취소합니다. Shuffling Looper, MIDI, Command Center의 Looper 명령은 바뀌지 않습니다.",
+    "looper.p2": "순정 HX Stomp에서는 빠르게 두 번 눌렀을 때 두 번째 누르기가 첫 번째부터 약 0.2초 안에 와야만 루프가 정지하고, 재생 중에 누르면 풋스위치를 뗀 뒤 약 0.2초 후에 오버더빙이 시작됩니다. 그 사이에 두 번째로 누르면 아무 일도 일어나지 않고, 그것을 뗀 뒤 약 0.2초 후에 오버더빙이 시작되므로, 첫 번째를 잠깐 누르고 있으면 두 번 누르기가 정지가 아니라 오버더빙이 됩니다. <strong>DblPress</strong>를 <strong>Release</strong>(기본값)로 하면 오버더빙이 시작될 시점까지는 두 번째 누르기로 루프가 정지하고, 그 뒤에 누르면 순정처럼 오버더빙이 끝납니다.",
+    "looper.what1": "1 Switch Looper의 풋스위치로 정지된 루프를 언제 재생할지 정합니다. Press는 순정처럼 누를 때, Release는 뗄 때 재생하므로 길게 누르면 루프를 재생하지 않고 지웁니다.",
+    "looper.what2": "두 번째 누르기로 루프가 정지하는 기간입니다. Release는 첫 번째 누르기를 뗀 뒤 약 0.2초, 즉 오버더빙이 시작될 시점까지이고, Stock은 순정처럼 첫 번째 누르기부터 약 0.2초 안입니다.",
     "metronome.p1": "템포에 맞춰 울리는 클릭 트랙 블록입니다. 모델 브라우저의 Looper &gt; Metronome &gt; Metronome에서 신호 흐름 어디에든 추가하세요. 모노 이펙트 블록이며, 찾기 쉽도록 Looper 아래에 두었을 뿐 루퍼는 아닙니다. 신호 흐름에서는 청록색으로, 켜져 있으면 밝게, 꺼져 있으면 어둡게 표시되며, 아이콘은 메트로놈입니다.",
     "metronome.li1": "<strong>박자</strong>는 블록이 켜질 때 시작하며, 템포나 Time이 바뀌면 마지막 박부터 다시 셉니다. 템포를 탭해도 아직 박자가 탭에 맞춰 옮겨지지 않으며, <a href=\"#bpm\">BPM 표시</a>의 점은 클릭이 아니라 TAP 링과 함께 깜박입니다.",
     "metronome.li2": "<strong>프리셋</strong>에는 이 블록이 모델 181로 저장됩니다. Modulation 아래에 있던 이전 빌드와 같은 번호이므로, 그 빌드로 만든 프리셋에서도 블록이 유지됩니다.",
@@ -2614,6 +2753,10 @@ var LANGS = {
     "fx-loop-gate.desc": "Нойз-гейт на сигнале, возвращающемся из петли, как у блока Input, так что шумной педали в петле больше не нужен отдельный блок Noise Gate.",
     "fx-loop-gate.floc": "Блоки FX Loop и Return",
     "fx-loop-gate.where": "Ручки Gate, Threshold и Decay блока",
+    "looper.name": "Лупер",
+    "looper.desc": "Позволяет запускать остановленную петлю 1 Switch Looper, когда вы отпускаете его футсвич, а не когда нажимаете (Looper Stop&gt;Ply: Release), поэтому удержание футсвича стирает петлю, не проигрывая её сначала, а быстрое двойное нажатие всегда останавливает петлю, если второе нажатие приходит до начала овердаба (Looper DblPress: Release).",
+    "looper.floc": "Футсвич 1 Switch Looper",
+    "looper.where": "Global Settings &gt; Footswitches, страницы 5 и 6 (страница 2 в сборке без функции «Долгое нажатие футсвича»)",
     "metronome.name": "Метроном",
     "metronome.desc": "Клик-трек в темп, в виде блока: задайте долю, громкость и акцентированную сильную долю и слушайте его вместе со своим сигналом или отдельно.",
     "metronome.floc": "Браузер моделей: Looper &gt; Metronome",
@@ -2710,6 +2853,14 @@ var LANGS = {
     "fx-loop-gate.what1": "Включает гейт. При Off блок звучит как на стоковой прошивке.",
     "fx-loop-gate.what2": "Ниже этого уровня возвращённый сигнал глушится.",
     "fx-loop-gate.what3": "Как быстро закрывается гейт.",
+    "looper.p1": "На стоковом HX Stomp нажатие футсвича 1 Switch Looper при остановленной петле сразу запускает её, а удержание стирает петлю, только если её запустило это нажатие, поэтому при попытке стереть остановленную петлю удержанием футсвича она сначала секунду играет. Если <strong>Stop&gt;Ply</strong> стоит на <strong>Release</strong> (по умолчанию), остановленная петля запускается, когда футсвич отпущен.",
+    "looper.li1": "<strong>Короткое нажатие</strong> при остановленной петле запускает её, когда вы отпускаете футсвич: позже, чем на стоке, на то время, пока футсвич нажат.",
+    "looper.li2": "<strong>Удержание 1 s</strong> при остановленной петле стирает её, не проигрывая.",
+    "looper.li5": "<strong>Во время воспроизведения</strong> двойное нажатие с удержанием второго нажатия стирает петлю, не проигрывая её снова, как и в стоке: второе нажатие останавливает петлю, а удержание стирает её. Release в Stop&gt;Ply нужен, чтобы стереть остановленную петлю, не слыша её.",
+    "looper.li3": "<strong>Всё остальное</strong> работает как в стоке, кроме двойного нажатия (ниже): запись начинается и петля замыкается по нажатию, нажатие во время воспроизведения запускает овердаб, двойное нажатие с удержанием стирает, а удержание во время воспроизведения отменяет овердаб. Shuffling Looper, MIDI и команды Looper в Command Center не меняются.",
+    "looper.p2": "На стоковом HX Stomp быстрое двойное нажатие останавливает петлю, только если второе нажатие приходит в пределах примерно 0,2 с после первого, а нажатие во время воспроизведения запускает овердаб примерно через 0,2 с после того, как вы отпустите футсвич. Второе нажатие между этими моментами ничего не делает, а примерно через 0,2 с после того, как вы его отпустите, начинается овердаб, поэтому двойное нажатие, в котором первое нажатие чуть задержано, записывает овердаб вместо остановки. Если <strong>DblPress</strong> стоит на <strong>Release</strong> (по умолчанию), второе нажатие останавливает петлю вплоть до момента, когда начался бы овердаб, а нажатие после этого завершает овердаб, как в стоке.",
+    "looper.what1": "Когда нажатие футсвича 1 Switch Looper запускает остановленную петлю: Press — по нажатию, как в стоке; Release — по отпусканию, так что удержание стирает петлю, не проигрывая её.",
+    "looper.what2": "Как долго второе нажатие останавливает петлю: Release — до примерно 0,2 с после того, как вы отпустите первое нажатие, когда начался бы его овердаб; Stock — в пределах примерно 0,2 с после первого нажатия, как в стоке.",
     "metronome.p1": "Клик-трек в темп, в виде блока: добавьте его из браузера моделей, Looper &gt; Metronome &gt; Metronome, в любое место схемы сигнала. Это моно-блок эффекта, помещённый в Looper, чтобы его было легко найти; лупером он не является. На схеме сигнала он бирюзовый: яркий, когда включён, и тусклый, когда выключен, а его иконка — метроном.",
     "metronome.li1": "<strong>Доля</strong> начинается вместе с блоком, а новый темп или Time отсчитываются от последней доли. Нажатия TAP пока не сдвигают долю на ваши нажатия, а точка функции <a href=\"#bpm\">Отображение BPM</a> мигает вместе с кольцом TAP, а не с кликом.",
     "metronome.li2": "<strong>Пресеты</strong> хранят блок как модель 181, как и ранние сборки, где он был в Modulation, поэтому пресеты, сделанные с ними, его сохраняют.",

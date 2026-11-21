@@ -134,6 +134,13 @@ The meter also shows while you edit the compressor, so you can dial in Threshold
 
 <a href="https://wisemandenny.github.io/hxtra/web/features.html#long-press"><img src="docs/assets/icons/watch-demo.svg" width="124" height="28" alt="Watch demo"></a>
 
+### <img src="docs/assets/icons/looper.svg" width="28" height="28" align="top" alt=""> Looper
+
+*Global Settings › Footswitches*
+
+- **Looper Stop&gt;Ply** (Press, Release): when a press of the 1 Switch Looper's footswitch starts a stopped loop. Press plays it at once, as stock, so holding the footswitch to clear the loop plays it for a second first. Release, the default, plays it when you lift the footswitch instead: a tap plays the loop, later than on stock by as long as your foot is down, a 1 s hold clears it without playing it, and a quick double press still stops. While a loop plays, a double press whose second press you hold already clears it without playing it again, as stock: Release is for clearing a stopped loop without hearing it.
+- **Looper DblPress** (Release, Stock): how long a quick double press stops the loop. On stock, the second press has to come within about 0.2 s of the first press, while a press on a playing loop starts an overdub about 0.2 s after you lift it, so a second press between the two starts the overdub instead of stopping. Release, the default, lets the second press stop the loop until about 0.2 s after you lift the first press, the moment that overdub would start, whenever the loop is playing as you lift it (also after a press that closes the loop or ends an overdub); after the press that starts recording, and in play once, the timing stays stock. Stock keeps the stock timing. Everything else the footswitch does stays as stock.
+
 ### <img src="docs/assets/icons/snapshots.svg" width="104" height="32" align="top" alt=""> More Snapshots (4-6)
 
 - Six snapshots per preset: press the lit snapshot footswitch again to flip between snapshots 1–3 and 4–6.
