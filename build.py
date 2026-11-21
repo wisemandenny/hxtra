@@ -27,6 +27,7 @@ Steps:
      --splash-text and --splash-glyph are the splash feature's HX_SPLASH, HX_SPLASH_FIT, HX_SPLASH_TEXT and HX_SPLASH_GLYPHS;
      with HX_CLICK=1, then tools/patch_click.py: the Metronome block; with HX_FX_GATE=1, tools/patch_gate.py: the gate in
      the FX Loop and Return blocks; with HX_GATE_SC=1, tools/patch_sidechain.py: the Noise Gate's Input Sidechain;
+     with HX_MIDI_BLOCK=1, tools/patch_midi.py: the MIDI block; with HX_PHONES_BLOCK=1, tools/patch_phones.py: the Phones block;
      with HX_GR=1, last, tools/patch_comp.py: the GR meter's compressor knobs and DSP code)
   4. tools/l6ia_verify.py: every checksum of the result
   5. tools/hxf.py pack: the .hxf
@@ -144,6 +145,12 @@ def main():
         os.replace(titled, image)
     if os.environ.get("HX_USB_MONITOR"):
         run(py, "tools/patch_usbmon.py", image, titled)
+        os.replace(titled, image)
+    if os.environ.get("HX_MIDI_BLOCK"):
+        run(py, "tools/patch_midi.py", image, titled)
+        os.replace(titled, image)
+    if os.environ.get("HX_PHONES_BLOCK"):
+        run(py, "tools/patch_phones.py", image, titled)
         os.replace(titled, image)
     if os.environ.get("HX_GR"):
         # last: every step that adds a model rebuilds the Entry 3 and 4 tails the knobs live in

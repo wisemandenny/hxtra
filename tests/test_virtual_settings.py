@@ -382,8 +382,9 @@ def test_every_feature_built_together_reads_and_stores_its_settings_through_the_
     b = Built(m4emu, new)
     for cid in setting_ids.CONTAINERS:
         b.m.write(record(cid) + 8, struct.pack('<BxxxI', 3, FLOAT_ONE))
+    built_in = {features.name(m) for m in on}
     for vid, cid, bit, bits, name, _ in setting_ids.VIRTUAL:
-        if name:
+        if name and name.split('.')[0] in built_in:     # phones_block conflicts with usb_monitor, which ALL has
             assert b.get(vid) == (0, (2, SETTINGS[name].default)), name
     knob_set = seen['src/m4/tuner.s']['knob_set']       # the tuner page's store, through hxtra_setting_set and virt_set
     b.m.call(knob_set, 1, 1)

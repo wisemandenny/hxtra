@@ -48,7 +48,7 @@ def test_web_flags_are_every_feature():
 
 
 def test_web_options_are_the_opt_in_features():
-    assert m4cache.web_options() == ["HX_REAL_NAMES"]
+    assert m4cache.web_options() == ["HX_FOOTSWITCH_VIEW", "HX_REAL_NAMES"]
 
 
 def test_web_dsp_are_the_features_sharing_block_3():

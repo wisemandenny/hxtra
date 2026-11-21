@@ -431,6 +431,6 @@ def test_without_the_flag_the_sites_stay_stock():
 
 @pytest.mark.firmware
 def test_builds_alongside_every_other_feature():
-    env = {f: '1' for m in MODS for f in features.flags(m)}
+    env = {f: '1' for m in MODS if not getattr(m, 'CONFLICTS', ()) for f in features.flags(m)}   # but a feature that conflicts
     _, on = built(env)
     assert {'tap_command', 'tap_color', 'bpm', 'long_press', 'metronome', 'preset_color', 'tuner'} <= set(on)
