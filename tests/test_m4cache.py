@@ -52,7 +52,7 @@ def test_web_options_are_the_opt_in_features():
 
 
 def test_web_dsp_are_the_features_sharing_block_3():
-    assert m4cache.web_dsp() == ["HX_GR", "HX_FX_GATE", "HX_GATE_SC", "HX_CLICK", "HX_USB_MONITOR"]
+    assert m4cache.web_dsp() == ["HX_GR", "HX_FX_GATE", "HX_GATE_SC", "HX_CLICK", "HX_MIDI_BLOCK", "HX_USB_MONITOR"]
 
 
 def test_make_pins_every_combination_that_fits(monkeypatch):

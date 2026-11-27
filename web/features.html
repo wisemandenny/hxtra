@@ -223,6 +223,12 @@
     <td data-i18n="usb-monitoring.where">Global Settings &gt; Ins/Outs, page 3</td>
     </tr>
     <tr>
+    <td><a href="#midi-block" data-i18n="midi-block.name">MIDI Block</a></td>
+    <td data-i18n="midi-block.desc">A block that sends a MIDI CC or PC out of MIDI Out and USB when it turns on or off, or when a preset loads with it.</td>
+    <td data-i18n="midi-block.floc">Model browser: Modulation &gt; MIDI</td>
+    <td data-i18n="midi-block.where">The block's Chan, Type, Num, On and Off knobs</td>
+    </tr>
+    <tr>
     <td><a href="#virtual-footswitches" data-i18n="virtual-footswitches.name">Virtual Footswitches (FS6&#8209;10)</a></td>
     <td data-i18n="virtual-footswitches.desc">FS6–FS10, footswitches without a switch: assign blocks to them in Bypass Assign (MIDI In), and switch them by holding FS1–FS5 or with MIDI CC 20–24. Each can instead run a footswitch function, such as Bank, Snapshot or Global EQ.</td>
     <td data-i18n="virtual-footswitches.floc">A block's Bypass Assign &gt; MIDI In, or Controller Assign</td>
@@ -807,6 +813,57 @@
       </div>
     </section>
 
+    <section class="card feat" id="midi-block">
+      <h2><img class="ico" src="../docs/assets/icons/midi-block.svg" width="28" height="28" alt=""><span data-i18n="midi-block.name">MIDI Block</span></h2>
+      <p data-i18n="midi-block.p1">Add it from the model browser, Modulation &gt; MIDI &gt; MIDI. Your sound passes through it unchanged. When the block turns on or off (with a footswitch, Bypass Assign or a snapshot), and when you load a preset that has it, it sends a MIDI message out of the MIDI Out jack and USB, the way the HX Stomp's own MIDI goes out: to switch another pedal or an amp's channel along with your blocks.</p>
+  <ul>
+  <li data-i18n="midi-block.li1"><strong>CC</strong>: turning on sends CC Num with the On value, turning off sends it with the Off value.</li>
+  <li data-i18n="midi-block.li2"><strong>PC</strong>: turning on sends program change Num; turning off sends nothing.</li>
+  <li data-i18n="midi-block.li3"><strong>All</strong> on Chan sends the message on all 16 channels. Each MIDI block in a preset sends its own message.</li>
+  <li data-i18n="midi-block.li4"><strong>On the setup page</strong> it's one of the DSP features, ticked like the others: its pass-through code takes a little of the DSP room NAM A2 Lite shares.</li>
+  </ul>
+      <div class="settings">
+        <h3 data-i18n="settings">Settings</h3>
+        <p class="where" data-i18n="midi-block.where">The block's Chan, Type, Num, On and Off knobs</p>
+        <div class="tbl"><table>
+        <thead>
+        <tr>
+        <th data-i18n="th.knob">Knob</th>
+        <th data-i18n="th.values">Values</th>
+        <th data-i18n="th.what">What it does</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><strong>Chan</strong></td>
+        <td>All, <strong>1</strong> … 16</td>
+        <td data-i18n="midi-block.what1">The MIDI channel the message goes out on. All sends it on every channel.</td>
+        </tr>
+        <tr>
+        <td><strong>Type</strong></td>
+        <td><strong>CC</strong>, PC</td>
+        <td data-i18n="midi-block.what2">A control change or a program change.</td>
+        </tr>
+        <tr>
+        <td><strong>Num</strong></td>
+        <td><strong>0</strong> … 127</td>
+        <td data-i18n="midi-block.what3">The CC number or the program number.</td>
+        </tr>
+        <tr>
+        <td><strong>On</strong></td>
+        <td>0 … <strong>127</strong></td>
+        <td data-i18n="midi-block.what4">The CC's value when the block turns on.</td>
+        </tr>
+        <tr>
+        <td><strong>Off</strong></td>
+        <td><strong>0</strong> … 127</td>
+        <td data-i18n="midi-block.what5">The CC's value when the block turns off.</td>
+        </tr>
+        </tbody>
+        </table></div>
+      </div>
+    </section>
+
     <section class="card feat" id="virtual-footswitches">
       <h2><img class="ico" src="../docs/assets/icons/long-press.svg" width="28" height="28" alt=""><span data-i18n="virtual-footswitches.name">Virtual Footswitches (FS6&#8209;10)</span></h2>
       <!-- demo: virtual-footswitches -->
@@ -1063,7 +1120,21 @@ var LANGS = {
     "footer.1": "Crea e instala HXtra en la página de instalación",
     "footer.2": "HXtra en GitHub",
     "doc.title": "Recorrido por las funciones de HXtra",
-    "lang": "Idioma"
+    "lang": "Idioma",
+    "midi-block.name": "Bloque MIDI",
+    "midi-block.desc": "Un bloque que envía un CC o PC de MIDI por MIDI Out y USB cuando se activa o se apaga, o cuando se carga un preset que lo tiene.",
+    "midi-block.floc": "Navegador de modelos: Modulation &gt; MIDI",
+    "midi-block.where": "Los mandos Chan, Type, Num, On y Off del bloque",
+    "midi-block.p1": "Añádelo desde el navegador de modelos, Modulation &gt; MIDI &gt; MIDI. Tu sonido pasa por él sin cambios. Cuando el bloque se activa o se apaga (con un footswitch, Bypass Assign o un snapshot), y cuando cargas un preset que lo tiene, envía un mensaje MIDI por la toma MIDI Out y por USB, igual que el MIDI propio del HX Stomp: para cambiar otro pedal o el canal de un ampli junto con tus bloques.",
+    "midi-block.li1": "<strong>CC</strong>: al activarse envía el CC Num con el valor On; al apagarse, con el valor Off.",
+    "midi-block.li2": "<strong>PC</strong>: al activarse envía el cambio de programa Num; al apagarse no envía nada.",
+    "midi-block.li3": "<strong>All</strong> en Chan envía el mensaje por los 16 canales. Cada bloque MIDI de un preset envía su propio mensaje.",
+    "midi-block.li4": "<strong>En la página de instalación</strong> es una de las funciones DSP, marcada como las demás: su código de paso ocupa un poco del espacio DSP que comparte NAM A2 Lite.",
+    "midi-block.what1": "El canal MIDI por el que sale el mensaje. All lo envía por todos los canales.",
+    "midi-block.what2": "Un cambio de control o un cambio de programa.",
+    "midi-block.what3": "El número de CC o el número de programa.",
+    "midi-block.what4": "El valor del CC cuando el bloque se activa.",
+    "midi-block.what5": "El valor del CC cuando el bloque se apaga."
   },
   "pt": {
     "title": "Tour pelos recursos",
@@ -1281,7 +1352,21 @@ var LANGS = {
     "footer.1": "Gere e instale o HXtra na página de instalação",
     "footer.2": "HXtra no GitHub",
     "doc.title": "Tour pelos recursos do HXtra",
-    "lang": "Idioma"
+    "lang": "Idioma",
+    "midi-block.name": "Bloco MIDI",
+    "midi-block.desc": "Um bloco que envia um CC ou PC de MIDI pelo MIDI Out e pelo USB quando liga ou desliga, ou quando um preset com ele é carregado.",
+    "midi-block.floc": "Navegador de modelos: Modulation &gt; MIDI",
+    "midi-block.where": "Os knobs Chan, Type, Num, On e Off do bloco",
+    "midi-block.p1": "Adicione-o pelo navegador de modelos, Modulation &gt; MIDI &gt; MIDI. Seu som passa por ele sem mudanças. Quando o bloco liga ou desliga (com um footswitch, Bypass Assign ou um snapshot), e quando você carrega um preset que o tem, ele envia uma mensagem MIDI pela saída MIDI Out e pelo USB, como sai o MIDI do próprio HX Stomp: para mudar outro pedal ou o canal de um amp junto com seus blocos.",
+    "midi-block.li1": "<strong>CC</strong>: ao ligar envia o CC Num com o valor On; ao desligar, com o valor Off.",
+    "midi-block.li2": "<strong>PC</strong>: ao ligar envia a troca de programa Num; ao desligar não envia nada.",
+    "midi-block.li3": "<strong>All</strong> em Chan envia a mensagem nos 16 canais. Cada bloco MIDI de um preset envia sua própria mensagem.",
+    "midi-block.li4": "<strong>Na página de instalação</strong> é um dos recursos de DSP, marcado como os outros: seu código de passagem ocupa um pouco do espaço de DSP que o NAM A2 Lite compartilha.",
+    "midi-block.what1": "O canal MIDI pelo qual a mensagem sai. All a envia em todos os canais.",
+    "midi-block.what2": "Uma mudança de controle ou uma troca de programa.",
+    "midi-block.what3": "O número do CC ou o número do programa.",
+    "midi-block.what4": "O valor do CC quando o bloco liga.",
+    "midi-block.what5": "O valor do CC quando o bloco desliga."
   },
   "fr": {
     "title": "Visite des fonctions",
@@ -1499,7 +1584,21 @@ var LANGS = {
     "footer.1": "Créer et installer HXtra sur la page d'installation",
     "footer.2": "HXtra sur GitHub",
     "doc.title": "Visite des fonctions HXtra",
-    "lang": "Langue"
+    "lang": "Langue",
+    "midi-block.name": "Bloc MIDI",
+    "midi-block.desc": "Un bloc qui envoie un CC ou un PC MIDI par MIDI Out et USB quand il s'active ou se coupe, ou quand un preset qui le contient est chargé.",
+    "midi-block.floc": "Navigateur de modèles : Modulation &gt; MIDI",
+    "midi-block.where": "Les boutons Chan, Type, Num, On et Off du bloc",
+    "midi-block.p1": "Ajoutez-le depuis le navigateur de modèles, Modulation &gt; MIDI &gt; MIDI. Votre son le traverse sans changement. Quand le bloc s'active ou se coupe (par un footswitch, Bypass Assign ou un snapshot), et quand vous chargez un preset qui le contient, il envoie un message MIDI par la prise MIDI Out et par USB, comme le MIDI du HX Stomp lui-même : pour commuter une autre pédale ou le canal d'un ampli avec vos blocs.",
+    "midi-block.li1": "<strong>CC</strong> : à l'activation il envoie le CC Num avec la valeur On, à la coupure avec la valeur Off.",
+    "midi-block.li2": "<strong>PC</strong> : à l'activation il envoie le changement de programme Num ; à la coupure, rien.",
+    "midi-block.li3": "<strong>All</strong> sur Chan envoie le message sur les 16 canaux. Chaque bloc MIDI d'un preset envoie son propre message.",
+    "midi-block.li4": "<strong>Sur la page d'installation</strong>, c'est une des fonctions DSP, cochée comme les autres : son code de passage prend un peu de la place DSP que partage NAM A2 Lite.",
+    "midi-block.what1": "Le canal MIDI sur lequel part le message. All l'envoie sur tous les canaux.",
+    "midi-block.what2": "Un changement de contrôle ou un changement de programme.",
+    "midi-block.what3": "Le numéro de CC ou le numéro de programme.",
+    "midi-block.what4": "La valeur du CC quand le bloc s'active.",
+    "midi-block.what5": "La valeur du CC quand le bloc se coupe."
   },
   "de": {
     "title": "Funktionsübersicht",
@@ -1717,7 +1816,21 @@ var LANGS = {
     "footer.1": "HXtra auf der Einrichtungsseite bauen und installieren",
     "footer.2": "HXtra auf GitHub",
     "doc.title": "HXtra Funktionsübersicht",
-    "lang": "Sprache"
+    "lang": "Sprache",
+    "midi-block.name": "MIDI-Block",
+    "midi-block.desc": "Ein Block, der über MIDI Out und USB einen MIDI-CC oder -PC sendet, wenn er an- oder ausgeht oder ein Preset mit ihm geladen wird.",
+    "midi-block.floc": "Modell-Browser: Modulation &gt; MIDI",
+    "midi-block.where": "Die Regler Chan, Type, Num, On und Off des Blocks",
+    "midi-block.p1": "Füge ihn im Modell-Browser hinzu: Modulation &gt; MIDI &gt; MIDI. Dein Sound geht unverändert hindurch. Wenn der Block an- oder ausgeht (per Footswitch, Bypass Assign oder Snapshot) und wenn du ein Preset mit ihm lädst, sendet er eine MIDI-Nachricht über die MIDI-Out-Buchse und USB, so wie das HX Stomp sein eigenes MIDI sendet: um ein anderes Pedal oder den Kanal eines Amps zusammen mit deinen Blöcken umzuschalten.",
+    "midi-block.li1": "<strong>CC</strong>: Beim Einschalten sendet er CC Num mit dem Wert On, beim Ausschalten mit dem Wert Off.",
+    "midi-block.li2": "<strong>PC</strong>: Beim Einschalten sendet er Program Change Num, beim Ausschalten nichts.",
+    "midi-block.li3": "<strong>All</strong> bei Chan sendet die Nachricht auf allen 16 Kanälen. Jeder MIDI-Block in einem Preset sendet seine eigene Nachricht.",
+    "midi-block.li4": "<strong>Auf der Setup-Seite</strong> ist er eine der DSP-Funktionen, angehakt wie die anderen: Sein Durchreich-Code braucht etwas vom DSP-Platz, den NAM A2 Lite mitbenutzt.",
+    "midi-block.what1": "Der MIDI-Kanal, auf dem die Nachricht gesendet wird. All sendet sie auf allen Kanälen.",
+    "midi-block.what2": "Ein Control Change oder ein Program Change.",
+    "midi-block.what3": "Die CC-Nummer oder die Programmnummer.",
+    "midi-block.what4": "Der Wert des CC, wenn der Block angeht.",
+    "midi-block.what5": "Der Wert des CC, wenn der Block ausgeht."
   },
   "it": {
     "title": "Tour delle funzioni",
@@ -1935,7 +2048,21 @@ var LANGS = {
     "footer.1": "Crea e installa HXtra dalla pagina di installazione",
     "footer.2": "HXtra su GitHub",
     "doc.title": "Tour delle funzioni di HXtra",
-    "lang": "Lingua"
+    "lang": "Lingua",
+    "midi-block.name": "Blocco MIDI",
+    "midi-block.desc": "Un blocco che invia un CC o un PC MIDI da MIDI Out e USB quando si attiva o si spegne, o quando si carica un preset che lo contiene.",
+    "midi-block.floc": "Browser dei modelli: Modulation &gt; MIDI",
+    "midi-block.where": "Le manopole Chan, Type, Num, On e Off del blocco",
+    "midi-block.p1": "Aggiungilo dal browser dei modelli, Modulation &gt; MIDI &gt; MIDI. Il tuo suono lo attraversa invariato. Quando il blocco si attiva o si spegne (con un footswitch, Bypass Assign o uno snapshot), e quando carichi un preset che lo contiene, invia un messaggio MIDI dalla presa MIDI Out e da USB, come il MIDI dell'HX Stomp stesso: per commutare un altro pedale o il canale di un ampli insieme ai tuoi blocchi.",
+    "midi-block.li1": "<strong>CC</strong>: all'attivazione invia il CC Num con il valore On, allo spegnimento con il valore Off.",
+    "midi-block.li2": "<strong>PC</strong>: all'attivazione invia il program change Num; allo spegnimento non invia nulla.",
+    "midi-block.li3": "<strong>All</strong> su Chan invia il messaggio su tutti i 16 canali. Ogni blocco MIDI di un preset invia il proprio messaggio.",
+    "midi-block.li4": "<strong>Nella pagina di installazione</strong> è una delle funzioni DSP, spuntata come le altre: il suo codice di passaggio occupa un po' dello spazio DSP che NAM A2 Lite condivide.",
+    "midi-block.what1": "Il canale MIDI su cui esce il messaggio. All lo invia su tutti i canali.",
+    "midi-block.what2": "Un control change o un program change.",
+    "midi-block.what3": "Il numero del CC o il numero del programma.",
+    "midi-block.what4": "Il valore del CC quando il blocco si attiva.",
+    "midi-block.what5": "Il valore del CC quando il blocco si spegne."
   },
   "ja": {
     "title": "機能ツアー",
@@ -2153,7 +2280,21 @@ var LANGS = {
     "footer.1": "セットアップページで HXtra をビルドしてインストール",
     "footer.2": "GitHub の HXtra",
     "doc.title": "HXtra 機能ツアー",
-    "lang": "言語"
+    "lang": "言語",
+    "midi-block.name": "MIDI ブロック",
+    "midi-block.desc": "オン／オフしたとき、またはそのブロックを含むプリセットを読み込んだときに、MIDI Out と USB から MIDI の CC または PC を送るブロックです。",
+    "midi-block.floc": "モデルブラウザ：Modulation &gt; MIDI",
+    "midi-block.where": "ブロックの Chan、Type、Num、On、Off ノブ",
+    "midi-block.p1": "モデルブラウザの Modulation &gt; MIDI &gt; MIDI から追加します。音はそのまま通過します。ブロックがオン／オフしたとき（フットスイッチ、Bypass Assign、スナップショット）と、そのブロックを含むプリセットを読み込んだときに、HX Stomp 自身の MIDI と同じように MIDI Out 端子と USB から MIDI メッセージを送ります。ブロックと一緒に別のペダルやアンプのチャンネルを切り替えるのに使えます。",
+    "midi-block.li1": "<strong>CC</strong>：オンにすると CC Num を On の値で、オフにすると Off の値で送ります。",
+    "midi-block.li2": "<strong>PC</strong>：オンにするとプログラムチェンジ Num を送り、オフにしても何も送りません。",
+    "midi-block.li3": "Chan を <strong>All</strong> にすると、16チャンネルすべてに送ります。プリセット内の MIDI ブロックはそれぞれ自分のメッセージを送ります。",
+    "midi-block.li4": "<strong>セットアップページ</strong>では DSP 機能の1つで、ほかと同じく最初からチェックが入っています。音を通すだけのコードが、NAM A2 Lite と共有する DSP の空きを少し使います。",
+    "midi-block.what1": "メッセージを送る MIDI チャンネル。All はすべてのチャンネルに送ります。",
+    "midi-block.what2": "コントロールチェンジまたはプログラムチェンジ。",
+    "midi-block.what3": "CC 番号またはプログラム番号。",
+    "midi-block.what4": "ブロックがオンになったときの CC の値。",
+    "midi-block.what5": "ブロックがオフになったときの CC の値。"
   },
   "zh": {
     "title": "功能导览",
@@ -2371,7 +2512,21 @@ var LANGS = {
     "footer.1": "在安装页面制作并安装 HXtra",
     "footer.2": "GitHub 上的 HXtra",
     "doc.title": "HXtra 功能导览",
-    "lang": "语言"
+    "lang": "语言",
+    "midi-block.name": "MIDI 模块",
+    "midi-block.desc": "一个在开启或关闭时、或加载含有它的预设时，通过 MIDI Out 和 USB 发送 MIDI CC 或 PC 的模块。",
+    "midi-block.floc": "模型浏览器：Modulation &gt; MIDI",
+    "midi-block.where": "模块的 Chan、Type、Num、On 和 Off 旋钮",
+    "midi-block.p1": "从模型浏览器 Modulation &gt; MIDI &gt; MIDI 添加。你的声音原样通过它。当模块开启或关闭时（通过脚踏开关、Bypass Assign 或快照），以及加载含有它的预设时，它会像 HX Stomp 自身的 MIDI 一样，从 MIDI Out 接口和 USB 发出一条 MIDI 消息：用来随你的模块一起切换另一块效果器或音箱的通道。",
+    "midi-block.li1": "<strong>CC</strong>：开启时以 On 的值发送 CC Num，关闭时以 Off 的值发送。",
+    "midi-block.li2": "<strong>PC</strong>：开启时发送程序变更 Num，关闭时不发送任何内容。",
+    "midi-block.li3": "Chan 设为 <strong>All</strong> 时，会在全部 16 个通道上发送。预设中的每个 MIDI 模块各自发送自己的消息。",
+    "midi-block.li4": "<strong>在设置页面上</strong>它是 DSP 功能之一，和其他功能一样默认勾选：它直通的代码会占用一点 NAM A2 Lite 共用的 DSP 空间。",
+    "midi-block.what1": "消息发送所用的 MIDI 通道。All 会在所有通道上发送。",
+    "midi-block.what2": "控制变更或程序变更。",
+    "midi-block.what3": "CC 编号或程序编号。",
+    "midi-block.what4": "模块开启时 CC 的值。",
+    "midi-block.what5": "模块关闭时 CC 的值。"
   },
   "ko": {
     "title": "기능 둘러보기",
@@ -2589,7 +2744,21 @@ var LANGS = {
     "footer.1": "설치 페이지에서 HXtra 빌드 및 설치",
     "footer.2": "GitHub의 HXtra",
     "doc.title": "HXtra 기능 둘러보기",
-    "lang": "언어"
+    "lang": "언어",
+    "midi-block.name": "MIDI 블록",
+    "midi-block.desc": "켜지거나 꺼질 때, 또는 이 블록이 있는 프리셋을 불러올 때 MIDI Out과 USB로 MIDI CC나 PC를 보내는 블록입니다.",
+    "midi-block.floc": "모델 브라우저: Modulation &gt; MIDI",
+    "midi-block.where": "블록의 Chan, Type, Num, On, Off 노브",
+    "midi-block.p1": "모델 브라우저의 Modulation &gt; MIDI &gt; MIDI에서 추가합니다. 소리는 그대로 통과합니다. 블록이 켜지거나 꺼질 때(풋스위치, Bypass Assign, 스냅샷), 그리고 이 블록이 있는 프리셋을 불러올 때 HX Stomp 자체 MIDI처럼 MIDI Out 단자와 USB로 MIDI 메시지를 보냅니다. 블록과 함께 다른 페달이나 앰프 채널을 바꾸는 데 씁니다.",
+    "midi-block.li1": "<strong>CC</strong>: 켜면 CC Num을 On 값으로, 끄면 Off 값으로 보냅니다.",
+    "midi-block.li2": "<strong>PC</strong>: 켜면 프로그램 체인지 Num을 보내고, 끌 때는 아무것도 보내지 않습니다.",
+    "midi-block.li3": "Chan을 <strong>All</strong>로 하면 16개 채널 모두로 보냅니다. 프리셋의 MIDI 블록은 각자 자기 메시지를 보냅니다.",
+    "midi-block.li4": "<strong>설정 페이지</strong>에서는 DSP 기능 중 하나이며, 다른 기능처럼 체크되어 있습니다. 소리를 그대로 넘기는 코드가 NAM A2 Lite와 함께 쓰는 DSP 공간을 조금 차지합니다.",
+    "midi-block.what1": "메시지를 보낼 MIDI 채널입니다. All은 모든 채널로 보냅니다.",
+    "midi-block.what2": "컨트롤 체인지 또는 프로그램 체인지입니다.",
+    "midi-block.what3": "CC 번호 또는 프로그램 번호입니다.",
+    "midi-block.what4": "블록이 켜질 때 CC 값입니다.",
+    "midi-block.what5": "블록이 꺼질 때 CC 값입니다."
   },
   "ru": {
     "title": "Обзор функций",
@@ -2807,7 +2976,21 @@ var LANGS = {
     "footer.1": "Соберите и установите HXtra на странице установки",
     "footer.2": "HXtra на GitHub",
     "doc.title": "Обзор функций HXtra",
-    "lang": "Язык"
+    "lang": "Язык",
+    "midi-block.name": "Блок MIDI",
+    "midi-block.desc": "Блок, который отправляет MIDI CC или PC через MIDI Out и USB, когда он включается или выключается, или когда загружается пресет с ним.",
+    "midi-block.floc": "Браузер моделей: Modulation &gt; MIDI",
+    "midi-block.where": "Ручки блока Chan, Type, Num, On и Off",
+    "midi-block.p1": "Добавьте его из браузера моделей: Modulation &gt; MIDI &gt; MIDI. Звук проходит через него без изменений. Когда блок включается или выключается (футсвитчем, через Bypass Assign или снапшотом) и когда вы загружаете пресет с ним, он отправляет MIDI-сообщение через разъём MIDI Out и USB, как собственный MIDI HX Stomp: чтобы переключать другую педаль или канал усилителя вместе с вашими блоками.",
+    "midi-block.li1": "<strong>CC</strong>: при включении отправляется CC Num со значением On, при выключении — со значением Off.",
+    "midi-block.li2": "<strong>PC</strong>: при включении отправляется смена программы Num, при выключении ничего.",
+    "midi-block.li3": "<strong>All</strong> в Chan отправляет сообщение на все 16 каналов. Каждый блок MIDI в пресете отправляет своё сообщение.",
+    "midi-block.li4": "<strong>На странице установки</strong> это одна из функций DSP, отмеченная, как и остальные: её сквозной код занимает немного места DSP, которое делит NAM A2 Lite.",
+    "midi-block.what1": "MIDI-канал, по которому уходит сообщение. All отправляет его на все каналы.",
+    "midi-block.what2": "Смена контроллера или смена программы.",
+    "midi-block.what3": "Номер CC или номер программы.",
+    "midi-block.what4": "Значение CC при включении блока.",
+    "midi-block.what5": "Значение CC при выключении блока."
   }
 };
 // LANGS-END

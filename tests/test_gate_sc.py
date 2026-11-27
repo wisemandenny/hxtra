@@ -258,13 +258,14 @@ def test_mode1_is_restored_before_the_core():
 
 
 def test_dsp_sits_at_the_bottom_of_the_room():
-    env = {'HX_CLICK': '1', 'HX_FX_GATE': '1', 'HX_GR': '1', 'HX_USB_MONITOR': '1', 'HX_GATE_SC': '1'}
+    env = {'HX_CLICK': '1', 'HX_FX_GATE': '1', 'HX_GR': '1', 'HX_USB_MONITOR': '1', 'HX_GATE_SC': '1'}   # the MIDI block off
     dm, pm = block3.place('HX_GATE_SC', env)
     n_dm, n_pm = sc.dsp_size()
     assert dm + n_dm == pg.nw(pm) and pm % 2 == 0
     usb_dm, _ = block3.place('HX_USB_MONITOR', env)
     assert pg.nw(pm + n_pm) <= usb_dm and dm >= block3.room(2)[0]
-    assert block3.FEATURES[-1] == ('HX_GATE_SC', 'patch_sidechain')
+    after = block3.FEATURES[block3.FEATURES.index(('HX_GATE_SC', 'patch_sidechain')) + 1:]
+    assert [f for f, _ in after] == ['HX_MIDI_BLOCK'], 'only the MIDI block below it: code only, at the very bottom'
 
 
 # ---- the firmware tools/patch_sidechain.py builds

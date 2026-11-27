@@ -360,6 +360,11 @@
           <a class="more" href="features.html#gate-sidechain" target="_blank" rel="noopener" data-i18n="feat.more"></a>
           <p class="cost"></p>
         </div>
+        <div class="feat" data-dsp="HX_MIDI_BLOCK" hidden><label><input type="checkbox" checked> <span data-i18n="feat.midi"></span></label>
+          <ul data-i18n="feat.midiS"></ul>
+          <a class="more" href="features.html#midi-block" target="_blank" rel="noopener" data-i18n="feat.more"></a>
+          <p class="cost"></p>
+        </div>
         <div class="feat" data-dsp="HX_USB_MONITOR" hidden><label><input type="checkbox" checked> <span data-i18n="feat.usb"></span></label>
           <ul data-i18n="feat.usbS"></ul>
           <a class="more" href="features.html#usb-monitoring" target="_blank" rel="noopener" data-i18n="feat.more"></a>
@@ -588,6 +593,8 @@ var EN = {
   "feat.gateS": "\n            <li>Adds Gate, Threshold and Decay knobs to the FX Loop and Return blocks, like the Input block's gate.</li>\n            <li>Each of those blocks then uses 0.2% (mono) or 0.4% (stereo) more DSP.</li>\n          ",
   "feat.sc": "<b>Input Sidechain on the Noise Gate block</b>",
   "feat.scS": "\n            <li>Adds an Input Sidechain knob (Off or On) to the Noise Gate block. On, its gate opens and closes on your guitar as it comes in (what the Input block's gate hears) while it still gates the signal reaching it, so a gate after a drive follows the clean guitar.</li>\n            <li>Each Noise Gate block then uses 0.1% (mono) or 0.2% (stereo) more DSP.</li>\n            <li><strong>Experimental:</strong> tested with recorded signals, not yet with a played instrument, so it may need tuning. It works only with a cable in the HX Stomp's guitar input.</li>\n          ",
+  "feat.midi": "<b>MIDI block</b>",
+  "feat.midiS": "\n            <li>Adds Modulation › MIDI: a block that sends a MIDI CC or PC out of MIDI Out and USB when it turns on or off, and when a preset loads with it, on one channel or all 16. Your sound passes through it unchanged.</li>\n          ",
   "feat.usb": "<b>USB monitoring: Path A Out</b>",
   "feat.usbS": "\n            <li>Adds Path A Out to Global Settings › Ins/Outs: Send/USB sends path A to the computer on USB 3/4 (and the Send jacks) instead of Main L/R, so your DAW monitors it. Don’t use it with an FX Loop block.</li>\n            <li>USB Only sends it to the computer alone, the Send jacks silent: Main and the phones play only what the computer sends back.</li>\n            <li>Main+Snd keeps path A on Main L/R and sends the same sound to the Send jacks and USB 3/4 as well, at 0 dB, with no split or block used. Don’t use it with an FX Loop block.</li>\n          ",
   "dsp.title": "DSP features",
@@ -948,6 +955,8 @@ var LANGS = {
     "feat.gateS": "\n            <li>Añade los controles Gate, Threshold y Decay a los bloques FX Loop y Return, como la puerta del bloque Input.</li>\n            <li>Cada uno de esos bloques usa entonces un 0,2 % (mono) o un 0,4 % (estéreo) más de DSP.</li>\n          ",
     "feat.sc": "<b>Input Sidechain en el bloque Noise Gate</b>",
     "feat.scS": "\n            <li>Añade el control Input Sidechain (Off u On) al bloque Noise Gate. En On, la puerta se abre y se cierra con la guitarra tal como entra (lo que oye la puerta del bloque Input), pero sigue actuando sobre la señal que le llega, así que una puerta después de una distorsión sigue a la guitarra limpia.</li>\n            <li>Cada bloque Noise Gate usa entonces un 0,1 % (mono) o un 0,2 % (estéreo) más de DSP.</li>\n            <li><strong>Experimental:</strong> probado con señales grabadas, aún no con un instrumento tocado, así que puede necesitar ajustes. Solo funciona con un cable en la entrada de guitarra del HX Stomp.</li>\n          ",
+    "feat.midi": "<b>Bloque MIDI</b>",
+    "feat.midiS": "\n            <li>Añade Modulation › MIDI: un bloque que envía un CC o PC de MIDI por MIDI Out y USB cuando se activa o se apaga, y cuando se carga un preset que lo tiene, por un canal o por los 16. Tu sonido pasa por él sin cambios.</li>\n          ",
     "feat.usb": "<b>Monitorización por USB: Path A Out</b>",
     "feat.usbS": "\n            <li>Añade Path A Out a Global Settings › Ins/Outs: Send/USB envía el path A al ordenador por USB 3/4 (y a las salidas Send) en lugar de Main L/R, para que lo monitorices en tu DAW. No lo uses con un bloque FX Loop.</li>\n            <li>USB Only lo envía solo al ordenador, con las salidas Send en silencio: Main y los auriculares solo suenan con lo que devuelve el ordenador.</li>\n            <li>Main+Snd mantiene el path A en Main L/R y envía el mismo sonido también a las salidas Send y a USB 3/4, a 0 dB, sin usar un split ni un bloque. No lo uses con un bloque FX Loop.</li>\n          ",
     "dsp.title": "Funciones de DSP",
@@ -1141,6 +1150,8 @@ var LANGS = {
     "feat.gateS": "\n            <li>Adiciona os controles Gate, Threshold e Decay aos blocos FX Loop e Return, como o gate do bloco Input.</li>\n            <li>Cada um desses blocos passa a usar 0,2% (mono) ou 0,4% (estéreo) a mais de DSP.</li>\n          ",
     "feat.sc": "<b>Input Sidechain no bloco Noise Gate</b>",
     "feat.scS": "\n            <li>Adiciona o controle Input Sidechain (Off ou On) ao bloco Noise Gate. Em On, o gate abre e fecha conforme a guitarra na entrada (o que o gate do bloco Input ouve), mas continua atuando no sinal que chega a ele, então um gate depois de uma distorção segue a guitarra limpa.</li>\n            <li>Cada bloco Noise Gate passa a usar 0,1% (mono) ou 0,2% (estéreo) a mais de DSP.</li>\n            <li><strong>Experimental:</strong> testado com sinais gravados, ainda não com um instrumento tocado, então pode precisar de ajustes. Só funciona com um cabo na entrada de guitarra do HX Stomp.</li>\n          ",
+    "feat.midi": "<b>Bloco MIDI</b>",
+    "feat.midiS": "\n            <li>Adiciona Modulation › MIDI: um bloco que envia um CC ou PC de MIDI pelo MIDI Out e pelo USB quando liga ou desliga, e quando um preset com ele é carregado, em um canal ou nos 16. Seu som passa por ele sem mudanças.</li>\n          ",
     "feat.usb": "<b>Monitoramento por USB: Path A Out</b>",
     "feat.usbS": "\n            <li>Adiciona Path A Out em Global Settings › Ins/Outs: Send/USB envia o path A ao computador pelo USB 3/4 (e às saídas Send) em vez de Main L/R, para monitorar na sua DAW. Não use com um bloco FX Loop.</li>\n            <li>USB Only envia só ao computador, com as saídas Send em silêncio: Main e os fones tocam apenas o que o computador devolve.</li>\n            <li>Main+Snd mantém o path A em Main L/R e envia o mesmo som também às saídas Send e ao USB 3/4, a 0 dB, sem usar split nem bloco. Não use com um bloco FX Loop.</li>\n          ",
     "dsp.title": "Funções de DSP",
@@ -1334,6 +1345,8 @@ var LANGS = {
     "feat.gateS": "\n            <li>Ajoute les réglages Gate, Threshold et Decay aux blocs FX Loop et Return, comme le gate du bloc Input.</li>\n            <li>Chacun de ces blocs utilise alors 0,2 % (mono) ou 0,4 % (stéréo) de DSP en plus.</li>\n          ",
     "feat.sc": "<b>Input Sidechain dans le bloc Noise Gate</b>",
     "feat.scS": "\n            <li>Ajoute le réglage Input Sidechain (Off ou On) au bloc Noise Gate. Sur On, le gate s'ouvre et se ferme selon la guitare telle qu'elle entre (ce qu'entend le gate du bloc Input), tout en agissant sur le signal qui lui arrive : un gate placé après une saturation suit la guitare claire.</li>\n            <li>Chaque bloc Noise Gate utilise alors 0,1 % (mono) ou 0,2 % (stéréo) de DSP en plus.</li>\n            <li><strong>Expérimental :</strong> testé avec des signaux enregistrés, pas encore avec un instrument joué, il peut donc demander des réglages. Ne fonctionne qu'avec un câble dans l'entrée guitare du HX Stomp.</li>\n          ",
+    "feat.midi": "<b>Bloc MIDI</b>",
+    "feat.midiS": "\n            <li>Ajoute Modulation › MIDI : un bloc qui envoie un CC ou un PC MIDI par MIDI Out et USB quand il s’active ou se coupe, et quand un preset qui le contient est chargé, sur un canal ou sur les 16. Votre son le traverse sans changement.</li>\n          ",
     "feat.usb": "<b>Écoute par USB : Path A Out</b>",
     "feat.usbS": "\n            <li>Ajoute Path A Out dans Global Settings › Ins/Outs : Send/USB envoie le path A à l’ordinateur sur USB 3/4 (et aux sorties Send) au lieu de Main L/R, pour l’écouter dans votre DAW. Ne l’utilisez pas avec un bloc FX Loop.</li>\n            <li>USB Only l’envoie à l’ordinateur seul, sorties Send muettes : Main et le casque ne jouent que ce que l’ordinateur renvoie.</li>\n            <li>Main+Snd garde le path A sur Main L/R et envoie aussi le même son aux sorties Send et sur USB 3/4, à 0 dB, sans split ni bloc. Ne l’utilisez pas avec un bloc FX Loop.</li>\n          ",
     "dsp.title": "Fonctions DSP",
@@ -1527,6 +1540,8 @@ var LANGS = {
     "feat.gateS": "\n            <li>Fügt den FX-Loop- und Return-Blöcken die Regler Gate, Threshold und Decay hinzu, wie beim Gate des Input-Blocks.</li>\n            <li>Jeder dieser Blöcke braucht dann 0,2 % (mono) oder 0,4 % (stereo) mehr DSP.</li>\n          ",
     "feat.sc": "<b>Input Sidechain im Noise-Gate-Block</b>",
     "feat.scS": "\n            <li>Fügt dem Noise-Gate-Block den Regler Input Sidechain (Off oder On) hinzu. Auf On öffnet und schließt das Gate nach der Gitarre, wie sie hereinkommt (was das Gate des Input-Blocks hört), bearbeitet aber weiter das Signal, das bei ihm ankommt. So folgt ein Gate hinter einer Verzerrung der cleanen Gitarre.</li>\n            <li>Jeder Noise-Gate-Block braucht dann 0,1 % (mono) oder 0,2 % (stereo) mehr DSP.</li>\n            <li><strong>Experimentell:</strong> mit aufgenommenen Signalen getestet, noch nicht mit einem gespielten Instrument, braucht also eventuell Feinschliff. Funktioniert nur mit einem Kabel im Gitarreneingang des HX Stomp.</li>\n          ",
+    "feat.midi": "<b>MIDI-Block</b>",
+    "feat.midiS": "\n            <li>Fügt Modulation › MIDI hinzu: ein Block, der über MIDI Out und USB einen MIDI-CC oder -PC sendet, wenn er an- oder ausgeht und wenn ein Preset mit ihm geladen wird, auf einem Kanal oder allen 16. Dein Sound geht unverändert hindurch.</li>\n          ",
     "feat.usb": "<b>Abhören über USB: Path A Out</b>",
     "feat.usbS": "\n            <li>Fügt Path A Out zu Global Settings › Ins/Outs hinzu: Send/USB schickt Path A statt an Main L/R über USB 3/4 an den Computer (und an die Send-Ausgänge), damit Sie es in Ihrer DAW abhören. Nicht mit einem FX-Loop-Block verwenden.</li>\n            <li>USB Only schickt es nur an den Computer, die Send-Ausgänge bleiben stumm: Main und Kopfhörer spielen nur, was der Computer zurückschickt.</li>\n            <li>Main+Snd lässt Path A auf Main L/R und schickt denselben Klang zusätzlich an die Send-Ausgänge und über USB 3/4, mit 0 dB, ohne Split oder Block. Nicht mit einem FX-Loop-Block verwenden.</li>\n          ",
     "dsp.title": "DSP-Funktionen",
@@ -1720,6 +1735,8 @@ var LANGS = {
     "feat.gateS": "\n            <li>Aggiunge i controlli Gate, Threshold e Decay ai blocchi FX Loop e Return, come il gate del blocco Input.</li>\n            <li>Ognuno di questi blocchi usa poi lo 0,2% (mono) o lo 0,4% (stereo) di DSP in più.</li>\n          ",
     "feat.sc": "<b>Input Sidechain nel blocco Noise Gate</b>",
     "feat.scS": "\n            <li>Aggiunge il controllo Input Sidechain (Off o On) al blocco Noise Gate. Su On, il gate si apre e si chiude seguendo la chitarra così come entra (ciò che sente il gate del blocco Input), ma continua ad agire sul segnale che gli arriva: un gate dopo una distorsione segue la chitarra pulita.</li>\n            <li>Ogni blocco Noise Gate usa poi lo 0,1% (mono) o lo 0,2% (stereo) di DSP in più.</li>\n            <li><strong>Sperimentale:</strong> provato con segnali registrati, non ancora con uno strumento suonato, quindi potrebbe richiedere qualche ritocco. Funziona solo con un cavo nell'ingresso chitarra dell'HX Stomp.</li>\n          ",
+    "feat.midi": "<b>Blocco MIDI</b>",
+    "feat.midiS": "\n            <li>Aggiunge Modulation › MIDI: un blocco che invia un CC o un PC MIDI da MIDI Out e USB quando si attiva o si spegne, e quando si carica un preset che lo contiene, su un canale o su tutti i 16. Il tuo suono lo attraversa invariato.</li>\n          ",
     "feat.usb": "<b>Ascolto via USB: Path A Out</b>",
     "feat.usbS": "\n            <li>Aggiunge Path A Out in Global Settings › Ins/Outs: Send/USB invia il path A al computer su USB 3/4 (e alle uscite Send) invece che a Main L/R, così lo ascolti nella tua DAW. Non usarlo con un blocco FX Loop.</li>\n            <li>USB Only lo invia solo al computer, con le uscite Send mute: Main e le cuffie suonano solo ciò che il computer rimanda.</li>\n            <li>Main+Snd lascia il path A su Main L/R e invia lo stesso suono anche alle uscite Send e su USB 3/4, a 0 dB, senza usare split né blocchi. Non usarlo con un blocco FX Loop.</li>\n          ",
     "dsp.title": "Funzioni DSP",
@@ -1913,6 +1930,8 @@ var LANGS = {
     "feat.gateS": "\n            <li>FX Loop と Return ブロックに、Input ブロックのゲートと同じ Gate・Threshold・Decay のノブを追加します。</li>\n            <li>これらのブロックはそれぞれ DSP を 0.2%（モノ）または 0.4%（ステレオ）多く使います。</li>\n          ",
     "feat.sc": "<b>Noise Gate ブロックの Input Sidechain</b>",
     "feat.scS": "\n            <li>Noise Gate ブロックに Input Sidechain ノブ（Off／On）を追加します。On にすると、ゲートは入力されたままのギター（Input ブロックのゲートが聞く信号）で開閉し、ゲートをかけるのはブロックに届いた信号のままです。歪みの後のゲートがクリーンなギターに追従します。</li>\n            <li>Noise Gate ブロックはそれぞれ DSP を 0.1%（モノ）または 0.2%（ステレオ）多く使います。</li>\n            <li><strong>試験的機能：</strong>録音した信号でテスト済みですが、実際に演奏した楽器ではまだ試していないため、調整が必要になるかもしれません。HX Stomp のギター入力にケーブルが挿さっているときだけ動作します。</li>\n          ",
+    "feat.midi": "<b>MIDI ブロック</b>",
+    "feat.midiS": "\n            <li>Modulation › MIDI を追加します。オン／オフしたとき、またはそのブロックを含むプリセットを読み込んだときに、MIDI Out と USB から MIDI の CC または PC を、1つのチャンネルか16チャンネルすべてに送るブロックです。音はそのまま通過します。</li>\n          ",
     "feat.usb": "<b>USB モニタリング：Path A Out</b>",
     "feat.usbS": "\n            <li>Global Settings › Ins/Outs に Path A Out を追加します。Send/USB にすると Path A を Main L/R ではなく USB 3/4（と Send 端子）でコンピューターに送り、DAW でモニターできます。FX Loop ブロックとは併用しないでください。</li>\n            <li>USB Only はコンピューターだけに送り、Send 端子は無音です。Main とヘッドホンにはコンピューターから戻る音だけが出ます。</li>\n            <li>Main+Snd は Path A を Main L/R のままにし、同じ音を Send 端子と USB 3/4 にも 0 dB で送ります。スプリットもブロックも使いません。FX Loop ブロックとは併用しないでください。</li>\n          ",
     "dsp.title": "DSP 機能",
@@ -2106,6 +2125,8 @@ var LANGS = {
     "feat.gateS": "\n            <li>为 FX Loop 和 Return 模块添加 Gate、Threshold 和 Decay 旋钮，与 Input 模块的噪声门相同。</li>\n            <li>这些模块每个会多占用 0.2%（单声道）或 0.4%（立体声）的 DSP。</li>\n          ",
     "feat.sc": "<b>Noise Gate 模块的 Input Sidechain</b>",
     "feat.scS": "\n            <li>为 Noise Gate 模块添加 Input Sidechain 旋钮（Off 或 On）。设为 On 时，噪声门按输入时的吉他信号（即 Input 模块的噪声门所听到的信号）开关，但仍作用于送到它的信号，因此放在失真之后的噪声门会跟随干净的吉他信号。</li>\n            <li>每个 Noise Gate 模块会多占用 0.1%（单声道）或 0.2%（立体声）的 DSP。</li>\n            <li><strong>实验性功能：</strong>已用录制的信号测试，尚未用实际演奏的乐器测试，可能需要调整。仅在 HX Stomp 的吉他输入插有线缆时有效。</li>\n          ",
+    "feat.midi": "<b>MIDI 模块</b>",
+    "feat.midiS": "\n            <li>添加 Modulation › MIDI：一个在开启或关闭时、以及加载含有它的预设时，通过 MIDI Out 和 USB 在一个通道或全部 16 个通道上发送 MIDI CC 或 PC 的模块。你的声音原样通过它。</li>\n          ",
     "feat.usb": "<b>USB 监听：Path A Out</b>",
     "feat.usbS": "\n            <li>在 Global Settings › Ins/Outs 中添加 Path A Out：Send/USB 会把 Path A 经 USB 3/4（以及 Send 接口）送到电脑，而不是 Main L/R，方便在 DAW 中监听。不要与 FX Loop 模块同时使用。</li>\n            <li>USB Only 只送到电脑，Send 接口静音：Main 和耳机只播放电脑送回的声音。</li>\n            <li>Main+Snd 让 Path A 保持在 Main L/R，同时把同样的声音以 0 dB 送到 Send 接口和 USB 3/4，不占用分路或模块。不要与 FX Loop 模块同时使用。</li>\n          ",
     "dsp.title": "DSP 功能",
@@ -2299,6 +2320,8 @@ var LANGS = {
     "feat.gateS": "\n            <li>FX Loop와 Return 블록에 Input 블록의 게이트처럼 Gate, Threshold, Decay 노브를 추가합니다.</li>\n            <li>이 블록들은 각각 DSP를 0.2%(모노) 또는 0.4%(스테레오) 더 사용합니다.</li>\n          ",
     "feat.sc": "<b>Noise Gate 블록의 Input Sidechain</b>",
     "feat.scS": "\n            <li>Noise Gate 블록에 Input Sidechain 노브(Off 또는 On)를 추가합니다. On이면 게이트가 들어오는 그대로의 기타(Input 블록의 게이트가 듣는 신호)에 따라 열리고 닫히지만, 게이트를 거는 대상은 블록에 도착한 신호 그대로입니다. 그래서 드라이브 뒤의 게이트가 클린 기타를 따라갑니다.</li>\n            <li>각 Noise Gate 블록은 DSP를 0.1%(모노) 또는 0.2%(스테레오) 더 사용합니다.</li>\n            <li><strong>실험적 기능:</strong> 녹음된 신호로 테스트했고 실제로 연주한 악기로는 아직 테스트하지 않아 조정이 필요할 수 있습니다. HX Stomp의 기타 입력에 케이블이 꽂혀 있을 때만 동작합니다.</li>\n          ",
+    "feat.midi": "<b>MIDI 블록</b>",
+    "feat.midiS": "\n            <li>Modulation › MIDI를 추가합니다. 켜지거나 꺼질 때, 그리고 이 블록이 있는 프리셋을 불러올 때 MIDI Out과 USB로 MIDI CC나 PC를 한 채널 또는 16개 채널 모두로 보내는 블록입니다. 소리는 그대로 통과합니다.</li>\n          ",
     "feat.usb": "<b>USB 모니터링: Path A Out</b>",
     "feat.usbS": "\n            <li>Global Settings › Ins/Outs에 Path A Out을 추가합니다. Send/USB는 Path A를 Main L/R 대신 USB 3/4(와 Send 잭)로 컴퓨터에 보내 DAW에서 모니터링할 수 있게 합니다. FX Loop 블록과 함께 쓰지 마세요.</li>\n            <li>USB Only는 컴퓨터로만 보내고 Send 잭은 무음입니다. Main과 헤드폰에서는 컴퓨터가 돌려보내는 소리만 나옵니다.</li>\n            <li>Main+Snd는 Path A를 Main L/R에 두고 같은 소리를 Send 잭과 USB 3/4에도 0 dB로 보냅니다. 스플릿이나 블록을 쓰지 않습니다. FX Loop 블록과 함께 쓰지 마세요.</li>\n          ",
     "dsp.title": "DSP 기능",
@@ -2492,6 +2515,8 @@ var LANGS = {
     "feat.gateS": "\n            <li>Добавляет в блоки FX Loop и Return ручки Gate, Threshold и Decay, как у гейта блока Input.</li>\n            <li>Каждый из этих блоков тогда использует на 0,2% (моно) или 0,4% (стерео) больше DSP.</li>\n          ",
     "feat.sc": "<b>Input Sidechain в блоке Noise Gate</b>",
     "feat.scS": "\n            <li>Добавляет в блок Noise Gate регулятор Input Sidechain (Off или On). В положении On гейт открывается и закрывается по гитаре в том виде, в каком она приходит на вход (то, что слышит гейт блока Input), но по-прежнему обрабатывает сигнал, который приходит к нему, поэтому гейт после перегруза следует за чистой гитарой.</li>\n            <li>Каждый блок Noise Gate тогда использует на 0,1% (моно) или 0,2% (стерео) больше DSP.</li>\n            <li><strong>Экспериментально:</strong> проверено на записанных сигналах, но ещё не на живом инструменте, поэтому может потребовать доработки. Работает, только когда в гитарный вход HX Stomp вставлен кабель.</li>\n          ",
+    "feat.midi": "<b>Блок MIDI</b>",
+    "feat.midiS": "\n            <li>Добавляет Modulation › MIDI: блок, который отправляет MIDI CC или PC через MIDI Out и USB, когда он включается или выключается и когда загружается пресет с ним, на один канал или на все 16. Звук проходит через него без изменений.</li>\n          ",
     "feat.usb": "<b>Мониторинг через USB: Path A Out</b>",
     "feat.usbS": "\n            <li>Добавляет Path A Out в Global Settings › Ins/Outs: Send/USB отправляет path A на компьютер по USB 3/4 (и на выходы Send) вместо Main L/R, чтобы слушать его через DAW. Не используйте его с блоком FX Loop.</li>\n            <li>USB Only отправляет его только на компьютер, выходы Send молчат: в Main и наушниках звучит только то, что возвращает компьютер.</li>\n            <li>Main+Snd оставляет path A на Main L/R и отправляет тот же звук ещё и на выходы Send и по USB 3/4, на 0 dB, без сплита и без блока. Не используйте его с блоком FX Loop.</li>\n          ",
     "dsp.title": "Функции DSP",

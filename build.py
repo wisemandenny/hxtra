@@ -25,7 +25,8 @@ Steps:
   3. tools/patch_amp.py patch: the kernel into the SHARC boot stream
      (first: tools/patch_menu.py, the HXtra features of tools/features; --splash, --splash-fit,
      --splash-text and --splash-glyph are the splash feature's HX_SPLASH, HX_SPLASH_FIT, HX_SPLASH_TEXT and HX_SPLASH_GLYPHS;
-     with HX_CLICK=1, then tools/patch_click.py: the Metronome block; with HX_FX_GATE=1, tools/patch_gate.py: the gate in
+     with HX_CLICK=1, then tools/patch_click.py: the Metronome block; with HX_MIDI_BLOCK=1, tools/patch_midi.py: the MIDI block;
+     with HX_FX_GATE=1, tools/patch_gate.py: the gate in
      the FX Loop and Return blocks; with HX_GATE_SC=1, tools/patch_sidechain.py: the Noise Gate's Input Sidechain;
      with HX_GR=1, last, tools/patch_comp.py: the GR meter's compressor knobs and DSP code)
   4. tools/l6ia_verify.py: every checksum of the result
@@ -135,6 +136,11 @@ def main():
         os.replace(base, image)
     if os.environ.get("HX_CLICK"):
         run(py, "tools/patch_click.py", image, titled)
+        os.replace(titled, image)
+    if os.environ.get("HX_MIDI_BLOCK"):
+        # beside the Metronome, before patch_gate and patch_sidechain move Entry 3's strings and model table back home: an add-model
+        # after them copies both to the tail again
+        run(py, "tools/patch_midi.py", image, titled)
         os.replace(titled, image)
     if os.environ.get("HX_FX_GATE"):
         run(py, "tools/patch_gate.py", image, titled)

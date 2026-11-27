@@ -47,6 +47,7 @@ var STEPS = {
 // What build.py needs, relative to the repository root.
 var SOURCES = [
   "build.py",
+  "tools/fx_block.py",
   "tools/hxf.py",
   "tools/l6ia.py",
   "tools/hxf_ram.py",
@@ -56,6 +57,7 @@ var SOURCES = [
   "tools/effects.py",
   "tools/patch_menu.py",
   "tools/patch_click.py",
+  "tools/patch_midi.py",
   "tools/patch_gate.py",
   "tools/patch_sidechain.py",
   "tools/patch_usbmon.py",
@@ -77,6 +79,7 @@ var SOURCES = [
   "tools/features/label_color.py",
   "tools/features/long_press.py",
   "tools/features/metronome.py",
+  "tools/features/midi_block.py",
   "tools/features/more_snapshots.py",
   "tools/features/preset_color.py",
   "tools/features/real_names.py",
@@ -104,6 +107,7 @@ var SOURCES = [
   "src/m4/label_color.s",
   "src/m4/long_press.s",
   "src/m4/metronome.s",
+  "src/m4/midi_block.s",
   "src/m4/more_snapshots.s",
   "src/m4/preset_color.s",
   "src/m4/preset_keys.s",
@@ -116,6 +120,7 @@ var SOURCES = [
   "src/m4/usb_monitor.s",
   "src/m4/virtual_settings.s",
   "src/sharc/click.asm",
+  "src/sharc/midi_thru.asm",
   "src/sharc/frame_probe.asm",
   "src/sharc/fx_gate.asm",
   "src/sharc/gate_sc.asm",
@@ -249,6 +254,11 @@ async function build(stock, flags, slots) {
       step(5, "Adding the kernel to the DSP program…",
            ["tools/patch_click.py", "build/nam_lite.l6ia", "build/nam_lite_click.l6ia"]);
       p.FS.rename("/repo/build/nam_lite_click.l6ia", "/repo/build/nam_lite.l6ia");
+    }
+    if (flags.indexOf("HX_MIDI_BLOCK") >= 0) {   // beside the Metronome, before the gate's and sidechain's Entry 3 moves, as in build.py
+      step(5, "Adding the kernel to the DSP program…",
+           ["tools/patch_midi.py", "build/nam_lite.l6ia", "build/nam_lite_midi.l6ia"]);
+      p.FS.rename("/repo/build/nam_lite_midi.l6ia", "/repo/build/nam_lite.l6ia");
     }
     if (flags.indexOf("HX_FX_GATE") >= 0) {
       step(5, "Adding the kernel to the DSP program…",

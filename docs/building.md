@@ -50,11 +50,12 @@ To add features, set their switches (the [features page](https://wisemandenny.gi
 | [Virtual Footswitches (FS6-10)](https://wisemandenny.github.io/hxtra/web/features.html#virtual-footswitches) | `HX_LONG_PRESS=1`, with Foot Switch Long Press |
 | [Metronome](https://wisemandenny.github.io/hxtra/web/features.html#metronome) | `HX_CLICK=1` |
 | [USB & Send Routing](https://wisemandenny.github.io/hxtra/web/features.html#usb-monitoring) | `HX_USB_MONITOR=1` |
+| [MIDI Block](https://wisemandenny.github.io/hxtra/web/features.html#midi-block) | `HX_MIDI_BLOCK=1` |
 | [Compressor Gain Reduction Meter](https://wisemandenny.github.io/hxtra/web/features.html#gr-meter) | `HX_GR=1` |
 | [NAM A2 Lite](https://wisemandenny.github.io/hxtra/web/features.html#nam-a2-lite) | `HX_NAM_SLOTS=3`, `2`, `1`, `0` (off); unset, the most that fit |
 | [Boot screen](#boot-screen) | `--splash`, `--splash-text` |
 
-Switches combine. The Metronome, the FX Loop gate, the GR meter, USB & Send Routing and Input Sidechain put code on the DSP, in the room NAM A2 Lite's blocks leave (`python3 tools/block3.py` prints it): `HX_NAM_SLOTS=3`, `2`, `1` or `0` sets how many NAM blocks can play at once (`0`: no NAM A2 Lite, which skips steps 1, 2 and 4), and unset, `build.py` takes the most that leave room for the features you turned on. A build whose DSP features don't fit beside `HX_NAM_SLOTS` stops with what they take and what is left. For example, every feature but the boot picture:
+Switches combine. The Metronome, the FX Loop gate, the GR meter, USB & Send Routing, Input Sidechain and the MIDI block put code on the DSP, in the room NAM A2 Lite's blocks leave (`python3 tools/block3.py` prints it): `HX_NAM_SLOTS=3`, `2`, `1` or `0` sets how many NAM blocks can play at once (`0`: no NAM A2 Lite, which skips steps 1, 2 and 4), and unset, `build.py` takes the most that leave room for the features you turned on. A build whose DSP features don't fit beside `HX_NAM_SLOTS` stops with what they take and what is left. For example, every feature but the boot picture:
 
 ```sh
 HX_TUNER=1 HX_BPM=1 HX_DSP_METER=1 HX_BREATHING_LINE=1 HX_LONG_PRESS=1 HX_MORE_SNAPSHOTS=1 HX_CLICK=1 HX_GR=1 HX_TAP_COLOR=1 HX_PRESET_COLOR=1 HX_CC_TAP=1 HX_REAL_NAMES=1 \
