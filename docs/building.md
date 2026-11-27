@@ -43,6 +43,7 @@ To add features, set their switches (the [features page](https://wisemandenny.gi
 | [TAP LED Color](https://wisemandenny.github.io/hxtra/web/features.html#tap-led-color) | `HX_TAP_COLOR=1` |
 | [Preset Mode LED Color](https://wisemandenny.github.io/hxtra/web/features.html#preset-led-color) | `HX_PRESET_COLOR=1` |
 | [Tap Command](https://wisemandenny.github.io/hxtra/web/features.html#tap-command) | `HX_CC_TAP=1` |
+| [Footswitch View](https://wisemandenny.github.io/hxtra/web/features.html#footswitch-view) | `HX_FOOTSWITCH_VIEW=1` |
 | [Real Block Names](https://wisemandenny.github.io/hxtra/web/features.html#real-block-names) | `HX_REAL_NAMES=1` |
 | [FX Loop Noise Gate](https://wisemandenny.github.io/hxtra/web/features.html#fx-loop-gate) | `HX_FX_GATE=1` |
 | [Noise Gate Input Sidechain](https://wisemandenny.github.io/hxtra/web/features.html#gate-sidechain) | `HX_GATE_SC=1` |
@@ -57,7 +58,7 @@ To add features, set their switches (the [features page](https://wisemandenny.gi
 Switches combine. The Metronome, the FX Loop gate, the GR meter, USB & Send Routing and Input Sidechain put code on the DSP, in the room NAM A2 Lite's blocks leave (`python3 tools/block3.py` prints it): `HX_NAM_SLOTS=3`, `2`, `1` or `0` sets how many NAM blocks can play at once (`0`: no NAM A2 Lite, which skips steps 1, 2 and 4), and unset, `build.py` takes the most that leave room for the features you turned on. A build whose DSP features don't fit beside `HX_NAM_SLOTS` stops with what they take and what is left. For example, every feature but the boot picture:
 
 ```sh
-HX_TUNER=1 HX_BPM=1 HX_DSP_METER=1 HX_BREATHING_LINE=1 HX_LONG_PRESS=1 HX_MORE_SNAPSHOTS=1 HX_CLICK=1 HX_GR=1 HX_TAP_COLOR=1 HX_PRESET_COLOR=1 HX_CC_TAP=1 HX_REAL_NAMES=1 \
+HX_TUNER=1 HX_BPM=1 HX_DSP_METER=1 HX_BREATHING_LINE=1 HX_LONG_PRESS=1 HX_MORE_SNAPSHOTS=1 HX_CLICK=1 HX_GR=1 HX_TAP_COLOR=1 HX_PRESET_COLOR=1 HX_CC_TAP=1 HX_REAL_NAMES=1 HX_FOOTSWITCH_VIEW=1 \
   python3 build.py path/to/HX_Stomp_v3.80.0_0x103966115.hxf
 ```
 

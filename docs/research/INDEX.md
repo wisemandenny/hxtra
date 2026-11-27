@@ -76,6 +76,7 @@ Before writing anything, read [conventions.md](conventions.md): the status tags,
 | [features/preset-color.md](features/preset-color.md) | Preset LED Color: the current preset's ring and icon in Preset mode, the stock Preset LED case and Home builder | working on Preset mode's look |
 | [features/boot-splash.md](features/boot-splash.md) | a custom boot picture, the boot line's text, colour emoji | working on the boot screen |
 | [features/usb-monitor.md](features/usb-monitor.md) | USB monitoring: Path A Out in Ins/Outs, the owned destination send, applying a change at once, USB Only's mode riding on USB Input Trim | working on USB monitoring, or on path A's output |
+| [features/footswitch-view.md](features/footswitch-view.md) | VIEW's Footswitches screen: the post handler, the paint over Play, leaving through the view controller, the tiles' tables | working on the Footswitches screen, or on VIEW |
 | [features/screen-mirror.md](features/screen-mirror.md) | the screen on a computer: the command, the frame coding, the Mac viewer and recorder | working on the screen mirror, or recording a demo |
 | [features/usb-input.md](features/usb-input.md) | footswitches, knobs and buttons pressed from a computer: the command, the key queue, `tools/hx_input.py` | driving the unit from a script or a test |
 

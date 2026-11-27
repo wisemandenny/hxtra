@@ -223,6 +223,12 @@
     <td data-i18n="usb-monitoring.where">Global Settings &gt; Ins/Outs, page 3</td>
     </tr>
     <tr>
+    <td><a href="#footswitch-view" data-i18n="footswitch-view.name">Footswitch View</a></td>
+    <td data-i18n="footswitch-view.desc">A third screen on VIEW that shows your footswitches as the HX Stomp XL does: FS1–FS3 and the virtual FS6–FS8, each with its block's name and colour, lit when on.</td>
+    <td data-i18n="footswitch-view.floc">The VIEW button</td>
+    <td data-i18n="footswitch-view.where">No settings</td>
+    </tr>
+    <tr>
     <td><a href="#virtual-footswitches" data-i18n="virtual-footswitches.name">Virtual Footswitches (FS6&#8209;10)</a></td>
     <td data-i18n="virtual-footswitches.desc">FS6–FS10, footswitches without a switch: assign blocks to them in Bypass Assign (MIDI In), and switch them by holding FS1–FS5 or with MIDI CC 20–24. Each can instead run a footswitch function, such as Bank, Snapshot or Global EQ.</td>
     <td data-i18n="virtual-footswitches.floc">A block's Bypass Assign &gt; MIDI In, or Controller Assign</td>
@@ -807,6 +813,20 @@
       </div>
     </section>
 
+    <section class="card feat" id="footswitch-view">
+      <h2><img class="ico" src="../docs/assets/icons/footswitch-view.svg" width="28" height="28" alt=""><span data-i18n="footswitch-view.name">Footswitch View</span></h2>
+      <p data-i18n="footswitch-view.p1">Press <strong>VIEW</strong> to go from the Play view to the Edit view, then to the Footswitches screen, then back to Play. The screen shows the preset's number and name over two rows of tiles laid out like an HX Stomp XL's switches: FS6, FS7 and FS8 on top, FS1, FS2 and FS3 below.</p>
+  <ul>
+  <li data-i18n="footswitch-view.li1"><strong>Each tile</strong> shows its block's name, lit in the block's category colour while the block is on and dimmed while it is off. FS1–FS3 show what the Play view's own labels show.</li>
+  <li data-i18n="footswitch-view.li2"><strong>FS6–FS8</strong> are the <a href="#virtual-footswitches">virtual footswitches</a>: each tile shows the block whose Bypass Assign has MIDI In set to FS6, FS7 or FS8 (MIDI CC 20–22).</li>
+  <li data-i18n="footswitch-view.li3"><strong>The footswitches and knobs</strong> work as they do in the Play view while the screen is up.</li>
+  </ul>
+      <div class="settings">
+        <h3 data-i18n="settings">Settings</h3>
+        <p class="where" data-i18n="nosettings">No settings</p>
+      </div>
+    </section>
+
     <section class="card feat" id="virtual-footswitches">
       <h2><img class="ico" src="../docs/assets/icons/long-press.svg" width="28" height="28" alt=""><span data-i18n="virtual-footswitches.name">Virtual Footswitches (FS6&#8209;10)</span></h2>
       <!-- demo: virtual-footswitches -->
@@ -1063,7 +1083,15 @@ var LANGS = {
     "footer.1": "Crea e instala HXtra en la página de instalación",
     "footer.2": "HXtra en GitHub",
     "doc.title": "Recorrido por las funciones de HXtra",
-    "lang": "Idioma"
+    "lang": "Idioma",
+    "footswitch-view.name": "Vista de footswitches",
+    "footswitch-view.desc": "Una tercera pantalla en VIEW que muestra tus footswitches como el HX Stomp XL: FS1–FS3 y los virtuales FS6–FS8, cada uno con el nombre y el color de su bloque, encendido cuando está activo.",
+    "footswitch-view.floc": "El botón VIEW",
+    "footswitch-view.where": "Sin ajustes",
+    "footswitch-view.p1": "Pulsa <strong>VIEW</strong> para pasar de la vista Play a la vista Edit, luego a la pantalla de footswitches y de vuelta a Play. La pantalla muestra el número y el nombre del preset sobre dos filas de casillas dispuestas como los footswitches de un HX Stomp XL: FS6, FS7 y FS8 arriba, FS1, FS2 y FS3 abajo.",
+    "footswitch-view.li1": "<strong>Cada casilla</strong> muestra el nombre de su bloque, iluminada en el color de la categoría del bloque mientras está activo y atenuada mientras está apagado. FS1–FS3 muestran lo mismo que las etiquetas de la vista Play.",
+    "footswitch-view.li2": "<strong>FS6–FS8</strong> son los <a href=\"#virtual-footswitches\">footswitches virtuales</a>: cada casilla muestra el bloque cuyo Bypass Assign tiene MIDI In en FS6, FS7 o FS8 (MIDI CC 20–22).",
+    "footswitch-view.li3": "<strong>Los footswitches y los mandos</strong> funcionan como en la vista Play mientras la pantalla está visible."
   },
   "pt": {
     "title": "Tour pelos recursos",
@@ -1281,7 +1309,15 @@ var LANGS = {
     "footer.1": "Gere e instale o HXtra na página de instalação",
     "footer.2": "HXtra no GitHub",
     "doc.title": "Tour pelos recursos do HXtra",
-    "lang": "Idioma"
+    "lang": "Idioma",
+    "footswitch-view.name": "Tela dos footswitches",
+    "footswitch-view.desc": "Uma terceira tela no VIEW que mostra seus footswitches como o HX Stomp XL: FS1–FS3 e os virtuais FS6–FS8, cada um com o nome e a cor do seu bloco, aceso quando ligado.",
+    "footswitch-view.floc": "O botão VIEW",
+    "footswitch-view.where": "Sem ajustes",
+    "footswitch-view.p1": "Aperte <strong>VIEW</strong> para ir da visão Play para a visão Edit, depois para a tela dos footswitches e de volta para Play. A tela mostra o número e o nome do preset sobre duas fileiras de quadros dispostas como os footswitches de um HX Stomp XL: FS6, FS7 e FS8 em cima, FS1, FS2 e FS3 embaixo.",
+    "footswitch-view.li1": "<strong>Cada quadro</strong> mostra o nome do seu bloco, aceso na cor da categoria do bloco enquanto ele está ligado e escurecido enquanto está desligado. FS1–FS3 mostram o mesmo que as etiquetas da visão Play.",
+    "footswitch-view.li2": "<strong>FS6–FS8</strong> são os <a href=\"#virtual-footswitches\">footswitches virtuais</a>: cada quadro mostra o bloco cujo Bypass Assign tem MIDI In em FS6, FS7 ou FS8 (MIDI CC 20–22).",
+    "footswitch-view.li3": "<strong>Os footswitches e os knobs</strong> funcionam como na visão Play enquanto a tela está aberta."
   },
   "fr": {
     "title": "Visite des fonctions",
@@ -1499,7 +1535,15 @@ var LANGS = {
     "footer.1": "Créer et installer HXtra sur la page d'installation",
     "footer.2": "HXtra sur GitHub",
     "doc.title": "Visite des fonctions HXtra",
-    "lang": "Langue"
+    "lang": "Langue",
+    "footswitch-view.name": "Vue des footswitches",
+    "footswitch-view.desc": "Un troisième écran sur VIEW qui montre vos footswitches comme le HX Stomp XL : FS1–FS3 et les virtuels FS6–FS8, chacun avec le nom et la couleur de son bloc, allumé quand il est actif.",
+    "footswitch-view.floc": "Le bouton VIEW",
+    "footswitch-view.where": "Aucun réglage",
+    "footswitch-view.p1": "Appuyez sur <strong>VIEW</strong> pour passer de la vue Play à la vue Edit, puis à l'écran des footswitches, puis de nouveau à Play. L'écran affiche le numéro et le nom du preset au-dessus de deux rangées de cases disposées comme les footswitches d'un HX Stomp XL : FS6, FS7 et FS8 en haut, FS1, FS2 et FS3 en bas.",
+    "footswitch-view.li1": "<strong>Chaque case</strong> affiche le nom de son bloc, allumée dans la couleur de la catégorie du bloc quand il est actif et atténuée quand il est coupé. FS1–FS3 affichent la même chose que les étiquettes de la vue Play.",
+    "footswitch-view.li2": "<strong>FS6–FS8</strong> sont les <a href=\"#virtual-footswitches\">footswitches virtuels</a> : chaque case montre le bloc dont le Bypass Assign a MIDI In sur FS6, FS7 ou FS8 (MIDI CC 20–22).",
+    "footswitch-view.li3": "<strong>Les footswitches et les boutons</strong> fonctionnent comme dans la vue Play tant que l'écran est affiché."
   },
   "de": {
     "title": "Funktionsübersicht",
@@ -1717,7 +1761,15 @@ var LANGS = {
     "footer.1": "HXtra auf der Einrichtungsseite bauen und installieren",
     "footer.2": "HXtra auf GitHub",
     "doc.title": "HXtra Funktionsübersicht",
-    "lang": "Sprache"
+    "lang": "Sprache",
+    "footswitch-view.name": "Footswitch-Ansicht",
+    "footswitch-view.desc": "Ein dritter Bildschirm auf VIEW, der deine Footswitches wie das HX Stomp XL zeigt: FS1–FS3 und die virtuellen FS6–FS8, jeder mit Name und Farbe seines Blocks, hell, wenn er an ist.",
+    "footswitch-view.floc": "Die VIEW-Taste",
+    "footswitch-view.where": "Keine Einstellungen",
+    "footswitch-view.p1": "Drücke <strong>VIEW</strong>, um von der Play-Ansicht zur Edit-Ansicht, dann zum Footswitch-Bildschirm und zurück zu Play zu wechseln. Der Bildschirm zeigt Nummer und Name des Presets über zwei Reihen von Kacheln, angeordnet wie die Schalter eines HX Stomp XL: oben FS6, FS7 und FS8, unten FS1, FS2 und FS3.",
+    "footswitch-view.li1": "<strong>Jede Kachel</strong> zeigt den Namen ihres Blocks, in der Farbe seiner Kategorie hell, solange er an ist, und gedimmt, solange er aus ist. FS1–FS3 zeigen dasselbe wie die Beschriftungen der Play-Ansicht.",
+    "footswitch-view.li2": "<strong>FS6–FS8</strong> sind die <a href=\"#virtual-footswitches\">virtuellen Footswitches</a>: Jede Kachel zeigt den Block, dessen Bypass Assign MIDI In auf FS6, FS7 oder FS8 hat (MIDI CC 20–22).",
+    "footswitch-view.li3": "<strong>Footswitches und Regler</strong> funktionieren wie in der Play-Ansicht, solange der Bildschirm angezeigt wird."
   },
   "it": {
     "title": "Tour delle funzioni",
@@ -1935,7 +1987,15 @@ var LANGS = {
     "footer.1": "Crea e installa HXtra dalla pagina di installazione",
     "footer.2": "HXtra su GitHub",
     "doc.title": "Tour delle funzioni di HXtra",
-    "lang": "Lingua"
+    "lang": "Lingua",
+    "footswitch-view.name": "Vista dei footswitch",
+    "footswitch-view.desc": "Una terza schermata su VIEW che mostra i footswitch come l'HX Stomp XL: FS1–FS3 e i virtuali FS6–FS8, ciascuno con il nome e il colore del suo blocco, acceso quando è attivo.",
+    "footswitch-view.floc": "Il tasto VIEW",
+    "footswitch-view.where": "Nessuna impostazione",
+    "footswitch-view.p1": "Premi <strong>VIEW</strong> per passare dalla vista Play alla vista Edit, poi alla schermata dei footswitch e di nuovo a Play. La schermata mostra il numero e il nome del preset sopra due file di riquadri disposti come i footswitch di un HX Stomp XL: FS6, FS7 e FS8 in alto, FS1, FS2 e FS3 in basso.",
+    "footswitch-view.li1": "<strong>Ogni riquadro</strong> mostra il nome del suo blocco, acceso nel colore della categoria del blocco quando è attivo e attenuato quando è spento. FS1–FS3 mostrano lo stesso delle etichette della vista Play.",
+    "footswitch-view.li2": "<strong>FS6–FS8</strong> sono i <a href=\"#virtual-footswitches\">footswitch virtuali</a>: ogni riquadro mostra il blocco il cui Bypass Assign ha MIDI In su FS6, FS7 o FS8 (MIDI CC 20–22).",
+    "footswitch-view.li3": "<strong>I footswitch e le manopole</strong> funzionano come nella vista Play finché la schermata è visibile."
   },
   "ja": {
     "title": "機能ツアー",
@@ -2153,7 +2213,15 @@ var LANGS = {
     "footer.1": "セットアップページで HXtra をビルドしてインストール",
     "footer.2": "GitHub の HXtra",
     "doc.title": "HXtra 機能ツアー",
-    "lang": "言語"
+    "lang": "言語",
+    "footswitch-view.name": "フットスイッチ画面",
+    "footswitch-view.desc": "VIEW に3つ目の画面を追加し、HX Stomp XL のようにフットスイッチを表示します。FS1–FS3 と仮想の FS6–FS8 を、それぞれブロックの名前と色で、オンのときは明るく表示します。",
+    "footswitch-view.floc": "VIEW ボタン",
+    "footswitch-view.where": "設定なし",
+    "footswitch-view.p1": "<strong>VIEW</strong> を押すと、Play ビューから Edit ビュー、フットスイッチ画面へと進み、Play に戻ります。画面にはプリセットの番号と名前、その下に HX Stomp XL のスイッチのように並んだ2段のタイルが表示されます。上段が FS6、FS7、FS8、下段が FS1、FS2、FS3 です。",
+    "footswitch-view.li1": "<strong>各タイル</strong>にはブロックの名前が表示され、ブロックがオンのときはカテゴリーの色で明るく、オフのときは暗くなります。FS1–FS3 には Play ビュー自身のラベルと同じ内容が表示されます。",
+    "footswitch-view.li2": "<strong>FS6–FS8</strong> は<a href=\"#virtual-footswitches\">仮想フットスイッチ</a>です。各タイルには、Bypass Assign の MIDI In が FS6、FS7、FS8（MIDI CC 20–22）になっているブロックが表示されます。",
+    "footswitch-view.li3": "画面の表示中も、<strong>フットスイッチとノブ</strong>は Play ビューと同じように動作します。"
   },
   "zh": {
     "title": "功能导览",
@@ -2371,7 +2439,15 @@ var LANGS = {
     "footer.1": "在安装页面制作并安装 HXtra",
     "footer.2": "GitHub 上的 HXtra",
     "doc.title": "HXtra 功能导览",
-    "lang": "语言"
+    "lang": "语言",
+    "footswitch-view.name": "脚踏开关视图",
+    "footswitch-view.desc": "在 VIEW 上增加第三个画面，像 HX Stomp XL 那样显示脚踏开关：FS1–FS3 和虚拟的 FS6–FS8，每个都带有其模块的名称和颜色，开启时点亮。",
+    "footswitch-view.floc": "VIEW 按钮",
+    "footswitch-view.where": "无设置",
+    "footswitch-view.p1": "按 <strong>VIEW</strong> 从 Play 视图进入 Edit 视图，再进入脚踏开关画面，然后回到 Play。画面显示预设的编号和名称，下方是两排按 HX Stomp XL 开关布局排列的方块：上排 FS6、FS7、FS8，下排 FS1、FS2、FS3。",
+    "footswitch-view.li1": "<strong>每个方块</strong>显示其模块的名称，模块开启时以其类别颜色点亮，关闭时变暗。FS1–FS3 显示的内容与 Play 视图自身的标签相同。",
+    "footswitch-view.li2": "<strong>FS6–FS8</strong> 是<a href=\"#virtual-footswitches\">虚拟脚踏开关</a>：每个方块显示 Bypass Assign 中 MIDI In 设为 FS6、FS7 或 FS8（MIDI CC 20–22）的模块。",
+    "footswitch-view.li3": "画面显示时，<strong>脚踏开关和旋钮</strong>的工作方式与 Play 视图相同。"
   },
   "ko": {
     "title": "기능 둘러보기",
@@ -2589,7 +2665,15 @@ var LANGS = {
     "footer.1": "설치 페이지에서 HXtra 빌드 및 설치",
     "footer.2": "GitHub의 HXtra",
     "doc.title": "HXtra 기능 둘러보기",
-    "lang": "언어"
+    "lang": "언어",
+    "footswitch-view.name": "풋스위치 화면",
+    "footswitch-view.desc": "VIEW에 세 번째 화면을 추가해 HX Stomp XL처럼 풋스위치를 보여 줍니다. FS1–FS3과 가상 FS6–FS8을 각 블록의 이름과 색으로, 켜져 있으면 밝게 표시합니다.",
+    "footswitch-view.floc": "VIEW 버튼",
+    "footswitch-view.where": "설정 없음",
+    "footswitch-view.p1": "<strong>VIEW</strong>를 누르면 Play 화면에서 Edit 화면, 풋스위치 화면으로 넘어가고 다시 Play로 돌아옵니다. 화면에는 프리셋 번호와 이름 아래에 HX Stomp XL의 스위치처럼 배치된 두 줄의 타일이 나옵니다. 위쪽이 FS6, FS7, FS8, 아래쪽이 FS1, FS2, FS3입니다.",
+    "footswitch-view.li1": "<strong>각 타일</strong>에는 블록 이름이 나오며, 블록이 켜져 있으면 카테고리 색으로 밝게, 꺼져 있으면 어둡게 표시됩니다. FS1–FS3에는 Play 화면의 라벨과 같은 내용이 나옵니다.",
+    "footswitch-view.li2": "<strong>FS6–FS8</strong>은 <a href=\"#virtual-footswitches\">가상 풋스위치</a>입니다. 각 타일에는 Bypass Assign의 MIDI In이 FS6, FS7, FS8(MIDI CC 20–22)로 설정된 블록이 나옵니다.",
+    "footswitch-view.li3": "화면이 떠 있는 동안 <strong>풋스위치와 노브</strong>는 Play 화면에서처럼 동작합니다."
   },
   "ru": {
     "title": "Обзор функций",
@@ -2807,7 +2891,15 @@ var LANGS = {
     "footer.1": "Соберите и установите HXtra на странице установки",
     "footer.2": "HXtra на GitHub",
     "doc.title": "Обзор функций HXtra",
-    "lang": "Язык"
+    "lang": "Язык",
+    "footswitch-view.name": "Экран футсвитчей",
+    "footswitch-view.desc": "Третий экран по кнопке VIEW, который показывает футсвитчи, как HX Stomp XL: FS1–FS3 и виртуальные FS6–FS8, каждый с названием и цветом своего блока, яркий, когда блок включён.",
+    "footswitch-view.floc": "Кнопка VIEW",
+    "footswitch-view.where": "Без настроек",
+    "footswitch-view.p1": "Нажмите <strong>VIEW</strong>, чтобы перейти из вида Play в вид Edit, затем на экран футсвитчей и обратно в Play. На экране номер и название пресета над двумя рядами плиток, расположенных как футсвитчи HX Stomp XL: сверху FS6, FS7 и FS8, снизу FS1, FS2 и FS3.",
+    "footswitch-view.li1": "<strong>Каждая плитка</strong> показывает название своего блока: она горит цветом категории блока, пока он включён, и тускнеет, пока он выключен. FS1–FS3 показывают то же, что подписи вида Play.",
+    "footswitch-view.li2": "<strong>FS6–FS8</strong> — это <a href=\"#virtual-footswitches\">виртуальные футсвитчи</a>: каждая плитка показывает блок, у которого в Bypass Assign параметр MIDI In равен FS6, FS7 или FS8 (MIDI CC 20–22).",
+    "footswitch-view.li3": "Пока экран открыт, <strong>футсвитчи и ручки</strong> работают так же, как в виде Play."
   }
 };
 // LANGS-END

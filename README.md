@@ -189,6 +189,14 @@ The meter also shows while you edit the compressor, so you can dial in Threshold
   - **Main+Snd**: Main L/R as usual, plus a copy to the Send jacks and USB 3/4.
 - Don't use Send/USB or Main+Snd in a preset with an FX Loop block: it feeds back.
 
+### <img src="docs/assets/icons/footswitch-view.svg" width="28" height="28" align="top" alt=""> Footswitch View
+
+*The VIEW button*
+
+- **VIEW** steps Play › Edit › Footswitches › Play. The Footswitches screen shows your switches as the HX Stomp XL does: FS6, FS7 and FS8 on top, FS1, FS2 and FS3 below, each with its block's name, lit in the block's colour when it's on and dimmed when it's off.
+- **FS6 … FS8** are the virtual footswitches: they show the blocks whose Bypass Assign has MIDI In set to FS6 … FS8 (MIDI CC 20 … 22).
+- The footswitches and knobs work as in Play while the screen is up. Leaving it any other way (the tuner, the Menu) turns it off, so you come back to Play.
+
 ### <img src="docs/assets/icons/real-names.svg" width="28" height="28" align="top" alt=""> Real Block Names
 
 *No settings*

@@ -42,6 +42,7 @@ TAP = re.compile(r'^(tap[/|il1]?(tuner)?|tuner)$')    # the TAP/TUNER label's li
 TAP_LABELS = (0, 130, 320, 60)      # Home's footswitch labels
 TAP_LED = re.compile(r'tapled(color)?$')            # Tap LED Color's label, its lines read apart or as one
 MODE_WAIT = 1.0                     # for the TAP label after a footswitch mode change
+FS_COLUMNS, FS_ROWS = (54, 162, 270), (113, 197)       # Footswitch View's tiles' middles
 METER = (262, 2, 58, 22)            # the Edit view's Small DSP total, right-aligned at x 316
 
 
@@ -179,11 +180,21 @@ class Unit:
 
     # -- where the UI is
 
-    def at_home(self, lines=None):
-        """The Home screen: the preset number large at the top, the Menu's panel not over the bottom half."""
-        lines = self.read() if lines is None else lines
+    def at_home(self, lines=None, img=None):
+        """The Home screen: the preset number large at the top, the Menu's panel not over the bottom half, and not Footswitch View's
+        screen, which shows the preset number too."""
+        img = self.frame() if img is None else img
+        lines = self.read(img) if lines is None else lines
         big = any(re.fullmatch(r'\d{3}', norm(ln.text)) and ln.h > 24 and ln.y < 40 for ln in lines)
-        return big and not self.find('menu', (0, 120, 160, 30), lines)
+        return big and not self.find('menu', (0, 120, 160, 30), lines) and not self.footswitches(img)
+
+    def footswitches(self, img=None):
+        """Footswitch View's screen: two rows of three filled tiles (screen y 74..153 and 158..237, x 2, 110, 218, 104 wide) on
+        black, so the 4-pixel gaps between them are black from top to bottom and every tile's middle is not."""
+        img = self.frame() if img is None else img
+        gaps = [self.pixels((x, 76, 2, 160), img) for x in (107, 215)] + [self.pixels((4, 154, 312, 3), img)]
+        middles = [self.pixels((x - 2, y - 2, 4, 4), img) for y in FS_ROWS for x in FS_COLUMNS]
+        return all(g.max() < 24 for g in gaps) and all(m.max() >= 24 for m in middles)
 
     def home(self):
         """Back to the Home screen from the Edit view, the Menu, Global Settings or the tuner."""
@@ -379,6 +390,18 @@ def t_harness(u):
     if u.at_home():
         raise Fail('VIEW did not leave the Home screen')
     u.home()
+
+
+@case('footswitch_view', 'Footswitch View: VIEW goes Home -> Edit -> the Footswitches screen -> Home')
+def t_footswitch_view(u):
+    u.home()
+    u.press('view', settle=0.6)                 # Edit
+    u.press('view', settle=0.8)
+    if not u.footswitches():
+        raise Fail(f'no Footswitches screen after VIEW in the Edit view; it shows {u.read()}')
+    u.press('view', settle=0.8)
+    if not u.at_home():
+        raise Fail(f'VIEW on the Footswitches screen did not go Home; it shows {u.read()}')
 
 
 def taps(u, fs, bpm, n=4):
