@@ -22,6 +22,7 @@ import patch_amp as pa
 SHARC = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'src', 'sharc')
 ASM, MAIN_ASM = (os.path.join(SHARC, f) for f in ('usb_monitor.asm', 'main_send.asm'))
 FLAG = 'HX_USB_MONITOR'
+PHONES_FLAG = 'HX_PHONES_BLOCK'       # tools/patch_phones.py
 MODE_MAX = 3                            # 0 Main L/R, 1 Send/USB, 2 USB Only, 3 Main+Snd (DECISIONS.md)
 SEND, SEND_PROC = 0x2aaa, 0x8ce36       # the Send jacks' writer and its stock process code
 MAIN, MAIN_PROC = 0x2aa8, 0x8ce33       # the Main jacks' writer and its stock process code
@@ -72,9 +73,14 @@ def patch_dsp(l6ia_bytes, log=print):
         log(f"[+] Entry 2: USB monitor {len(sec.words)} {'instructions' if sec.kind == 'pm' else 'words'} @ {sec.kind.upper()} {sec.addr:#x}")
     ldr += pa.wrap_primitive(e2, f'{SEND:#x}:{SEND_PROC:#x}', syms['ENTRY_2AAA'])
     ldr += pa.wrap_primitive(e2, f'{MAIN:#x}:{MAIN_PROC:#x}', syms['ENTRY_2AA8'])
-    ldr += pa.wrap_primitive(e2, f'{PHONES:#x}:{PHONES_PROC:#x}', syms['ENTRY_2AAB'])
+    phones = os.environ.get(PHONES_FLAG)
+    if not phones:      # with the Phones block, tools/patch_phones.py's wrappers take these: its writer's calls this one's ENTRY_2AAB,
+        ldr += pa.wrap_primitive(e2, f'{PHONES:#x}:{PHONES_PROC:#x}', syms['ENTRY_2AAB'])     # and its control both modes
     ldr += pa.wrap_primitive(e2, f'{USB_OUT:#x}:{USB_OUT_PROC:#x}', syms['ENTRY_2AAC'])
-    ldr += pa.wrap_primitive(e2, f'{GAIN:#x}:{GAIN_PROC:#x}', GAIN_PROC, (GAIN_CTRL, syms['CTRL_80']))
+    if not phones:
+        ldr += pa.wrap_primitive(e2, f'{GAIN:#x}:{GAIN_PROC:#x}', GAIN_PROC, (GAIN_CTRL, syms['CTRL_80']))
+    else:
+        log("[+] Entry 2: the phones' writer and the Level gain's control are the Phones block's wrappers (tools/patch_phones.py)")
     log(f"[+] Entry 2: the mode word is DM {syms['USB_MODE']:#x}")
     new, _, _ = pa.l6ia.rebuild_archive(l6ia_bytes, {2: pa.l6ia.swap32(pa.inject_sharc_ldr_blocks(e2, ldr))})
     return new

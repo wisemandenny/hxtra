@@ -6,6 +6,7 @@
 .syntax unified
 .thumb
 .include "hxtra.inc"
+.include "usb_monitor.inc"            @ UM_PHONES in a build with the Phones block (tools/features/usb_monitor.py)
 .equ ENGINE, 0x28d92a99             @ () -> the engine the UI's block calls take
 .equ SET_OUTPUT, 0x28e03c69         @ (engine, grid position, value): an Output block's destination, as when Path B's merge moves
 .equ PARAM_FIND, 0x28df35a1         @ (ctx, instance, name's Entry 3 string, &handle): an app parameter's handle, < 0 when it has none
@@ -13,7 +14,9 @@
 .equ GET_VALUE, 0x28e1f845          @ (ID, &{type, value}): a Global Setting, < 0 when it has none
 .equ TRIM_NAME, 4209                @ usbInGain0_1, USB Input Trim: a float the DSP's Level gains [99] and [105] take as it comes
 .equ TRIM_ID, 0x99                  @ its Global Setting, USB In 1/2 Trim (an I/O setting): GET_VALUE gives what the stock last sent
-.equ CODE_STEP, 1000                @ trim + CODE_STEP * (mode + 1): above any trim, as usb_monitor.asm splits it
+.equ CODE_STEP, 1000                @ trim + CODE_STEP * (mode + 1): above any trim, as usb_monitor.asm splits it; with the Phones
+                                    @ block, trim + CODE_STEP * K, K = mode + 1 + 5 * (HP Block + 1), as phones.asm splits it
+.equ PHONES_HP_BLOCK, 2             @ the Phones block's Phones Monitor: 0 Main L/R, 1 Send, 2 HP Block
 .equ OUTPUT_A, 9                    @ path A's Output block's grid position
 .equ MAIN, 1
 .equ SEND, 6
@@ -79,6 +82,18 @@ um_mode_trim:
     adr r1, um_sent
     strb r0, [r1, #1]
     adds r0, #1
+.ifdef UM_PHONES
+    mov r7, r0                      @ with the Phones block, its mode in the same word: K = U + 5 * H, H = HP Block + 1 (phones.asm)
+    movs r0, #SETTING_PHONES_BLOCK_MONITOR
+    movs r1, #SETTING_PHONES_BLOCK_MONITOR_MAX
+    movs r2, #SETTING_PHONES_BLOCK_MONITOR_DEFAULT
+    bl hxtra_setting_get
+    cmp r0, #PHONES_HP_BLOCK
+    ite eq
+    moveq r0, #10
+    movne r0, #5
+    add r0, r7
+.endif
     movw r1, #CODE_STEP
     muls r0, r1, r0
     vmov s0, r0
@@ -133,6 +148,24 @@ um_apply:                           @ sends path A's destination again when it i
     blx r3
 um_apply_done:
     pop {r4, r5, r6, pc}
+
+.thumb_func
+um_resend:                          @ the code word again, as a turn of a setting it carries asks (src/m4/phones_block.s's Phones Monitor):
+    push {r4, lr}                   @ path A's destination sent again, whose send sends it; nothing while path A's Output is off
+    adr r1, um_sent
+    ldrb r4, [r1]
+    cmp r4, #MAIN
+    it ne
+    cmpne r4, #SEND
+    bne um_resend_done
+    ldr r3, =ENGINE
+    blx r3
+    movs r1, #OUTPUT_A
+    movs r2, #MAIN
+    ldr r3, =SET_OUTPUT
+    blx r3
+um_resend_done:
+    pop {r4, pc}
 
 um_wanted:                          @ -> r0 path A's destination for a preset's Main: SEND for Send/USB and USB Only, else MAIN (Main+Snd too)
     push {r3, lr}

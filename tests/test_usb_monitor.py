@@ -43,10 +43,12 @@ class Monitor:
     record in the I/O store, as the stock getter does; self.trim is USB In 1/2 Trim's record (None: GET_VALUE fails); the stock
     send, ENGINE and SET_OUTPUT logged."""
 
-    def __init__(self, m4emu):
-        if 'um' not in _code:
-            _code['um'] = m4emu.assemble('src/m4/usb_monitor.s', MODS, IDS)
-        code, self.sym = _code['um']
+    def __init__(self, m4emu, phones=False):
+        key = 'um+ph' if phones else 'um'
+        if key not in _code:
+            inc = '.equ UM_PHONES, 1\n' if phones else '@ no Phones block\n'
+            _code[key] = m4emu.assemble('src/m4/usb_monitor.s', MODS, IDS, inc={'usb_monitor.inc': inc})
+        code, self.sym = _code[key]
         self.m = m4emu.M4(code, MOD)
         self.value, self.trim = None, -12.5
         self.m.stub(GET_VALUE, self.get_value)
@@ -239,6 +241,51 @@ def test_nothing_is_sent_while_path_a_is_off_or_unsent(mon, first):
     mon.value = 1
     assert mon.apply('um_changed', 0x3333, ID) == []
     assert mon.apply('um_page', 0x3333) == []
+
+
+class WithPhones(Monitor):
+    """usb_monitor.s built with the Phones block: its Phones Monitor (self.phones) rides in the same code word."""
+
+    def __init__(self, m4emu):
+        super().__init__(m4emu, phones=True)
+        self.phones = 0
+
+    def get_value(self, m):
+        if m.reg('r0') == PHONES_ID:
+            m.write(m.reg('r1'), struct.pack('<II', 2, self.phones))
+            m.reg('r0', 0)
+            return
+        super().get_value(m)
+
+    def param(self, m):
+        kind, value = struct.unpack('<Bxxxf', m.read(m.reg('r3'), 8))
+        k = round(value / 1000)
+        self.modes.append((kind, k % 5 - 1, k // 5 - 1, round(value - 1000 * k, 3)))
+
+
+PHONES_ID = setting_ids.by_name()['phones_block.monitor']
+
+
+@pytest.mark.parametrize('value, phones', [(0, 0), (SEND_USB, 0), (USB_ONLY, 2), (MAIN_SEND, 1), (0, 2)])
+def test_with_the_phones_block_one_word_carries_both_modes(m4emu, value, phones):
+    """K = U + 5 * H (src/sharc/phones.asm): U = Path A Out + 1, H = (Phones Monitor is HP Block) + 1."""
+    mon = WithPhones(m4emu)
+    mon.value, mon.phones = value, phones
+    mon.send(CTX, APP, 0, MAIN)
+    assert mon.modes == [(TRIM_TYPE, value, 1 if phones == 2 else 0, -12.5)]
+
+
+def test_um_resend_sends_path_a_again(m4emu):
+    """Phones Monitor's turn (src/m4/phones_block.s) asks for the word again: path A's destination is sent again."""
+    mon = WithPhones(m4emu)
+    mon.value = SEND_USB
+    mon.send(CTX, APP, 0, MAIN)
+    assert mon.apply('um_resend') == [(0x2844adcc, 9, MAIN)]
+
+
+def test_um_resend_sends_nothing_while_path_a_is_unsent(m4emu):
+    mon = WithPhones(m4emu)
+    assert mon.apply('um_resend') == []
 
 
 def test_off_unless_asked_for():

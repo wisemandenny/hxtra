@@ -5,9 +5,12 @@ sound while Main and the phones play only what it sends back on USB 1/2: softwar
 
 src/m4/usb_monitor.s owns the function that sends a path's destination to the DSP: it sends Send for path A's Main, and after it
 the setting inside USB Input Trim (trim + 1000 * (mode + 1)), which src/sharc/usb_monitor.asm takes back out into its mode word
-(tools/patch_usbmon.py; USB Only silences the Send jacks' writer, Main+Snd adds Main into the Send jacks' words). A preset saved meanwhile holds Send for path A, which a stock unit refuses on load, leaving path
+(tools/patch_usbmon.py; USB Only silences the Send jacks' writer, Main+Snd adds Main into the Send jacks' words). With the Phones
+block (tools/features/phones_block.py) the word carries its Phones Monitor too: trim + 1000 * (mode + 1 + 5 * (HP Block + 1)), and
+um_resend sends it again when Phones Monitor turns. A preset saved meanwhile holds Send for path A, which a stock unit refuses on load, leaving path
 A on Main. A turn or a reset of the setting sends path A's destination again at once. A checkbox in the web page's DSP features
 (WEB 'dsp': its DSP code takes Block 3 room, tools/block3.py) and HX_USB_MONITOR for build.py."""
+import features
 from features import Setting
 import patch_menu as pm
 
@@ -28,7 +31,8 @@ PAGE_STOCK = bytes.fromhex('2de9 f047')             # push.w {r4-r10, lr}
 
 def apply(p):
     hook = p.own_entry(SEND_FN, SEND_FN_STOCK, 'the send of a path\'s destination to the DSP')
-    m = p.module('src/m4/usb_monitor.s')
+    phones = any(features.name(f) == 'phones_block' for f in p.mods)     # its mode rides in the same code word (src/sharc/phones.asm)
+    m = p.module('src/m4/usb_monitor.s', {'usb_monitor.inc': '.equ UM_PHONES, 1\n' if phones else '@ no Phones block\n'})
     p.chain_entry(CHANGED, CHANGED_STOCK, after=m['um_changed'])
     p.chain_entry(PAGE, PAGE_STOCK, after=m['um_page'])
     a = pm.Asm(p.next())

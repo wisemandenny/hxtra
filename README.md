@@ -189,6 +189,25 @@ The meter also shows while you edit the compressor, so you can dial in Threshold
   - **Main+Snd**: Main L/R as usual, plus a copy to the Send jacks and USB 3/4.
 - Don't use Send/USB or Main+Snd in a preset with an FX Loop block: it feeds back.
 
+### <img src="docs/assets/icons/midi-block.svg" width="28" height="28" align="top" alt=""> MIDI Block
+
+*New block: Modulation › MIDI. A DSP feature on the setup page*
+
+Sends a MIDI message out of MIDI Out and USB when the block turns on or off (a footswitch, Bypass Assign, a snapshot) and when a preset loads with it. Your sound passes through unchanged.
+
+- **Chan** (All, 1 … 16): the MIDI channel. All sends on every channel.
+- **Type** (CC, PC): CC sends CC Num with On when the block turns on and with Off when it turns off; PC sends program change Num when it turns on.
+- **Num** (0 … 127): the CC or program number.
+- **On**, **Off** (0 … 127): the CC's value as the block turns on and off.
+
+### <img src="docs/assets/icons/phones-block.svg" width="28" height="28" align="top" alt=""> Phones Block
+
+*New block: Send/Return › Phones, and Global Settings › Ins/Outs › Phones Monitor. A DSP feature on the setup page*
+
+- **Phones Monitor** (Main L/R, Send, HP Block): HP Block makes the phones play only what the Phones blocks send them, still through the Volume knob. Main L/R, the Send jacks and USB play as usual. Main L/R and Send are the stock choices.
+- **Level** (−60 … +6 dB): what the block sends to the phones. **Dry Thru** (−60 … +6 dB): what it passes on down the chain. −60 dB is off.
+- It works beside USB & Send Routing: both settings ride to the DSP in one word.
+
 ### <img src="docs/assets/icons/real-names.svg" width="28" height="28" align="top" alt=""> Real Block Names
 
 *No settings*
@@ -349,6 +368,8 @@ HXtra itself doesn't: it runs on the processor that drives the screen and footsw
 - **FX Loop Noise Gate**, on each FX Loop and Return block
 - **Noise Gate Input Sidechain**, on each Noise Gate block
 - **USB & Send Routing**, to move path A's output
+- **MIDI Block**, while the block is in a preset
+- **Phones Block**, while the block is in a preset, and on the phones' two gains while Phones Monitor is HP Block
 - **NAM A2 Lite** blocks, like any amp block
 
 If you hear crackling, leave those out on the setup page.
@@ -359,7 +380,7 @@ If you hear crackling, leave those out on the setup page.
 <td valign="top">
 
 ### <img src="docs/assets/icons/faq-choose.svg" width="28" height="28" align="top" alt=""> Can I choose which features I get?
-Partly. On the setup page you pick the **DSP features**: how many NAM A2 Lite blocks (3, 2, 1 or none), the gain reduction meter, the Metronome, the FX Loop gate, USB & Send Routing and Input Sidechain. They share the HX Stomp's spare DSP memory, so the page shows what's left as you tick, and fewer NAM blocks leave room for more of the others. Real block names is a box too. Every other feature is always in; to leave one of those out, [build it yourself](docs/building.md).
+Partly. On the setup page you pick the **DSP features**: how many NAM A2 Lite blocks (3, 2, 1 or none), the gain reduction meter, the Metronome, the FX Loop gate, USB & Send Routing, Input Sidechain, the MIDI block and the Phones block. They share the HX Stomp's spare DSP memory, so the page shows what's left as you tick, and fewer NAM blocks leave room for more of the others. Real block names is a box too. Every other feature is always in; to leave one of those out, [build it yourself](docs/building.md).
 
 &nbsp;
 
