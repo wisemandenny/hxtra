@@ -136,7 +136,10 @@ The meter also shows while you edit the compressor, so you can dial in Threshold
 
 ### <img src="docs/assets/icons/snapshots.svg" width="104" height="32" align="top" alt=""> More Snapshots (4-6)
 
-- Six snapshots per preset: press the lit snapshot footswitch again to flip between snapshots 1–3 and 4–6.
+*Global Settings › Footswitches*
+
+- Six snapshots per preset: hold FS1 or FS2 for 1 s and the snapshot footswitches select snapshots 1–3 or 4–6, then tap one to select it. A hold changes no sound.
+- **Snapshot BankSel** (Hold, Tap): Hold, the default, works as above. With Tap, press the lit snapshot footswitch again to flip between 1–3 and 4–6.
 - Once a preset has snapshots 4–6, next and previous snapshot (SnpshtUp, SnpshtDn, MIDI CC 69) step through all six: next on 3 goes to 4, and next on 6 back to 1.
 - MIDI CC 69 selects any of the six directly: values 0–2 for snapshots 1–3, 3–5 for 4–6.
 

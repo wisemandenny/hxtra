@@ -75,7 +75,7 @@ PAGE◀ and PAGE▶ on Home step the footswitch mode through Stomp, Scroll, Pres
 | Preset | FS1..FS3 | load preset A, B, C of the bank | [hypothesis] |
 | Preset, Snapshot | **FS1 + FS2** together | queues the previous bank (its presets flash); a footswitch then loads one | [hypothesis] |
 | Preset, Snapshot | **FS2 + FS3** together | queues the next bank | [hypothesis] |
-| Snapshot | FS1..FS3 | snapshot 1..3; with [More snapshots](../features/more-snapshots.md) the lit one again flips to 4..6 | [verified on unit] |
+| Snapshot | FS1..FS3 | snapshot 1..3; with [More snapshots](../features/more-snapshots.md), Snapshot BankSel on Hold (the default): a 1 s hold of FS1 or FS2 points them at 1..3 or 4..6, then a tap selects on its release [verified on unit]; on Tap the lit one again flips to 4..6 [verified on unit] | [verified on unit] |
 | Snapshot | **touch hold one, brief touch of another** | "copy snapshot" over the second; Knob 3 OK | [hypothesis] |
 | Snapshot | **touch hold two footswitches** | "swap snapshots" dialog; Knob 3 OK | [hypothesis] |
 
