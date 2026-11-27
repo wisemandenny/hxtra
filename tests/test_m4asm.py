@@ -61,6 +61,14 @@ back:
 
 
 @CLANG
+@pytest.mark.parametrize('enabled', [0, 1])
+def test_conditional_adrs_are_checked_only_when_assembled(tmp_path, enabled):
+    src = module(tmp_path, f'.if {enabled}\nf:\n    adr.w r0, target\n.endif\n    bx lr\ntarget:\n    .space 4\n')
+    code, symbols = m4asm.assemble_module(src)
+    assert bool(code) and ('f' in symbols) is bool(enabled)
+
+
+@CLANG
 def test_an_adr_in_a_macro_is_refused(tmp_path):
     src = module(tmp_path, '.macro M\n    adr r0, x\n.endm\nx:\n    M\n')
     with pytest.raises(SystemExit, match='inside a .macro'):

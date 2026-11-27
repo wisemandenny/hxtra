@@ -95,5 +95,5 @@ def test_model_int_runs_once_and_only_where_it_knows_the_addresses():
         pa.model_int_entry0(e0)
     xl = bytearray(stock_e0())
     struct.pack_into('<I', xl, pa._parse_e0_segments(xl)[6][0] + 4, 0x28d92230)
-    with pytest.raises(SystemExit, match='no formatter addresses'):
+    with pytest.raises(SystemExit, match='not the stock'):
         pa.model_int_entry0(bytes(xl))

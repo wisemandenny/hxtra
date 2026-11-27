@@ -8,6 +8,7 @@ next to Icon_Firmware below it. A 320x240 picture goes into the unused Screen_Bo
 becomes Screen_Boot. The bootloader's own copy of the stock picture (shown from power-on until the app starts) is not changed.
 """
 import tempfile
+import types
 
 from features import Input
 import image_store
@@ -17,6 +18,7 @@ import splash_emoji
 import splash_hxtra
 
 TEXT = 'v1.2.1'
+XL_PORTED = True
 INPUTS = (Input('HX_SPLASH', path=True), Input('HX_SPLASH_FIT', choices=('fill', 'fit'), default='fill'),
           Input('HX_SPLASH_TEXT', default=TEXT), Input('HX_SPLASH_GLYPHS', path=True, mapping=True))
 
@@ -28,14 +30,24 @@ TEXT_BUF = 0x2811ee38                               # the boot view's text buffe
 TEXT_COLOUR_LITERAL, TEXT_COLOUR = 0x28d92940, 0xb1b1b1     # the boot view's two text widgets' colour
 FONT_SITE, FONT_STOCK = 0x28d92836, b'\x01\x21'     # movs r1,#1 before setFont: the line's font is the loader's 2nd
 FONT_NAME_LITERAL, FONT_NAME = 0x28db75c4, b'hx21_regularFont'
+STOMP_BOOT = types.SimpleNamespace(splash=ps.SPLASH, name=NAME_SITE, name_size=16, text=TEXT_SITE, version=VERSION_LITERAL,
+                                   renderer=RENDER_FN, text_buf=TEXT_BUF, colour=TEXT_COLOUR_LITERAL, font=FONT_SITE,
+                                   font_name=FONT_NAME_LITERAL)
+XL_BOOT = types.SimpleNamespace(splash=ps.SPLASH_XL, name=0x28e2b0d4, name_size=20, text=0x28e2b0f8, version=0x28d950e8,
+                                renderer=0x28dbab9c, text_buf=0x2811eec0, colour=0x28d950f0, font=0x28d94fe6,
+                                font_name=0x28dba6bc)
 # Control codes the line can hold: not NUL (the end), \n or \r (line breaks); emoji take them from 0x01 up, other features from 0x1f down
 EMOJI_SLOTS = [c for c in range(1, 32) if c not in (0x0a, 0x0d)]
 
 
-def transparent_text_cave(at, stock):
+def boot_layout(p):
+    return XL_BOOT if getattr(p, 'layout', pm.STOMP_MENU).base == pm.XL_MENU.base else STOMP_BOOT
+
+
+def transparent_text_cave(at, stock, text_buf=TEXT_BUF):
     """Sets the renderer's 9th argument (glyph mode, [sp, #0x10] on entry) to 1 for the boot line, then runs the stock renderer."""
     a = pm.Asm(at)
-    a.movw_movt(12, TEXT_BUF)
+    a.movw_movt(12, text_buf)
     a.h(0x4561)                         # cmp r1, r12
     a.b16('ne', 'stock')
     a.h(0xf04f, 0x0c01)                 # mov.w r12, #1
@@ -47,7 +59,8 @@ def transparent_text_cave(at, stock):
 
 def picture(p, w, h, rows):
     """The picture into HXStomp_Splash (320x181) or, at 320x240, into Screen_Boot, which the boot view then draws."""
-    name, _, stock_md5 = ps.FULL if h == ps.FULL[1] else ps.SPLASH
+    boot = boot_layout(p)
+    name, _, stock_md5 = ps.FULL if h == ps.FULL[1] else boot.splash
     e7, e8 = p.entry(7), p.entry(8)
     img = image_store.image(e7.data, e8.data, name)
     if (img.width, img.height, img.bpp) != (w, h, 16):
@@ -55,14 +68,14 @@ def picture(p, w, h, rows):
     e8.expect_md5(img.offset, img.length, stock_md5, name.decode())
     e8.put(img.offset, ps.encode(rows), f'the boot picture ({name.decode()})')
     if name == ps.FULL[0]:
-        p.expect(NAME_SITE, ps.SPLASH[0].ljust(16, b'\0'), "the boot view's image name")
-        p.put(NAME_SITE, ps.FULL[0].ljust(16, b'\0'), "the boot view's image name")
+        p.expect(boot.name, boot.splash[0].ljust(boot.name_size, b'\0'), "the boot view's image name")
+        p.put(boot.name, ps.FULL[0].ljust(boot.name_size, b'\0'), "the boot view's image name")
 
 
 def stock_picture(p):
     """Rows of (r, g, b) of the stock HXStomp_Splash."""
     e8 = p.entry(8)
-    img = image_store.image(p.entry(7).data, e8.data, ps.SPLASH[0])
+    img = image_store.image(p.entry(7).data, e8.data, boot_layout(p).splash[0])
     return ps.decode(e8.read(img.offset, img.length))
 
 
@@ -70,10 +83,11 @@ def emoji_glyphs(p, emoji):
     """Each emoji as a colour glyph of the line's font, in EMOJI_SLOTS order; the line drawn white. Returns {emoji: slot}."""
     if len(emoji) > len(EMOJI_SLOTS):
         raise SystemExit(f'splash: at most {len(EMOJI_SLOTS)} different emoji')
-    p.expect(FONT_SITE, FONT_STOCK, "the boot line's font")
-    p.expect(p.u32(FONT_NAME_LITERAL), FONT_NAME + b'\0', "the font loader's 2nd font")
-    p.expect(TEXT_COLOUR_LITERAL, TEXT_COLOUR.to_bytes(4, 'little'), "the boot line's colour")
-    p.put(TEXT_COLOUR_LITERAL, (0xffffff).to_bytes(4, 'little'), "the boot line's colour (white: colour glyphs drawn as they are)")
+    boot = boot_layout(p)
+    p.expect(boot.font, FONT_STOCK, "the boot line's font")
+    p.expect(p.u32(boot.font_name), FONT_NAME + b'\0', "the font loader's 2nd font")
+    p.expect(boot.colour, TEXT_COLOUR.to_bytes(4, 'little'), "the boot line's colour")
+    p.put(boot.colour, (0xffffff).to_bytes(4, 'little'), "the boot line's colour (white: colour glyphs drawn as they are)")
     pictures, cell_h = p.input('HX_SPLASH_GLYPHS'), image_store.cell_height(p.entry(7).data, FONT_NAME)
     slots = dict(zip(emoji, EMOJI_SLOTS))
     with tempfile.TemporaryDirectory() as tmp:
@@ -98,17 +112,22 @@ def line(p, text):
     raw = boot_text(p, text)
     if not raw or len(raw) >= len(TEXT_STOCK):
         raise SystemExit(f'splash: the text must be 1 to {len(TEXT_STOCK) - 1} characters, not {len(raw)}')
-    p.expect(TEXT_SITE, TEXT_STOCK, 'the boot text')
-    p.expect(VERSION_LITERAL, (TEXT_SITE + 16).to_bytes(4, 'little'), 'the boot text\'s version pointer')
-    p.put(TEXT_SITE, raw.ljust(len(TEXT_STOCK), b'\0'), 'the boot text')
-    p.put(VERSION_LITERAL, (TEXT_SITE + len(raw)).to_bytes(4, 'little'), 'the boot text\'s version pointer')   # "" appended
+    boot = boot_layout(p)
+    p.expect(boot.text, TEXT_STOCK, 'the boot text')
+    p.expect(boot.version, (boot.text + 16).to_bytes(4, 'little'), 'the boot text\'s version pointer')
+    p.put(boot.text, raw.ljust(len(TEXT_STOCK), b'\0'), 'the boot text')
+    p.put(boot.version, (boot.text + len(raw)).to_bytes(4, 'little'), 'the boot text\'s version pointer')
 
 
 def apply(p):
+    boot = boot_layout(p)
     if p.input('HX_SPLASH'):
         picture(p, *ps.load_picture(p.input('HX_SPLASH'), p.input('HX_SPLASH_FIT')))
     else:
-        picture(p, ps.W, ps.SPLASH[1], splash_hxtra.relabel(stock_picture(p)))
+        rows = stock_picture(p)
+        rows = splash_hxtra.relabel(rows, splash_hxtra.XL_HX, splash_hxtra.XL_STOMP, splash_hxtra.XL_SPACE) if boot is XL_BOOT \
+            else splash_hxtra.relabel(rows)
+        picture(p, ps.W, boot.splash[1], rows)
     line(p, p.input('HX_SPLASH_TEXT'))
-    hook = p.own_entry(RENDER_FN, RENDER_STOCK, 'the text renderer')
-    hook.to(p.add(transparent_text_cave(p.next(), hook.stock)))
+    hook = p.own_entry(boot.renderer, RENDER_STOCK, 'the text renderer')
+    hook.to(p.add(transparent_text_cave(p.next(), hook.stock, boot.text_buf)))

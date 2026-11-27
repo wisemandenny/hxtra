@@ -9,8 +9,6 @@
 .equ CURRENT, 5                     @ the view's current category (byte)
 .equ WIDGETS, 0x110                 @ the slots' image widgets in the view, 0x24 bytes each
 .equ WIDGET, 0x24
-.equ SET_IMAGE, 0x28e24c19          @ (widget, image index)
-.equ SET_POS, 0x28e24c69            @ (widget, x, y): the view's constructor anchors them at the left edge and the middle height
 .equ Y, 0xa6
 
 .thumb_func

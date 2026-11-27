@@ -105,6 +105,7 @@ var SOURCES = [
   "src/m4/long_press.s",
   "src/m4/metronome.s",
   "src/m4/more_snapshots.s",
+  "src/m4/page_mode_xl.s",
   "src/m4/preset_color.s",
   "src/m4/preset_keys.s",
   "src/m4/screen_mirror.s",

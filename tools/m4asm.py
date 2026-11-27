@@ -108,7 +108,9 @@ def adr_target(code, at):
 
 def check_adr(code, symbols, adrs, src):
     for n, label, addend, no in adrs:
-        at, want = symbols[f'{MARK}{n}'], symbols.get(label)
+        at, want = symbols.get(f'{MARK}{n}'), symbols.get(label)
+        if at is None:                          # the adr is in a conditional block that was not assembled
+            continue
         if want is None:
             continue                                # an .equ or another section: clang refuses or relocates those itself
         got = adr_target(code, at)

@@ -5,6 +5,7 @@ import os
 import struct
 import tempfile
 import types
+from dataclasses import replace
 
 import pytest
 
@@ -13,11 +14,12 @@ import m4asm
 import patch_amp as pa
 import patch_menu as pm
 import setting_ids
-from features import Setting
+from features import Setting, splash
 from firmware import branch_target, menu_entry0, reader, stock_e0, stock_entry
 
 MODS = features.load()
 SETTINGS = {f'{features.name(m)}.{s.key}': s for m in MODS for s in getattr(m, 'SETTINGS', ())}
+XL_SETTINGS = {f'{features.name(m)}.{s.key}': s for m in MODS for s in getattr(m, 'XL_SETTINGS', ())}
 CLANG = pytest.mark.skipif(not os.path.exists(m4asm.CLANG), reason='no clang')
 
 RECORDS, DIRTY, STORE_LOCK = 0x2845ee9c, 0x2845ee95, 0x2845ee88
@@ -46,7 +48,8 @@ def test_ledger_is_sound():
     assert len(names) == len(set(names)) and not set(names) & {name for _, name, _ in setting_ids.IDS}
     for vid, cid, bit, bits, name, _ in setting_ids.VIRTUAL:
         if name:
-            assert name in SETTINGS and SETTINGS[name].max < 1 << bits, f'{name}: {bits} bits cannot hold its values'
+            variants = [settings[name] for settings in (SETTINGS, XL_SETTINGS) if name in settings]
+            assert variants and all(setting.max < 1 << bits for setting in variants), f'{name}: {bits} bits cannot hold its values'
 
 
 def test_virtual_problems_finds_each_mistake():
@@ -85,19 +88,26 @@ def test_virtual_inc_lists_the_table_and_labels():
     assert inc.count('    .byte 68, 101, 109, 111, 10') == 3     # b'Demo\n', each label padded to 36 bytes
 
 
+def test_virtual_inc_uses_the_device_addresses():
+    addresses = {**pm.VIRTUAL_ADDRESSES, 'RECORDS': 0x28460000}
+    inc = pm.virtual_inc(VIRT, PACKING, {}, addresses)
+    assert '.equ RECORDS, 0x28460000\n' in inc
+    assert '.equ STORE_LOCK, 0x2845ee88\n' in inc
+
+
 # the engine in unicorn
 
 CODE, TABLE, VIEW, DST, OUT, LIMITS = 0x28e60000, 0x28e70000, 0x28e71000, 0x28e72000, 0x28e73000, 0x28e74000
 GET_STOCK, LIMITS_STOCK, LABEL_STOCK, TRAMPOLINE, DELTA = 0x28d90000, 0x28d90100, 0x28d90200, 0x28e78000, 0x28e79000
 
 
-def assemble(virt=VIRT, packing=PACKING, stocks=None):
+def assemble(virt=VIRT, packing=PACKING, stocks=None, addresses=pm.VIRTUAL_ADDRESSES):
     if not os.path.exists(m4asm.CLANG):
         pytest.skip('no clang')
     stocks = stocks or {'get': GET_STOCK, 'limits': LIMITS_STOCK, 'label': LABEL_STOCK}
     with tempfile.TemporaryDirectory() as d:
         for name, text in (('hxtra.inc', pm.hxtra_inc(MODS, setting_ids.by_name())),
-                           ('virtual.inc', pm.virtual_inc(virt, packing, stocks))):
+                           ('virtual.inc', pm.virtual_inc(virt, packing, stocks, addresses))):
             with open(os.path.join(d, name), 'w') as f:
                 f.write(text)
         return m4asm.assemble_module(os.path.join(pm.ROOT, 'src/m4/virtual_settings.s'), include=(d,))
@@ -106,17 +116,20 @@ def assemble(virt=VIRT, packing=PACKING, stocks=None):
 class Engine:
     """virtual_settings.s in unicorn: fake container records, a step that adds the delta, and the stock exits as stubs."""
 
-    def __init__(self, m4emu):
-        code, self.sym = assemble()
+    def __init__(self, m4emu, addresses=pm.VIRTUAL_ADDRESSES):
+        self.addresses = addresses
+        code, self.sym = assemble(addresses=addresses)
         self.m = m = m4emu.M4(code, CODE)
         for cid in (105, 116):
             self.set(cid, 3, FLOAT_ONE)
         m.write(TABLE, struct.pack('<6H', 0xcc, 0xcd, 0x40, 0xce, 0xd0, pm.EMPTY_SLOT))     # pages 0 and 1
-        for fn in (MUTEX_LOCK, MUTEX_UNLOCK, CHANGED, SETTINGS_CTX, GET_STOCK, LIMITS_STOCK, LABEL_STOCK, CLASS_ABOVE, CLASS_BELOW,
-                   TURN_STUB, TURN_EXIT, CLICK_STUB, CLICK_DONE):
+        for name in ('MUTEX_LOCK', 'MUTEX_UNLOCK', 'CHANGED', 'SETTINGS_CTX', 'CLASS_ABOVE', 'CLASS_BELOW',
+                     'TURN_STUB', 'TURN_EXIT', 'CLICK_STUB', 'CLICK_DONE'):
+            m.stub(addresses[name] & ~1)
+        for fn in (GET_STOCK, LIMITS_STOCK, LABEL_STOCK):
             m.stub(fn)
-        m.stub(MEMCPY, lambda m: m.write(m.reg('r0'), m.read(m.reg('r1'), m.reg('r2'))))
-        m.stub(STEP_MATH, self._step)
+        m.stub(addresses['MEMCPY'] & ~1, lambda m: m.write(m.reg('r0'), m.read(m.reg('r1'), m.reg('r2'))))
+        m.stub(addresses['STEP_MATH'] & ~1, self._step)
         a = pm.Asm(TRAMPOLINE)              # the stock turn hands the delta over in r5
         a.h(0xb520)                         # push {r5,lr}
         a.movw_movt(5, DELTA)
@@ -137,10 +150,10 @@ class Engine:
         return CODE + self.sym[sym]
 
     def set(self, cid, kind, word):
-        self.m.write(record(cid) + 8, struct.pack('<BxxxI', kind, word))
+        self.m.write(self.addresses['RECORDS'] + 40 * cid + 8, struct.pack('<BxxxI', kind, word))
 
     def container(self, cid):
-        return struct.unpack('<BxxxI', self.m.read(record(cid) + 8, 8))
+        return struct.unpack('<BxxxI', self.m.read(self.addresses['RECORDS'] + 40 * cid + 8, 8))
 
     def get(self, pid):
         self.m.write(OUT, b'\xee' * 8)
@@ -234,6 +247,19 @@ def test_turn_steps_stores_and_repaints(m4emu):
     assert e.m.read(DIRTY, 1) == b'\0'
     e.turn(0, -9)
     assert e.container(105) == (2, 0 | 1 << 3)
+
+
+@pytest.mark.parametrize('addresses', [pm.VIRTUAL_ADDRESSES, pm.VIRTUAL_ADDRESSES_XL], ids=['stomp', 'xl'])
+def test_device_settings_addresses_control_store_and_navigation(m4emu, addresses):
+    e = Engine(m4emu, addresses)
+    assert e.get(0xcc) == (0, (2, 2))
+    calls = e.turn(0, 1)
+    assert e.container(105) == (2, 3)
+    assert e.m.read(addresses['DIRTY'], 1) == b'\1'
+    assert calls == [addresses[name] & ~1 for name in
+                     ('SETTINGS_CTX', 'STEP_MATH', 'MUTEX_LOCK', 'MUTEX_UNLOCK', 'CHANGED', 'TURN_EXIT')]
+    assert e.m.calls(addresses['MUTEX_LOCK'] & ~1)[0][0] == addresses['STORE_LOCK']
+    assert e.turn(2, 1) == [addresses['TURN_STUB'] & ~1]
 
 
 def test_turn_of_a_wide_field_keeps_the_others(m4emu):
@@ -337,6 +363,37 @@ def test_stock_owned_sites_are_as_expected():
     assert read(0x28de972e, 2) == bytes.fromhex('892d')      # ...every record of it, the containers' raw values among them
 
 
+@pytest.mark.firmware
+def test_xl_stock_settings_addresses_and_container_writes(m4emu):
+    path = os.environ.get('HX_STOMP_XL_HXF')
+    if not path:
+        pytest.skip('HX_STOMP_XL_HXF is not set')
+    archive = pa.load_l6ia_from_any(path)[0]
+    e0 = pa.get_entry_swapped(archive, 0)
+    read = reader(e0)
+    addresses = pm.VIRTUAL_ADDRESSES_XL
+    assert read(0x28e25c70, 4) == pm.VIRTUAL_HOOKS['get'][1]
+    assert read(0x28e2667c, 4) == pm.VIRTUAL_HOOKS['class'][1]
+    assert read(0x28e266ac, 4) == pm.VIRTUAL_HOOKS['limits'][1]
+    for site, value in ((0x28e25d18, addresses['RECORDS']), (0x28e25d0c, addresses['STORE_LOCK']),
+                        (0x28e25af8, addresses['DIRTY'] - 5)):
+        assert read(site, 4) == struct.pack('<I', value)
+    for site, name in ((0x28e24c74, 'MUTEX_LOCK'), (0x28e24c4a, 'MUTEX_UNLOCK'), (0x28e24d34, 'MEMCPY')):
+        assert branch_target(site, read(site, 4)) == addresses[name] & ~1
+    _, poff, slen, va, _ = pa._parse_e0_segments(e0)[6]
+    m = m4emu.M4(e0[poff:poff + slen], va)
+    for pid in (23, 32, 56, 74, 105, 116, 120):
+        record_address = addresses['RECORDS'] + 40 * pid + 8
+        m.write(record_address, b'\0' * 8)
+        m.write(addresses['DIRTY'], b'\0')
+        m.write(OUT, struct.pack('<BxxxI', 2, 7))
+        result = m.call(0x28e25504, pid, OUT, 8)
+        refused = 32 <= pid <= 56 or 105 <= pid <= 116
+        assert (result == 0xffffffeb) == refused, pid
+        assert m.read(record_address, 8) == (b'\0' * 8 if refused else struct.pack('<BxxxI', 2, 7))
+        assert m.read(addresses['DIRTY'], 1) == (b'\0' if refused else b'\1')
+
+
 # a build with virtual settings, end to end
 
 def demo_build():
@@ -345,6 +402,48 @@ def demo_build():
     ids = dict(setting_ids.by_name(), **{'demo.pos': 0xcc, 'demo.dir': 0xcd, 'demo.wide': 0xce})
     out, on = pm.menu_entries(stock_entry, MODS + [demo], {}, ids, virtual=PACKING)
     return out[0]
+
+
+@pytest.mark.firmware
+def test_xl_built_menu_serves_and_changes_virtual_settings(m4emu):
+    path = os.environ.get('HX_STOMP_XL_HXF')
+    if not path:
+        pytest.skip('HX_STOMP_XL_HXF is not set')
+    archive = pa.load_l6ia_from_any(path)[0]
+    demo = types.ModuleType('features.demo')
+    demo.SETTINGS = (POS, DIR, WIDE)
+    ids = {'demo.pos': 0xcc, 'demo.dir': 0xcd, 'demo.wide': 0xce}
+    entries, on = pm.menu_entries(lambda n: pa.get_entry_swapped(archive, n), [splash, demo], {}, ids,
+                                  virtual=PACKING, layout=pm.XL_MENU)
+    assert on == [splash, demo]
+    e0 = entries[0]
+    _, poff, slen, va, _ = pa._parse_e0_segments(e0)[6]
+    m = m4emu.M4(e0[poff:poff + slen], va)
+    addresses = pm.XL_MENU.virtual_addresses
+    for name in ('MUTEX_LOCK', 'MUTEX_UNLOCK', 'CHANGED'):
+        m.stub(addresses[name] & ~1)
+    m.stub(addresses['MEMCPY'] & ~1, lambda m: m.write(m.reg('r0'), m.read(m.reg('r1'), m.reg('r2'))))
+    record_address = addresses['RECORDS'] + 40 * 105 + 8
+    m.write(record_address, struct.pack('<BxxxI', 3, FLOAT_ONE))
+    assert m.call(pm.XL_MENU.get, 0xcc, OUT) == 0
+    assert m.read(OUT, 8) == struct.pack('<BxxxI', 2, 2)
+    assert m.call(pm.XL_MENU.virtual_hooks['label'][0], 0xce, DST, 0x21) == 0
+    assert m.read(DST, 11) == b'Demo\nWide\0\0'
+    m.write(VIEW, b'\0' * 0x50)
+    m.write(VIEW + 0xa, bytes([6, 0]))
+    for _ in range(4):
+        m.call(0x28dd4a00, VIEW, 0, 1)
+    assert m.read(record_address, 8) == struct.pack('<BxxxI', 2, 3)
+    assert m.read(addresses['DIRTY'], 1) == b'\1'
+    assert m.calls(addresses['CHANGED'] & ~1)[-1][:2] == (VIEW, 0xcc)
+
+
+@pytest.mark.parametrize('layout', [pm.XL_MENU, replace(pm.XL_MENU)], ids=['xl', 'equivalent-profile'])
+def test_xl_menu_rejects_unported_features(layout):
+    demo = types.ModuleType('features.demo')
+    demo.apply = lambda p: None
+    with pytest.raises(SystemExit, match='XL features are not ported'):
+        pm.menu_entries(lambda n: b'', [demo], {}, {}, layout=layout)
 
 
 class Built:
@@ -383,7 +482,7 @@ def test_every_feature_built_together_reads_and_stores_its_settings_through_the_
     for cid in setting_ids.CONTAINERS:
         b.m.write(record(cid) + 8, struct.pack('<BxxxI', 3, FLOAT_ONE))
     for vid, cid, bit, bits, name, _ in setting_ids.VIRTUAL:
-        if name:
+        if name in SETTINGS:
             assert b.get(vid) == (0, (2, SETTINGS[name].default)), name
     knob_set = seen['src/m4/tuner.s']['knob_set']       # the tuner page's store, through hxtra_setting_set and virt_set
     b.m.call(knob_set, 1, 1)

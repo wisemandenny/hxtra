@@ -1,5 +1,5 @@
-"""web/firmware-worker.js, the in-browser build.py: it accepts the same stock file, the HX Stomp's only,
-pins the same built MD5s, and loads every file the build reads; with HX_STOMP_HXF set, its
+"""web/firmware-worker.js, the Stomp-only browser build alongside the Stomp and XL CLI:
+it pins the same Stomp MD5s and loads every file the build reads; with HX_STOMP_HXF set, its
 copy of the repository builds the features from a release's M4 code (tools/m4cache.py) as
 the repository does with clang."""
 import ast
@@ -49,13 +49,17 @@ NOT_HX_STOMP = {"329e3a26d60d3de1988b6785fa833ee1": "HX_Stomp_XL", "7c2ebdf1bffb
 
 
 def test_stock_md5_as_build_py():
-    assert js_object("STOCK_MD5") == py_dict("build.py", "STOCK_MD5")
+    stock = py_dict("build.py", "STOCK_MD5")
+    assert js_object("STOCK_MD5") == {md5: unit for md5, unit in stock.items() if unit == "HX_Stomp"}
 
 
 def test_hx_stomp_only():
     # No build for anyone without an HX Stomp
-    assert py_dict("build.py", "STOCK_MD5") == {"a2cd8f4ae56f49415380270ebc484bf1": "HX_Stomp"}
-    assert set(py_dict("build.py", "KERNEL")) == set(py_dict("build.py", "STEPS")) == {"HX_Stomp"}
+    assert py_dict("build.py", "STOCK_MD5") == {
+        "a2cd8f4ae56f49415380270ebc484bf1": "HX_Stomp",
+        "329e3a26d60d3de1988b6785fa833ee1": "HX_Stomp_XL",
+    }
+    assert set(py_dict("build.py", "KERNEL")) == set(py_dict("build.py", "STEPS")) == {"HX_Stomp", "HX_Stomp_XL"}
     assert not NOT_HX_STOMP.keys() & js_object("STOCK_MD5").keys()
     assert set(js_object("BUILT_MD5")) == set(js_value("KERNEL")) == set(js_value("STEPS")) == {"HX_Stomp"}
     assert "HX_Effects" not in WORKER and "HX_Stomp_XL" not in WORKER and "--effects" not in WORKER
@@ -68,23 +72,40 @@ def test_worker_refuses_another_file_as_the_page_expects():
     assert "/not the stock/.test(m.text)" in (ROOT / "web/index.html").read_text()
 
 
-@pytest.mark.parametrize("md5", [*NOT_HX_STOMP, None], ids=[*NOT_HX_STOMP.values(), "other"])
+@pytest.mark.parametrize("md5", ["7c2ebdf1bffb6bcc5f89dda97f91e40c", None], ids=["HX_Effects", "other"])
 def test_build_py_refuses_another_unit(tmp_path, monkeypatch, md5):
     spec = importlib.util.spec_from_file_location("hxtra_build", ROOT / "build.py")
     build = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(build)
     stock = tmp_path / "stock.hxf"
     stock.write_bytes(b"not firmware")
-    if md5:      # the stock XL and HX Effects files are not in the repository: their MD5 stands in
+    if md5:
         monkeypatch.setattr(build.hashlib, "md5", lambda b: types.SimpleNamespace(hexdigest=lambda: md5))
     md5 = md5 or hashlib.md5(b"not firmware").hexdigest()
     monkeypatch.setattr(build, "run", lambda *a: pytest.fail(f"ran {a[1:]}"))
     monkeypatch.setattr(sys, "argv", ["build.py", str(stock), "-o", str(tmp_path / "out.hxf"), "--no-check"])
     with pytest.raises(SystemExit) as e:
         build.main()
-    assert f"MD5 {md5}, not the stock HX Stomp 3.80.0 firmware" in str(e.value)
-    assert "HXtra is for the HX Stomp only" in str(e.value)
+    assert f"MD5 {md5}, not stock HX Stomp or HX Stomp XL 3.80.0 firmware" in str(e.value)
     assert not (tmp_path / "out.hxf").exists()
+
+
+def test_build_py_accepts_xl(tmp_path, monkeypatch):
+    spec = importlib.util.spec_from_file_location("hxtra_build_xl", ROOT / "build.py")
+    build = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(build)
+    stock = tmp_path / "stock-xl.hxf"
+    stock.write_bytes(b"not firmware")
+    monkeypatch.setattr(build.hashlib, "md5", lambda _data: types.SimpleNamespace(hexdigest=lambda: "329e3a26d60d3de1988b6785fa833ee1"))
+    monkeypatch.setenv("HX_NAM_SLOTS", "0")
+    monkeypatch.setattr(build.os, "replace", lambda *_args: None)
+    monkeypatch.setattr(build.os, "remove", lambda *_args: None)
+    calls = []
+    monkeypatch.setattr(build, "run", lambda *args: calls.append(args[1:]) or "ALL OK")
+    monkeypatch.setattr(sys, "argv", ["build.py", str(stock), "-o", str(tmp_path / "out.hxf"), "--no-check"])
+    build.main()
+    menu = next(args for args in calls if args[0] == "tools/patch_menu.py")
+    assert menu[-2:] == ("--device", "HX_Stomp_XL")
 
 
 def js_value(name):
@@ -95,7 +116,7 @@ def js_value(name):
 
 def test_build_steps_as_build_py():
     for name in ("KERNEL", "STEPS"):
-        assert js_value(name) == py_dict("build.py", name), name
+        assert js_value(name) == {"HX_Stomp": py_dict("build.py", name)["HX_Stomp"]}, name
     assert int(re.search(r"var E3_MAX = (\w+);", WORKER).group(1), 0) == py_dict("build.py", "E3_MAX")
 
 

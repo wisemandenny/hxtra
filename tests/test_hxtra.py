@@ -18,6 +18,7 @@ from firmware import branch_target, built, menu_entry0, reader, stock, stock_e0
 
 MODS = features.load()
 SETTINGS = {f'{features.name(m)}.{s.key}': s for m in MODS for s in getattr(m, 'SETTINGS', ())}
+XL_SETTINGS = {f'{features.name(m)}.{s.key}': s for m in MODS for s in getattr(m, 'XL_SETTINGS', ())}
 CLANG = pytest.mark.skipif(not os.path.exists(m4asm.CLANG), reason='no clang')
 
 
@@ -51,13 +52,14 @@ def test_no_avoided_id_is_claimed():
 
 def test_every_setting_has_an_id_and_every_claim_a_setting():
     ids = setting_ids.by_name()
-    assert set(SETTINGS) - set(ids) == set(), 'settings with no line in tools/setting_ids.py'
-    assert set(ids) - set(SETTINGS) == set(), 'IDs claimed by no feature setting: set them to None, keeping the note'
+    settings = set(SETTINGS) | set(XL_SETTINGS)
+    assert settings - set(ids) == set(), 'settings with no line in tools/setting_ids.py'
+    assert set(ids) - settings == set(), 'IDs claimed by no feature setting: set them to None, keeping the note'
 
 
-@pytest.mark.parametrize('name', sorted(SETTINGS))
-def test_setting_fits_the_menu(name):
-    pm.check_setting(name.split('.')[0], SETTINGS[name])
+@pytest.mark.parametrize('name, setting', [*SETTINGS.items(), *XL_SETTINGS.items()])
+def test_setting_fits_the_menu(name, setting):
+    pm.check_setting(name.split('.')[0], setting)
 
 
 def test_feature_names_are_unique_and_conflicts_known():
@@ -119,6 +121,36 @@ def test_icons_are_the_stock_images_of_their_names():
     names = image_store.names(pa.get_entry_swapped(stock(), 7))
     assert {name: names.index(name.encode()) for name in pm.ICONS} == pm.ICONS
     assert reader(stock_e0())(0x28e3b5b8 + 4 * 5, 4) == struct.pack('<I', pm.ICONS['Icon_Displays'])
+
+
+@pytest.mark.firmware
+def test_xl_menu_layout_matches_stock():
+    path = os.environ.get('HX_STOMP_XL_HXF')
+    if not path:
+        pytest.skip('HX_STOMP_XL_HXF is not set')
+    archive = pa.load_l6ia_from_any(path)[0]
+    read = reader(pa.get_entry_swapped(archive, 0))
+    layout = pm.XL_MENU
+    for tab in (layout.names_long, layout.names_short):
+        assert read(tab + pm.NAME_LEN * 22, 8) == b'Main LCD'
+    assert layout.limits_low + 2 * struct.unpack('<H', read(layout.limits_low + 2 * 17, 2))[0] == layout.enum01
+    assert read(layout.limits_tail, len(pm.LIMITS_TAIL_STOCK)) == pm.LIMITS_TAIL_STOCK
+    for site, stock in ((layout.text_fn, pm.TEXT_FN_STOCK), (layout.nav_cmp, pm.NAV_CMP_STOCK),
+                        (layout.nav_wrap, pm.NAV_WRAP_STOCK)):
+        assert read(site, len(stock)) == stock
+    for fn, stock in layout.virtual_hooks.values():
+        assert read(fn, len(stock)) == stock
+    for site in layout.sites.values():
+        assert read(site[0], 2) == bytes([5, 0x2b if site[1] == 3 else 0x2c])
+    for table, pointers in layout.arrays.values():
+        assert all(struct.unpack('<I', read(pointer, 4))[0] == table for pointer in pointers)
+    for name, pointers in {'Footswitches': (0x28dd4184, 0x28dd489c, 0x28dd49f4, 0x28dd4be4),
+                           'Displays': (0x28dd4178, 0x28dd49e8, 0x28dd4bd8)}.items():
+        assert all(struct.unpack('<I', read(pointer, 4))[0] == layout.categories[name][1] for pointer in pointers)
+    for site, (stock, _) in layout.strip_loops.items():
+        assert read(site, len(stock)) == stock
+    names = image_store.names(pa.get_entry_swapped(archive, 7))
+    assert {name: names.index(name.encode()) for name in pm.ICONS} == pm.ICONS
 
 
 BASE = 0x28d8fa80
@@ -282,15 +314,40 @@ FS_TABLE, FS_STOCK_IDS = pm.STOCK_CATEGORIES['Footswitches'][1], (17, 97, 98, 99
 STOCK_TABLES = (0x28e3b540, 0x28e3b5b8)     # every category's page table, from Ins/Outs' to the end of Preferences'
 
 
-def page_table(read, cat, site='lookup'):
+def page_table(read, cat, site='lookup', layout=pm.STOMP_MENU):
     """The table a built dispatch cave loads for cat: its movw/movt after the cmp/beq for cat."""
-    cave = branch_target(pm.SITES[site][0], read(pm.SITES[site][0], 4))
+    cave = branch_target(layout.sites[site][0], read(layout.sites[site][0], 4))
     code = read(cave, 64)
-    at = next(i for i in range(0, 60, 2) if code[i:i + 2] == bytes([cat, 0x28 + pm.SITES[site][1]]))
+    at = next(i for i in range(0, 60, 2) if code[i:i + 2] == bytes([cat, 0x28 + layout.sites[site][1]]))
     target = at + 2 + 4 + 2 * code[at + 2] + 2   # the beq's target, past the ldrb page
     lo, hi = struct.unpack_from('<2I', code, target)
     imm = lambda w: ((w >> 16 & 0xff) | (w >> 28 & 7) << 8 | (w >> 10 & 1) << 11 | (w & 0xf) << 12)
     return imm(lo) | imm(hi) << 16
+
+
+@pytest.mark.firmware
+@pytest.mark.parametrize('category', ['Ins/Outs', 'Footswitches', 'Displays'])
+def test_xl_stock_categories_keep_their_settings_when_extended(category):
+    path = os.environ.get('HX_STOMP_XL_HXF')
+    if not path:
+        pytest.skip('HX_STOMP_XL_HXF is not set')
+    archive = pa.load_l6ia_from_any(path)[0]
+    load = lambda n: pa.get_entry_swapped(archive, n)
+    stock = reader(load(0))
+    layout = pm.XL_MENU
+    index, table = layout.categories[category]
+    pages = struct.unpack('<I', stock(layout.arrays['pages'][0] + 4 * index, 4))[0]
+    original = list(struct.unpack(f'<{pages * 3}H', stock(table, pages * 6)))
+    while original and original[-1] == pm.EMPTY_SLOT:
+        original.pop()
+    demo = fake('demo', MENU=category, SETTINGS=(Setting('x', b'Test', (b'Off', b'On')),))
+    entries, _ = pm.menu_entries(load, [demo], {}, {'demo.x': 0xcc}, layout=layout)
+    read = reader(entries[0])
+    expected = original + [0xcc]
+    expected += [pm.EMPTY_SLOT] * (-len(expected) % 3)
+    for site in layout.sites:
+        actual = page_table(read, index, site, layout)
+        assert struct.unpack(f'<{len(expected)}H', read(actual, len(expected) * 2)) == tuple(expected)
 
 
 @pytest.mark.firmware

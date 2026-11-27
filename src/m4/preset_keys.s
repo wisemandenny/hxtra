@@ -5,11 +5,6 @@
 .syntax unified
 .thumb
 .include "preset_keys.inc"          @ PK_WRITERS, PK_FINDERS
-.equ SERIALIZE, 0x28deacf5          @ (stream, toc): the preset into its file, a msgpack map after the TOC
-.equ TOC_WRITE, 0x28deabdd          @ (stream, toc): the TOC; the second call leaves the file at the map's count byte
-.equ SECTION_READ, 0x28def9a9       @ (file, section, 0, buffer, max): a section of a preset file, by its TOC
-.equ PRESET, 0x28d92a99             @ () -> the current preset
-.equ PRESET_FLAG, 0x28e026f1        @ (preset, 1) -> whether the map has key 12; the map has 9 keys more
 .equ NAMES, 12                      @ the last stock key, an array of strings: section 10 starts with it when there
 .equ START, -1
 
@@ -18,9 +13,11 @@
 pk_serialize:                       @ in place of the preset file's serializer call (stream, toc): then each feature's keys
     push {r3-r7, lr}
     mov r4, r0
+    PK_BEFORE
     ldr r3, =SERIALIZE
     blx r3
     mov r6, r0
+    PK_AFTER
     movs r5, #0
     adr.w r7, pk_writers
 pk_serialize_each:

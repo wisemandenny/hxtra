@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""Build HXtra, HX Stomp firmware 3.80.0 with NAM A2 Lite, from your own copy of the stock firmware.
+"""Build HXtra, HX Stomp or HX Stomp XL firmware 3.80.0, from your own copy of the stock firmware.
 
 usage: python3 build.py HX_Stomp_v3.80.0_0x103966115.hxf [-o out.hxf] [--no-check]
                         [--splash picture [--splash-fit fill|fit]] [--splash-text "text" [--splash-glyph EMOJI=picture ...]]
 
-The input is Line 6's own HX Stomp firmware file, version 3.80.0
+The input is Line 6's own HX Stomp or HX Stomp XL firmware file, version 3.80.0
 (Line 6 Updater keeps a copy; see README.md). Nothing of it is in this
-repository: the build reads it, adds NAM A2 Lite and writes a new .hxf
-(default build/HX_Stomp_v3.80.0_HXtra.hxf) for Line 6 Updater.
-HXtra is for the HX Stomp only: any other file is refused.
+repository: the build reads it, adds HXtra features and writes a new .hxf
+(default build/<unit>_v3.80.0_HXtra.hxf) for Line 6 Updater. Stomp also gets NAM A2 Lite;
+the XL build currently omits NAM A2 Lite.
 
 NAM A2 Lite runs as up to three blocks at once, each playing its own capture from a User IR slot.
 HX_NAM_SLOTS=3, 2, 1 or 0 sets how many (0: no NAM A2 Lite); unset, the most that
@@ -38,6 +38,7 @@ import sys
 
 STOCK_MD5 = {
     "a2cd8f4ae56f49415380270ebc484bf1": "HX_Stomp",       # HX_Stomp_v3.80.0_0x103966115.hxf
+    "329e3a26d60d3de1988b6785fa833ee1": "HX_Stomp_XL",   # HX_Stomp_XL_v3.80.0_0x103966115.hxf
 }
 # The kernel and the patch_amp.py steps (tests/test_web_build.py keeps web/firmware-worker.js's copies
 # equal). Each step reads the previous one's output: patch_amp.py CMD IN OUT ARGS...
@@ -48,7 +49,8 @@ STOCK_MD5 = {
 # Tone stack (the kernel's --mid-sweep): Bass a 150 Hz shelf, Mid a peak at Mid Freq (150..3000 Hz)
 # with Q 0.7/1.4/2.8, Treble a 2.5 kHz peak, High Cut a low-pass (10.0 off); +-12 dB, flat at 5.0.
 # Presets saved with an earlier NAM build (IDs 147/148, or 461) don't open as NAM in this one.
-KERNEL = {"HX_Stomp": ["tools/sharc/nam_multi.py", "--mid-sweep"]}
+KERNEL = {"HX_Stomp": ["tools/sharc/nam_multi.py", "--mid-sweep"],
+          "HX_Stomp_XL": ["tools/sharc/nam_multi.py", "--mid-sweep"]}
 NAM_EQ = [
     ["remove-model", "--preset-id", "555"],
     ["add-fx-model", "--knobs", "eq", "--name", "HD2_DistNAMLite", "--display-name", "NAM A2 Lite",
@@ -58,7 +60,7 @@ NAM_EQ = [
     ["ir-title", "--fx-preset-id", "555", "--knob", "6"],
 ]
 # model-int: NAM's Model as a whole number.
-STEPS = {"HX_Stomp": NAM_EQ + [["model-int"]]}
+STEPS = {"HX_Stomp": NAM_EQ + [["model-int"]], "HX_Stomp_XL": NAM_EQ + [["model-int"]]}
 # The largest Entry 3 an HX Stomp is known to load amps from; at 0xf3888 it drops every amp and preamp [verified on unit]
 E3_MAX = 0xf10f0
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -86,8 +88,7 @@ def main():
     stock = os.path.abspath(argv[0])
     md5 = hashlib.md5(open(stock, "rb").read()).hexdigest()
     if md5 not in STOCK_MD5:
-        sys.exit(f"{stock}: MD5 {md5}, not the stock HX Stomp 3.80.0 firmware (HX_Stomp_v3.80.0_0x103966115.hxf). "
-                 "HXtra is for the HX Stomp only.")
+        sys.exit(f"{stock}: MD5 {md5}, not stock HX Stomp or HX Stomp XL 3.80.0 firmware.")
     unit = STOCK_MD5[md5]
     print(f"stock firmware: {unit.replace('_', ' ')} 3.80.0")
     splash = os.path.abspath(argv[argv.index("--splash") + 1]) if "--splash" in argv else None
@@ -125,7 +126,7 @@ def main():
             os.remove(src)
         src = dst
     base = src
-    run(py, "tools/patch_menu.py", base, titled, "--cwd", os.getcwd())
+    run(py, "tools/patch_menu.py", base, titled, "--cwd", os.getcwd(), "--device", unit)
     if base == stock:
         base = os.path.join(build, "nam_lite_menu.l6ia")
     os.replace(titled, base)
@@ -149,7 +150,10 @@ def main():
         # last: every step that adds a model rebuilds the Entry 3 and 4 tails the knobs live in
         run(py, "tools/patch_comp.py", image, titled)
         os.replace(titled, image)
-    report = run(py, "tools/l6ia_verify.py", image, "--e3-max", hex(E3_MAX))
+    verify = [py, "tools/l6ia_verify.py", image]
+    if unit == "HX_Stomp":
+        verify += ["--e3-max", hex(E3_MAX)]
+    report = run(*verify)
     if "ALL OK" not in report:
         sys.exit("build.py: the image failed its check")
     run(py, "tools/hxf.py", "pack", image, out, "--donor", stock)

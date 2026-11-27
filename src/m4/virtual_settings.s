@@ -6,22 +6,7 @@
 .syntax unified
 .thumb
 .include "virtual.inc"
-.equ RECORDS, 0x2845ee9c            @ main-store records of 40 bytes: type +8, value +0xc
 .equ RECORD, 40
-.equ STORE_LOCK, 0x2845ee88         @ the settings store's mutex
-.equ DIRTY, 0x2845ee95              @ the main store's unsaved flag (0x2845ee90 + 5): the save worker 0x28e1ee68 writes Globals file 1
-.equ MUTEX_LOCK, 0x28e24c01
-.equ MUTEX_UNLOCK, 0x28e24bb1
-.equ MEMCPY, 0x28e24c79             @ (dst, src, n)
-.equ SETTINGS_CTX, 0x28e007ed       @ () -> what the stock step takes first
-.equ STEP_MATH, 0x28dfe6a9          @ (ctx, limits, cur, delta, out, class, how): 4 encoder counts a step, as every stock knob
-.equ CHANGED, 0x28dceb31            @ (view, ID): the Global Settings view repaints the slot showing that ID, as on a stock change
-.equ CLASS_ABOVE, 0x28e20255        @ the class function past its `cmp r0,#0xcb; bls`, for IDs above 0xcb
-.equ CLASS_BELOW, 0x28e20261        @ its bls target
-.equ TURN_STUB, 0x28dcef97          @ the stock turn's generic case: r0 view, r1 slot, r2 table, r3 page; r5 the delta
-.equ TURN_EXIT, 0x28dcef8f
-.equ CLICK_STUB, 0x28dcee7b         @ the stock click's generic case: the same registers, r4 the view
-.equ CLICK_DONE, 0x28dceeab         @ after its reset to default: repaints the page
 .equ INT, 2
 .equ ENTRY, 8                       @ a table entry: ID (2 bytes), container, first bit, bits, max, default, label index
 

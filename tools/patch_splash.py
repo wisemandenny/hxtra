@@ -25,6 +25,7 @@ import patch_amp as pa
 W = 320
 # name, height, MD5 of the stock pixels
 SPLASH = (b'HXStomp_Splash', 181, '102fdff9f8738b232273a27d581c49ae')
+SPLASH_XL = (b'HXStompXL_Splash', 181, 'e957b7911c4a01d666a4a8f41ea43dd8')
 FULL = (b'Screen_Boot', 240, '051d4adbbbcdf074b62077e549ac1e20')
 SRGB = '/System/Library/ColorSync/Profiles/sRGB Profile.icc'
 
@@ -167,10 +168,12 @@ def decode(px):
 
 def drawn_image(l6ia_bytes):
     """(name, pixels) of the picture the boot view draws: Screen_Boot once the splash feature has renamed it."""
-    from features.splash import NAME_SITE
+    from features.splash import STOMP_BOOT, XL_BOOT
     e0 = pa.get_entry_swapped(l6ia_bytes, 0)
-    o = pa._e0_vaddr_to_foff(pa._parse_e0_segments(e0), NAME_SITE, 16)
-    name = FULL[0] if e0[o:o + 16] == FULL[0].ljust(16, b'\0') else SPLASH[0]
+    segs = pa._parse_e0_segments(e0)
+    boot = XL_BOOT if segs[6][3] == 0x28d92230 else STOMP_BOOT
+    o = pa._e0_vaddr_to_foff(segs, boot.name, boot.name_size)
+    name = FULL[0] if e0[o:o + boot.name_size] == FULL[0].ljust(boot.name_size, b'\0') else boot.splash[0]
     e7, e8 = pa.get_entry_swapped(l6ia_bytes, 7), pa.get_entry_swapped(l6ia_bytes, 8)
     img = image_store.image(e7, e8, name)
     return name, e8[img.offset:img.offset + img.length]

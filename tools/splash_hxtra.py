@@ -8,6 +8,8 @@ import numpy as np
 
 TOP = 148                       # the text band: from here to the bottom of the 320x181 picture
 HX, STOMP = (48, 128), (144, 272)       # the stock columns of "HX" and "STOMP", anti-aliasing included
+XL_HX, XL_STOMP = (22, 100), (118, 298)
+XL_SPACE = 10
 INK = 255.0                     # the letters are white
 CAP, BASE = 151.0, 180.0        # cap line and baseline: the top and bottom edges of the stock capitals
 XH = 158.0                      # the x-height, 0.75 of the capitals
@@ -71,26 +73,26 @@ def lift(band):
     return bg, alpha
 
 
-def layout(w):
+def layout(w, hx_bounds=HX, stomp_bounds=STOMP, space=SPACE):
     """(x of "HX", [x of "t", "r", "a"], x of "STOMP") in a picture w wide, the line centred."""
     widths = [lw for lw, _ in letters()]
-    width = (HX[1] - HX[0]) + GAP + sum(widths) + KERN * (len(widths) - 1) + SPACE + (STOMP[1] - STOMP[0])
+    width = (hx_bounds[1] - hx_bounds[0]) + GAP + sum(widths) + KERN * (len(widths) - 1) + space + (stomp_bounds[1] - stomp_bounds[0])
     hx = (w - width) // 2
-    xs = [hx + HX[1] - HX[0] + GAP]
+    xs = [hx + hx_bounds[1] - hx_bounds[0] + GAP]
     for lw in widths[:-1]:
         xs.append(xs[-1] + lw + KERN)
-    return hx, xs, xs[-1] + widths[-1] + SPACE
+    return hx, xs, xs[-1] + widths[-1] + space
 
 
-def relabel(rows):
+def relabel(rows, hx_bounds=HX, stomp_bounds=STOMP, space=SPACE):
     """Rows of (r, g, b) of the stock HXStomp_Splash, relabelled "HXtra STOMP"."""
     pic = np.array(rows, dtype=np.float64)
     h, w = pic.shape[:2]
     bg, alpha = lift(pic[TOP:])
-    hx, xs, stomp = layout(w)
+    hx, xs, stomp = layout(w, hx_bounds, stomp_bounds, space)
     ink = np.zeros_like(alpha)
-    ink[:, hx:hx + HX[1] - HX[0]] = alpha[:, HX[0]:HX[1]]
-    ink[:, stomp:stomp + STOMP[1] - STOMP[0]] = alpha[:, STOMP[0]:STOMP[1]]
+    ink[:, hx:hx + hx_bounds[1] - hx_bounds[0]] = alpha[:, hx_bounds[0]:hx_bounds[1]]
+    ink[:, stomp:stomp + stomp_bounds[1] - stomp_bounds[0]] = alpha[:, stomp_bounds[0]:stomp_bounds[1]]
     for x, (_, lines) in zip(xs, letters()):
         ink[:, x:] = np.maximum(ink[:, x:], stroke(lines, w - x, h - TOP, 0, TOP))
     pic[TOP:] = bg * (1 - ink[..., None]) + INK * ink[..., None]

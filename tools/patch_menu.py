@@ -9,6 +9,7 @@ import hashlib
 import os
 import struct
 import tempfile
+from dataclasses import dataclass, replace
 
 import features
 import image_store
@@ -44,6 +45,22 @@ VIRTUAL_HOOKS = {   # name: (function, its stock first instructions)
     'label': (0x28d97634, bytes.fromhex('f0b5bd28')),        # (ID, dst, length) -> the long label: push {r4-r7,lr}; cmp r0,#0xbd
 }
 VIRTUAL_LABEL_LEN = 36           # the menu asks for 0x21 bytes
+VIRTUAL_ADDRESSES = {
+    'RECORDS': 0x2845ee9c, 'STORE_LOCK': 0x2845ee88, 'DIRTY': 0x2845ee95,
+    'MUTEX_LOCK': 0x28e24c01, 'MUTEX_UNLOCK': 0x28e24bb1, 'MEMCPY': 0x28e24c79,
+    'SETTINGS_CTX': 0x28e007ed, 'STEP_MATH': 0x28dfe6a9, 'CHANGED': 0x28dceb31,
+    'CLASS_ABOVE': 0x28e20255, 'CLASS_BELOW': 0x28e20261,
+    'TURN_STUB': 0x28dcef97, 'TURN_EXIT': 0x28dcef8f,
+    'CLICK_STUB': 0x28dcee7b, 'CLICK_DONE': 0x28dceeab,
+}
+VIRTUAL_ADDRESSES_XL = {
+    'RECORDS': 0x28461654, 'STORE_LOCK': 0x28461640, 'DIRTY': 0x2846164d,
+    'MUTEX_LOCK': 0x28e2ae81, 'MUTEX_UNLOCK': 0x28e2aef9, 'MEMCPY': 0x28e2af79,
+    'SETTINGS_CTX': 0x28e0690d, 'STEP_MATH': 0x28e047c9, 'CHANGED': 0x28dd45e1,
+    'CLASS_ABOVE': 0x28e26681, 'CLASS_BELOW': 0x28e2668d,
+    'TURN_STUB': 0x28dd4a47, 'TURN_EXIT': 0x28dd4a3f,
+    'CLICK_STUB': 0x28dd492b, 'CLICK_DONE': 0x28dd495b,
+}
 
 # Each feature with settings is a category of its own from 6 on. Each array below has one entry per category.
 NAV_CMP, NAV_CMP_STOCK = 0x28dcf162, bytes.fromhex('052b')       # cmp r3,#5 (last category)
@@ -163,15 +180,81 @@ def bl(at, target):
     return struct.pack('<2H', hw1, hw2 | 0x4000)
 
 
+@dataclass(frozen=True)
+class MenuLayout:
+    base: int
+    names_long: int
+    names_short: int
+    limits_low: int
+    limits_high: int
+    enum01: int
+    limits_tail: int
+    text_fn: int
+    text_cont: int
+    strcpy: int
+    get: int
+    setter: int
+    context: int
+    virtual_hooks: dict
+    virtual_addresses: dict
+    preset_calls: tuple
+    preset_get: int
+    preset_flag: int
+    nav_cmp: int
+    nav_wrap: int
+    arrays: dict
+    strip_dim: int
+    strip_lit: int
+    strip_x: int
+    strip_image: int
+    strip_pos: int
+    strip_loops: dict
+    categories: dict
+    sites: dict
+
+
+STOMP_MENU = MenuLayout(
+    base=STOCK_BASE, names_long=NAMES_LONG, names_short=NAMES_SHORT, limits_low=LIMITS_TAB_LOW,
+    limits_high=LIMITS_TAB_HIGH, enum01=ENUM01_TARGET, limits_tail=LIMITS_TAIL, text_fn=TEXT_FN,
+    text_cont=TEXT_FN_CONT, strcpy=STRCPY, get=GET_VALUE, setter=SETTER, context=SETTER_CONTEXT,
+    virtual_hooks=VIRTUAL_HOOKS, virtual_addresses=VIRTUAL_ADDRESSES, preset_calls=PRESET_FILE_CALLS,
+    preset_get=0x28d92a98, preset_flag=0x28e026f0, nav_cmp=NAV_CMP, nav_wrap=NAV_WRAP,
+    arrays=ARRAYS, strip_dim=STRIP_DIM, strip_lit=STRIP_LIT, strip_x=STRIP_X, strip_image=0x28e24c19,
+    strip_pos=0x28e24c69, strip_loops=STRIP_LOOPS, categories=STOCK_CATEGORIES, sites=SITES)
+
+XL_MENU_SHIFT, XL_DATA_SHIFT = 0x5ab0, 0x66a4
+XL_STRIP_LOOPS = {}
+for index, (site, (stock, after)) in enumerate(STRIP_LOOPS.items()):
+    call = 20 if index == 1 else 18
+    xl_site = site + XL_MENU_SHIFT
+    XL_STRIP_LOOPS[xl_site] = (stock[:call] + bl(xl_site + call, 0x28e2ade0) + stock[call + 4:], after + XL_MENU_SHIFT)
+XL_MENU = replace(
+    STOMP_MENU, base=0x28d92230, names_long=0x28e2ba60, names_short=0x28e2c8d4,
+    limits_low=0x28e24fe8, limits_high=0x28e24f1c, enum01=0x28e25092, limits_tail=0x28e25136,
+    text_fn=0x28d9a44c, text_cont=0x28d9a450, strcpy=0x28e2af78, get=0x28e25c70,
+    setter=0x28e25d20, context=0x28e0690c,
+    virtual_hooks={name: (fn + (0x2cf0 if name == 'label' else 0x642c), stock) for name, (fn, stock) in VIRTUAL_HOOKS.items()},
+    virtual_addresses=VIRTUAL_ADDRESSES_XL,
+    preset_calls=((0x28df820a, 0x28df0d34, 'pk_serialize'), (0x28df8222, 0x28df0c1c, 'pk_toc'),
+                  (0x28df157c, 0x28df59e0, 'pk_section')),
+    preset_get=0x28d95248, preset_flag=0x28e08810, nav_cmp=NAV_CMP + XL_MENU_SHIFT, nav_wrap=NAV_WRAP + XL_MENU_SHIFT,
+    arrays={name: (table + XL_DATA_SHIFT, tuple(ptr + XL_MENU_SHIFT for ptr in pointers)) for name, (table, pointers) in ARRAYS.items()},
+    strip_dim=STRIP_DIM + XL_DATA_SHIFT, strip_lit=STRIP_LIT + XL_DATA_SHIFT, strip_x=STRIP_X + XL_DATA_SHIFT,
+    strip_image=0x28e2ade1, strip_pos=0x28e2ae51, strip_loops=XL_STRIP_LOOPS,
+    categories={'Ins/Outs': (0, 0x28e41c00), 'Footswitches': (2, 0x28e41bec), 'Displays': (5, 0x28e41bdc)},
+    sites={name: (site[0] + XL_MENU_SHIFT, *site[1:4], *(address + XL_MENU_SHIFT for address in site[4:])) for name, site in SITES.items()})
+
+
 def cmp_imm(r, i):
     return 0x2800 | (r << 8) | i
 
 
-def limits_entry(pid):
+def limits_entry(pid, layout=STOMP_MENU):
     """(tbh base, address of the ID's entry) of a main-store ID."""
     if pid not in MAIN_STORE_IDS:
         raise SystemExit(f'patch-menu: setting ID {pid} is not in the settings reader\'s main store (1..0x37, 0x3f..0x95)')
-    return (LIMITS_TAB_LOW, LIMITS_TAB_LOW + 2 * (pid - 1)) if pid < 0x38 else (LIMITS_TAB_HIGH, LIMITS_TAB_HIGH + 2 * (pid - 0x3f))
+    return (layout.limits_low, layout.limits_low + 2 * (pid - 1)) if pid < 0x38 else \
+        (layout.limits_high, layout.limits_high + 2 * (pid - 0x3f))
 
 
 def dispatch_cave(at, site, tables, stub=None):
@@ -196,7 +279,7 @@ def dispatch_cave(at, site, tables, stub=None):
     return a.bytes()
 
 
-def text_cave(at, tables):
+def text_cave(at, tables, layout=STOMP_MENU):
     """Runs the two instructions the hook replaced, then answers our IDs (ID -> (strings, max, default)) and leaves others to stock."""
     a = Asm(at)
     a.raw(bytes.fromhex('30b5 85b0'))       # push {r4,r5,lr}; sub sp,#0x14
@@ -210,11 +293,11 @@ def text_cave(at, tables):
         a.movw_movt(1, table)
         a.bw('common')
         a.label(f'not{pid}')
-    a.bw(TEXT_FN_CONT)
+    a.bw(layout.text_cont)
     a.label('common')
     a.h(0x4610, 0x461a)                     # mov r0,r2 (dst); mov r2,r3 (len)
     a.h(0xeb04, 0x0484, 0xeb01, 0x0184)     # r4 *= 5; r1 += r4 * 4: table + 20 * value
-    a.bl(STRCPY)
+    a.bl(layout.strcpy)
     a.h(0x2000, 0xb005, 0xbd30)             # movs r0,#0; add sp,#0x14; pop {r4,r5,pc}
     return a.bytes()
 
@@ -320,26 +403,28 @@ def strip_pictures(p, icon):
     return p.add_image(icon, nw, nh, image_store.scaled(lit, STRIP_DIMMED)), lit_idx, nw
 
 
-def strip_inc(cats, centres):
+def strip_inc(cats, centres, set_image=0x28e24c19, set_pos=0x28e24c69):
     """The text of strip.inc for src/m4/strip.s: the number of categories, each one's (dim, lit, width) and twice the middle x of
     each slot."""
     return '\n'.join([
         '@ strip.inc - generated by tools/patch_menu.py', f'.equ STRIP_COUNT, {len(cats)}',
+        f'.equ SET_IMAGE, {set_image:#x}', f'.equ SET_POS, {set_pos:#x}',
         '.macro STRIP_CATS', *(f'    .hword {dim:#x}, {lit:#x}, {w}, 0' for dim, lit, w in cats), '.endm',
         '.macro STRIP_CENTRES', '    .hword ' + ', '.join(str(c) for c in centres), '.endm']) + '\n'
 
 
 def add_strip(p, icons):
     """The icon strip as a carousel over every category (6 on: one more for each of icons, their section icons' image indices)."""
-    for at, (stock, _) in STRIP_LOOPS.items():
+    layout = getattr(p, 'layout', STOMP_MENU)
+    for at, (stock, _) in layout.strip_loops.items():
         p.expect(at, stock, 'a loop of the icon strip')
     e7, e8 = p.entry(7), p.entry(8)
-    stock = [(p.u32(STRIP_DIM + 4 * i), p.u32(STRIP_LIT + 4 * i)) for i in range(6)]
+    stock = [(p.u32(layout.strip_dim + 4 * i), p.u32(layout.strip_lit + 4 * i)) for i in range(6)]
     widths = [image_store.image_at(e7.data, e8.data, dim).width for dim, _ in stock]
-    centres = [2 * p.u32(STRIP_X + 4 * i) + w for i, w in enumerate(widths)]
+    centres = [2 * p.u32(layout.strip_x + 4 * i) + w for i, w in enumerate(widths)]
     cats = [(dim, lit, w) for (dim, lit), w in zip(stock, widths)] + [strip_pictures(p, icon) for icon in icons]
-    m = p.module('src/m4/strip.s', inc={'strip.inc': strip_inc(cats, centres)})
-    for at, (_, after) in STRIP_LOOPS.items():
+    m = p.module('src/m4/strip.s', inc={'strip.inc': strip_inc(cats, centres, layout.strip_image, layout.strip_pos)})
+    for at, (_, after) in layout.strip_loops.items():
         a = Asm(at)
         a.h(0x4630)                         # mov r0,r6
         a.bl(m['strip_update'])
@@ -347,17 +432,22 @@ def add_strip(p, icons):
         p.put(at, a.bytes(), 'the icon strip')
 
 
-def hxtra_inc(mods, ids, virt_set=None):
+def feature_settings(feature, layout=STOMP_MENU):
+    settings = getattr(feature, 'SETTINGS', ())
+    return getattr(feature, 'XL_SETTINGS', settings) if layout.base == XL_MENU.base else settings
+
+
+def hxtra_inc(mods, ids, virt_set=None, layout=STOMP_MENU):
     """The text of hxtra.inc: every setting's ID, max and default, and the HXTRA_SETTING_GET and HXTRA_SETTING_SET macros;
     virt_set, the virtual settings engine's store, when the build has one."""
     lines = ['@ hxtra.inc - generated by tools/patch_menu.py from tools/features and tools/setting_ids.py']
     for m in mods:
-        for s in getattr(m, 'SETTINGS', ()):
+        for s in feature_settings(m, layout):
             name = f'{features.name(m)}.{s.key}'
             if name in ids:
                 sym = 'SETTING_' + name.replace('.', '_').upper()
                 lines += [f'.equ {sym}, {ids[name]}', f'.equ {sym}_MAX, {s.max}', f'.equ {sym}_DEFAULT, {s.default}']
-    get = GET_VALUE | 1
+    get = layout.get | 1
     lines += [
         '.macro HXTRA_SETTING_GET',
         '.thumb_func',
@@ -394,7 +484,7 @@ def hxtra_inc(mods, ids, virt_set=None):
             '    blx r3',
             '    b 2f',
         ]
-    ctx, setter = SETTER_CONTEXT | 1, SETTER | 1
+    ctx, setter = layout.context | 1, layout.setter | 1
     lines += [
         '1:  mov r4, r0',
         '    movs r2, #2',
@@ -546,13 +636,14 @@ class Patch:
 
     load, values = None, {}         # load(n): an entry's stock (swapped) bytes; values: feature -> {var: value}, never mutated
 
-    def __init__(self, e0, mods, ids, load=None, values=None):
+    def __init__(self, e0, mods, ids, load=None, values=None, layout=None):
         self.e0, self.mods, self.ids = bytearray(e0), mods, ids
         self.load, self.values = load, values or {}
         self.segs = pa._parse_e0_segments(self.e0)
-        if self.segs[6][3] != STOCK_BASE:
-            raise SystemExit(f'patch-menu: Entry 0 code is at {self.segs[6][3]:#x}; this patch is for the HX Stomp 3.80.0 '
-                             f'({STOCK_BASE:#x}), not the XL')
+        self.layout = layout or STOMP_MENU
+        if self.segs[6][3] != self.layout.base:
+            raise SystemExit(f'patch-menu: Entry 0 code is at {self.segs[6][3]:#x}; the selected device layout expects '
+                             f'{self.layout.base:#x}')
         _, _, slen, dst, _ = self.segs[6]
         self.cave = Cave(dst + slen)
         self.owner = 'HXtra'
@@ -575,15 +666,24 @@ class Patch:
     def preset_keys(self):          # key: (owner, writer, finder), in the order the features registered them
         return self.__dict__.setdefault('_preset_keys', {})
 
-    def preset_key(self, key, writer, finder):
+    @property
+    def preset_callbacks(self):      # zero-argument callbacks around the stock serializer, by before/after phase
+        return self.__dict__.setdefault('_preset_callbacks', {'before': [], 'after': []})
+
+    def preset_key(self, key, writer, finder, before=None, after=None):
         """Data of this feature's in the preset file, after the stock map under key (13..0x7f): writer(stream) writes it with the
         stream's write and returns how many keys it wrote, finder(key, data, length) gets each key read back, and START (-1) first
-        (src/m4/preset_keys.s)."""
+        (src/m4/preset_keys.s). Optional zero-argument before/after callbacks bracket the stock serializer, before its keys are
+        written; use these only for state that the stock serializer itself consumes."""
         if not NAMES_KEY < key < 0x80:
             raise SystemExit(f'patch-menu: {self.owner}: preset key {key:#x} is not a free positive fixint ({NAMES_KEY + 1}..0x7f)')
         if key in self.preset_keys:
             raise SystemExit(f'patch-menu: {self.owner} and {self.preset_keys[key][0]} both take preset key {key:#x}')
         self.preset_keys[key] = (self.owner, writer, finder)
+        if before:
+            self.preset_callbacks['before'].append((self.owner, before))
+        if after:
+            self.preset_callbacks['after'].append((self.owner, after))
 
     def off(self, va, n):
         return pa._e0_vaddr_to_foff(self.segs, va, n)
@@ -677,7 +777,8 @@ class Patch:
         import m4asm
         src = os.path.join(ROOT, path)
         with tempfile.TemporaryDirectory() as d:
-            for name, text in {'hxtra.inc': hxtra_inc(self.mods, self.ids, getattr(self, 'virt_set', None)), **(inc or {})}.items():
+            for name, text in {'hxtra.inc': hxtra_inc(self.mods, self.ids, getattr(self, 'virt_set', None),
+                                                     getattr(self, 'layout', STOMP_MENU)), **(inc or {})}.items():
                 with open(os.path.join(d, name), 'w') as f:
                     f.write(text)
             code, symbols = m4asm.assemble_module(src, include=(d, os.path.dirname(src)))
@@ -790,18 +891,19 @@ class Patch:
 
 def set_limits(p, pid, s):
     """The 0..1 enum's limits code, or for other limits a snippet in the tail of the ID's long label slot that sets them."""
-    tab, entry = limits_entry(pid)
+    layout = getattr(p, 'layout', STOMP_MENU)
+    tab, entry = limits_entry(pid, layout)
     if (s.default, s.max) == (0, 1):
-        if tab + 2 * p.u16(entry) != ENUM01_TARGET:
-            p.put(entry, struct.pack('<H', (ENUM01_TARGET - tab) // 2), f'the limits entry of ID {pid}')
+        if tab + 2 * p.u16(entry) != layout.enum01:
+            p.put(entry, struct.pack('<H', (layout.enum01 - tab) // 2), f'the limits entry of ID {pid}')
         return
     if s.max > 255:
         raise SystemExit(f'patch-menu: setting ID {pid}: at most 256 values')
-    p.expect(LIMITS_TAIL, LIMITS_TAIL_STOCK, 'the limits code tail')
-    at = NAMES_LONG + NAME_LEN * pid + len(s.label) + 1
+    p.expect(layout.limits_tail, LIMITS_TAIL_STOCK, 'the limits code tail')
+    at = layout.names_long + NAME_LEN * pid + len(s.label) + 1
     at += at & 1
-    code = struct.pack('<4H', 0x2302, 0x2200 | s.default, 0x2100, 0x2400 | s.max) + thumb_bw(at + 8, LIMITS_TAIL)
-    if at + len(code) > NAMES_LONG + NAME_LEN * (pid + 1):
+    code = struct.pack('<4H', 0x2302, 0x2200 | s.default, 0x2100, 0x2400 | s.max) + thumb_bw(at + 8, layout.limits_tail)
+    if at + len(code) > layout.names_long + NAME_LEN * (pid + 1):
         raise SystemExit(f'patch-menu: setting ID {pid}: the limits code does not fit after its label: shorten the label')
     p.put(at, code, f'the limits code of ID {pid}')
     p.put(entry, struct.pack('<H', (at - tab) // 2), f'the limits entry of ID {pid}')
@@ -821,37 +923,42 @@ def menu_entry0(e0, mods=None, env=os.environ, ids=None, others=None):
     return out[0], on
 
 
-def menu_entries(load, mods=None, env=os.environ, ids=None, cwd=None, virtual=None):
+def menu_entries(load, mods=None, env=os.environ, ids=None, cwd=None, virtual=None, layout=None):
     """The entries HXtra and the enabled features change, {n: bytes} (load(n) gives an entry's stock, swapped), and the
     features: Entry 0 is edited in place plus code and data appended to its code segment. Paths in inputs are relative to cwd.
     virtual: virtual ID -> (container, first bit, bits), by default tools/setting_ids.py's."""
     mods = features.load() if mods is None else mods
     on = features.enabled(mods, env)
+    if layout is not None and layout.base == XL_MENU.base:
+        on = sorted(on, key=lambda m: getattr(m, 'XL_ORDER', getattr(m, 'ORDER', 100)))
+    if layout is not None and layout.base == XL_MENU.base and any(hasattr(m, 'apply') and not getattr(m, 'XL_PORTED', False) for m in on):
+        raise SystemExit('patch-menu: HX Stomp XL features are not ported yet')
     values = {features.name(m): features.values(m, env, cwd) for m in on}
-    p = Patch(load(0), mods, setting_ids.by_name() if ids is None else ids, load, values)
+    p = Patch(load(0), mods, setting_ids.by_name() if ids is None else ids, load, values, layout)
+    layout = p.layout
     packing = setting_ids.packing() if virtual is None else virtual
     sections, stored = [], []   # (title, icon, [(ID, setting)] in page order) of each feature's category; (ID, setting) of all
     extra = {}                  # stock category -> (ID, setting) on its pages after its own
     swaps = {}                  # stock category -> {stock ID: the ID that takes its slot}
     for m in on:
         mine = []
-        for s in getattr(m, 'SETTINGS', ()):
+        for s in feature_settings(m, layout):
             check_setting(features.name(m), s)
             mine.append((p.id(f'{features.name(m)}.{s.key}'), s))
         stored += mine
         menu = getattr(m, 'MENU', True)
-        if isinstance(menu, str) and menu not in STOCK_CATEGORIES:
+        if isinstance(menu, str) and menu not in layout.categories:
             raise SystemExit(f'patch-menu: {features.name(m)}: MENU is True, False or one of {", ".join(STOCK_CATEGORIES)}')
         if isinstance(menu, str):
-            extra.setdefault(STOCK_CATEGORIES[menu][0], []).extend(mine)
+            extra.setdefault(layout.categories[menu][0], []).extend(mine)
             if getattr(m, 'REPLACES', None) is not None and mine:
-                swaps.setdefault(STOCK_CATEGORIES[menu][0], {})[m.REPLACES] = mine[0][0]
+                swaps.setdefault(layout.categories[menu][0], {})[m.REPLACES] = mine[0][0]
         elif getattr(m, 'REPLACES', None) is not None:
             raise SystemExit(f'patch-menu: {features.name(m)}: REPLACES needs MENU to name a stock category')
         elif menu and mine:
             sections.append((check_title(m), icon(m), mine + [(EMPTY_SLOT, None)] * (-len(mine) % 3)))
 
-    for tab in (NAMES_LONG, NAMES_SHORT):
+    for tab in (layout.names_long, layout.names_short):
         if p.read(tab + NAME_LEN * 22, 8) != b'Main LCD':
             raise SystemExit(f'patch-menu: label array at {tab:#x} is not the stock one')
         for pid, s in (x for _, _, mine in sections for x in mine):
@@ -862,7 +969,7 @@ def menu_entries(load, mods=None, env=os.environ, ids=None, cwd=None, virtual=No
                                  'is already applied')
             p.put(tab + NAME_LEN * pid, s.label, f'the label of ID {pid}')
 
-    if LIMITS_TAB_LOW + 2 * p.u16(LIMITS_TAB_LOW + 2 * 17) != ENUM01_TARGET:     # ID 18's entry
+    if layout.limits_low + 2 * p.u16(layout.limits_low + 2 * 17) != layout.enum01:     # ID 18's entry
         raise SystemExit('patch-menu: the limits table is not at its stock address')
     for pid, s in stored:
         if pid not in packing:
@@ -875,16 +982,25 @@ def menu_entries(load, mods=None, env=os.environ, ids=None, cwd=None, virtual=No
         if hasattr(m, 'apply'):
             p.owner = features.name(m)
             m.apply(p)
+    if layout.base == XL_MENU.base:
+        p.owner = 'xl_page_mode'
+        for address, stock in ((0x28d98ce4, '034b1b78181ab0fa'), (0x28d98cb4, '00487047908e1228'),
+                       (0x28dd9300, '10b580f84d100446'), (0x28e0690c, '014b1868704700bf'),
+                       (0x28e25d20, '2de9f043b1f5bf7f')):
+            p.expect(address, bytes.fromhex(stock), 'an XL PAGE mode helper')
+        page = p.module('src/m4/page_mode_xl.s')
+        p.chain_entry(0x28dbb958, bytes.fromhex('f8b5 0446'), before=page['xl_page_event'])
     add_preset_keys(p)
     p.finish_chains()
     return p.output(), on
 
 
-def virtual_inc(virt, packing, stocks):
+def virtual_inc(virt, packing, stocks, addresses=VIRTUAL_ADDRESSES):
     """The text of virtual.inc for src/m4/virtual_settings.s: the virtual settings' table and labels, and the stock functions."""
     lines = ['@ virtual.inc - generated by tools/patch_menu.py from tools/setting_ids.py VIRTUAL',
              f'.equ VIRT_FIRST, {setting_ids.VIRTUAL_IDS.start:#x}', f'.equ VIRT_LAST, {setting_ids.VIRTUAL_IDS.stop - 1:#x}',
              f'.equ VIRT_COUNT, {len(virt)}', f'.equ LABEL_LEN, {VIRTUAL_LABEL_LEN}']
+    lines += [f'.equ {name}, {address:#x}' for name, address in addresses.items()]
     lines += [f'.equ {name.upper()}_STOCK, {va | 1:#x}' for name, va in stocks.items()]
     lines.append('.macro VIRT_TABLE')
     for i, (vid, s) in enumerate(virt):
@@ -911,20 +1027,35 @@ def add_virtual(p, virt, packing):
     if problems:
         raise SystemExit('patch-menu: virtual settings: ' + '; '.join(problems))
     owner, p.owner = p.owner, 'HXtra'
-    hooks = {name: p.own_entry(fn, stock, f'the virtual settings ({name})') for name, (fn, stock) in VIRTUAL_HOOKS.items()}
+    layout = getattr(p, 'layout', STOMP_MENU)
+    hooks = {name: p.own_entry(fn, stock, f'the virtual settings ({name})') for name, (fn, stock) in layout.virtual_hooks.items()}
     m = p.module('src/m4/virtual_settings.s', inc={'virtual.inc': virtual_inc(virt, packing, {
-        name: hooks[name].stock for name in ('get', 'limits', 'label')})})
-    for name in VIRTUAL_HOOKS:
+        name: hooks[name].stock for name in ('get', 'limits', 'label')}, layout.virtual_addresses)})
+    for name in layout.virtual_hooks:
         hooks[name].to(m[f'virt_{name}'])
     p.virt_set = m['virt_set']
     p.owner = owner
     return m
 
 
-def preset_keys_inc(keys):
+def preset_keys_inc(keys, layout=STOMP_MENU, callbacks=None):
     """The text of preset_keys.inc for src/m4/preset_keys.s: each key's writer and finder, in the order they were registered."""
     words = lambda i: '\n'.join(f'    .word {h[i] | 1:#x}' for h in keys.values())
-    return f'@ preset_keys.inc - generated by tools/patch_menu.py\n.macro PK_WRITERS\n{words(1)}\n.endm\n.macro PK_FINDERS\n{words(2)}\n.endm\n'
+    functions = dict(zip(('SERIALIZE', 'TOC_WRITE', 'SECTION_READ'), (stock for _, stock, _ in layout.preset_calls)))
+    functions.update(PRESET=layout.preset_get, PRESET_FLAG=layout.preset_flag)
+    addresses = ''.join(f'.equ {name}, {address | 1:#x}\n' for name, address in functions.items())
+    callbacks = callbacks or {'before': (), 'after': ()}
+
+    def callback_macro(phase):
+        lines = [f'.macro PK_{phase.upper()}']
+        for _, fn in callbacks[phase]:
+            lines += ['    push {r0-r3}', f'    ldr r3, ={fn | 1:#x}', '    blx r3', '    pop {r0-r3}']
+        lines += ['.endm']
+        return '\n'.join(lines) + '\n'
+
+    return (f'@ preset_keys.inc - generated by tools/patch_menu.py\n{addresses}'
+            f'.macro PK_WRITERS\n{words(1)}\n.endm\n.macro PK_FINDERS\n{words(2)}\n.endm\n'
+            f'{callback_macro("before")}{callback_macro("after")}')
 
 
 def add_preset_keys(p):
@@ -933,8 +1064,10 @@ def add_preset_keys(p):
     if not p.preset_keys:
         return None
     owner, p.owner = p.owner, 'HXtra'
-    m = p.module('src/m4/preset_keys.s', inc={'preset_keys.inc': preset_keys_inc(p.preset_keys)})
-    for site, stock, handler in PRESET_FILE_CALLS:
+    layout = getattr(p, 'layout', STOMP_MENU)
+    m = p.module('src/m4/preset_keys.s', inc={'preset_keys.inc': preset_keys_inc(p.preset_keys, layout,
+                                                                                 p.preset_callbacks)})
+    for site, stock, handler in layout.preset_calls:
         p.own_call(site, stock, f'the preset file ({handler})', m[handler])
     p.owner = owner
     return m
@@ -946,16 +1079,17 @@ def add_category(p, sections, virt=None, extra=None, swaps=None):
     but for those swaps ({stock category: {stock ID: ID}}) puts in a stock setting's slot, which leaves the menu, the others then
     starting on the next page as they did beside it; and their value text; virt, the virtual settings' module, takes the turn and the click first."""
     extra, swaps = extra or {}, swaps or {}
-    p.expect(TEXT_FN, TEXT_FN_STOCK, 'the value-text function')
-    p.expect(NAV_CMP, NAV_CMP_STOCK, 'the category navigation')
-    p.expect(NAV_WRAP, NAV_WRAP_STOCK, 'the category navigation')
-    for site in SITES.values():
+    layout = getattr(p, 'layout', STOMP_MENU)
+    p.expect(layout.text_fn, TEXT_FN_STOCK, 'the value-text function')
+    p.expect(layout.nav_cmp, NAV_CMP_STOCK, 'the category navigation')
+    p.expect(layout.nav_wrap, NAV_WRAP_STOCK, 'the category navigation')
+    for site in layout.sites.values():
         p.expect(site[0], bytes([5, 0x2b if site[1] == 3 else 0x2c]), 'a category dispatch')
 
     grown = {}                  # stock category -> its table's IDs with extra's settings
     for cat, mine in extra.items():
-        table = next(t for c, t in STOCK_CATEGORIES.values() if c == cat)
-        n = 3 * p.u32(ARRAYS['pages'][0] + 4 * cat)
+        table = next(t for c, t in layout.categories.values() if c == cat)
+        n = 3 * p.u32(layout.arrays['pages'][0] + 4 * cat)
         ids = list(struct.unpack(f'<{n}H', p.read(table, 2 * n)))
         while ids and ids[-1] == EMPTY_SLOT:
             ids.pop()
@@ -971,7 +1105,7 @@ def add_category(p, sections, virt=None, extra=None, swaps=None):
     # The per-category arrays with an entry for each section, and the page counts of the stock categories that grow
     added = {'names': [p.add(title + b'\0') for title, _, _ in sections], 'vals': [icon for _, icon, _ in sections],
              'pages': [len(mine) // 3 for _, _, mine in sections]}
-    for key, (stock, lits) in ARRAYS.items():
+    for key, (stock, lits) in layout.arrays.items():
         for lit in lits:
             if p.u32(lit) != stock:
                 raise SystemExit(f'patch-menu: a category array pointer at {lit:#x} is not the stock one')
@@ -989,17 +1123,17 @@ def add_category(p, sections, virt=None, extra=None, swaps=None):
 
     if sections:
         last = 5 + len(sections)
-        p.put(NAV_CMP, bytes([last, 0x2b]), 'the category navigation')
-        p.put(NAV_WRAP, bytes([last, 0x21]), 'the category navigation')
+        p.put(layout.nav_cmp, bytes([last, 0x2b]), 'the category navigation')
+        p.put(layout.nav_wrap, bytes([last, 0x21]), 'the category navigation')
         add_strip(p, [icon for _, icon, _ in sections])
-    for name, site in SITES.items():
+    for name, site in layout.sites.items():
         stub = virt[f'virt_{name}'] if virt and name in ('turn', 'click') else None
         p.put(site[0], thumb_bw(site[0], p.add(dispatch_cave(p.next(), site, tables, stub))), f'the category dispatch {name}')
-    p.put(TEXT_FN, thumb_bw(TEXT_FN, p.add(text_cave(p.next(), values))), 'the value-text function')
+    p.put(layout.text_fn, thumb_bw(layout.text_fn, p.add(text_cave(p.next(), values, layout))), 'the value-text function')
 
 
-def patch_menu(l6ia_bytes, log=print, cwd=None):
-    entries, on = menu_entries(lambda n: pa.get_entry_swapped(l6ia_bytes, n), cwd=cwd)
+def patch_menu(l6ia_bytes, log=print, cwd=None, layout=STOMP_MENU):
+    entries, on = menu_entries(lambda n: pa.get_entry_swapped(l6ia_bytes, n), cwd=cwd, layout=layout)
     new_l6ia, _, _ = l6ia.rebuild_archive(l6ia_bytes, entries)
     others = ''.join(f'; Entry {n}' for n in entries if n)
     log(f'[+] Entry 0: features {", ".join(features.name(m) for m in on) or "none"}{others}')
@@ -1012,9 +1146,13 @@ def main():
     ap.add_argument('output')
     ap.add_argument('--donor', help='Stock .hxf of the unit, when input is a raw L6IA and output a .hxf')
     ap.add_argument('--cwd', help='The directory paths in feature inputs are relative to (default: this one)')
+    ap.add_argument('--device', choices=('HX_Stomp', 'HX_Stomp_XL'), default='HX_Stomp',
+                    help='The stock device layout (default: HX_Stomp)')
     a = ap.parse_args()
     data, is_hxf = pa.load_l6ia_from_any(a.input)
-    pa.save_l6ia_to_any(patch_menu(data, cwd=a.cwd), a.output, donor_hxf=a.input if is_hxf else a.donor)
+    layout = XL_MENU if a.device == 'HX_Stomp_XL' else STOMP_MENU
+    pa.save_l6ia_to_any(patch_menu(data, cwd=a.cwd, layout=layout), a.output,
+                        donor_hxf=a.input if is_hxf else a.donor)
     print(f'[+] Wrote {a.output}')
 
 

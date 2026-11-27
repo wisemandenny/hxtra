@@ -1701,6 +1701,12 @@ MODEL_INT = {
         LOAD=0x28dfea54,                    # vldr s16, [r9, #4]: the float's value
         NO_DECIMALS=0x28dff684,             # movs r1, #0; b.w the print (the >= 50 case)
         STOCK={0x28dfeab4: 'dfe813f0', 0x28dfeace: '0b01', 0x28dfea54: '99ed018a', 0x28dff684: '0021fff73bbb'}),
+    0x28d92230: types.SimpleNamespace(
+        FORMAT=0x28e04a60,
+        TBH=0x28e04bd8,
+        LOAD=0x28e04b74,
+        NO_DECIMALS=0x28e057a4,
+        STOCK={0x28e04bd4: 'dfe813f0', 0x28e04bee: '0b01', 0x28e04b74: '99ed018a', 0x28e057a4: '0021fff73bbb'}),
 }
 DISPLAY_DYNAMIC_LIST = 12               # "dynamicList" as the display type getter 0x28dfe520 returns it at [sp, #11]
 
@@ -2029,7 +2035,7 @@ def main():
     p_irt = sub.add_parser('ir-title', help="A NAM block's title shows its User IR's name")
     p_irt.add_argument('input', help='Input .hxf or L6IA (after add-model)')
     p_irt.add_argument('output', help='Output .hxf or L6IA')
-    p_irt.add_argument('--preset-id', type=int, action='append', 
+    p_irt.add_argument('--preset-id', type=int, action='append',
                        help="the model's preset_id (add-model --preset-id); repeat for several models")
     p_irt.add_argument('--fx-preset-id', type=int, action='append',
                        help="a model added as an effect (add-fx-model): no cab-half test; repeatable")

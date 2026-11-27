@@ -1,6 +1,7 @@
 """The boot screen: tools/patch_splash.py's pictures offline (layout, PNG, sips conversion), and with HX_STOMP_HXF set,
 tools/features/splash.py through the features engine: the picture, the full-screen switch, the text and the renderer hook (run
 in unicorn on the patched Entry 0)."""
+import os
 import random
 import shutil
 import struct
@@ -84,6 +85,13 @@ def test_hxtra_layout_fits_and_is_centred():
     end = stomp + splash_hxtra.STOMP[1] - splash_hxtra.STOMP[0]
     assert hx > 0 and end < ps.W and abs(hx - (ps.W - end)) <= 1
     assert hx + splash_hxtra.HX[1] - splash_hxtra.HX[0] < xs[0] < xs[1] < xs[2] < stomp
+
+
+def test_xl_hxtra_layout_fits_and_keeps_stomp_xl():
+    hx, letters, stomp = splash_hxtra.layout(ps.W, splash_hxtra.XL_HX, splash_hxtra.XL_STOMP, splash_hxtra.XL_SPACE)
+    end = stomp + splash_hxtra.XL_STOMP[1] - splash_hxtra.XL_STOMP[0]
+    assert hx >= 0 and end <= ps.W and abs(hx - (ps.W - end)) <= 1
+    assert hx + splash_hxtra.XL_HX[1] - splash_hxtra.XL_HX[0] < letters[0] < letters[1] < letters[2] < stomp
 
 
 def test_tra_strokes_match_the_capitals():
@@ -260,6 +268,63 @@ def emoji_env(tmp_path, text, emoji):
         rgba_png(tmp_path / f"e{k}.png", 30, 30,
                  lambda x, y, c=colour: c + (255,) if (x - 15) ** 2 + (y - 15) ** 2 < 100 else (0, 0, 0, 0))
     return {"HX_SPLASH_TEXT": text, "HX_SPLASH_GLYPHS": ",".join(f"{e}=e{k}.png" for k, e in enumerate(emoji))}
+
+
+@pytest.fixture(scope="module")
+def stock_xl():
+    path = os.environ.get("HX_STOMP_XL_HXF")
+    if not path:
+        pytest.skip("HX_STOMP_XL_HXF is not set")
+    return pa.load_l6ia_from_any(path)[0]
+
+
+def build_xl(stock, env, cwd=None):
+    return pm.menu_entries(lambda n: pa.get_entry_swapped(stock, n), [splash], env, {}, cwd=cwd, layout=pm.XL_MENU)[0]
+
+
+@pytest.mark.firmware
+def test_xl_default_splash_and_renderer(stock_xl, m4emu):
+    entries = build_xl(stock_xl, {})
+    boot = splash.XL_BOOT
+    read = reader(entries[0])
+    assert read(boot.name, boot.name_size) == ps.SPLASH_XL[0].ljust(boot.name_size, b"\0")
+    assert read(boot.text, len(splash.TEXT_STOCK)) == splash.TEXT.encode().ljust(len(splash.TEXT_STOCK), b"\0")
+    assert int.from_bytes(read(boot.version, 4), "little") == boot.text + len(splash.TEXT)
+    stock7, stock8 = (pa.get_entry_swapped(stock_xl, index) for index in (7, 8))
+    img = image_store.image(stock7, stock8, ps.SPLASH_XL[0])
+    stock_px = stock8[img.offset:img.offset + img.length]
+    assert ps.drawn_image(stock_xl) == (ps.SPLASH_XL[0], stock_px)
+    expected = splash_hxtra.relabel(ps.decode(stock_px), splash_hxtra.XL_HX, splash_hxtra.XL_STOMP, splash_hxtra.XL_SPACE)
+    assert entries[8][img.offset:img.offset + img.length] == ps.encode(expected)
+    assert expected[:splash_hxtra.TOP] == ps.decode(stock_px)[:splash_hxtra.TOP]
+    _, poff, slen, dst, _ = pa._parse_e0_segments(entries[0])[6]
+    m = m4emu.M4(entries[0][poff:poff + slen], dst)
+    seen = []
+    m.stub(boot.renderer + 6, lambda m: seen.append([m.u32(m.reg("sp") + 44 + 4 * index) for index in range(5)]),
+           code=bytes.fromhex("bde8f04f02b07047"))
+    for text, mode in ((boot.text_buf, 1), (boot.text_buf + 4, 0)):
+        m.write(m4emu.STACK_TOP, struct.pack("<5I", 29, 1, splash.TEXT_COLOUR, 6, 0))
+        m.call(boot.renderer, 0x28d1ce98, text, 0x30, 160)
+        assert seen[-1] == [29, 1, splash.TEXT_COLOUR, 6, mode]
+
+
+@pytest.mark.firmware
+def test_xl_full_screen_and_emoji(tmp_path, stock_xl):
+    rows = [[(x % 256, y, 128) for x in range(ps.W)] for y in range(ps.FULL[1])]
+    ps.write_png(tmp_path / "full.png", rows)
+    env = dict(emoji_env(tmp_path, "HXtra 🎸", ["🎸"]), HX_SPLASH=str(tmp_path / "full.png"))
+    entries = build_xl(stock_xl, env, cwd=tmp_path)
+    read = reader(entries[0])
+    boot = splash.XL_BOOT
+    assert read(boot.name, boot.name_size) == ps.FULL[0].ljust(boot.name_size, b"\0")
+    assert read(boot.text, 8) == b"HXtra \x01\0"
+    assert int.from_bytes(read(boot.colour, 4), "little") == 0xffffff
+    img = image_store.image(entries[7], entries[8], ps.FULL[0])
+    assert entries[8][img.offset:img.offset + img.length] == ps.encode(rows)
+    assert ps.drawn_image(l6ia.rebuild_archive(stock_xl, entries)[0]) == (ps.FULL[0], ps.encode(rows))
+    count, table = image_store.font(entries[7], splash.FONT_NAME)
+    height, width, item = image_store.glyph(entries[7], table, 1)
+    assert count > 1 and height == 21 and width > 0 and item != image_store.EMPTY_GLYPH
 
 
 @pytest.mark.firmware
