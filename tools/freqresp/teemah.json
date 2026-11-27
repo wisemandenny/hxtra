@@ -1,0 +1,178 @@
+{
+ "reference": "dry",
+ "cases": [
+  {
+   "name": "dry",
+   "model": 260,
+   "params": [
+    0.0
+   ],
+   "note": "Gain block at 0 dB (reference)"
+  },
+  {
+   "name": "bass000",
+   "model": 302,
+   "params": [
+    0.0,
+    0.0,
+    0.5,
+    0,
+    0.63
+   ],
+   "note": "Bass 0.0"
+  },
+  {
+   "name": "bass025",
+   "model": 302,
+   "params": [
+    0.0,
+    0.25,
+    0.5,
+    0,
+    0.63
+   ],
+   "note": "Bass 0.25"
+  },
+  {
+   "name": "bass050",
+   "model": 302,
+   "params": [
+    0.0,
+    0.5,
+    0.5,
+    0,
+    0.63
+   ],
+   "note": "Bass 0.5"
+  },
+  {
+   "name": "bass075",
+   "model": 302,
+   "params": [
+    0.0,
+    0.75,
+    0.5,
+    0,
+    0.63
+   ],
+   "note": "Bass 0.75"
+  },
+  {
+   "name": "bass100",
+   "model": 302,
+   "params": [
+    0.0,
+    1.0,
+    0.5,
+    0,
+    0.63
+   ],
+   "note": "Bass 1.0"
+  },
+  {
+   "name": "treble000",
+   "model": 302,
+   "params": [
+    0.0,
+    0.5,
+    0.0,
+    0,
+    0.63
+   ],
+   "note": "Treble 0.0"
+  },
+  {
+   "name": "treble025",
+   "model": 302,
+   "params": [
+    0.0,
+    0.5,
+    0.25,
+    0,
+    0.63
+   ],
+   "note": "Treble 0.25"
+  },
+  {
+   "name": "treble075",
+   "model": 302,
+   "params": [
+    0.0,
+    0.5,
+    0.75,
+    0,
+    0.63
+   ],
+   "note": "Treble 0.75"
+  },
+  {
+   "name": "treble100",
+   "model": 302,
+   "params": [
+    0.0,
+    0.5,
+    1.0,
+    0,
+    0.63
+   ],
+   "note": "Treble 1.0"
+  },
+  {
+   "name": "clip1",
+   "model": 302,
+   "params": [
+    0.0,
+    0.5,
+    0.5,
+    1,
+    0.63
+   ],
+   "note": "Clipping Center"
+  },
+  {
+   "name": "clip2",
+   "model": 302,
+   "params": [
+    0.0,
+    0.5,
+    0.5,
+    2,
+    0.63
+   ],
+   "note": "Clipping Down"
+  },
+  {
+   "name": "gain050",
+   "model": 302,
+   "params": [
+    0.5,
+    0.5,
+    0.5,
+    0,
+    0.63
+   ],
+   "note": "Gain 0.5"
+  },
+  {
+   "name": "lin",
+   "model": 302,
+   "params": [
+    0.0,
+    0.5,
+    0.5,
+    0,
+    0.63
+   ],
+   "louder": 10,
+   "note": "as bass050, 10 dB louder"
+  },
+  {
+   "name": "dry_end",
+   "model": 260,
+   "params": [
+    0.0
+   ],
+   "note": "Gain block at 0 dB (reference)"
+  }
+ ]
+}

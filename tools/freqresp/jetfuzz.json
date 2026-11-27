@@ -1,0 +1,70 @@
+{
+ "reference": "dry",
+ "cases": [
+  {
+   "name": "dry",
+   "model": 260,
+   "params": [
+    0.0
+   ],
+   "note": "Gain block at 0 dB (reference)"
+  },
+  {
+   "name": "jf_tone0",
+   "model": 424,
+   "params": [
+    0.0,
+    0.0,
+    0.0,
+    0.11,
+    0.71
+   ],
+   "note": "Jet Fuzz, Drive 0, Feedback 0, Tone 0"
+  },
+  {
+   "name": "jf_tone5",
+   "model": 424,
+   "params": [
+    0.0,
+    0.0,
+    0.5,
+    0.11,
+    0.71
+   ],
+   "note": "Jet Fuzz, Drive 0, Feedback 0, Tone 5"
+  },
+  {
+   "name": "jf_tone10",
+   "model": 424,
+   "params": [
+    0.0,
+    0.0,
+    1.0,
+    0.11,
+    0.71
+   ],
+   "note": "Jet Fuzz, Drive 0, Feedback 0, Tone 10"
+  },
+  {
+   "name": "jf_lin",
+   "model": 424,
+   "params": [
+    0.0,
+    0.0,
+    0.0,
+    0.11,
+    0.71
+   ],
+   "note": "as jf_tone0, 10 dB louder",
+   "louder": 10
+  },
+  {
+   "name": "dry_end",
+   "model": 260,
+   "params": [
+    0.0
+   ],
+   "note": "Gain block at 0 dB (reference)"
+  }
+ ]
+}
