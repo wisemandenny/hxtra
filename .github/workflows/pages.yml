@@ -46,6 +46,15 @@ jobs:
           find _site -name __pycache__ -prune -exec rm -rf {} +
           gh release download "$TAG" -R "$GITHUB_REPOSITORY" -p m4cache.json -D _site
           printf '<!doctype html><meta charset="utf-8"><script>location.replace("web/" + location.hash)</script><meta http-equiv="refresh" content="0; url=web/"><title>HXtra Setup</title><a href="web/">HXtra Setup</a>\n' > _site/index.html
+      - name: Model Pictures release asset
+        env:
+          GH_TOKEN: ${{ secrets.STOCK_HXF_TOKEN }}
+        run: |
+          if jq -e '.features | index("HX_MODEL_PICTURES") != null' _site/m4cache.json > /dev/null; then
+            sha=$(jq -er '.assets["model-pictures.json"]' _site/m4cache.json)
+            gh release download "$TAG" -R wisemandenny/hxtra-ci-assets -p model-pictures.json -D _site
+            echo "$sha  _site/model-pictures.json" | sha256sum -c -
+          fi
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

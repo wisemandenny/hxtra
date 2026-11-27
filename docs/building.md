@@ -37,6 +37,7 @@ To add features, set their switches (the [features page](https://wisemandenny.gi
 |---|---|
 | [Extra tuner settings](https://wisemandenny.github.io/hxtra/web/features.html#tuner-settings) | `HX_TUNER=1` |
 | [BPM Display](https://wisemandenny.github.io/hxtra/web/features.html#bpm) | `HX_BPM=1` |
+| [Model Pictures](#model-pictures) | `HX_MODEL_PICTURES=1` and `HX_MODEL_PICTURES_ART` |
 | [DSP Usage Display](https://wisemandenny.github.io/hxtra/web/features.html#dsp-usage-display) | `HX_DSP_METER=1` |
 | [Breathing Line](https://wisemandenny.github.io/hxtra/web/features.html#breathing-line) | `HX_BREATHING_LINE=1` |
 | [More Snapshots (4-6)](https://wisemandenny.github.io/hxtra/web/features.html#more-snapshots) | `HX_MORE_SNAPSHOTS=1` |
@@ -54,7 +55,7 @@ To add features, set their switches (the [features page](https://wisemandenny.gi
 | [NAM A2 Lite](https://wisemandenny.github.io/hxtra/web/features.html#nam-a2-lite) | `HX_NAM_SLOTS=3`, `2`, `1`, `0` (off); unset, the most that fit |
 | [Boot screen](#boot-screen) | `--splash`, `--splash-text` |
 
-Switches combine. The Metronome, the FX Loop gate, the GR meter, USB & Send Routing and Input Sidechain put code on the DSP, in the room NAM A2 Lite's blocks leave (`python3 tools/block3.py` prints it): `HX_NAM_SLOTS=3`, `2`, `1` or `0` sets how many NAM blocks can play at once (`0`: no NAM A2 Lite, which skips steps 1, 2 and 4), and unset, `build.py` takes the most that leave room for the features you turned on. A build whose DSP features don't fit beside `HX_NAM_SLOTS` stops with what they take and what is left. For example, every feature but the boot picture:
+Switches combine. The Metronome, the FX Loop gate, the GR meter, USB & Send Routing and Input Sidechain put code on the DSP, in the room NAM A2 Lite's blocks leave (`python3 tools/block3.py` prints it): `HX_NAM_SLOTS=3`, `2`, `1` or `0` sets how many NAM blocks can play at once (`0`: no NAM A2 Lite, which skips steps 1, 2 and 4), and unset, `build.py` takes the most that leave room for the features you turned on. A build whose DSP features don't fit beside `HX_NAM_SLOTS` stops with what they take and what is left. For example, a build with the GR meter and other display features:
 
 ```sh
 HX_TUNER=1 HX_BPM=1 HX_DSP_METER=1 HX_BREATHING_LINE=1 HX_LONG_PRESS=1 HX_MORE_SNAPSHOTS=1 HX_CLICK=1 HX_GR=1 HX_TAP_COLOR=1 HX_PRESET_COLOR=1 HX_CC_TAP=1 HX_REAL_NAMES=1 \
@@ -79,6 +80,28 @@ python3 build.py path/to/HX_Stomp_v3.80.0_0x103966115.hxf --splash my_picture.jp
 - The bootloader shows its own copy of the stock picture for a moment at power-on, before the firmware starts; that copy is not changed.
 
 This also changes the image store (part 8 of the 15), and with emoji, the font table (part 7).
+
+## Model Pictures
+
+Supply a prepared bundle as `HX_MODEL_PICTURES_ART` and enable `HX_MODEL_PICTURES`.
+For a local build, install Pillow and prepare the bundle with the optional downloader.
+It checks every cached or downloaded photo against its pinned SHA-256.
+
+```sh
+stock=path/to/HX_Stomp_v3.80.0_0x103966115.hxf
+python3 tools/prepare_model_pictures.py "$stock"
+HX_MODEL_PICTURES=1 HX_MODEL_PICTURES_ART=build/model-pictures.json python3 build.py "$stock"
+```
+
+A prepared bundle is JSON with `version: 1` and a `pictures` array. Each record
+has a `models` list of internal model names, an `edit` hex string for a 74 × 23
+tile, and a `browser` hex string for a 74 × 32 tile. Pixels are little-endian
+RGB565 with red in the low bits and zero for transparency, in columns from bottom to top.
+
+For a Pages release, set `HX_MODEL_PICTURES_ART` to the same `model-pictures.json`
+provided in the matching release of the private `hxtra-ci-assets` repository.
+The build cache pins its SHA-256. Pages verifies the bundle against that pin
+before deployment, and the setup page uses the bundle supplied with the release.
 
 ## Build in the browser
 

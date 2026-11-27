@@ -102,6 +102,12 @@ HXtra's settings and block knobs have teal labels, so you can tell them from the
 
 <a href="https://wisemandenny.github.io/hxtra/web/features.html#dsp-usage-display"><img src="docs/assets/icons/watch-demo.svg" width="124" height="28" alt="Watch demo"></a>
 
+### <img src="docs/assets/icons/model-pictures.svg" width="28" height="28" align="top" alt=""> Model Pictures
+
+*Global Settings › Displays, page 2*
+
+Shows a picture of the selected model in Edit and a preview in the model browser when space is available. The setting defaults to **Off**. [Feature details](https://wisemandenny.github.io/hxtra/web/features.html#model-pictures)
+
 ### <img src="docs/assets/icons/gr-meter.svg" width="28" height="28" align="top" alt=""> Compressor Gain Reduction Meter
 
 *New settings on the Deluxe, LA Studio, Kinky, Ampeg Opto, Rochester and Red Squeeze compressors*

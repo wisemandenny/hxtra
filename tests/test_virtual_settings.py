@@ -13,7 +13,7 @@ import m4asm
 import patch_amp as pa
 import patch_menu as pm
 import setting_ids
-from features import Setting
+from features import Setting, model_pictures
 from firmware import branch_target, menu_entry0, reader, stock_e0, stock_entry
 
 MODS = features.load()
@@ -369,7 +369,7 @@ ALL = {'HX_TUNER': '1', 'HX_BPM': '1', 'HX_DSP_METER': '1', 'HX_LONG_PRESS': '1'
 
 
 @pytest.mark.firmware
-def test_every_feature_built_together_reads_and_stores_its_settings_through_the_engine(m4emu, monkeypatch):
+def test_every_feature_built_together_reads_and_stores_its_settings_through_the_engine(m4emu, monkeypatch, model_pictures_art):
     seen, real = {}, pm.Patch.module
 
     def module(self, path, inc=None):
@@ -377,8 +377,9 @@ def test_every_feature_built_together_reads_and_stores_its_settings_through_the_
         return seen[path]
 
     monkeypatch.setattr(pm.Patch, 'module', module)
-    new, on = menu_entry0(stock_e0(), MODS, ALL)
-    assert {features.name(m) for m in on} >= {'tuner', 'bpm', 'dsp_meter', 'long_press', 'breathing_line'}
+    env = {**ALL, model_pictures.FLAG: '1', model_pictures.ARTWORK: str(model_pictures_art)}
+    new, on = menu_entry0(stock_e0(), MODS, env)
+    assert {features.name(m) for m in on} >= {'tuner', 'bpm', 'dsp_meter', 'long_press', 'breathing_line', 'model_pictures'}
     b = Built(m4emu, new)
     for cid in setting_ids.CONTAINERS:
         b.m.write(record(cid) + 8, struct.pack('<BxxxI', 3, FLOAT_ONE))

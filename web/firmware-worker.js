@@ -77,6 +77,7 @@ var SOURCES = [
   "tools/features/label_color.py",
   "tools/features/long_press.py",
   "tools/features/metronome.py",
+  "tools/features/model_pictures.py",
   "tools/features/more_snapshots.py",
   "tools/features/preset_color.py",
   "tools/features/real_names.py",
@@ -104,6 +105,7 @@ var SOURCES = [
   "src/m4/label_color.s",
   "src/m4/long_press.s",
   "src/m4/metronome.s",
+  "src/m4/model_pictures.s",
   "src/m4/more_snapshots.s",
   "src/m4/preset_color.s",
   "src/m4/preset_keys.s",
@@ -124,6 +126,7 @@ var SOURCES = [
 ];
 // The release's M4 code for the features (tools/m4cache.py); a page from a checkout has none, and offers no features.
 var CACHE = "m4cache.json";
+var MODEL_PICTURES = "model-pictures.json";
 
 // One command of build.py: run a script as __main__ with argv, its folder on sys.path as `python script.py` has it.
 var DRIVER = [
@@ -161,14 +164,26 @@ async function boot() {
     return [path, new Uint8Array(await r.arrayBuffer())];
   }));
   var c = await fetch(root + CACHE, { cache: "no-cache" });
-  if (c.ok) cache = await c.json();
+  var release = c.ok ? await c.json() : null;
+  var pictures = null;
+  if (release && release.features.indexOf("HX_MODEL_PICTURES") >= 0) {
+    var want = release.assets && release.assets[MODEL_PICTURES];
+    var art = await fetch(root + MODEL_PICTURES, { cache: "no-cache" });
+    if (!want || !art.ok) throw new Error("Could not load the release's Model Pictures.");
+    pictures = await art.arrayBuffer();
+    var digest = new Uint8Array(await crypto.subtle.digest("SHA-256", pictures));
+    var got = Array.from(digest, function (n) { return n.toString(16).padStart(2, "0"); }).join("");
+    if (got !== want) throw new Error("The release's Model Pictures SHA-256 does not match.");
+  }
   ["/repo", "/repo/tools", "/repo/tools/features", "/repo/tools/sharc", "/repo/tools/ramboot", "/repo/src", "/repo/src/m4", "/repo/src/sharc",
    "/repo/build"].forEach(function (d) {
     try { p.FS.mkdir(d); } catch (e) { /* exists */ }
   });
   files.forEach(function (f) { p.FS.writeFile("/repo/" + f[0], f[1]); });
-  if (cache) p.FS.writeFile("/repo/" + CACHE, JSON.stringify(cache));
+  if (release) p.FS.writeFile("/repo/" + CACHE, JSON.stringify(release));
+  if (pictures) p.FS.writeFile("/repo/" + MODEL_PICTURES, new Uint8Array(pictures));
   p.runPython(DRIVER);
+  cache = release;
   py = p;
   return p;
 }
@@ -180,6 +195,7 @@ function setFeatures(p, flags, slots) {
     "for k in [k for k in os.environ if k.startswith('HX_')]: del os.environ[k]",
     "os.environ.update({f: '1' for f in flags})",
     "os.environ['HX_NAM_SLOTS'] = '" + slots + "'",
+    "if 'HX_MODEL_PICTURES' in flags: os.environ['HX_MODEL_PICTURES_ART'] = '/repo/" + MODEL_PICTURES + "'",
     "if flags: os.environ['HX_M4_CACHE'] = '/repo/" + CACHE + "'",
   ].join("\n"));
 }

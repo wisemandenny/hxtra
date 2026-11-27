@@ -239,12 +239,14 @@ def test_page_combos_are_offered():
 
 @pytest.mark.firmware
 @pytest.mark.parametrize("combo", PAGE_COMBOS)
-def test_page_copy_builds_features_from_the_cache(tmp_path, combo):
+def test_page_copy_builds_features_from_the_cache(tmp_path, combo, model_pictures_art, monkeypatch):
     stock = os.environ.get("HX_STOMP_HXF")
     if not stock:
         pytest.skip("HX_STOMP_HXF is not set")
     flags = page_combo(*PAGE_COMBOS[combo])
     nam = m4cache.flag_env(flags)[block3.VAR] != "0"
+    from features import model_pictures
+    monkeypatch.setenv(model_pictures.ARTWORK, str(model_pictures_art))
     cache = tmp_path / "m4cache.json"
     cache.write_text(json.dumps({"modules": m4cache.modules(stock, flags, nam)}))      # what m4cache.make keeps for it
     page = tmp_path / "repo"
@@ -252,7 +254,7 @@ def test_page_copy_builds_features_from_the_cache(tmp_path, combo):
         (page / p).parent.mkdir(parents=True, exist_ok=True)
         shutil.copy(ROOT / p, page / p)
     env = {k: v for k, v in os.environ.items() if not k.startswith("HX_")}
-    env.update(m4cache.flag_env(flags))
+    env.update(m4cache.build_inputs(flags))
     base = m4cache.nam_base(stock, str(tmp_path)) if nam else stock     # what build.py, and the page, give patch_menu.py
     out = {}
     for name, root, extra in (("clang", ROOT, {}), ("cache", page, {"HX_M4_CACHE": str(cache)})):

@@ -20,3 +20,5 @@ tools/*.hex
 *.webp
 # Your own files (notes, downloads, manual text): never committed
 /local/
+
+/model-pictures.json

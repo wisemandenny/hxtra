@@ -44,7 +44,7 @@ def test_cached_module(tmp_path, monkeypatch):
 
 def test_web_flags_are_every_feature():
     assert set(m4cache.web_flags()) == {"HX_TUNER", "HX_BPM", "HX_DSP_METER", "HX_BREATHING_LINE", "HX_LONG_PRESS",
-                                        "HX_MORE_SNAPSHOTS", "HX_TAP_COLOR", "HX_PRESET_COLOR", "HX_CC_TAP", "HX_LABEL_COLOR"}
+                                        "HX_MORE_SNAPSHOTS", "HX_TAP_COLOR", "HX_PRESET_COLOR", "HX_CC_TAP", "HX_LABEL_COLOR", "HX_MODEL_PICTURES"}
 
 
 def test_web_options_are_the_opt_in_features():
@@ -170,3 +170,19 @@ def test_release_version(tag, text, ok):
     else:
         with pytest.raises(SystemExit):
             release.check_version(tag, text)
+
+
+def test_release_pins_model_pictures(monkeypatch, model_pictures_art):
+    import hashlib
+    from features import model_pictures
+
+    monkeypatch.delenv(m4asm.CACHE, raising=False)
+    monkeypatch.delenv(model_pictures.ARTWORK, raising=False)
+    monkeypatch.setattr(m4cache, "combos", lambda: [])
+
+    with pytest.raises(SystemExit, match=model_pictures.ARTWORK):
+        m4cache.make("stock.hxf")
+    monkeypatch.setenv(model_pictures.ARTWORK, str(model_pictures_art))
+    assert m4cache.build_inputs([model_pictures.FLAG])[model_pictures.ARTWORK] == str(model_pictures_art)
+    cache = m4cache.make("stock.hxf", "v1")
+    assert cache["assets"] == {model_pictures.ARTWORK_FILE: hashlib.sha256(model_pictures_art.read_bytes()).hexdigest()}

@@ -28,6 +28,7 @@ import features
 import m4asm
 import patch_amp as pa
 import patch_menu as pm
+from features import model_pictures
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 UNIT = 'HX_Stomp'                   # the features are the HX Stomp's only
@@ -93,6 +94,15 @@ def flag_env(flags):
     return dict(f.split('=', 1) if '=' in f else (f, '1') for f in flags)
 
 
+def build_inputs(flags):
+    """A page combination and its external Model Pictures input, when enabled."""
+    env = flag_env(flags)
+    art = os.environ.get(model_pictures.ARTWORK)
+    if model_pictures.FLAG in env and art:
+        env[model_pictures.ARTWORK] = os.path.abspath(art)
+    return env
+
+
 @contextlib.contextmanager
 def build_env(env):
     """os.environ's HX_ variables as build.py's would be (features read some through it), restored after."""
@@ -120,7 +130,7 @@ def modules(stock, flags, nam=True, out=None):
             out[k] = {'code': code.hex(), 'symbols': symbols}
         return bytes.fromhex(out[k]['code']), out[k]['symbols']
 
-    data, env = image(stock, nam), flag_env(flags)
+    data, env = image(stock, nam), build_inputs(flags)
     m4asm.assemble_module = keep
     try:
         with build_env(env):
@@ -131,10 +141,9 @@ def modules(stock, flags, nam=True, out=None):
 
 
 def built_md5(stock, flags, cache=None):
-    """The MD5 of build.py's .hxf with flags on (a 'VAR=value' one set to its value) and no other HX_ variable, its modules from
-    the m4cache.json cache, as the page builds, when given."""
+    """The MD5 of build.py's .hxf with the selected flags and inputs, using the same modules as the page when a cache is given."""
     env = {k: v for k, v in os.environ.items() if not k.startswith('HX_')}
-    env.update(flag_env(flags))
+    env.update(build_inputs(flags))
     if cache:
         env[m4asm.CACHE] = os.path.abspath(cache)
     with tempfile.TemporaryDirectory() as d:
@@ -158,6 +167,13 @@ def make(stock, release=None):
     if os.environ.get(m4asm.CACHE):
         raise SystemExit(f'm4cache: unset {m4asm.CACHE}: this assembles with clang')
     flags, options, dsp, every = web_flags(), web_options(), web_dsp(), combos()
+    assets = {}
+    if model_pictures.FLAG in flags:
+        path = build_inputs(flags).get(model_pictures.ARTWORK)
+        if not model_pictures.artwork(path):
+            raise SystemExit(f'm4cache: set {model_pictures.ARTWORK} to the release Model Pictures bundle')
+        with open(path, 'rb') as source:
+            assets[model_pictures.ARTWORK_FILE] = hashlib.sha256(source.read()).hexdigest()
     # a module's key covers its .inc, which differs with the other features built, so each combination keeps its own
     mods = {}
     for c in every:
@@ -170,7 +186,7 @@ def make(stock, release=None):
     return {'release': release, 'unit': UNIT, 'features': flags, 'options': options,
             'dsp': {'features': dsp, 'slots': list(block3.SLOTS), 'room': {str(s): block3.words(s) for s in block3.SLOTS},
                     'cost': {f: block3.cost(f) for f in dsp}},
-            'md5': {UNIT: md5}, 'modules': mods}
+            'md5': {UNIT: md5}, 'modules': mods, 'assets': assets}
 
 
 def main():

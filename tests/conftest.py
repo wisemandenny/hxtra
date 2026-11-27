@@ -57,3 +57,17 @@ def pytest_collection_modifyitems(config, items):
     for item in items:
         if "nam" in item.keywords:
             item.add_marker(skip)
+
+
+@pytest.fixture
+def model_pictures_art(tmp_path):
+    """A generated tile, independent of the release artwork."""
+    from features import model_pictures as feature
+
+    path = tmp_path / feature.ARTWORK_FILE
+    path.write_text(json.dumps({'version': 1, 'pictures': [{
+        'models': ['HD2_CompressorKinkyCompMono'],
+        'edit': '1f00' * (feature.WIDTH * feature.EDIT_HEIGHT),
+        'browser': 'e007' * (feature.WIDTH * feature.BROWSER_HEIGHT),
+    }]}))
+    return path

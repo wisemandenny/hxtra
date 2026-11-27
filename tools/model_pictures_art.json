@@ -1,0 +1,3332 @@
+{
+  "source_page": "https://line6.com/helix-models/",
+  "retrieved": "2026-11-21",
+  "count": 475,
+  "models": [
+    {
+      "category": "AMP MODELS",
+      "name": "WhoWatt 100",
+      "source_url": "https://line6.com/helix-models/images/whowatt-100-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-whowatt-100-bc7be47f.jpg",
+      "sha256": "7f09c3a77f506a96a2b2b1eca7168c00a3e1ac5ca8cbd1b6031b50e1a5d4d146"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Soup Pro",
+      "source_url": "https://line6.com/helix-models/images/soup-pro-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-soup-pro-9bbc84c0.jpg",
+      "sha256": "688b423ea4689636b00590694150f51d9e12b8fb9c5b26583c212490f67e9efc"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Stone Age 185",
+      "source_url": "https://line6.com/helix-models/images/stone-age-185-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-stone-age-185-08b99e20.jpg",
+      "sha256": "7a426610e387c7b6d994a54b04a0383c6fc75f1ba2da9853670ec3a3ddfe4e40"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Voltage Queen",
+      "source_url": "https://line6.com/helix-models/images/voltage-queen-180x180-2.jpg",
+      "source_file": "line6_official/original/amp-models-voltage-queen-23b9f8df.jpg",
+      "sha256": "2a47ac4976026510a6e0ad8746844bb2c2eed5c02dfa304981cc3f8a8d63ca61"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Tweed Blues Nrm",
+      "source_url": "https://line6.com/helix-models/images/tweed-blues-nrm-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-tweed-blues-nrm-45b4099c.jpg",
+      "sha256": "cd9274df128ddabfd29f827de5313011b02feb13a2bfd42418b3fcc84024b2de"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Tweed Blues Brt",
+      "source_url": "https://line6.com/helix-models/images/tweed-blues-brt-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-tweed-blues-brt-872a9700.jpg",
+      "sha256": "d3787eb2fd553299839e6d2d9b6733931773348ed2d490cb99605f4302f6c91d"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Fullerton Nrm",
+      "source_url": "https://line6.com/helix-models/images/fullerton-nrm-brt-jump-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-fullerton-nrm-4bb5c9a8.jpg",
+      "sha256": "62d557349f446dbb7a3d2668cc9f996e58695dc95042d839c684e9aff1813c39"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Fullerton Brt",
+      "source_url": "https://line6.com/helix-models/images/fullerton-brt-jump-180x180-2.jpg",
+      "source_file": "line6_official/original/amp-models-fullerton-brt-cdde2f36.jpg",
+      "sha256": "5948efea69f298d4d050da17086407bd1b881e7ec4185f0c72b0db2125400fbb"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Fullerton Jump",
+      "source_url": "https://line6.com/helix-models/images/fullerton-brt-jump-180x180-2.jpg",
+      "source_file": "line6_official/original/amp-models-fullerton-jump-cdde2f36.jpg",
+      "sha256": "5948efea69f298d4d050da17086407bd1b881e7ec4185f0c72b0db2125400fbb"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "GrammaticoLG Nrm",
+      "source_url": "https://line6.com/helix-models/images/grammatico-nrm-brt-jump-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-grammaticolg-nrm-209c1439.jpg",
+      "sha256": "df7e6efbcf32b08bdebdac9515c81c7120feddc6b71efd9be333468bfb82dfca"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "GrammaticoLG Brt",
+      "source_url": "https://line6.com/helix-models/images/grammatico-nrm-brt-jump-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-grammaticolg-brt-209c1439.jpg",
+      "sha256": "df7e6efbcf32b08bdebdac9515c81c7120feddc6b71efd9be333468bfb82dfca"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "GrammaticoLG Jump",
+      "source_url": "https://line6.com/helix-models/images/grammatico-nrm-brt-jump-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-grammaticolg-jump-209c1439.jpg",
+      "sha256": "df7e6efbcf32b08bdebdac9515c81c7120feddc6b71efd9be333468bfb82dfca"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "US Small Tweed",
+      "source_url": "https://line6.com/helix-models/images/us-small-tweed-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-us-small-tweed-3e012c53.jpg",
+      "sha256": "0d846d33353a9d35fe9fee5d72100ef4f5f33863cb78c2907cf861b427fb4f4a"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "US Princess",
+      "source_url": "https://line6.com/helix-models/images/us-princess-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-us-princess-5bf31ce6.jpg",
+      "sha256": "7c5c3bc42e25cffa167809a6c9f5c8d22f64768e0c4d9abe9329696d54e04cc9"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "US Super Nrm",
+      "source_url": "https://line6.com/helix-models/images/US-Super-Nrm-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-us-super-nrm-20085046.jpg",
+      "sha256": "87cfe3d7c61ce2af6098786239e128214a235d6053884abe20998726d036841e"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "US Super Vib",
+      "source_url": "https://line6.com/helix-models/images/US-Super-Vib-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-us-super-vib-28d13fba.jpg",
+      "sha256": "d8a1a7808fa0c10b6a830f00d3fdd82fba679111a82c71465b9ee2e6d9ff280e"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "US Deluxe Nrm",
+      "source_url": "https://line6.com/helix-models/images/us-deluxe-nrm-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-us-deluxe-nrm-2bcecae5.jpg",
+      "sha256": "7d119c19c0cbd4484769dafd052b23a9e0c0fe2bbd800aba5d38df9522921d7d"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "US Deluxe Vib",
+      "source_url": "https://line6.com/helix-models/images/us-deluxe-vib-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-us-deluxe-vib-f8df3910.jpg",
+      "sha256": "b784663aadf8c610b2151a2473faa8fd0cf9df50d4677b170c36ee95a2dfe05d"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "US Double Nrm",
+      "source_url": "https://line6.com/helix-models/images/us-double-nrm-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-us-double-nrm-6e171da7.jpg",
+      "sha256": "8d308e7cb880b612db1e6f067b1523adade8aa7e348b8f038fab29aee871f56b"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "US Double Vib",
+      "source_url": "https://line6.com/helix-models/images/us-double-vib-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-us-double-vib-0e122973.jpg",
+      "sha256": "d2d59f5c83b82730161a1647b769853387c928003c39895b194be63ea2892352"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Mail Order Twin",
+      "source_url": "https://line6.com/helix-models/images/mail-order-twin-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-mail-order-twin-557ebb6b.jpg",
+      "sha256": "bc4495f7cb332ec8a6d4eafbf664e8fb31c87333cba941f5d112d2e2264171a0"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Divided Duo",
+      "source_url": "https://line6.com/helix-models/images/divided-duo-180x180-2.jpg",
+      "source_file": "line6_official/original/amp-models-divided-duo-580c89ff.jpg",
+      "sha256": "0fe871ac3ff592b6fa3f528b0ec86b7a55fc7e49c9043a3853a0e96cff97bf21"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Interstate Zed",
+      "source_url": "https://line6.com/helix-models/images/insterstate-zed-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-interstate-zed-bbfcf925.jpg",
+      "sha256": "e585263a1a052e200c080204730a8f84f44055cd2cea0bf3725826036d7415c7"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Derailed Ingrid",
+      "source_url": "https://line6.com/helix-models/images/derailed-ingrid-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-derailed-ingrid-c9d3e441.jpg",
+      "sha256": "f83d6b23e09f85f6344c79ffcca9460f4d57be112b3db265cece38ef36180d52"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Grammatico GSG",
+      "source_url": "https://line6.com/helix-models/images/grammatico-gsg-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-grammatico-gsg-a0e967c9.jpg",
+      "sha256": "dcff60d865c81ffddd874a790fa9e2cdc2bb9d173f9d40631ca17efc034c258d"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Jazz Rivet 120",
+      "source_url": "https://line6.com/helix-models/images/jazz-rivet-120-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-jazz-rivet-120-d6f724d5.jpg",
+      "sha256": "53652f71a0ab51f710f3a6c975efac292f1928345216b9bab070d5b2ecc68cd8"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Essex A15",
+      "source_url": "https://line6.com/helix-models/images/essex-a15-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-essex-a15-b13eaf92.jpg",
+      "sha256": "084140fc3c9fc24ee843ef625b621b80a68754faa113baf510cabacde329282f"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Essex A30",
+      "source_url": "https://line6.com/helix-models/images/essex-a30-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-essex-a30-ae5a1394.jpg",
+      "sha256": "ff689eca84de9909364a4c73f190d69aaf21ec179753748eae3053ba20f79f00"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "A30 Fawn Nrm",
+      "source_url": "https://line6.com/helix-models/images/a30-fawn-nrm-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-a30-fawn-nrm-879e6822.jpg",
+      "sha256": "2b3a988b02058e915d50a82786cf1742a11560a36f4b25b6f9d212d9cdb0ec36"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "A30 Fawn Brt",
+      "source_url": "https://line6.com/helix-models/images/a30-fawn-brt-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-a30-fawn-brt-a03b9960.jpg",
+      "sha256": "2abd1b4ab828a3190e2169c03ee1c9035d36aa97b9ec9d923035db87d8dd860d"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Matchstick Ch1",
+      "source_url": "https://line6.com/helix-models/images/matchstick-ch1-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-matchstick-ch1-91c3d0c5.jpg",
+      "sha256": "466a9d147dcc4f48eb3c8e343ff32d0b46f3cbb4e677cca3e4739115549fd462"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Matchstick Ch2",
+      "source_url": "https://line6.com/helix-models/images/matchstick-ch2-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-matchstick-ch2-e631657a.jpg",
+      "sha256": "b44109909d9d4d2d870bf555b5bcb6a87afdbe6927ea340bf18f84392ca04146"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Matchstick Jump",
+      "source_url": "https://line6.com/helix-models/images/matchstick-jump-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-matchstick-jump-17b2526c.jpg",
+      "sha256": "30ec3c5bb7f4ee551b8081bff0e22dd88cc10f2f88bbbca4d42da1f31d5e969c"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Mandarin 80",
+      "source_url": "https://line6.com/helix-models/images/mandarin-80-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-mandarin-80-d30f8a0d.jpg",
+      "sha256": "b00da4c0dd81eda242480e9a8fe5cbf18379a25eef3ba8224231dc4c072edbf0"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Mandarin Rocker",
+      "source_url": "https://line6.com/helix-models/images/mandarin-rocker-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-mandarin-rocker-008fcb9e.jpg",
+      "sha256": "746be489ef833efb2acc11f1ca64691c18d5c87dd408f541cd0b060e5b501101"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Moo)))n Nrm",
+      "source_url": "https://line6.com/helix-models/images/moo-n-nrm-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-moo-n-nrm-05e110a2.jpg",
+      "sha256": "68298641912f3e666e335d687782ce3ab564a6f7cee8e36473abb7d59cb3052c"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Moo)))n Brt",
+      "source_url": "https://line6.com/helix-models/images/moo-n-brt-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-moo-n-brt-468e78f8.jpg",
+      "sha256": "8d98ab4329b5155f3604271b73a03c4f276bd224301a299de9aa5453c87d37b3"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Moo)))n Jump",
+      "source_url": "https://line6.com/helix-models/images/moo-n-jump-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-moo-n-jump-8fea90c1.jpg",
+      "sha256": "900c77dccce3328d7e233c3b39fb518ddd05395fc419087430b12fd3aa49ee61"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Brit J45 Nrm",
+      "source_url": "https://line6.com/helix-models/images/brit-j45-nrm-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-brit-j45-nrm-199160cc.jpg",
+      "sha256": "963e71130afcbbc9c6307fd2646c632488e7e52c64212b0e2a85e6865b3b2bea"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Brit J45 Brt",
+      "source_url": "https://line6.com/helix-models/images/brit-j45-brt-180x180-2.jpg",
+      "source_file": "line6_official/original/amp-models-brit-j45-brt-7f70320c.jpg",
+      "sha256": "acec731130892d99b8d03a0fad5ffdd6622a85d213502cfa613613ed086788db"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Brit Trem Nrm",
+      "source_url": "https://line6.com/helix-models/images/brit-trem-nrm-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-brit-trem-nrm-7dec2b1a.jpg",
+      "sha256": "7635ebe14622f646527887d536f327f008d81e8ebf1e61636606199e8ddffd6d"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Brit Trem Brt",
+      "source_url": "https://line6.com/helix-models/images/brit-trem-brt-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-brit-trem-brt-082855b9.jpg",
+      "sha256": "2a55af75b01cba4114169a18abd4f040a71703fb7ce4c785ff704d347f718f4a"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Brit Trem Jump",
+      "source_url": "https://line6.com/helix-models/images/brit-trem-jump-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-brit-trem-jump-fd4e3163.jpg",
+      "sha256": "5b823e9c175067a4768181775f257481e6a8692b30c9e3aa396c93dbca6a6755"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Brit Plexi Nrm",
+      "source_url": "https://line6.com/helix-models/images/brit-plexi-nrm-180x180-2.jpg",
+      "source_file": "line6_official/original/amp-models-brit-plexi-nrm-17ccf0c8.jpg",
+      "sha256": "e387e6d807ca302093e5445b657d14dcc7fe22ac6c51117209902407dbc430fc"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Brit Plexi Brt",
+      "source_url": "https://line6.com/helix-models/images/brit-plexi-brt-180x180-2.jpg",
+      "source_file": "line6_official/original/amp-models-brit-plexi-brt-9453c373.jpg",
+      "sha256": "c53e36d4572131a746a65121b431706f5d970ce150097a7d565b44e6c648480e"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Brit Plexi Jump",
+      "source_url": "https://line6.com/helix-models/images/brit-plexi-jump-180x180-2.jpg",
+      "source_file": "line6_official/original/amp-models-brit-plexi-jump-07d41e24.jpg",
+      "sha256": "492fc264a3c85b1295be833725f576d39b1c8bb2f0e7b1195bc85ff06a943ae5"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Brit P75 Nrm",
+      "source_url": "https://line6.com/helix-models/images/brit-p75-nrm-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-brit-p75-nrm-09c9e158.jpg",
+      "sha256": "54dcaf94c7f0f0fe63d27f343865e83f3cc4f131e675049ee61084cc549fc63d"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Brit P75 Brt",
+      "source_url": "https://line6.com/helix-models/images/brit-p75-brt-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-brit-p75-brt-84cd8ff7.jpg",
+      "sha256": "56dd0a3ece5ed649c7aab0112d8ee7a11c1748f8f43eb07a32ef538c5c97fa12"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Brit 2203",
+      "source_url": "https://line6.com/helix-models/images/Amp_HX_Gtr_Brit_2203-180x180.png",
+      "source_file": "line6_official/original/amp-models-brit-2203-bc5b525b.png",
+      "sha256": "8508aab8d7b9a5ecf50bc7edbbb4346463b95bac0b1f56cfdab733a7d5504a3a"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Brit 2204",
+      "source_url": "https://line6.com/helix-models/images/brit-2204--180x180.jpg",
+      "source_file": "line6_official/original/amp-models-brit-2204-f5d80477.jpg",
+      "sha256": "46ec8ae0c60d32c24cbe2a1ccafdac246cf5622029da08d8171642f87d65f71d"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Placater Clean",
+      "source_url": "https://line6.com/helix-models/images/placater-clean-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-placater-clean-e11463f9.jpg",
+      "sha256": "9d0c46a11bde91af45151346559e68933f45644370b622a1df7aa7f692e31b69"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Placater Dirty",
+      "source_url": "https://line6.com/helix-models/images/placater-dirty-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-placater-dirty-3ae96924.jpg",
+      "sha256": "42b0e806da7e68d7366e50904346d991d46333ae80b0f08af58ddfd65213aa58"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Cartographer",
+      "source_url": "https://line6.com/helix-models/images/cartographer-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-cartographer-21686cf5.jpg",
+      "sha256": "202d9913601929710ae629ca6ced3e0d1ce938e8b5214f5adb6e661bdab1e12c"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "German Xtra Blue",
+      "source_url": "https://line6.com/helix-models/images/German-Extra-Blue-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-german-xtra-blue-b8f302bd.jpg",
+      "sha256": "fd2691acfac828fc5f352653d1e86880ae862428d62e1cdd94b6792d7880dbe9"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "German Xtra Red",
+      "source_url": "https://line6.com/helix-models/images/German-Extra-Red-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-german-xtra-red-e4f59ef8.jpg",
+      "sha256": "947abae9cdd1ce5ef7d2e4212b4f5c974a56fee0ee04ce27c7abb8c6b9dfe3af"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "German Mahadeva",
+      "source_url": "https://line6.com/helix-models/images/german-mahadeva-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-german-mahadeva-926ac106.jpg",
+      "sha256": "706848c84225f12cff7fdb93338a1ca72baa0d05242ee058d61f53caa4ec6c57"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "German Ubersonic",
+      "source_url": "https://line6.com/helix-models/images/german-ubersonic-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-german-ubersonic-cd034ede.jpg",
+      "sha256": "df42a6f4f4827709148bf09d0104de075079c667d743bdf358779c9b07bc2669"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Cali Texas Ch1",
+      "source_url": "https://line6.com/helix-models/images/cali-texas-ch1-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-cali-texas-ch1-002f01e0.jpg",
+      "sha256": "165d9ac50c074d0fb3e57b2bbfa22ba327eaa5850499b903f8485745a02f05a6"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Cali Texas Ch2",
+      "source_url": "https://line6.com/helix-models/images/cali-texas-ch2-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-cali-texas-ch2-3ea3b893.jpg",
+      "sha256": "7fc38207b30d95521b3833dae3933687b5936b0fb498b14beb4412aaa23eaef4"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Cali IV Rhythm 1",
+      "source_url": "https://line6.com/helix-models/images/cali-iv-rhythm-1-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-cali-iv-rhythm-1-a6dae0a1.jpg",
+      "sha256": "f1bbc2781c122894b0a831c1e7c31e1a4eb2f33239179bad0c0568575a4dc8ca"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Cali IV Rhythm 2",
+      "source_url": "https://line6.com/helix-models/images/cali-iv-rhythm-2-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-cali-iv-rhythm-2-a76aa257.jpg",
+      "sha256": "9dfade0f5ade5607e657218b8b71fdcdd606a0e8511df482d8eb62a121d8c553"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Cali IV Lead",
+      "source_url": "https://line6.com/helix-models/images/cali-iv-lead-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-cali-iv-lead-b3aae438.jpg",
+      "sha256": "de3e8f55af1a7d302834bcfa7a246a8ed73fc2245863eee7f71490aa1f2968e3"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Cali Rectifire",
+      "source_url": "https://line6.com/helix-models/images/cali-rectifire-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-cali-rectifire-d64b57bd.jpg",
+      "sha256": "ae5d996f15ea96f55073c16f1dd9a585b1f3156fbbfc4f639cf9f1489b7cd908"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Archetype Clean",
+      "source_url": "https://line6.com/helix-models/images/archetype-clean-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-archetype-clean-598fe257.jpg",
+      "sha256": "89c9e4a44f6d76eff71ebbad09d0a952188c81060dda282c9872c276755dae0b"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Archetype Lead",
+      "source_url": "https://line6.com/helix-models/images/archetype-leaad-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-archetype-lead-40c90023.jpg",
+      "sha256": "d00be6ab6f8a295c54abc8059f5d93d97b16955c04a3879f79137443119635ad"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "ANGL Meteor",
+      "source_url": "https://line6.com/helix-models/images/angl-meteor-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-angl-meteor-abff267e.jpg",
+      "sha256": "190db0353ceb8dff387fcf5d9cfdd53a668666bd6c97de9cd6c05cc8c964a542"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Solo Lead Clean",
+      "source_url": "https://line6.com/helix-models/images/solo-lead-clean-180x180-2.jpg",
+      "source_file": "line6_official/original/amp-models-solo-lead-clean-4ec7e67e.jpg",
+      "sha256": "75b9b4e19a55b8e7a5505d9c04dce706ecb2e5c58a4538d6b31b78fefaf6dcb1"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Solo Lead Crunch",
+      "source_url": "https://line6.com/helix-models/images/solo-lead-crunch-180x180-2.jpg",
+      "source_file": "line6_official/original/amp-models-solo-lead-crunch-886f8c73.jpg",
+      "sha256": "24c4b255ffe5d53edd15c7d5835d913636a5b0da0ae957210aa798fcab831033"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Solo Lead OD",
+      "source_url": "https://line6.com/helix-models/images/solo-lead-od-180x180-2.jpg",
+      "source_file": "line6_official/original/amp-models-solo-lead-od-1580af68.jpg",
+      "sha256": "266b20040fc2e0c76af3ca7601fe148202a4862d9095a2ec654f97bb7346f3e5"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "EV Panama Blue",
+      "source_url": "https://line6.com/helix-models/images/EV-Panama-Blue-180x180-2.jpg",
+      "source_file": "line6_official/original/amp-models-ev-panama-blue-33cc57d9.jpg",
+      "sha256": "1e8b101317273278ee153d4d1666dcaefb0b698df3410341ca9b72908e06472d"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "EV Panama Red",
+      "source_url": "https://line6.com/helix-models/images/EV-Panama-Red-180x180-2.jpg",
+      "source_file": "line6_official/original/amp-models-ev-panama-red-c7b85466.jpg",
+      "sha256": "b7efd7da05960104499ff54c708f6eb26c80539ee071a57c717b26c4f63c9da6"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "PV Panama",
+      "source_url": "https://line6.com/helix-models/images/pv-panama-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-pv-panama-2b74b018.jpg",
+      "sha256": "9e25655f31dd0e84e9601eb52aadb11d48234e9a6e249e6dcdadfabf463e286b"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "PV Vitriol Clean",
+      "source_url": "https://line6.com/helix-models/images/Amp_HX_Gtr_Vitriol_Clean-180x180.png",
+      "source_file": "line6_official/original/amp-models-pv-vitriol-clean-f9ed1bdd.png",
+      "sha256": "43cd226593a44e0a5b9bb2e2967b865c4da38b0fc190f12fc27d65429ba0c868"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "PV VitriolCrunch",
+      "source_url": "https://line6.com/helix-models/images/pv-vitriolcrunch-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-pv-vitriolcrunch-0d447b34.jpg",
+      "sha256": "91a87aa9c9b0c8629e461bea86c9577ceeb9d3918d4d82f1e4f8ec0a3bd26b32"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "PV Vitriol Lead",
+      "source_url": "https://line6.com/helix-models/images/pv-vitriol-lead-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-pv-vitriol-lead-ab4ee7a0.jpg",
+      "sha256": "d77015fd06c8b4cbf9f021f80639155cede39e1c37c0ab5b2fb5fb0b2e7ff844"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Revv Gen Purple",
+      "source_url": "https://line6.com/helix-models/images/revv-gen-purple-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-revv-gen-purple-dc68923d.jpg",
+      "sha256": "fb6b236f8437cd9625cbc392a9a66daec9401d2e09ad077c13a613876c49e04e"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Revv Gen Red",
+      "source_url": "https://line6.com/helix-models/images/revv-gen-red-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-revv-gen-red-1f48cbd7.jpg",
+      "sha256": "c95a00bc9dad77edfe3a4e2b9e61e764a7f4d8a158731e05d74af6840c1ec313"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Das Benzin Mega",
+      "source_url": "https://line6.com/helix-models/images/das-benzin-mega-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-das-benzin-mega-fe49f0c1.jpg",
+      "sha256": "ed1b8f177e0c05691cee32e0a8ae6ec8c3b41e2971008ea0d09344fc8a76ef04"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Das Benzin Lead",
+      "source_url": "https://line6.com/helix-models/images/das-benzin-lead-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-das-benzin-lead-faaab2f7.jpg",
+      "sha256": "b691bf1eb724eae70a514b80401d96e8f1468ec8ef40b5d050e37c4dbc4d8a5e"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Line 6 Clarity",
+      "source_url": "https://line6.com/helix-models/images/Amp_HX_Gtr_Clarity-180x180.png",
+      "source_file": "line6_official/original/amp-models-line-6-clarity-dcc4e289.png",
+      "sha256": "3ad27d21a2c0b63ddbf4fed9d2c0001e7c5206b3ea4703dc51ae95653e13f506"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Line 6 Aristocrat",
+      "source_url": "https://line6.com/helix-models/images/Amp_HX_Gtr_Aristrocrat-180x180.png",
+      "source_file": "line6_official/original/amp-models-line-6-aristocrat-83941de7.png",
+      "sha256": "5a8b055ab357ba61432c3a733ff52477187082fed4acaad3da2b46a1ad2276f9"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Line 6 Carillon",
+      "source_url": "https://line6.com/helix-models/images/Amp_HX_Gtr_Carillon-180x180.png",
+      "source_file": "line6_official/original/amp-models-line-6-carillon-a03dd0ed.png",
+      "sha256": "2f3b13495c878d0c556a21a0a4e4d2cd40bd3faa16bca518d61c93a2edf14556"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Line 6 Voltage",
+      "source_url": "https://line6.com/helix-models/images/Amp_HX_Gtr_L6_Voltage-180x180.png",
+      "source_file": "line6_official/original/amp-models-line-6-voltage-b213b091.png",
+      "sha256": "fd2f5592d9b8dc5e3705219d5df3db4b0a5a7411394578a73b46f3aa7c3c6b8a"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Line 6 Kinetic",
+      "source_url": "https://line6.com/helix-models/images/Amp_HX_Gtr_Kinetic-180x180.png",
+      "source_file": "line6_official/original/amp-models-line-6-kinetic-19c9d81d.png",
+      "sha256": "80d733e69ac53e003a3502cef08d04803f47d59c294c4ae71753ecf8f9f7f9a6"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Line 6 Oblivion",
+      "source_url": "https://line6.com/helix-models/images/Amp_HX_Gtr_Oblivion-180x180.png",
+      "source_file": "line6_official/original/amp-models-line-6-oblivion-da18d20a.png",
+      "sha256": "296586cc0e5926a067bcdb6bd50665f06ea5c6940e1dc866317554a411c0399d"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Line 6 Ventoux",
+      "source_url": "https://line6.com/helix-models/images/line-6-ventoux-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-line-6-ventoux-5805ce93.jpg",
+      "sha256": "fead6681ade9ff2fd1de32b494f70b64e1e365dd93436ee46866a25b3f53a168"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Line 6 Elmsley",
+      "source_url": "https://line6.com/helix-models/images/line-6-elmsley-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-line-6-elmsley-b7005a0f.jpg",
+      "sha256": "77a6329f7cfaf2064f34c70497561f04b10808148ba50af84cd9b7ece9f0a586"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Line 6 Elektrik",
+      "source_url": "https://line6.com/helix-models/images/line-6-elektrik-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-line-6-elektrik-fc078767.jpg",
+      "sha256": "7998a30a86d8742b968fbadc5e32fc1e5dfbe26dd2ae4987f1e0665d1c83991b"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Line 6 Doom",
+      "source_url": "https://line6.com/helix-models/images/line-6-doom-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-line-6-doom-58327080.jpg",
+      "sha256": "bc34bedea8e9c23da5dd7fe34944ebd2103934e40eb4bd2bd94418a105d95e65"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Line 6 Epic",
+      "source_url": "https://line6.com/helix-models/images/line6-epic-180x180-2.jpg",
+      "source_file": "line6_official/original/amp-models-line-6-epic-679afcaf.jpg",
+      "sha256": "3eea3e7eda214a927f43a67a02b473bf2b1b69e98575c51cbc67fa6761f30d69"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Line 6 2204 Mod",
+      "source_url": "https://line6.com/helix-models/images/line6-2204-mod-180x180-2.jpg",
+      "source_file": "line6_official/original/amp-models-line-6-2204-mod-ebec1b73.jpg",
+      "sha256": "8a4eddc3cd3f9b94be6d3a9a7c388238c697f807e86d45a36cd2739e1f9b81cf"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Line 6 Fatality",
+      "source_url": "https://line6.com/helix-models/images/line-6-fatality-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-line-6-fatality-fd850137.jpg",
+      "sha256": "1c6b559add5d664e18f97d9bbd633d5bc3855b355cef0ab890232bf7199ec0c8"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Line 6 Litigator",
+      "source_url": "https://line6.com/helix-models/images/line-6-litigator-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-line-6-litigator-be8b25bc.jpg",
+      "sha256": "1d2c38652802fd77d664eb60da45e7678912ec6e051f3a04291370c27ccf5227"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Line 6 Badonk",
+      "source_url": "https://line6.com/helix-models/images/line-6-badonk-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-line-6-badonk-97b22384.jpg",
+      "sha256": "e164fa6bea06f06a1ebe435da4b306258fc78b3ab7cfacb2be5abe320571d8a1"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Ampeg B-15NF",
+      "source_url": "https://line6.com/helix-models/images/ampeg-b-15nf-180x180-2.jpg",
+      "source_file": "line6_official/original/amp-models-ampeg-b-15nf-a91d9c0b.jpg",
+      "sha256": "ad951b73f011009a030a01d431529d210b529f945281115911aae9f75b3cb1f5"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Ampeg SVT Nrm",
+      "source_url": "https://line6.com/helix-models/images/ampeg-svt-nrm-180x180-2.jpg",
+      "source_file": "line6_official/original/amp-models-ampeg-svt-nrm-6a93bb3e.jpg",
+      "sha256": "934a34d3e2f5ca5f6e0ee898c97ff00e9c790990bcad08d7df1f82378afc9a45"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Ampeg SVT Brt",
+      "source_url": "https://line6.com/helix-models/images/ampeg-svt-brt-180x180-2.jpg",
+      "source_file": "line6_official/original/amp-models-ampeg-svt-brt-16b2db15.jpg",
+      "sha256": "ebe57309947dee6fbf576358cc91411d1405e9f1064c5a5d4cae690494879017"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Ampeg SVT-4 PRO",
+      "source_url": "https://line6.com/helix-models/images/ampeg-svt4-pro-180x180-2.jpg",
+      "source_file": "line6_official/original/amp-models-ampeg-svt-4-pro-27991a23.jpg",
+      "sha256": "f319420518910ec0b5fff2aa4ebc552399c0889633ad99fa72f5a6e505fc05a7"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "US Dripman Nrm",
+      "source_url": "https://line6.com/helix-models/images/Amp_HX_Bass_Dripman-180x180.png",
+      "source_file": "line6_official/original/amp-models-us-dripman-nrm-1ea54881.png",
+      "sha256": "5acaf3a6fe1c01eabbc4a93cdf35a72c355ed21ebff78b39bea8715aaffcb7c2"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Woody Blue",
+      "source_url": "https://line6.com/helix-models/images/woody-blue-180x180-2.jpg",
+      "source_file": "line6_official/original/amp-models-woody-blue-d70ef1a7.jpg",
+      "sha256": "5b96eb4be858a97b35bff467bfcecef9bf5194984e0e02ab335481ddd6bf0e07"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Agua Sledge",
+      "source_url": "https://line6.com/helix-models/images/agua-sledge-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-agua-sledge-cbac5c26.jpg",
+      "sha256": "51a202e01162d63a1e4cc284108b33111a341e5399f67660b924b3a2919ae5ee"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Agua 51",
+      "source_url": "https://line6.com/helix-models/images/agua51-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-agua-51-086b905a.jpg",
+      "sha256": "0f539f4cc906fbb235cd7c804bec66dcc7b88f4bcda9ed499aff39712a87efa2"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Mandarin 200",
+      "source_url": "https://line6.com/helix-models/images/Amp_HX_Gtr_Mandarin200-1-180x180.png",
+      "source_file": "line6_official/original/amp-models-mandarin-200-7cae79c6.png",
+      "sha256": "f727f245b98a0628ae9326e1a0ba7b7f33c400effb3a7415aaa2387e4fd47af3"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Cali Bass",
+      "source_url": "https://line6.com/helix-models/images/cali-bass-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-cali-bass-fdc4976f.jpg",
+      "sha256": "4ba1911d0865e2e0d1376b15c165c13adffa3e186aba7f1e860d031877298e40"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Cali 400 Ch1",
+      "source_url": "https://line6.com/helix-models/images/cali-400-ch1-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-cali-400-ch1-68e3de5f.jpg",
+      "sha256": "ff16c674ca2be10a667083529dfda72a3658e375cee98777b82b49a44f79566f"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Cali 400 Ch2",
+      "source_url": "https://line6.com/helix-models/images/cali-400-ch2-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-cali-400-ch2-525195a5.jpg",
+      "sha256": "759a25b24e91d0e3f068391a94702651546b02eee95f9f381345ad57294313d5"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "G Cougar 800",
+      "source_url": "https://line6.com/helix-models/images/g-cougar-800-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-g-cougar-800-f7f87b17.jpg",
+      "sha256": "48296c3983a69094a96a41b47299f4b7a6d3a7ef6e96322ee65d81545a0b19ea"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Del Sol 300",
+      "source_url": "https://line6.com/helix-models/images/del-sol-300-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-del-sol-300-87ee8b1f.jpg",
+      "sha256": "df8c258f2b2846793ffa32399152e1b9d1b86024d07d534ac4a33cc08321bcb2"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Busy One Ch1",
+      "source_url": "https://line6.com/helix-models/images/busy-one-ch1-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-busy-one-ch1-65920bd4.jpg",
+      "sha256": "ccbaf04b7de279acef4c7b6a3fd1c1a9ac23485980689eaefe2b3bcc3907c606"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Busy One Ch2",
+      "source_url": "https://line6.com/helix-models/images/busy-one-ch2-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-busy-one-ch2-84699147.jpg",
+      "sha256": "f9f0f9781c8e39741c5d968b4a44c897d348c6e901ee5f52efa2754eecc6a604"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Busy One Jump",
+      "source_url": "https://line6.com/helix-models/images/busy-one-jump-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-busy-one-jump-540cecb0.jpg",
+      "sha256": "8ccf1fd321a108375e2394551a2e637094c7dcf3b3005099dcdae2fd15caec48"
+    },
+    {
+      "category": "AMP MODELS",
+      "name": "Studio Tube Pre",
+      "source_url": "https://line6.com/helix-models/images/studio-tube-pre-180x180.jpg",
+      "source_file": "line6_official/original/amp-models-studio-tube-pre-a0b57a6c.jpg",
+      "sha256": "9b3b59d58c6fe732073fc625884de807b59b6df4e5a22f5c1914e8d362e5d0da"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "Soup Pro Ellipse",
+      "source_url": "https://line6.com/helix-models/images/CABMICIR_HX_1x12SoupProEllipse-180x180.png",
+      "source_file": "line6_official/original/cab-models-soup-pro-ellipse-666f3213.png",
+      "sha256": "b5ca0d05dec19669fee5581b8c1f8123155139745c8219bc222fb82fa9940925"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x8 Small Tweed",
+      "source_url": "https://line6.com/helix-models/images/CABMICIR_HX_1x8SmallTweed-180x180.png",
+      "source_file": "line6_official/original/cab-models-1x8-small-tweed-db1dfefb.png",
+      "sha256": "76a5885ddfed5ed652a9421bd0451f09eb7ba2302e420c0265e456cfe7dacdfb"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x10 US Princess",
+      "source_url": "https://line6.com/helix-models/images/1x10-us-princess-350-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-1x10-us-princess-06246b6a.jpg",
+      "sha256": "b9123d027720b5cc37270426d2b484565672420dd610e841199844ae436f1d54"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x12 Fullerton",
+      "source_url": "https://line6.com/helix-models/images/CABMICIR_HX_1x12Fullerton-180x180.png",
+      "source_file": "line6_official/original/cab-models-1x12-fullerton-93f18ad1.png",
+      "sha256": "bf3422d024dd989692d61056fe36cf6912078d77326170443e227a9ebce06313"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x12 Grammatico",
+      "source_url": "https://line6.com/helix-models/images/1x12-grammatico-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-1x12-grammatico-b6347cdd.jpg",
+      "sha256": "8d080aa667a633aacfa7201105f7a321fa5ca4d78d5438e1808a4e963a8b362d"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x12 US Deluxe",
+      "source_url": "https://line6.com/helix-models/images/1x12-us-deluxe-180x180-b.jpg",
+      "source_file": "line6_official/original/cab-models-1x12-us-deluxe-b0abc65d.jpg",
+      "sha256": "180b773c1cb9bf3c746d1faa7013a45bf5b82aaed1cf72496d5433d2fc4c8329"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x12 Open Cast",
+      "source_url": "https://line6.com/helix-models/images/1x12-open-cast-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-1x12-open-cast-9db651b1.jpg",
+      "sha256": "ab5f21ce78532fd529dbc782baf444631b763277afccb001dd84b77dd63787bc"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x12 Open Cream",
+      "source_url": "https://line6.com/helix-models/images/1x12-open-cream-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-1x12-open-cream-fb793c23.jpg",
+      "sha256": "e41f37808a49846f2e8ab3c27831aa6e8c21133e0acd772adcf9ef989e9dd862"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x12 Cali EXT",
+      "source_url": "https://line6.com/helix-models/images/1x12-cali-ext-350-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-1x12-cali-ext-383e3607.jpg",
+      "sha256": "e4a1e14f90de83a41f6edcf07fc7c8698979969de37986148b4b72cc44dc8e73"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x12 Cali IV",
+      "source_url": "https://line6.com/helix-models/images/CABMICIR_HX_1x12CaliIV-180x180.png",
+      "source_file": "line6_official/original/cab-models-1x12-cali-iv-5d285c09.png",
+      "sha256": "1d6104eeb4761035a42392954b65dc3632bcd5da3f4276fa1b035c62e8373a94"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x12 Blue Bell",
+      "source_url": "https://line6.com/helix-models/images/1x12-blue-bell-360-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-1x12-blue-bell-c0319ffd.jpg",
+      "sha256": "f0543cac529da55ac042a083ed2a34265e295984af173dce26025274c38989fa"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "2x12 Blue Bell",
+      "source_url": "https://line6.com/helix-models/images/2x12-blue-bell-350-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-2x12-blue-bell-3b0754c0.jpg",
+      "sha256": "4ac1532c4c7d0da470a1f68a80094c47b2ac5b64f3ebca6217f57cf230cbe8e3"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "2x12 Silver Bell",
+      "source_url": "https://line6.com/helix-models/images/2x12-silver-bell-360-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-2x12-silver-bell-073bb059.jpg",
+      "sha256": "21ca4dbb38374a086864b1d71b23fb7ced19acf189a75f1e17ecd1be0bbf0b72"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "2x12 Match H30",
+      "source_url": "https://line6.com/helix-models/images/2x12-match-h30-360-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-2x12-match-h30-c07bdb18.jpg",
+      "sha256": "ecad6c7856f97d848986909591d0814e8793cdac4c8c193f6a677e7213d33b12"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "2x12 Match G25",
+      "source_url": "https://line6.com/helix-models/images/2x12-match-g25-360-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-2x12-match-g25-67f3aa02.jpg",
+      "sha256": "800c24c29dad96eae101c477e44974a8c99b8e480a97b52d6aeb04a461b3da41"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "2x12 Double C12N",
+      "source_url": "https://line6.com/helix-models/images/2x12-double-c12n-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-2x12-double-c12n-90c9cc37.jpg",
+      "sha256": "eb77f26e40f8bcb77773ba5ac86938ef11f79d05b5645e0f02f995913a1c7cd3"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "2x12 Interstate",
+      "source_url": "https://line6.com/helix-models/images/CABMICIR_HX_2x12Interstate-180x180.png",
+      "source_file": "line6_official/original/cab-models-2x12-interstate-d6267241.png",
+      "sha256": "4455db23bc21332686b1856b71380ba024d7416560f8ed6540f940daf493e1b6"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "2x12 Jazz Rivet",
+      "source_url": "https://line6.com/helix-models/images/2x12-jazz-rivet-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-2x12-jazz-rivet-009b27d8.jpg",
+      "sha256": "0967851c233a16eb033e0cecea90c8fb3d3c2ab9ef5289e052c111a7dec72508"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "2x12 Mail C12Q",
+      "source_url": "https://line6.com/helix-models/images/2x12-mail-c12q-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-2x12-mail-c12q-d53ea54b.jpg",
+      "sha256": "3823999e106f7b96e035a3e1d3dc6155d0978d313d7e6afd804d0eb1d4d2f78f"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "2x12 Mandarin 30",
+      "source_url": "https://line6.com/helix-models/images/2x12-mandarin-30-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-2x12-mandarin-30-a06a9ee5.jpg",
+      "sha256": "573af165a2c64863999eeab0c65a433e8a5f636f575bc38a8958196c38d957ab"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x10 Tweed P10R",
+      "source_url": "https://line6.com/helix-models/images/4x10-tweed-p10r-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-4x10-tweed-p10r-d525daa5.jpg",
+      "sha256": "92faa4549c0d7efedafec078f355730a28ce873f0df2dcef8623e1e2a39d1465"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x10 US Super",
+      "source_url": "https://line6.com/helix-models/images/4x10-US-Super-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-4x10-us-super-d6bf1eb4.jpg",
+      "sha256": "ef1711c4ddc483de4d3e3e1fa97b211a6c5b5b51df4bdc42b66ce90952f529e2"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 WhoWatt 100",
+      "source_url": "https://line6.com/helix-models/images/CABMICIR_HX_4x12WhoWatt-180x180.png",
+      "source_file": "line6_official/original/cab-models-4x12-whowatt-100-ea770e28.png",
+      "sha256": "958fdb63fe5e9dece93941e548691e5134348e9254c377c7962b44a0a37dc07a"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 Greenback 25",
+      "source_url": "https://line6.com/helix-models/images/4x12-greenback-25-350-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-4x12-greenback-25-345e5e09.jpg",
+      "sha256": "5b2670c7f5264c36d6a52d046fad1a5c0a5640e877731db3bc8579436adda6bf"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 Greenback 30",
+      "source_url": "https://line6.com/helix-models/images/CABMICIR_HX_4x12_Greenback30-180x180.png",
+      "source_file": "line6_official/original/cab-models-4x12-greenback-30-b2d56728.png",
+      "sha256": "53ac4b104003bdaf63ba0a76ed9ecb074a59590d0a700b86feb13782e4180047"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 Greenback 20",
+      "source_url": "https://line6.com/helix-models/images/4x12-greenback-20-360-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-4x12-greenback-20-f1abc299.jpg",
+      "sha256": "3d5876d21df3ddb8890d2f14984d5b94c01380ede8f469addc7b971d2abd9732"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 1960 T75",
+      "source_url": "https://line6.com/helix-models/images/4x12-1960-t75-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-4x12-1960-t75-3252ec75.jpg",
+      "sha256": "5779f23cdab937f2adee0e4a596a609c3d62624a8c5f340656ef9110c4a1dc63"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 Blackback 30",
+      "source_url": "https://line6.com/helix-models/images/4x12-blackback-30-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-4x12-blackback-30-c4763097.jpg",
+      "sha256": "107e03ba3292c00e44d08a762bdc9adc23541d997af0a4db16063ed4e7b13de4"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 Brit V30",
+      "source_url": "https://line6.com/helix-models/images/4x12-brit-v30-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-4x12-brit-v30-5176fad3.jpg",
+      "sha256": "b4bc67b3fb755da4456c543dc3f64a53cb9eabde6cfe42187d5d106452c4dc69"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 Cali V30",
+      "source_url": "https://line6.com/helix-models/images/4x12-cali-v30-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-4x12-cali-v30-c6e10809.jpg",
+      "sha256": "c27e835788a58d977fae2af3e6bab8deb87a5b43a7e49dfcb16a84f6e23f76a2"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 Mandarin EM",
+      "source_url": "https://line6.com/helix-models/images/4x12-mandarin-em-350-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-4x12-mandarin-em-b437c9e4.jpg",
+      "sha256": "fd5f9b6a5735ea8d13fbd763588ed2d7a1213149ef28e9ebb15f3f7cb3efd8bd"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 MOO)))N T75",
+      "source_url": "https://line6.com/helix-models/images/4x12-moo)))n-t75-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-4x12-moo-n-t75-b9dee03f.jpg",
+      "sha256": "b1b3a10546ca51d39c0e6d32c857de45ad868a177f579ac5586934a905b9e1bd"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 Cartog Guv",
+      "source_url": "https://line6.com/helix-models/images/4x12-Cartog-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-4x12-cartog-guv-2fa5ba67.jpg",
+      "sha256": "e250d144c4ff7447aaf46dc036badb6f4254483cb303edcc2a0f59e520e84ef7"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 Cartog C90",
+      "source_url": "https://line6.com/helix-models/images/4x12-Cartog-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-4x12-cartog-c90-2fa5ba67.jpg",
+      "sha256": "e250d144c4ff7447aaf46dc036badb6f4254483cb303edcc2a0f59e520e84ef7"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 Uber T75",
+      "source_url": "https://line6.com/helix-models/images/4x12-uber-t75-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-4x12-uber-t75-ef5834f2.jpg",
+      "sha256": "500c213095e95f4658d6d65168f1e3db24da140bd579262e9c1b8190e6e8f51d"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 Uber V30",
+      "source_url": "https://line6.com/helix-models/images/4x12-uber-30-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-4x12-uber-v30-38b9c949.jpg",
+      "sha256": "6252bfee28e0da37c5054b645227197f9eabc7a9d3abe843c0294de5d94329d8"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 XXL V30",
+      "source_url": "https://line6.com/helix-models/images/4x12-xxl-v30-350-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-4x12-xxl-v30-c5092618.jpg",
+      "sha256": "797874bd72d28c0c8261fb4e4cdfe051952acbaa4ffbd25489fc4ebec4a48047"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 SoloLead EM",
+      "source_url": "https://line6.com/helix-models/images/4x12-Solo-Lead-EM-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-4x12-sololead-em-3f17c86a.jpg",
+      "sha256": "53df3c1e0aab26cc5cb2a150f676484fdece80261fe25d931d4adb29edb292bb"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x12 Epicenter",
+      "source_url": "https://line6.com/helix-models/images/1x12-epicenter-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-1x12-epicenter-6f819a4e.jpg",
+      "sha256": "ad4028b6e5fd70be9e015ad4167598f89b6c155a5d1a848be421cd1d4a8cc1d3"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x15 Ampeg B-15",
+      "source_url": "https://line6.com/helix-models/images/1x15-ampeg-b-15-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-1x15-ampeg-b-15-78af1be6.jpg",
+      "sha256": "aa2969b9e67025be36dc6c55586a9ddab7ac86ff4c40390ed7f24af988bc1062"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "2x15 Brute",
+      "source_url": "https://line6.com/helix-models/images/2x15-brute-350-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-2x15-brute-97f6445a.jpg",
+      "sha256": "d470b3d04b2200ef9fa529a4a9723ec5b8247d576689c72fe9a2c77b7797784b"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "2x15 Dripman",
+      "source_url": "https://line6.com/helix-models/images/CABMICIR_HX_2x15Dripman-180x180.png",
+      "source_file": "line6_official/original/cab-models-2x15-dripman-173ac5af.png",
+      "sha256": "ad3969c0136ee4b0ca7b49b608be096616b379542714c019ab3c99f7b1142c0b"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x10 Garden",
+      "source_url": "https://line6.com/helix-models/images/4x10-garden-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-4x10-garden-5dbecfce.jpg",
+      "sha256": "349e372a0bcda944305263203cc6bf149df96bb656a34623b924a47d5ae96942"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x10 Ampeg Pro",
+      "source_url": "https://line6.com/helix-models/images/4x10-ampeg-hlf-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-4x10-ampeg-pro-aee419ef.jpg",
+      "sha256": "66e56dec5a69e52e9b5890fe972ada0217d30701705342538586d9e9caf1cc4c"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "6x10 Cali Power",
+      "source_url": "https://line6.com/helix-models/images/CABMICIR_HX_6x10CaliPower-180x180.png",
+      "source_file": "line6_official/original/cab-models-6x10-cali-power-a638c598.png",
+      "sha256": "9504c56facc3246c3cf3d28af02fcac77863f2b9cba9d1384a4fbfbc4b7f541d"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "8x10 SVT AV",
+      "source_url": "https://line6.com/helix-models/images/8x10-svt-av-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-8x10-svt-av-90999d4a.jpg",
+      "sha256": "c6ffd052338576f7cf63b764d399d3b004d01c80963d6755f192a991c6cb3d7b"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "Soup Pro Ellipse",
+      "source_url": "https://line6.com/helix-models/images/soup-pro-ellipse-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-soup-pro-ellipse-cd65b739.jpg",
+      "sha256": "0913469f314dab989e25eb994dcdb974b785ba045ed2dc41f5685f6e3623e61a"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x8 Small Tweed",
+      "source_url": "https://line6.com/helix-models/images/1x8-small-tweed-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-1x8-small-tweed-840114b1.jpg",
+      "sha256": "92d6d16e546e25510b319805737fdea6745e5b0e7ff902fdddf5d34844ff910f"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x10 US Princess",
+      "source_url": "https://line6.com/helix-models/images/1x10-us-princess-180x180-legacy.jpg",
+      "source_file": "line6_official/original/cab-models-1x10-us-princess-77cdb3e1.jpg",
+      "sha256": "649ad47f240b07b2614ba15a8766236f9f349b97358377f12c76b8c3016019cc"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x12 Field Coil",
+      "source_url": "https://line6.com/helix-models/images/1x12-filed-coil-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-1x12-field-coil-3e519369.jpg",
+      "sha256": "0db8f2f38f6c60cf2efc3796a7a3b42ccabec91f2bd33e1aa8c91c0164c5883b"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x12 Fullerton",
+      "source_url": "https://line6.com/helix-models/images/1x12-fullerton-180x180-2.jpg",
+      "source_file": "line6_official/original/cab-models-1x12-fullerton-74d79e65.jpg",
+      "sha256": "3a3dd242b4ad53b1cd3891d12b803fe81efbf6b08d05b74f52eab060eac67841"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x12 Grammatico",
+      "source_url": "https://line6.com/helix-models/images/1x12-grammatico-180x180-legacy.jpg",
+      "source_file": "line6_official/original/cab-models-1x12-grammatico-c0dc2357.jpg",
+      "sha256": "50d6db02c78ff05df382a5417b6ed85b0eb0ff5cb97edd59db65bccb30172515"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x12 US Deluxe",
+      "source_url": "https://line6.com/helix-models/images/1x12-us-deluxe-180x1802.jpg",
+      "source_file": "line6_official/original/cab-models-1x12-us-deluxe-1b799a4b.jpg",
+      "sha256": "dacc378bd539d4779fea1126547b62d5888956dad6db44aeca9cb6f2fae63183"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x12 US Princess",
+      "source_url": "https://line6.com/helix-models/images/1x12-us-princess-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-1x12-us-princess-ffe96457.jpg",
+      "sha256": "274ea44e9a759dc60763c0bd14c32a61c16a3ebea350f4b4822273e78f9b1d67"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x12 Celest 12H",
+      "source_url": "https://line6.com/helix-models/images/1x12-celest-12h-180x180-legacy.jpg",
+      "source_file": "line6_official/original/cab-models-1x12-celest-12h-092529df.jpg",
+      "sha256": "6a4f964dd506efeb2e9dca1b95f35dd05c9ff844561aab77ec6eb99cea5e01c9"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x12 Blue Bell",
+      "source_url": "https://line6.com/helix-models/images/Cab_HX_1x12_BlueBell-legacy-90x90.jpg",
+      "source_file": "line6_official/original/cab-models-1x12-blue-bell-3c97830c.jpg",
+      "sha256": "07e692d322c8d822910e77aa89597de336bd3b024a38a2adfdee7160a7e859dd"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x12 Lead 80",
+      "source_url": "https://line6.com/helix-models/images/1x12-lead80-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-1x12-lead-80-85e4da1a.jpg",
+      "sha256": "175f37f308a636cde99a9e5eaf8d97adbcc698724c77618909d89184357953d0"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x12 Cali IV",
+      "source_url": "https://line6.com/helix-models/images/1x12-cali-iv-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-1x12-cali-iv-00ac148b.jpg",
+      "sha256": "0f960109c2b97dc37e81fc8d3d2bb9374d1e5625d68a8e5969e2898c81be790c"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x12 Cali Ext",
+      "source_url": "https://line6.com/helix-models/images/Cab_HX_1x12_Cali_EXT-timeline-90x90.jpg",
+      "source_file": "line6_official/original/cab-models-1x12-cali-ext-d76f3aac.jpg",
+      "sha256": "f69b97cad110247696a71fdc70fecd0da15d14a669aab22408eb0a31e7ef862f"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "2x12 Double C12N",
+      "source_url": "https://line6.com/helix-models/images/2x12-double-c12n-180x180-2.jpg",
+      "source_file": "line6_official/original/cab-models-2x12-double-c12n-0427a522.jpg",
+      "sha256": "54fc6d5490f9f9a3c8a9535fc361cc9fede3ed3009cb86359425c3faa6f770f8"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "2x12 Mail C12Q",
+      "source_url": "https://line6.com/helix-models/images/2x12-mail-c12q-180x180-legacy.jpg",
+      "source_file": "line6_official/original/cab-models-2x12-mail-c12q-20fc254c.jpg",
+      "sha256": "dc967bb91b91918702983ad7ebae41e47e574850063bc91777fd3e4deb8134bf"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "2x12 Interstate",
+      "source_url": "https://line6.com/helix-models/images/2x12-interstate-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-2x12-interstate-b56a0b15.jpg",
+      "sha256": "bbe41a24346c1ef48914e4aaec6e7b49a5cb6e9cb0ced0b4366e0dedf7a97f0e"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "2x12 Jazz Rivet",
+      "source_url": "https://line6.com/helix-models/images/2x12-jazz-rivet-180x180-2.jpg",
+      "source_file": "line6_official/original/cab-models-2x12-jazz-rivet-ed247b58.jpg",
+      "sha256": "7e3bf6b751bb9827aa449aa0a337ec58e140b350f661235907713bad25640c84"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "2x12 Silver Bell",
+      "source_url": "https://line6.com/helix-models/images/Cab_HX_2x12_SilverBell-legacy-90x90.jpg",
+      "source_file": "line6_official/original/cab-models-2x12-silver-bell-1390309c.jpg",
+      "sha256": "685dfd913a9e7ebfa56083975419126e4838a31e7c92b985b456aee7414019f5"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "2x12 Blue Bell",
+      "source_url": "https://line6.com/helix-models/images/Cab_HX_2x12_BlueBell-timeline-90x90.jpg",
+      "source_file": "line6_official/original/cab-models-2x12-blue-bell-444e9189.jpg",
+      "sha256": "14a4e11326a16ca6b9e23c457c00d7701443b9747deb559a9c43b2150a11fb69"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "2x12 Match H30",
+      "source_url": "https://line6.com/helix-models/images/Cab-HX-2x12-match-h30-timeline-90x90.jpg",
+      "source_file": "line6_official/original/cab-models-2x12-match-h30-8d36c642.jpg",
+      "sha256": "0d435747a9a6b132c9957aa7beea790b387861f24a0ff2c7e317fe2ae73b5890"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "2x12 Match G25",
+      "source_url": "https://line6.com/helix-models/images/Cab-HX-2x12-match-g25-timeline-90x90.jpg",
+      "source_file": "line6_official/original/cab-models-2x12-match-g25-28840f90.jpg",
+      "sha256": "59efca5794dcb5dc5815250689a8b5782d9f12e47eed1fce2dccd395e48f90f1"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x10 Tweed P10R",
+      "source_url": "https://line6.com/helix-models/images/4x10-tweed-p10r-legacy-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-4x10-tweed-p10r-9cf201e7.jpg",
+      "sha256": "86a04291cb9a6b6493171cad29d6e4e23abd0c43846708bcbd4e903d13f53058"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 WhoWatt 100",
+      "source_url": "https://line6.com/helix-models/images/4x12-whowatt-100-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-4x12-whowatt-100-b91713b6.jpg",
+      "sha256": "3cb3be922b2cb8439f8447049a5355f83f8f019c333e82df4b24e14b47915e6c"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 Mandarin EM",
+      "source_url": "https://line6.com/helix-models/images/Cab_HX_4x12_Mandarin EM-timeline-90x90.jpg",
+      "source_file": "line6_official/original/cab-models-4x12-mandarin-em-a1ee3259.jpg",
+      "sha256": "f2a387bace144cf8c5778ea780756f125ba24929889fb427f0ced53d0e34e995"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 Greenback 25",
+      "source_url": "https://line6.com/helix-models/images/Cab_HX_4x12_Greenback 25-timeline-90x90.jpg",
+      "source_file": "line6_official/original/cab-models-4x12-greenback-25-ce289e8c.jpg",
+      "sha256": "1f1ae7227f716bd4d3c22c9a93672c1a3d5b0862ac283aae9b80f6f9154fca4a"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 Greenback 20",
+      "source_url": "https://line6.com/helix-models/images/Cab_HX_4x12_Greenback20-legacy-90x90.jpg",
+      "source_file": "line6_official/original/cab-models-4x12-greenback-20-6cfdc35d.jpg",
+      "sha256": "909b947b0689c94cb17c26ff84d52d8c1645719a622aa9bad0e18068fc5776c8"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 Blackback 30",
+      "source_url": "https://line6.com/helix-models/images/4x12-blackback-30-180x180-legacy.jpg",
+      "source_file": "line6_official/original/cab-models-4x12-blackback-30-341db54a.jpg",
+      "sha256": "18c749a6f33e9467e59b4a2ccee2afb30dc4684567721789be6c8858b93b7c95"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 1960 T75",
+      "source_url": "https://line6.com/helix-models/images/4x12-1960-t75-180x180-2.jpg",
+      "source_file": "line6_official/original/cab-models-4x12-1960-t75-eb6286f0.jpg",
+      "sha256": "a1ec1fbf8e39bbef4dcf6bda0cbfca9aac2ee3e77acdf55742e65c7afbd07bff"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 Uber V30",
+      "source_url": "https://line6.com/helix-models/images/4x12-uber-v30-180x180-legacy.jpg",
+      "source_file": "line6_official/original/cab-models-4x12-uber-v30-5a091309.jpg",
+      "sha256": "4de7cca6e2877d9571bb8c9ee7f3d5601601ae8d8712c6408eb6802ee5bb2a2d"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 Uber T75",
+      "source_url": "https://line6.com/helix-models/images/4x12-uber-t75-180x180-2.jpg",
+      "source_file": "line6_official/original/cab-models-4x12-uber-t75-fcebedad.jpg",
+      "sha256": "d18459cd8a1218a9994d74d9fcff8988cabbaac59f1ee6859b80538c9436f130"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 Cali V30",
+      "source_url": "https://line6.com/helix-models/images/4x12-cali-v30-180x180-2.jpg",
+      "source_file": "line6_official/original/cab-models-4x12-cali-v30-a60b8fff.jpg",
+      "sha256": "8ea02793c4d6bdb20443a0e51ddf6eb20ce2257040fa2430b928a97bf13867d8"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 XXL V30",
+      "source_url": "https://line6.com/helix-models/images/4x12-xxl-v30-180x180-legacy.jpg",
+      "source_file": "line6_official/original/cab-models-4x12-xxl-v30-be96c39b.jpg",
+      "sha256": "9c4878c698b14b2c89b4e9ca7e0123ba7a512b39500653c8058cc43eead26efc"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x12 SoloLead EM",
+      "source_url": "https://line6.com/helix-models/images/4x12-sololead-em-180x180-2.jpg",
+      "source_file": "line6_official/original/cab-models-4x12-sololead-em-0ddc5eeb.jpg",
+      "sha256": "1b2926126d408b65b192a4e0e0601c3782d8014ce5678afe54c2067ee69d6b4e"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x12 Del Sol",
+      "source_url": "https://line6.com/helix-models/images/1x12-del-sol-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-1x12-del-sol-0180756d.jpg",
+      "sha256": "9b141e5c78aad1ebe833cbb0b830632b9ad0bc43bbada2964ecd431e3f728a12"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x15 Ampeg B-15",
+      "source_url": "https://line6.com/helix-models/images/1x15-ampeg-b-15-180x180-legacy.jpg",
+      "source_file": "line6_official/original/cab-models-1x15-ampeg-b-15-30d1c2b7.jpg",
+      "sha256": "af6ed7b0f916ff7d6327c3fd0c26711063e27a35615c042278bf67d09ab30548"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x18 Del Sol",
+      "source_url": "https://line6.com/helix-models/images/1x18-del-sol-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-1x18-del-sol-db707b3c.jpg",
+      "sha256": "a5e8333985e521c57b3eae3d07fdfaf0f47e7ddcdff0da28cff9ebd50e4bbba5"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "1x18 Woody Blue",
+      "source_url": "https://line6.com/helix-models/images/1x18-woody-blue-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-1x18-woody-blue-61e70afe.jpg",
+      "sha256": "44b520474ccc467be746c433c2d35a28e88b43af5beebb184b82531575b4b8db"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "2x15 Brute",
+      "source_url": "https://line6.com/helix-models/images/2x15-brute-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-2x15-brute-9379efce.jpg",
+      "sha256": "0d87ead0a5c2e1ce10b909b0778616f2b6933e346c7a026e9c828e02eb6e43f8"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "4x10 Ampeg HLF",
+      "source_url": "https://line6.com/helix-models/images/4x10-ampeg-hlf-legacy-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-4x10-ampeg-hlf-1e0f6017.jpg",
+      "sha256": "8b647b2b08589580c220f26f4192774f802a47de89a2855fe495b9f6f4808dfe"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "6x10 Cali Power",
+      "source_url": "https://line6.com/helix-models/images/6x10-cali-power-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-6x10-cali-power-5d71c3b4.jpg",
+      "sha256": "2989c2650e248e7c2caed0483bc67e8944ae6818ba01a9bea77d3353ce3330e9"
+    },
+    {
+      "category": "CAB MODELS",
+      "name": "8x10 Ampeg SVT E",
+      "source_url": "https://line6.com/helix-models/images/8x10-ampeg-svt-e-180x180.jpg",
+      "source_file": "line6_official/original/cab-models-8x10-ampeg-svt-e-14a1d9db.jpg",
+      "sha256": "0897aec280c8704c4c2682564e99d23f6687ceb15402229b7de3ddb48f367277"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Kinky Boost",
+      "source_url": "https://line6.com/helix-models/images/kinky-boost-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-kinky-boost-5b70f130.jpg",
+      "sha256": "7266619c9fc217264963fc120e5992f100f2f27391bfa8100360f1d6f917c798"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Deranged Master",
+      "source_url": "https://line6.com/helix-models/images/deranged-master-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-deranged-master-75241129.jpg",
+      "sha256": "5a3f93bcd34881e89fb77c5ec018af4db26d0553147f066531fced062b034a5d"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Minotaur",
+      "source_url": "https://line6.com/helix-models/images/minotaur-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-minotaur-9ee9dbc3.jpg",
+      "sha256": "68c095b871d2a8d4f7aa23c503b61cb8343f9838fdddaa2cac66bfca358fd1fd"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Teemah!",
+      "source_url": "https://line6.com/helix-models/images/teemah-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-teemah-380fba01.jpg",
+      "sha256": "a551dad646cb46242d708a312e5ec74c4033df8f31c64c7ebbb7f328d3bbc12d"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Heir Apparent",
+      "source_url": "https://line6.com/helix-models/images/heir-apparent-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-heir-apparent-cf9329e4.jpg",
+      "sha256": "2e79cfdd8239523cb0d2b4dbc0b896c39a8f97c60f65fdb7387c65a4462d4c33"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Tone Sovereign",
+      "source_url": "https://line6.com/helix-models/images/tone-sovereign-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-tone-sovereign-ac692b45.jpg",
+      "sha256": "41f4f20c9feafe8e88c377c91299f802eda45d2ca5b29c2903584ae5fe2b5f35"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Alpaca Rogue",
+      "source_url": "https://line6.com/helix-models/images/alpaca-rogue-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-alpaca-rogue-c1bed8b1.jpg",
+      "sha256": "e72a836e5c196b738158534dbfd13d7d8086349e50cf26f06390b9e2cae2353b"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Compulsive Drive",
+      "source_url": "https://line6.com/helix-models/images/compuilsive-drive-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-compulsive-drive-9079b83a.jpg",
+      "sha256": "61a3afaf7acd2b02ee3a50b17250b0c5a5f7448c733c0dd0d112652227f8719b"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Dhyana Drive",
+      "source_url": "https://line6.com/helix-models/images/dhyana-drive-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-dhyana-drive-7330df74.jpg",
+      "sha256": "e93a189617806fa34b8a7c48a2baa6dd754dfa8b17657098ddbfe4f5e0dfb97b"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Horizon Drive",
+      "source_url": "https://line6.com/helix-models/images/horizon-drive-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-horizon-drive-dbd1cc90.jpg",
+      "sha256": "f4f8913dddfc044b89072ec5632ced19afd484c359ffa85e9505de2531828e28"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Valve Driver",
+      "source_url": "https://line6.com/helix-models/images/valve-driver-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-valve-driver-a0fd327f.jpg",
+      "sha256": "2a8e9b075cfe83d142a1cbe708b871cbcd936438649c101491ff2d65a121f93f"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Top Secret OD",
+      "source_url": "https://line6.com/helix-models/images/top-secret-od-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-top-secret-od-98188327.jpg",
+      "sha256": "ecc40c619049ad454fc12c6ff0f946d680a277d8327954bb8defa47f6f1a60e7"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Prize Drive",
+      "source_url": "https://line6.com/helix-models/images/HX_DIST_PrizeDrive-180x180.png",
+      "source_file": "line6_official/original/distortion-models-prize-drive-9101035f.png",
+      "sha256": "b30187f52056aba6bb8e1d6e0c037b5793c07e376b2c78edaf25773f139e0056"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Scream 808",
+      "source_url": "https://line6.com/helix-models/images/scream-808-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-scream-808-3a8bb3ee.jpg",
+      "sha256": "4deb2bd6563d2d1f4d982d9f130ebe52f081b78bcd5b166e5e5c67f150483559"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Pillars OD",
+      "source_url": "https://line6.com/helix-models/images/pillars-od-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-pillars-od-5869a134.jpg",
+      "sha256": "5f4c03e4a933c4fef279244b9e0db7c75f632e51c01f4ec755bdeaf65dbb242b"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Hedgehog D9",
+      "source_url": "https://line6.com/helix-models/images/hedgehog-d9-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-hedgehog-d9-78e18a4e.jpg",
+      "sha256": "1339dbb293771dc4cec161f2fe70b256bf4b636cbfcdd498dff63f2f5d785a98"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Stupor OD",
+      "source_url": "https://line6.com/helix-models/images/stupor-od-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-stupor-od-e3d61a67.jpg",
+      "sha256": "da583a3a4fa6c0937be9205a9d970e45ed090debc72f213f9f3c172dbb5d54f5"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Deez One Vintage",
+      "source_url": "https://line6.com/helix-models/images/deez-one-vintage-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-deez-one-vintage-418bb15e.jpg",
+      "sha256": "2e5d47bb387cfb9ebd6c33096334ba8df19d3d9488c22e497f47c81dcd88d4fb"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Deez One Mod",
+      "source_url": "https://line6.com/helix-models/images/deez-one-mod-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-deez-one-mod-292705ca.jpg",
+      "sha256": "7456e95c90d0f873cb997e8a49faf264f05488e9df01d2b1b765a912bedcc2b1"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Ratatouille Dist",
+      "source_url": "https://line6.com/helix-models/images/ratatouille-dist-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-ratatouille-dist-b89c0cc3.jpg",
+      "sha256": "66cfa54753f997af73fdc65de0c679dfabb2d05eccff7432bdc7cb2971e08062"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Vermin Dist",
+      "source_url": "https://line6.com/helix-models/images/vermin-dist-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-vermin-dist-5200bd48.jpg",
+      "sha256": "d054d711d6fb67a403653f7cbfd753608585f96a15bc64ed94825f29245e9331"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Vital Dist",
+      "source_url": "https://line6.com/helix-models/images/vital-dist-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-vital-dist-7c5b3e17.jpg",
+      "sha256": "2756825ff21049da054d979e21eeb2d983da73dbc5c5f073fe919112d2469c81"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Vital Boost",
+      "source_url": "https://line6.com/helix-models/images/vital-boost-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-vital-boost-b27de1e1.jpg",
+      "sha256": "82b28e33d8912787a255fdace9ac694aafaff5ec68a61aa6e9141165814cceac"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "KWB",
+      "source_url": "https://line6.com/helix-models/images/kwb-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-kwb-db31b3bd.jpg",
+      "sha256": "389a79e8f5ad78414140ecefcfb2fb5a81f2d94f851f723482a6687f7730939d"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Legendary Drive",
+      "source_url": "https://line6.com/helix-models/images/legendary-drive-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-legendary-drive-d7e105f5.jpg",
+      "sha256": "5b20478f453a9c6a67a466e436959104c91dafb437fe4e05fb704f7c200c4080"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Swedish Chainsaw",
+      "source_url": "https://line6.com/helix-models/images/swedish-chainsaw-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-swedish-chainsaw-5f6dbe0a.jpg",
+      "sha256": "4d35dfca2e9a840d3394ebf691f2ffb2255705a3f191b8978c12e1d98394d631"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Arbitrator Fuzz",
+      "source_url": "https://line6.com/helix-models/images/arbitrator-fuzz-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-arbitrator-fuzz-c3016946.jpg",
+      "sha256": "7ccba20f1ea1fdbb2eb45203e0f1b3a74f6485d854fb3d20c36541adc4ace720"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Pocket Fuzz",
+      "source_url": "https://line6.com/helix-models/images/pocket-fuzz-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-pocket-fuzz-36247d2c.jpg",
+      "sha256": "053192ca4fa71d53b09fd8fc8634b622aac0cac6beb6a260d37c2a88712bee76"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Bighorn Fuzz",
+      "source_url": "https://line6.com/helix-models/images/bighorn-fuzz-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-bighorn-fuzz-336d199a.jpg",
+      "sha256": "dd039dfd3cc7a94f48f69c73b1bc6db625b98d7cf86de83afc8e78fc8bdc5834"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Triangle Fuzz",
+      "source_url": "https://line6.com/helix-models/images/triangle-fuzz-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-triangle-fuzz-0996eeaf.jpg",
+      "sha256": "cb6ee317a1ac4bfab8b6c473828fef6a2f82e29cb1acffd2850910b673a97203"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Dark Dove Fuzz",
+      "source_url": "https://line6.com/helix-models/images/dark-dove-fuzz-180x180-b.jpg",
+      "source_file": "line6_official/original/distortion-models-dark-dove-fuzz-1756e52c.jpg",
+      "sha256": "c4867dbcfb56cfca00f01bfef667a46fe02607584b74c6e429c02b890844c3a3"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Ballistic Fuzz",
+      "source_url": "https://line6.com/helix-models/images/ballistic-fuzz-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-ballistic-fuzz-d2135cfb.jpg",
+      "sha256": "a7e10ef0a63c544c3924772d4ad85bbdedfa99cda090cf2bc1249f9be0fbfcd0"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Industrial Fuzz",
+      "source_url": "https://line6.com/helix-models/images/industrial-fuzz-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-industrial-fuzz-d74683e9.jpg",
+      "sha256": "8be34eab3126900c1b1dc46f492d637718a6e232cecfad0005cbe459c25f2ce0"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Tycoctavia Fuzz",
+      "source_url": "https://line6.com/helix-models/images/tycoctavia-fuzz-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-tycoctavia-fuzz-f8eb220a.jpg",
+      "sha256": "2beaa0ad4510548ac50ffc4878ae16f4e6b8f99010b85d6881c1d74f35736aeb"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Wringer Fuzz",
+      "source_url": "https://line6.com/helix-models/images/wringer-fuzz-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-wringer-fuzz-5b9cde63.jpg",
+      "sha256": "1b8de362afb716f08403c8c533b04a1b8b3714d5ad72e6f2b23f305b29014f96"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Thrifter Fuzz",
+      "source_url": "https://line6.com/helix-models/images/thrifter-fuzz-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-thrifter-fuzz-b2a7305d.jpg",
+      "sha256": "0d9ae960467b0375085e69089a40911a5d55e657084eee16a42f4a2ac6dd659b"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Xenomorph Fuzz",
+      "source_url": "https://line6.com/helix-models/images/xenomorph-fuzz-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-xenomorph-fuzz-a9305e1b.jpg",
+      "sha256": "1275f28b10833cfe6cd48bbb175d67b2f9c433e8a5944f93da7b02b931c9c6d8"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Megaphone",
+      "source_url": "https://line6.com/helix-models/images/megaphone-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-megaphone-7c7fbe30.jpg",
+      "sha256": "e09f61e36a2fbd0eacaf88c4665c5c350ebe3136128cf67cac8cc461614d2945"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Bitcrusher",
+      "source_url": "https://line6.com/helix-models/images/bitcrusher-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-bitcrusher-ee8a98ba.jpg",
+      "sha256": "112dc2e18bbc627663f5561bf5af91d4d2747ea61405ea44dce5100e46098dda"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Ampeg Scrambler",
+      "source_url": "https://line6.com/helix-models/images/ampeg-scrambler-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-ampeg-scrambler-ed57165c.jpg",
+      "sha256": "d02dd9cddd987c26778d76ac173bcd0f4acad06586f7a4fcf96abb06daa17915"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "ZeroAmp Bass DI",
+      "source_url": "https://line6.com/helix-models/images/zeroamp-bass-di-180x180-copy.jpg",
+      "source_file": "line6_official/original/distortion-models-zeroamp-bass-di-8d2968ab.jpg",
+      "sha256": "cd8e34be2bbab90afa30eb6253cf6c1f8a35dbd2e28286bda65dc510179ac4ca"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Regal Bass DI",
+      "source_url": "https://line6.com/helix-models/images/HX_DIST_RegalBassDI-180x180.png",
+      "source_file": "line6_official/original/distortion-models-regal-bass-di-3325d69e.png",
+      "sha256": "22a9825d5f6d5e9cb614a5f4e2ab11c15deac948d0d4fd31355f98e2609c3127"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Obsidian 7000",
+      "source_url": "https://line6.com/helix-models/images/obsidian-7000-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-obsidian-7000-cb01b2f0.jpg",
+      "sha256": "d8f06860894ed81f45202426f5bb24fbc57f955b4b6987c278839a7224bf861b"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Clawthorn Drive",
+      "source_url": "https://line6.com/helix-models/images/clawthorn-drive-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-clawthorn-drive-4e2804fe.jpg",
+      "sha256": "a1ef99d3fec9fd0cde4020da5ee88e5e9b6a2d16eab8a29c04ea2d29d5102435"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Tube Drive",
+      "source_url": "https://line6.com/helix-models/images/tube-drive-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-tube-drive-5efbf801.jpg",
+      "sha256": "930c46c7573cadc0cf4608b4558d6352df7ce3dacf05684e18519ab5703b79d1"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Screamer",
+      "source_url": "https://line6.com/helix-models/images/screamer-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-screamer-2d7a58e3.jpg",
+      "sha256": "786e422eea4e5dc55b9d5c36ecc204bd80b1d178434bfe6481f4a2e6dc28d81b"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Overdrive",
+      "source_url": "https://line6.com/helix-models/images/overdrive-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-overdrive-ee74f2db.jpg",
+      "sha256": "15d051702284253f00b544b83cb4d944d373f0c2898b1ecce9829b81ad8c514e"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Classic Dist",
+      "source_url": "https://line6.com/helix-models/images/classic-dist-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-classic-dist-af1c21eb.jpg",
+      "sha256": "4ed0964d7863d82f496de5b09104dfd4ab2dbc17bb8a2d5c306c6626eed20818"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Heavy Dist",
+      "source_url": "https://line6.com/helix-models/images/heavy-dist-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-heavy-dist-b521d435.jpg",
+      "sha256": "bad49d39e996d24fd76e81039acf6b11e14c292fbf345b61e1183045fd74ea1d"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Colordrive",
+      "source_url": "https://line6.com/helix-models/images/colordrive-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-colordrive-296344d1.jpg",
+      "sha256": "3b0f6c65f6f628c6d5bb079472afd789644c848412aeb9d2913601f1e89500af"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Buzz Saw",
+      "source_url": "https://line6.com/helix-models/images/buzz-saw-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-buzz-saw-ead38d3f.jpg",
+      "sha256": "ad8aa383c8757290726eb520023ffc8d43a14e57936be3d999353e77eeef8872"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Facial Fuzz",
+      "source_url": "https://line6.com/helix-models/images/facial-fuzz-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-facial-fuzz-3ad0ec45.jpg",
+      "sha256": "96c1dcc437f67d5549a3a8967f4b0f19055d710db80a3ba2748f68549fe609b9"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Jumbo Fuzz",
+      "source_url": "https://line6.com/helix-models/images/jumbo-fuzz-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-jumbo-fuzz-3e9ac4a9.jpg",
+      "sha256": "bec38ebd0021216be935408aa3d357a530d19b24fda73d44421ed256cfbb072b"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Fuzz Pi",
+      "source_url": "https://line6.com/helix-models/images/fuzz-pi-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-fuzz-pi-fa78080b.jpg",
+      "sha256": "b3d3be5e5d50d37881976277601c9bf6fdfced07aa1eeba1565b5bed1833614b"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Jet Fuzz",
+      "source_url": "https://line6.com/helix-models/images/jet-fuzz-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-jet-fuzz-f93cb1e1.jpg",
+      "sha256": "174a41ddc27fd7c233274bc90c06eb09362624344f629da018c8a34226d93373"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "L6 Drive",
+      "source_url": "https://line6.com/helix-models/images/l6-drive-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-l6-drive-624f3702.jpg",
+      "sha256": "d874fa57f49f4cfb28435a1ea877cd65c18c856a52be8c5a54dc894aa10afbe9"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "L6 Distortion",
+      "source_url": "https://line6.com/helix-models/images/l6-distortion-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-l6-distortion-2054f966.jpg",
+      "sha256": "7b81e38139a522f0375cd02e39bc9fef9c82e7fe652532ebfea7cff1ed3d1a31"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Sub Oct Fuzz",
+      "source_url": "https://line6.com/helix-models/images/sub-oct-fuzz-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-sub-oct-fuzz-0e0abe44.jpg",
+      "sha256": "22d9bbcf01a553484c6262e8d18f3ecd29dbee710b1c032e0ee47c46d22d6f37"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Octave Fuzz",
+      "source_url": "https://line6.com/helix-models/images/octave-fuzz-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-octave-fuzz-bf58466a.jpg",
+      "sha256": "1c2e8a0d78c3ade3adf2020d6669373cb8cbabdaf4b8f78cff2ef200a63db658"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Bronze Master",
+      "source_url": "https://line6.com/helix-models/images/bronze-master-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-bronze-master-5afbc530.jpg",
+      "sha256": "3224705a5d11a01a6d3b8a44169c3c9e51c9567b03116ff4bd2fd3018e07aebf"
+    },
+    {
+      "category": "DISTORTION MODELS",
+      "name": "Killer Z",
+      "source_url": "https://line6.com/helix-models/images/killer-z-180x180.jpg",
+      "source_file": "line6_official/original/distortion-models-killer-z-2398d768.jpg",
+      "sha256": "1d70ac18a133c41c554153a005e59f7f06859cdc86785b839e039abb2c7d576f"
+    },
+    {
+      "category": "EQ MODELS",
+      "name": "Simple EQ",
+      "source_url": "https://line6.com/helix-models/images/tilt-180x180-b.jpg",
+      "source_file": "line6_official/original/eq-models-simple-eq-ad8c4ace.jpg",
+      "sha256": "fccc3c41d3541e5a389ed2fd5b5dfd474090dd3bdd2435852a39207273c1fab7"
+    },
+    {
+      "category": "EQ MODELS",
+      "name": "Low and High Cut",
+      "source_url": "https://line6.com/helix-models/images/low-and-high-cut-180x180.jpg",
+      "source_file": "line6_official/original/eq-models-low-and-high-cut-99599731.jpg",
+      "sha256": "0011299c56516216219e153741ff8e32edbe81ec94ca5226dc7c5e76bb7ce58b"
+    },
+    {
+      "category": "EQ MODELS",
+      "name": "Low/High Shelf",
+      "source_url": "https://line6.com/helix-models/images/low-high-shelf-180x180.jpg",
+      "source_file": "line6_official/original/eq-models-low-high-shelf-e8154cd8.jpg",
+      "sha256": "d187e434dbf407d171c9f63dce697ea8709ee16ae9488a1c12ab7f1b0d5e8ed2"
+    },
+    {
+      "category": "EQ MODELS",
+      "name": "Parametric",
+      "source_url": "https://line6.com/helix-models/images/parametric-180x180.jpg",
+      "source_file": "line6_official/original/eq-models-parametric-8440ea9c.jpg",
+      "sha256": "51138e73e53a4fa70ccad3f8e024a4055fabe2316386e9ca987866efcc76f15c"
+    },
+    {
+      "category": "EQ MODELS",
+      "name": "Tilt",
+      "source_url": "https://line6.com/helix-models/images/tilt-180x180.jpg",
+      "source_file": "line6_official/original/eq-models-tilt-4cdf8bc7.jpg",
+      "sha256": "83b2d4917f30c5711ed31d9dab345a19adfc35502955aa11959fcac9033698ba"
+    },
+    {
+      "category": "EQ MODELS",
+      "name": "10 Band Graphic",
+      "source_url": "https://line6.com/helix-models/images/10-band-grapic-180x180.jpg",
+      "source_file": "line6_official/original/eq-models-10-band-graphic-41694da3.jpg",
+      "sha256": "c8ea2094942536c08ae2d793253af294f03182b5f14144946fab835dc4b02d4d"
+    },
+    {
+      "category": "EQ MODELS",
+      "name": "Cali Q Graphic",
+      "source_url": "https://line6.com/helix-models/images/cali-q-graphic-180x180.jpg",
+      "source_file": "line6_official/original/eq-models-cali-q-graphic-d29ffd09.jpg",
+      "sha256": "f997081479b587ff5ee81adb2e3a4dbf8ab87681a08c380c147a578c76cbbb45"
+    },
+    {
+      "category": "EQ MODELS",
+      "name": "Acoustic Sim",
+      "source_url": "https://line6.com/helix-models/images/acoustic-sim-180x180.jpg",
+      "source_file": "line6_official/original/eq-models-acoustic-sim-7ed9115e.jpg",
+      "sha256": "ca08d49668d8b5523b6c5a0254a41b91a58eeb81f7e128761faad4563aaef843"
+    },
+    {
+      "category": "DYNAMICS MODELS",
+      "name": "Deluxe Comp",
+      "source_url": "https://line6.com/helix-models/images/deluxe-comp-180x180.jpg",
+      "source_file": "line6_official/original/dynamics-models-deluxe-comp-7b168922.jpg",
+      "sha256": "1312f91c83bed5c353b5319b2f5b6e35c77a7ddcf54dfd966cf169d00781ecea"
+    },
+    {
+      "category": "DYNAMICS MODELS",
+      "name": "Red Squeeze",
+      "source_url": "https://line6.com/helix-models/images/red-squeeze-180x180.jpg",
+      "source_file": "line6_official/original/dynamics-models-red-squeeze-cf399803.jpg",
+      "sha256": "8ed80ed564cb65148f57f41b92d1cdc63643d4775a2d266f287b159954ee5ac9"
+    },
+    {
+      "category": "DYNAMICS MODELS",
+      "name": "Kinky Comp",
+      "source_url": "https://line6.com/helix-models/images/kinky-comp-180x180.jpg",
+      "source_file": "line6_official/original/dynamics-models-kinky-comp-fc901ce5.jpg",
+      "sha256": "fe0636d7188f06f3c92a043a275d532af9af7a9d2b7fb6086792b6370883aaeb"
+    },
+    {
+      "category": "DYNAMICS MODELS",
+      "name": "Ampeg Opto Comp",
+      "source_url": "https://line6.com/helix-models/images/ampeg-opto-comp-180x180.jpg",
+      "source_file": "line6_official/original/dynamics-models-ampeg-opto-comp-00aeb846.jpg",
+      "sha256": "c3fbe2fe4c774c09c1b5ac1ffe2e45b1d5095c9601f93fba159ad7173929b4d1"
+    },
+    {
+      "category": "DYNAMICS MODELS",
+      "name": "Rochester Comp",
+      "source_url": "https://line6.com/helix-models/images/rochester-comp-180x180.jpg",
+      "source_file": "line6_official/original/dynamics-models-rochester-comp-ac7694d8.jpg",
+      "sha256": "14b61f7bedb6852c26b09038e2cd76b2cff7ddeae061ea35b920a82ceb423375"
+    },
+    {
+      "category": "DYNAMICS MODELS",
+      "name": "LA Studio Comp",
+      "source_url": "https://line6.com/helix-models/images/la-studio-comp-180x180.jpg",
+      "source_file": "line6_official/original/dynamics-models-la-studio-comp-cdfa8e97.jpg",
+      "sha256": "6560dc6f831ac29a1341371869cc5f24c22fac4e852ad904a910824e4f258857"
+    },
+    {
+      "category": "DYNAMICS MODELS",
+      "name": "3-Band Comp",
+      "source_url": "https://line6.com/helix-models/images/3-band-comp-180x180.jpg",
+      "source_file": "line6_official/original/dynamics-models-3-band-comp-296297fd.jpg",
+      "sha256": "662e001421497bfc0b71a61e30a859562c012a449b9572e2a41ce82db3c3e508"
+    },
+    {
+      "category": "DYNAMICS MODELS",
+      "name": "Noise Gate",
+      "source_url": "https://line6.com/helix-models/images/noise-gate-180x180.jpg",
+      "source_file": "line6_official/original/dynamics-models-noise-gate-2b8bef60.jpg",
+      "sha256": "8ae4568333d64eb7c8f32d727040872eb8649f26c3aa38314fadea5f72c49ca1"
+    },
+    {
+      "category": "DYNAMICS MODELS",
+      "name": "Hard Gate",
+      "source_url": "https://line6.com/helix-models/images/hard-gate-180x180.jpg",
+      "source_file": "line6_official/original/dynamics-models-hard-gate-7d65a67e.jpg",
+      "sha256": "71cffbd9f070b08e5b914081186ac0ef7d18c8661469c9403feecd940f42afde"
+    },
+    {
+      "category": "DYNAMICS MODELS",
+      "name": "Horizon Gate",
+      "source_url": "https://line6.com/helix-models/images/horizon-gate-180x180.jpg",
+      "source_file": "line6_official/original/dynamics-models-horizon-gate-284fe9a4.jpg",
+      "sha256": "dc51cca6d6957e862e42c62aa691ea0b07d0638f6cb00cf12b995053735c0540"
+    },
+    {
+      "category": "DYNAMICS MODELS",
+      "name": "Autoswell",
+      "source_url": "https://line6.com/helix-models/images/autoswell-180x180.jpg",
+      "source_file": "line6_official/original/dynamics-models-autoswell-e8e3f3a0.jpg",
+      "sha256": "39fa309ed140af13cfc2d72334a9fa34fff865abcd4cdc1b495cb42fc873c815"
+    },
+    {
+      "category": "DYNAMICS MODELS",
+      "name": "Feedbacker",
+      "source_url": "https://line6.com/helix-models/images/HX_DELAY_Feedbacker-180x180.png",
+      "source_file": "line6_official/original/dynamics-models-feedbacker-5b91ca2f.png",
+      "sha256": "24fdb769d581b84c9b1035b46567aa3774f98b82773033829c3317e6218792df"
+    },
+    {
+      "category": "DYNAMICS MODELS",
+      "name": "Tube Comp",
+      "source_url": "https://line6.com/helix-models/images/tube-comp-180x180-2.jpg",
+      "source_file": "line6_official/original/dynamics-models-tube-comp-e3537b00.jpg",
+      "sha256": "8216e9a75688b95ced09431891faa3b09babefe6396bfdf169d6a722710d72eb"
+    },
+    {
+      "category": "DYNAMICS MODELS",
+      "name": "Red Comp",
+      "source_url": "https://line6.com/helix-models/images/red-comp-180x180.jpg",
+      "source_file": "line6_official/original/dynamics-models-red-comp-a4777bc7.jpg",
+      "sha256": "5a6489fec9fa50d4c8b667951b4f5468b8dac08b7b1cb8a4e2f31048f0d35e90"
+    },
+    {
+      "category": "DYNAMICS MODELS",
+      "name": "Blue Comp",
+      "source_url": "https://line6.com/helix-models/images/blue-comp-180x180.jpg",
+      "source_file": "line6_official/original/dynamics-models-blue-comp-9ace7fba.jpg",
+      "sha256": "c599b185a32028b45a7f8c4e5b9d1d58fe0878dbe6bfd50636d35ef0c21a9751"
+    },
+    {
+      "category": "DYNAMICS MODELS",
+      "name": "Blue Comp Treb",
+      "source_url": "https://line6.com/helix-models/images/blue-comp-treb-180x180.jpg",
+      "source_file": "line6_official/original/dynamics-models-blue-comp-treb-ede3fad8.jpg",
+      "sha256": "125207335c29f128b55cd8daf313caf74d052fd2737a4e27f0ffab040718ae50"
+    },
+    {
+      "category": "DYNAMICS MODELS",
+      "name": "Vetta Comp",
+      "source_url": "https://line6.com/helix-models/images/vetta-comp-180x180.jpg",
+      "source_file": "line6_official/original/dynamics-models-vetta-comp-c7beeebd.jpg",
+      "sha256": "a310a135fb1367bc16733ceb6a9e6d6529219cfd7f676f00baec9f700af766e7"
+    },
+    {
+      "category": "DYNAMICS MODELS",
+      "name": "Vetta Juice",
+      "source_url": "https://line6.com/helix-models/images/vetta-juice-180x180.jpg",
+      "source_file": "line6_official/original/dynamics-models-vetta-juice-d60205cb.jpg",
+      "sha256": "170983f6ca2b6b7d52b38d9fd64e40cc570b142f4b7131e7ec78506963663ad2"
+    },
+    {
+      "category": "DYNAMICS MODELS",
+      "name": "Boost Comp",
+      "source_url": "https://line6.com/helix-models/images/boost-comp-180x180.jpg",
+      "source_file": "line6_official/original/dynamics-models-boost-comp-1214a922.jpg",
+      "sha256": "38f45dd2812263780e1ffbec1ff727a06731181eadf66569ddd4d3709133d720"
+    },
+    {
+      "category": "REVERB MODELS",
+      "name": "Dynamic Hall",
+      "source_url": "https://line6.com/helix-models/images/dynamic-hall-180x180.jpg",
+      "source_file": "line6_official/original/reverb-models-dynamic-hall-632861b0.jpg",
+      "sha256": "f807395e01a4a2f95dd80d308e69d6f3bf67f644e81f3fb2561fdfbead6eed67"
+    },
+    {
+      "category": "REVERB MODELS",
+      "name": "Dynamic Plate",
+      "source_url": "https://line6.com/helix-models/images/dynamic-plate-180x180.jpg",
+      "source_file": "line6_official/original/reverb-models-dynamic-plate-d1d5555b.jpg",
+      "sha256": "251ae01e2e67d371c6f23dc492104f3f7ebd5c8e34d87ca88dc2bd5fbccf4c60"
+    },
+    {
+      "category": "REVERB MODELS",
+      "name": "Dynamic Room",
+      "source_url": "https://line6.com/helix-models/images/dynamic-room-180x180.jpg",
+      "source_file": "line6_official/original/reverb-models-dynamic-room-3fa988ee.jpg",
+      "sha256": "e3948660e25dee7fd1f1a066a24202603cba0143048ca44147f6f3069bfc7f5c"
+    },
+    {
+      "category": "REVERB MODELS",
+      "name": "Dynamic Ambience",
+      "source_url": "https://line6.com/helix-models/images/dynamic-ambience-180x180-cop.jpg",
+      "source_file": "line6_official/original/reverb-models-dynamic-ambience-c8a9b920.jpg",
+      "sha256": "84e888532071782218676792027e4b8fe5f056924dc8a4cbfb22efca328cbbe9"
+    },
+    {
+      "category": "REVERB MODELS",
+      "name": "Dynamic Bloom",
+      "source_url": "https://line6.com/helix-models/images/HX_REVERB_DynamicBloom-180x180.png",
+      "source_file": "line6_official/original/reverb-models-dynamic-bloom-13cee9f4.png",
+      "sha256": "172593107ecf422067e750ac37d5a592641f128d572371838bef60bd360aae15"
+    },
+    {
+      "category": "REVERB MODELS",
+      "name": "Shimmer",
+      "source_url": "https://line6.com/helix-models/images/shimmer-180x180.jpg",
+      "source_file": "line6_official/original/reverb-models-shimmer-df5bbc1e.jpg",
+      "sha256": "df301672d73e8b378d9a9db2c0b79d6129fde8eaabc9d901bc9ca0efe6c2da64"
+    },
+    {
+      "category": "REVERB MODELS",
+      "name": "Hot Springs",
+      "source_url": "https://line6.com/helix-models/images/hot-springs-180x180.jpg",
+      "source_file": "line6_official/original/reverb-models-hot-springs-697dbbd1.jpg",
+      "sha256": "e36196b1678f976be6c10ecebc06a8b4897368dfd4fd1cfa1bc71067341cdd85"
+    },
+    {
+      "category": "REVERB MODELS",
+      "name": "Nonlinear",
+      "source_url": "https://line6.com/helix-models/images/HX_REVERB_Nonlinear-180x180.png",
+      "source_file": "line6_official/original/reverb-models-nonlinear-09298f03.png",
+      "sha256": "b245e9d8d2154c361b02eec4060cb77caa2cee545ac26854959ae531c31b9fb9"
+    },
+    {
+      "category": "REVERB MODELS",
+      "name": "Glitz",
+      "source_url": "https://line6.com/helix-models/images/glitz-180x180.jpg",
+      "source_file": "line6_official/original/reverb-models-glitz-7453f0b6.jpg",
+      "sha256": "57d51aa55fdc2383cef8e429e1c39d594a46c9ea1e31c8e6fbeff441abd57477"
+    },
+    {
+      "category": "REVERB MODELS",
+      "name": "Ganymede",
+      "source_url": "https://line6.com/helix-models/images/ganymede-180x180.jpg",
+      "source_file": "line6_official/original/reverb-models-ganymede-76f0e3e7.jpg",
+      "sha256": "a89a88036cc87ad7c539e424ef2de9320883fa7d55b6375208c8c7cc39c59d25"
+    },
+    {
+      "category": "REVERB MODELS",
+      "name": "Searchlights",
+      "source_url": "https://line6.com/helix-models/images/searchlights-180x180.jpg",
+      "source_file": "line6_official/original/reverb-models-searchlights-4e9f0679.jpg",
+      "sha256": "14d6ef64eef0738a3f153668858b5999e418de625693923685b9b33af3f1474f"
+    },
+    {
+      "category": "REVERB MODELS",
+      "name": "Plateaux",
+      "source_url": "https://line6.com/helix-models/images/plateaux-180x180.jpg",
+      "source_file": "line6_official/original/reverb-models-plateaux-a1590361.jpg",
+      "sha256": "a3186e269282ecbb61681d261c88cc85a0abfd6ed64fe32576f16c62ebdb1b7e"
+    },
+    {
+      "category": "REVERB MODELS",
+      "name": "Double Tank",
+      "source_url": "https://line6.com/helix-models/images/double-tank-180x180.jpg",
+      "source_file": "line6_official/original/reverb-models-double-tank-4267afee.jpg",
+      "sha256": "4195668ba46bf951a5729db00632907f946a52d6975ab5f3b852276ebc3b6166"
+    },
+    {
+      "category": "REVERB MODELS",
+      "name": "Plate",
+      "source_url": "https://line6.com/helix-models/images/legacy-reverb-180x180.jpg",
+      "source_file": "line6_official/original/reverb-models-plate-b142fe79.jpg",
+      "sha256": "6a493907860d5ad56125f3e3abadccd89e4e7989ce2e4e751d18dafb5108510f"
+    },
+    {
+      "category": "REVERB MODELS",
+      "name": "Room",
+      "source_url": "https://line6.com/helix-models/images/room-180x180.jpg",
+      "source_file": "line6_official/original/reverb-models-room-4f9ba237.jpg",
+      "sha256": "de9f0f7715d1be8eb8058976668bc2b982c4a06bc3038c40accef182d53d7bd8"
+    },
+    {
+      "category": "REVERB MODELS",
+      "name": "Chamber",
+      "source_url": "https://line6.com/helix-models/images/chamber-180x180.jpg",
+      "source_file": "line6_official/original/reverb-models-chamber-5fa7dcf4.jpg",
+      "sha256": "098706d9fee60e9152066f40dd7880d49311c15a5e8d28c903e75c687f034990"
+    },
+    {
+      "category": "REVERB MODELS",
+      "name": "Hall",
+      "source_url": "https://line6.com/helix-models/images/hall-180x180.jpg",
+      "source_file": "line6_official/original/reverb-models-hall-ab234f28.jpg",
+      "sha256": "f6bdc1511d234a834ebe57cb1f67036edf4830cc22642b15a516f0606fb1a72a"
+    },
+    {
+      "category": "REVERB MODELS",
+      "name": "Echo",
+      "source_url": "https://line6.com/helix-models/images/legacy-reverb-180x180.jpg",
+      "source_file": "line6_official/original/reverb-models-echo-b142fe79.jpg",
+      "sha256": "6a493907860d5ad56125f3e3abadccd89e4e7989ce2e4e751d18dafb5108510f"
+    },
+    {
+      "category": "REVERB MODELS",
+      "name": "Tile",
+      "source_url": "https://line6.com/helix-models/images/legacy-reverb-180x180.jpg",
+      "source_file": "line6_official/original/reverb-models-tile-b142fe79.jpg",
+      "sha256": "6a493907860d5ad56125f3e3abadccd89e4e7989ce2e4e751d18dafb5108510f"
+    },
+    {
+      "category": "REVERB MODELS",
+      "name": "Cave",
+      "source_url": "https://line6.com/helix-models/images/cave-180x180.jpg",
+      "source_file": "line6_official/original/reverb-models-cave-cc015724.jpg",
+      "sha256": "3fbd3b2ab94883f5db4661fb0444e08b84209e7fd5e75e4d0e27ec964dfb07b4"
+    },
+    {
+      "category": "REVERB MODELS",
+      "name": "Ducking",
+      "source_url": "https://line6.com/helix-models/images/legacy-reverb-180x180.jpg",
+      "source_file": "line6_official/original/reverb-models-ducking-b142fe79.jpg",
+      "sha256": "6a493907860d5ad56125f3e3abadccd89e4e7989ce2e4e751d18dafb5108510f"
+    },
+    {
+      "category": "REVERB MODELS",
+      "name": "Octo",
+      "source_url": "https://line6.com/helix-models/images/legacy-reverb-180x180.jpg",
+      "source_file": "line6_official/original/reverb-models-octo-b142fe79.jpg",
+      "sha256": "6a493907860d5ad56125f3e3abadccd89e4e7989ce2e4e751d18dafb5108510f"
+    },
+    {
+      "category": "REVERB MODELS",
+      "name": "’63 Spring",
+      "source_url": "https://line6.com/helix-models/images/legacy-reverb-180x180.jpg",
+      "source_file": "line6_official/original/reverb-models-63-spring-b142fe79.jpg",
+      "sha256": "6a493907860d5ad56125f3e3abadccd89e4e7989ce2e4e751d18dafb5108510f"
+    },
+    {
+      "category": "REVERB MODELS",
+      "name": "Spring",
+      "source_url": "https://line6.com/helix-models/images/legacy-reverb-180x180.jpg",
+      "source_file": "line6_official/original/reverb-models-spring-b142fe79.jpg",
+      "sha256": "6a493907860d5ad56125f3e3abadccd89e4e7989ce2e4e751d18dafb5108510f"
+    },
+    {
+      "category": "REVERB MODELS",
+      "name": "Particle Verb",
+      "source_url": "https://line6.com/helix-models/images/legacy-reverb-180x180.jpg",
+      "source_file": "line6_official/original/reverb-models-particle-verb-b142fe79.jpg",
+      "sha256": "6a493907860d5ad56125f3e3abadccd89e4e7989ce2e4e751d18dafb5108510f"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Optical Trem",
+      "source_url": "https://line6.com/helix-models/images/optical-trem-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-optical-trem-5108d143.jpg",
+      "sha256": "0f090c0d549b288ef7d6fb6b85e453d65a2dbefc8cbc4fec9c41f42c99a8c870"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "60s Bias Trem",
+      "source_url": "https://line6.com/helix-models/images/60s-bias-trem-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-60s-bias-trem-4f769188.jpg",
+      "sha256": "f0bda0a01310f62d3f68e7a22eb5a01951ec3e4b69fb6903aa466bf09d7ec81b"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Tremolo/Autopan",
+      "source_url": "https://line6.com/helix-models/images/tremolo-autopan-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-tremolo-autopan-127d409e.jpg",
+      "sha256": "4803b9a25f28ba492830c102df8c19b79dd0a80fc6a51a940e76c365b042686d"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Harmonic Tremolo",
+      "source_url": "https://line6.com/helix-models/images/harmonic-tremolo-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-harmonic-tremolo-4f1c9d4a.jpg",
+      "sha256": "7d399acce4a4cf355239822f16ea2b971e997877f18b668ff2650a2e0ad246cd"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Bleat Chop Trem",
+      "source_url": "https://line6.com/helix-models/images/bleat-chop-trem-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-bleat-chop-trem-bb43ba86.jpg",
+      "sha256": "6754721cf8c7e74e758d4adad520135782508c627fa0f583eeb0d053a8caa423"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Script Mod Phase",
+      "source_url": "https://line6.com/helix-models/images/script-mod-phase-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-script-mod-phase-9799ef29.jpg",
+      "sha256": "8a3e0ccaf2f32cea650af870b679834ac00b384a60c124cb9db5c0b6df0b0ca9"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Pebble Phaser",
+      "source_url": "https://line6.com/helix-models/images/pebble-phaser-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-pebble-phaser-3b9ed247.jpg",
+      "sha256": "bd98e4b027cdee1f3e9b5e801147a81adfcce74cc37c70c8db964eb45c4e5699"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Ubiquitous Vibe",
+      "source_url": "https://line6.com/helix-models/images/ubiquitous-vibe-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-ubiquitous-vibe-b8b775a3.jpg",
+      "sha256": "5668771efbea6684c19fd3fd03edba7319da31d5f3bd1c433be5d63618a0fa21"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "FlexoVibe",
+      "source_url": "https://line6.com/helix-models/images/flexovibe-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-flexovibe-b292cb4a.jpg",
+      "sha256": "4ebcf8e0456dbbcbd4710441d15b331f994fbd14fdcc328b731c7a4ab3822b64"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Deluxe Phaser",
+      "source_url": "https://line6.com/helix-models/images/deluxe-phaser-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-deluxe-phaser-48f32b0d.jpg",
+      "sha256": "69e3666d61acb33db9d080d5d70d275efda5608f7a038b3f95903da4991ce062"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Gray Flanger",
+      "source_url": "https://line6.com/helix-models/images/gray-flanger-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-gray-flanger-e09f6c26.jpg",
+      "sha256": "6a0debb8fc84e206a50a9c3b5a360f2eb30918631e8802169d509c8abfc376e0"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Harmonic Flanger",
+      "source_url": "https://line6.com/helix-models/images/harmonic-flanger-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-harmonic-flanger-7c455715.jpg",
+      "sha256": "00693de346dec1769917af31f6c215ee07af8bf6181d4ef88b8fd3970c1d1a10"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Courtesan Flange",
+      "source_url": "https://line6.com/helix-models/images/courtesan-flange-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-courtesan-flange-17272998.jpg",
+      "sha256": "13636ec24e536c248f88dc6d5ed51f5cd5a13a4d4fedaccd7f65cdc6f0a9f279"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Dynamix Flanger",
+      "source_url": "https://line6.com/helix-models/images/dynamix-flanger-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-dynamix-flanger-cf6fbbad.jpg",
+      "sha256": "72cf6aa5815cf8d397c6580c86e470d23750f7b8241c94c9d7b207ead25b4608"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Chorus",
+      "source_url": "https://line6.com/helix-models/images/chorus-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-chorus-686b9ccb.jpg",
+      "sha256": "75b0a43b4cdffbcd00ff3908d649403245a7f6a44ca3a2bd449e0666d71b66ce"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "70s Chorus",
+      "source_url": "https://line6.com/helix-models/images/70schorus-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-70s-chorus-b8f23222.jpg",
+      "sha256": "f2bbc5aad0102b69a649d7fc64373099a49d12eac297796fa2f1f3ea219cc28e"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "PlastiChorus",
+      "source_url": "https://line6.com/helix-models/images/plastichorus-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-plastichorus-b221fcfb.jpg",
+      "sha256": "d8ea814d3fe20932b9c8e08fab5422291721bef8efc6ac67e55f8a1fb1f7abe8"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Ampeg Liquifier",
+      "source_url": "https://line6.com/helix-models/images/ampeg-liquifier-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-ampeg-liquifier-8dce75ca.jpg",
+      "sha256": "03f0618537253eac27da64ea8de4ca4ea5a14fc380a3e6dcf9aa4c8e933aa1e2"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Trinity Chorus",
+      "source_url": "https://line6.com/helix-models/images/trinity-chorus-tri-chorus-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-trinity-chorus-4fcc520e.jpg",
+      "sha256": "e90871c01bcfbb5c8b229b229b093961228538f45b088e6c233266c0b723e86e"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "4-Voice Chorus",
+      "source_url": "https://line6.com/helix-models/images/4-voice-chorus-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-4-voice-chorus-e6f31552.jpg",
+      "sha256": "f489b7e199699cf875ae862520287675fa96cf97cce84279a6e39278cf9cc2b9"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Bubble Vibrato",
+      "source_url": "https://line6.com/helix-models/images/bubble-vibrato-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-bubble-vibrato-10c9efb4.jpg",
+      "sha256": "edc1a75fc9f30591982163e5dc6ef0284dd8c5b7b5ad57218ee9418acdd6b32f"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Vibe Rotary",
+      "source_url": "https://line6.com/helix-models/images/vibe-rotary-rotary-drum-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-vibe-rotary-054e1493.jpg",
+      "sha256": "bba061d94cdf1585ec74c5f6445addda844b1839529bf9b7e16f117d3d7010e8"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "122 Rotary",
+      "source_url": "https://line6.com/helix-models/images/122-rotary-145-rotary-rotary-drum-horn-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-122-rotary-633ee708.jpg",
+      "sha256": "e9f1a8ef568e2ed246f648023c1e0d984c22a2b629be7d4dee7685044ed701b0"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "145 Rotary",
+      "source_url": "https://line6.com/helix-models/images/122-rotary-145-rotary-rotary-drum-horn-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-145-rotary-633ee708.jpg",
+      "sha256": "e9f1a8ef568e2ed246f648023c1e0d984c22a2b629be7d4dee7685044ed701b0"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Triple Rotary",
+      "source_url": "https://line6.com/helix-models/images/triple-rotary-180x180-b.jpg",
+      "source_file": "line6_official/original/modulation-models-triple-rotary-517893bb.jpg",
+      "sha256": "4966d9579692336dc5c6e1e557d77637c0f0a6f6db1a11977e7bf1b8a4e8a9ed"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Retro Reel",
+      "source_url": "https://line6.com/helix-models/images/retro-reel-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-retro-reel-cc7a1bfe.jpg",
+      "sha256": "a83e430084ce9f1bf9f00c50ec6e77cf9780b816beba9eead73ef7f4bf1df34e"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Double Take",
+      "source_url": "https://line6.com/helix-models/images/double-take-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-double-take-1a6b394b.jpg",
+      "sha256": "95cd5b573def2de582e6267fcf130b3809f95f9d5c96abdf6bab9ecab9f97aa5"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Poly Detune †",
+      "source_url": "https://line6.com/helix-models/images/poly-detune-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-poly-detune-90afb062.jpg",
+      "sha256": "202e86f795b8e3c77f35528ef50552e7c3117db062f879cf63b75ba2c430b1d0"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "AM Ring Mod",
+      "source_url": "https://line6.com/helix-models/images/am-ring-mod-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-am-ring-mod-20a1f0d6.jpg",
+      "sha256": "b754a90b85279957ba8e703f8a4a05b141be7cf655ef60cf2c25bedc535f584c"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Pitch Ring Mod",
+      "source_url": "https://line6.com/helix-models/images/pitch-ring-mod-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-pitch-ring-mod-ab2e297a.jpg",
+      "sha256": "19e1bf08409e62288c060357f3168ba3bd427d67b1f33533910e98fbff7d4066"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Pattern Tremolo",
+      "source_url": "https://line6.com/helix-models/images/legacy-modulation-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-pattern-tremolo-6ed595e7.jpg",
+      "sha256": "f1adc957096c652e159dc0bf1c9c3289f7c1f5607db3432d1cf9a28d5585ebf1"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Panner",
+      "source_url": "https://line6.com/helix-models/images/panner-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-panner-eb163d6f.jpg",
+      "sha256": "4d3f63d0d51806056facab8e8f0d3dbdd692096f7777d9437ee0027912f4332d"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Bias Tremolo",
+      "source_url": "https://line6.com/helix-models/images/60s-bias-trem-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-bias-tremolo-4f769188.jpg",
+      "sha256": "f0bda0a01310f62d3f68e7a22eb5a01951ec3e4b69fb6903aa466bf09d7ec81b"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Opto Tremolo",
+      "source_url": "https://line6.com/helix-models/images/opto-tremolo-180x180-copy.jpg",
+      "source_file": "line6_official/original/modulation-models-opto-tremolo-ea72fd4c.jpg",
+      "sha256": "7873b6c0e4e3d2830d07c2227764ddd15f0400327da4b33af2c80720a7215b20"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Script Phase",
+      "source_url": "https://line6.com/helix-models/images/script-mod-phase-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-script-phase-9799ef29.jpg",
+      "sha256": "8a3e0ccaf2f32cea650af870b679834ac00b384a60c124cb9db5c0b6df0b0ca9"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Panned Phaser",
+      "source_url": "https://line6.com/helix-models/images/legacy-modulation-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-panned-phaser-6ed595e7.jpg",
+      "sha256": "f1adc957096c652e159dc0bf1c9c3289f7c1f5607db3432d1cf9a28d5585ebf1"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Barberpole",
+      "source_url": "https://line6.com/helix-models/images/legacy-modulation-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-barberpole-6ed595e7.jpg",
+      "sha256": "f1adc957096c652e159dc0bf1c9c3289f7c1f5607db3432d1cf9a28d5585ebf1"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Dual Phaser",
+      "source_url": "https://line6.com/helix-models/images/legacy-modulation-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-dual-phaser-6ed595e7.jpg",
+      "sha256": "f1adc957096c652e159dc0bf1c9c3289f7c1f5607db3432d1cf9a28d5585ebf1"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "U-Vibe",
+      "source_url": "https://line6.com/helix-models/images/u-vibe-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-u-vibe-8ee5b036.jpg",
+      "sha256": "067fe46f439be0c5992a11c7d5cea09abe9c8a50a95f5d6a4cdc8d287d3b9b90"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Phaser",
+      "source_url": "https://line6.com/helix-models/images/phaser-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-phaser-b98a93e5.jpg",
+      "sha256": "dc9c8ae651187920b960a4f5ebe83a786a6ae41035d51d7e22354ac56a99c5ed"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Pitch Vibrato",
+      "source_url": "https://line6.com/helix-models/images/pitch-vibrato-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-pitch-vibrato-60735644.jpg",
+      "sha256": "75797b8c3c5260ada9b77a386c2862c32b64ab0ff84167d5733b52194add8ba4"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Dimension",
+      "source_url": "https://line6.com/helix-models/images/legacy-modulation-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-dimension-6ed595e7.jpg",
+      "sha256": "f1adc957096c652e159dc0bf1c9c3289f7c1f5607db3432d1cf9a28d5585ebf1"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Analog Chorus",
+      "source_url": "https://line6.com/helix-models/images/analog-chorus-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-analog-chorus-ed16443f.jpg",
+      "sha256": "38e45515a896ae26e4fea7eb96ee5d8ac78d50ff3fd70815092ea602ef4aff93"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Tri Chorus",
+      "source_url": "https://line6.com/helix-models/images/trinity-chorus-tri-chorus-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-tri-chorus-4fcc520e.jpg",
+      "sha256": "e90871c01bcfbb5c8b229b229b093961228538f45b088e6c233266c0b723e86e"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Analog Flanger",
+      "source_url": "https://line6.com/helix-models/images/analog-flanger-ac-flanger-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-analog-flanger-311e7073.jpg",
+      "sha256": "ca2b8e551a844f1f91406c05667a83039496cfc32efcef4b61f5d8368411184b"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Jet Flanger",
+      "source_url": "https://line6.com/helix-models/images/jet-flanger-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-jet-flanger-d8e06797.jpg",
+      "sha256": "94f1b986cf920ea92713381e99824dfd8bba3b8b85da707d6c811b8a08e502ef"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "AC Flanger",
+      "source_url": "https://line6.com/helix-models/images/analog-flanger-ac-flanger-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-ac-flanger-311e7073.jpg",
+      "sha256": "ca2b8e551a844f1f91406c05667a83039496cfc32efcef4b61f5d8368411184b"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "80A Flanger",
+      "source_url": "https://line6.com/helix-models/images/legacy-modulation-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-80a-flanger-6ed595e7.jpg",
+      "sha256": "f1adc957096c652e159dc0bf1c9c3289f7c1f5607db3432d1cf9a28d5585ebf1"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Frequency Shift",
+      "source_url": "https://line6.com/helix-models/images/legacy-modulation-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-frequency-shift-6ed595e7.jpg",
+      "sha256": "f1adc957096c652e159dc0bf1c9c3289f7c1f5607db3432d1cf9a28d5585ebf1"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Ring Modulator",
+      "source_url": "https://line6.com/helix-models/images/ring-modulator-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-ring-modulator-1a138057.jpg",
+      "sha256": "d46872f1d5acdd57ced574c6a55e7ddd20a95445005bce9189265df6560f8091"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Rotary Drum",
+      "source_url": "https://line6.com/helix-models/images/legacy-modulation-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-rotary-drum-6ed595e7.jpg",
+      "sha256": "f1adc957096c652e159dc0bf1c9c3289f7c1f5607db3432d1cf9a28d5585ebf1"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Rotary Drum/Horn",
+      "source_url": "https://line6.com/helix-models/images/legacy-modulation-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-rotary-drum-horn-6ed595e7.jpg",
+      "sha256": "f1adc957096c652e159dc0bf1c9c3289f7c1f5607db3432d1cf9a28d5585ebf1"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Tape Eater",
+      "source_url": "https://line6.com/helix-models/images/tape-eater-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-tape-eater-da523158.jpg",
+      "sha256": "71b1cd03d2b2d8735c881c7de2c787bdde7fffbb2e447253f819de9c2cc5bfbd"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Warble-Matic",
+      "source_url": "https://line6.com/helix-models/images/warble-matic-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-warble-matic-f62d651f.jpg",
+      "sha256": "32c792e1a0a442399b2cbbdc6a70f643be8019ada3d7452676b51e9de8fb993d"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Random S&H",
+      "source_url": "https://line6.com/helix-models/images/random-sh-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-random-s-h-49c3fe4f.jpg",
+      "sha256": "2bf7ac6794fe28a787d81512d5f2d405da29a4f40991df277ff9228137b54763"
+    },
+    {
+      "category": "MODULATION MODELS",
+      "name": "Sweeper",
+      "source_url": "https://line6.com/helix-models/images/sweeper-180x180.jpg",
+      "source_file": "line6_official/original/modulation-models-sweeper-b55bf6b0.jpg",
+      "sha256": "14786cbab49d27c5e784bfe81ac6b67ef8c5dedff4e53d426bd8744a5e73ff40"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Simple Delay",
+      "source_url": "https://line6.com/helix-models/images/simple-delay-legacy-delay-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-simple-delay-9b6b3233.jpg",
+      "sha256": "8cd6b5a7c6854c32e3551c6a09ad5f3cbf6cc6bcefca1d0197777adbaf02f1f0"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Mod/Chorus Echo",
+      "source_url": "https://line6.com/helix-models/images/mod-chorus-echo-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-mod-chorus-echo-25962686.jpg",
+      "sha256": "49c74aafea95612ccf648599c7c300e3570efb31575b8b724966ea5e0d8fe7bb"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Dual Delay",
+      "source_url": "https://line6.com/helix-models/images/dual-delay-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-dual-delay-2316babe.jpg",
+      "sha256": "6f07bee746fb64788bb5ead6b06442bc52963c8b97dc336fc9868797ac85280d"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Multitap 4",
+      "source_url": "https://line6.com/helix-models/images/multitap-4-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-multitap-4-58b76028.jpg",
+      "sha256": "cdfb0c04584db1bc1666e9d1ee796da28ffa82fdbe92b7de6231f16cfc2d2ccb"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Multitap 6",
+      "source_url": "https://line6.com/helix-models/images/multitap-6-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-multitap-6-5c878a36.jpg",
+      "sha256": "846eb521e35b84ebaebda9b2e38b1d7eaeb5b906dfac23eb105f0813bd00241e"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Ping Pong",
+      "source_url": "https://line6.com/helix-models/images/ping-pong-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-ping-pong-da5101fb.jpg",
+      "sha256": "059b1653947ca4ff17b095f4f94b5d282ebacad040fcae7b91188f21b9fa7d32"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Sweep Echo",
+      "source_url": "https://line6.com/helix-models/images/sweep-echo-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-sweep-echo-a9f0f807.jpg",
+      "sha256": "202b47f330861a1b0d3c7b73049a989804338451a642d899046e166dcf6828fa"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Ducked Delay",
+      "source_url": "https://line6.com/helix-models/images/ducked-delay-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-ducked-delay-6848b850.jpg",
+      "sha256": "521922741473748983b22c5423c22955968fb238efdca5934b52acb951bb7ffd"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Reverse Delay",
+      "source_url": "https://line6.com/helix-models/images/reverse-delay-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-reverse-delay-23892943.jpg",
+      "sha256": "7e9c9b1e102fbc882481b74fdb2730584f59471e93db64dd8757d76385760e41"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Vintage Digital",
+      "source_url": "https://line6.com/helix-models/images/vintage-digital-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-vintage-digital-d534b97a.jpg",
+      "sha256": "bc77882b5ca0f7961271d9f8fbd17880f6b8aa89d1710406c09932805f712c93"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Vintage Swell",
+      "source_url": "https://line6.com/helix-models/images/vintage-swell-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-vintage-swell-d9dfa106.jpg",
+      "sha256": "82c96861e32b98fd54bad532c7e2f115bfbc57a9b306c005e74097655b7b06df"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Pitch Echo",
+      "source_url": "https://line6.com/helix-models/images/pitch-echo-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-pitch-echo-0c9f4277.jpg",
+      "sha256": "6a0edee8ce20fb671425312d74a84607049584b4a00bb79d3b59daaeb5a82b5b"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Transistor Tape",
+      "source_url": "https://line6.com/helix-models/images/transistor-tape-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-transistor-tape-ad035e1b.jpg",
+      "sha256": "26f74fdd96c0d8b84382956a639b8c7c1e202e0e925789cb5d1481f9ef27e45f"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Cosmos Echo",
+      "source_url": "https://line6.com/helix-models/images/cosmos-echo-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-cosmos-echo-9b19f1df.jpg",
+      "sha256": "3c66ff5c7f1bc4c116d029ff3a3cf708e24f328c32e1a545e526323571b4d2f2"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Harmony Delay",
+      "source_url": "https://line6.com/helix-models/images/harmony-delay-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-harmony-delay-d7e1ab95.jpg",
+      "sha256": "b0c3b0d9e9d438f6a5ff3691ed7b17df5fa4184fdba9dfabbb2aad8aa4b9bae4"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Bucket Brigade",
+      "source_url": "https://line6.com/helix-models/images/bucket-brigade-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-bucket-brigade-4827fa5b.jpg",
+      "sha256": "3e46fdc1af8dcf57f83e44b1b76305816fa94ff36062d511d487aa2c2f4fcc2f"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Adriatic Delay",
+      "source_url": "https://line6.com/helix-models/images/adriatic-delay-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-adriatic-delay-5b84e236.jpg",
+      "sha256": "ac2c93eea1c6963f4f7c95f15ed6eaae46d87256a542746c1615eff2678524a4"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Adriatic Swell",
+      "source_url": "https://line6.com/helix-models/images/adriatic-swell-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-adriatic-swell-b9a6018e.jpg",
+      "sha256": "471352318be6c9a6c7b7378a7fd687fbbdf1c2a47a94c89310ac7f4dbc09b25d"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Elephant Man",
+      "source_url": "https://line6.com/helix-models/images/elephant-man-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-elephant-man-e146739b.jpg",
+      "sha256": "4eb1c6b2611d198d547d9794d3eea6a6112751da2637d4ab62e357d28f2cc6a5"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Multi Pass",
+      "source_url": "https://line6.com/helix-models/images/multi-pass-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-multi-pass-d0b06f56.jpg",
+      "sha256": "6df4311570213e0e3858b04b74d13114882ad5d9700317e83b045384dce0a004"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Heliosphere",
+      "source_url": "https://line6.com/helix-models/images/heliosphere-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-heliosphere-743851dc.jpg",
+      "sha256": "df97bdf539a243f370ba871d21cc5bb9ae3484d240ffb3e141b511df041ad877"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Poly Sustain †",
+      "source_url": "https://line6.com/helix-models/images/poly-sustain-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-poly-sustain-69bcdb6f.jpg",
+      "sha256": "021b159b837e57ad14ca15256fcecba90b2b46ac637ccc65abefb605fbad1b0b"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Glitch Delay",
+      "source_url": "https://line6.com/helix-models/images/glitch-delay-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-glitch-delay-3c0bb3f4.jpg",
+      "sha256": "8d41612f7dbe2d27e16054b779ceee741aa85b42e5742a0e127b1e1d4b2b2da9"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Euclidean Delay",
+      "source_url": "https://line6.com/helix-models/images/euclidean-delay-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-euclidean-delay-df7ca872.jpg",
+      "sha256": "c7821a2d90b2d4489b23b3f91b0c3956a93e6b8efa6150c3bd61a4127fbb78ed"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "ADT",
+      "source_url": "https://line6.com/helix-models/images/adt-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-adt-0fd0b775.jpg",
+      "sha256": "f9757980a4f8a75aa16c0d9cc95ed10b18a88c9172d493db8673fbee73945f48"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Crisscross",
+      "source_url": "https://line6.com/helix-models/images/crisscross-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-crisscross-3cdf6233.jpg",
+      "sha256": "a90a2cfe0d3cbb2025ecd4ee81a2686ac8d05fd17aa00af1b1bd23d879fd3a45"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Tesselator",
+      "source_url": "https://line6.com/helix-models/images/tesselator-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-tesselator-fb3782cd.jpg",
+      "sha256": "eda0dc4b95bd6451f923981ba5cbb1f5b4945b818fb093e6a9b137e98b9542e5"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Ratchet",
+      "source_url": "https://line6.com/helix-models/images/ratchet-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-ratchet-6457248c.jpg",
+      "sha256": "fc6cf531ae850f55303ffb2a082ca4e77b3e736176fcfeba3dcc1f0ef7e990fb"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Dynamic",
+      "source_url": "https://line6.com/helix-models/images/dynamic-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-dynamic-5a84c9a7.jpg",
+      "sha256": "543d1da88eaa5e1f9edce7e5ad3fe37032d255c1996fe3240f6e36363134a72d"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Stereo",
+      "source_url": "https://line6.com/helix-models/images/stereo-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-stereo-e0f1e7d5.jpg",
+      "sha256": "362c4c70fd31f5f26c7ea0a210b3dee31bd1fdecdafaf98de89db92c6885a188"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Digital",
+      "source_url": "https://line6.com/helix-models/images/simple-delay-legacy-delay-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-digital-9b6b3233.jpg",
+      "sha256": "8cd6b5a7c6854c32e3551c6a09ad5f3cbf6cc6bcefca1d0197777adbaf02f1f0"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Dig w/Mod",
+      "source_url": "https://line6.com/helix-models/images/simple-delay-legacy-delay-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-dig-w-mod-9b6b3233.jpg",
+      "sha256": "8cd6b5a7c6854c32e3551c6a09ad5f3cbf6cc6bcefca1d0197777adbaf02f1f0"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Reverse",
+      "source_url": "https://line6.com/helix-models/images/reverse-delay-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-reverse-23892943.jpg",
+      "sha256": "7e9c9b1e102fbc882481b74fdb2730584f59471e93db64dd8757d76385760e41"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Lo Res",
+      "source_url": "https://line6.com/helix-models/images/lo-res-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-lo-res-aaf53c40.jpg",
+      "sha256": "ffc33b94cb46281fe1f36072f8bf362d47cdd47a119032aff1ba219702e3f0b9"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Tube Echo",
+      "source_url": "https://line6.com/helix-models/images/tube-echo-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-tube-echo-c46788d8.jpg",
+      "sha256": "58bb69411aff887f0f1fef278c46c2e3cea69b8a77286080a92e7b8f0ef4aee4"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Tape Echo",
+      "source_url": "https://line6.com/helix-models/images/tape-echo-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-tape-echo-06040a3f.jpg",
+      "sha256": "f009d9fc36acb8ebb2da22211e153ece19a25020b0daf80516d0978cba3b2341"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Sweep Echo",
+      "source_url": "https://line6.com/helix-models/images/sweep-echo-legacy-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-sweep-echo-5a04ee3a.jpg",
+      "sha256": "aff136a4654014a6edab07ba00ee96743f708c693f061e47d7ad08396c8792fa"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Echo Platter",
+      "source_url": "https://line6.com/helix-models/images/echo-platter-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-echo-platter-0601e293.jpg",
+      "sha256": "33766bf0c2ce5ccc85aebd58ea40df658318778eb99d3c1db1c95b0069492631"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Analog Echo",
+      "source_url": "https://line6.com/helix-models/images/analog-echo-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-analog-echo-966daae9.jpg",
+      "sha256": "e9671ce5e5f32072bdd8c91c112ece0c7c3c63f59600846e446e12e1034275d7"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Analog w/Mod",
+      "source_url": "https://line6.com/helix-models/images/analog-wmod-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-analog-w-mod-0e86fc05.jpg",
+      "sha256": "2bb37717d13beba29162e691b76ad1fc9eab914ae868da44c867e4377c0c7650"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Auto-Volume Echo",
+      "source_url": "https://line6.com/helix-models/images/simple-delay-legacy-delay-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-auto-volume-echo-9b6b3233.jpg",
+      "sha256": "8cd6b5a7c6854c32e3551c6a09ad5f3cbf6cc6bcefca1d0197777adbaf02f1f0"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Multi-Head",
+      "source_url": "https://line6.com/helix-models/images/multi-head-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-multi-head-ceeb3f4f.jpg",
+      "sha256": "520f1ce5e941a7fc93e78ac834e4516650075404efd1a7ed510acbc8a9c46c31"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Phaze Eko",
+      "source_url": "https://line6.com/helix-models/images/phaze-echo-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-phaze-eko-c7ea0509.jpg",
+      "sha256": "fe3a0144bba7510d155c84b995029a7c2db8283aeb3203e57e57e85fbc23c423"
+    },
+    {
+      "category": "DELAY MODELS",
+      "name": "Bubble Echo",
+      "source_url": "https://line6.com/helix-models/images/bubble-echo-180x180.jpg",
+      "source_file": "line6_official/original/delay-models-bubble-echo-123b95ad.jpg",
+      "sha256": "367738bf67726e4019d8e20d6a79383b65a58d98921c183aebe26e916238882a"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "Pitch Wham",
+      "source_url": "https://line6.com/helix-models/images/pitch-wham-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-pitch-wham-68a77cec.jpg",
+      "sha256": "c1eb0bebe0c87059ca84e85fd270df02d1f03065c2c7c58bd268be2115495c51"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "Twin Harmony",
+      "source_url": "https://line6.com/helix-models/images/twin-harmony-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-twin-harmony-78cefc6b.jpg",
+      "sha256": "9636ac8fa492ef7dea67480c2073ec4d6a08199ad84a9f655c3a29dedbae2280"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "Simple Pitch",
+      "source_url": "https://line6.com/helix-models/images/simple-pitch-dual-pitch-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-simple-pitch-5be8bff9.jpg",
+      "sha256": "a22741cedc95a5c97a74456379ce297e482ed9344c6eaddc86531c673168eaa9"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "Dual Pitch",
+      "source_url": "https://line6.com/helix-models/images/dual-pitch-180x180-2.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-dual-pitch-02fdfa1f.jpg",
+      "sha256": "188d6af3d7649fbecb9438e8865d25473b442bd028f675a49171b2f7dbafa2ef"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "Boctaver",
+      "source_url": "https://line6.com/helix-models/images/boctaver-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-boctaver-8df52971.jpg",
+      "sha256": "034327a5f8cdb586fffd44aafcce9252438881677b1c79360b49ee4fbdbffef2"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "3 Note Generator ‡",
+      "source_url": "https://line6.com/helix-models/images/3-note-generator-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-3-note-generator-d053c942.jpg",
+      "sha256": "23ba9bb1c91c49885df408b96588077e6ffbbaa18bc049a7155618667e1d31c8"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "4 OSC Generator ‡",
+      "source_url": "https://line6.com/helix-models/images/4-osc-generator-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-4-osc-generator-ad3927b4.jpg",
+      "sha256": "e07fa5037d48e76e4b59fe38e6b2f7dbbbcdd5888e232de4fc376b79e9d80bb6"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "3 OSC Synth",
+      "source_url": "https://line6.com/helix-models/images/3-osc-synth-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-3-osc-synth-7f3b4182.jpg",
+      "sha256": "2ce6787a386a4947f133a9c3050c2815b2d21b7bbb286ca6f4d8ee63e39c4524"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "Poly Pitch†",
+      "source_url": "https://line6.com/helix-models/images/poly-pitch-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-poly-pitch-e39b4f31.jpg",
+      "sha256": "91e1fb6826a8bba96c1af4f3b7e2f71c3758f9d529b2650a643ff6dfec8a1d32"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "Poly Wham†",
+      "source_url": "https://line6.com/helix-models/images/poly-wham-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-poly-wham-671940e1.jpg",
+      "sha256": "377aeb49efee715474e6f40f3f90000995a9a4c4e1e361580c58ece45aabfb08"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "Poly Capo†",
+      "source_url": "https://line6.com/helix-models/images/poly-capo-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-poly-capo-dd6c5d2f.jpg",
+      "sha256": "4edf47281813fe7bde746e851f6d7b721618b81351a8315ee82d343337a0019f"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "12 String†",
+      "source_url": "https://line6.com/helix-models/images/12-string-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-12-string-54e21e25.jpg",
+      "sha256": "5254228bca8cd24d80f54eb6167bbb15606c9dd3e9c2c66ac0b51c0e6b9bd949"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "Bass Octaver",
+      "source_url": "https://line6.com/helix-models/images/bass-octaver-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-bass-octaver-66c9677b.jpg",
+      "sha256": "0e2c01d5adc08f49f471e45640c04e8fd4bec07dbe033c02d805ae070c3a504c"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "Smart Harmony",
+      "source_url": "https://line6.com/helix-models/images/smart-harmony-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-smart-harmony-50bb4a78.jpg",
+      "sha256": "7f5ce876723c7791bf7df1e632ef15b3b420c86224874bc760751d09ff5100d1"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "Octi Synth",
+      "source_url": "https://line6.com/helix-models/images/legacy-pitchsynth-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-octi-synth-d019cab9.jpg",
+      "sha256": "71c4ec179b06f2f5b072568531bc19f724230fc58e94f9c69914bf023cb90fb3"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "Synth O Matic",
+      "source_url": "https://line6.com/helix-models/images/legacy-pitchsynth-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-synth-o-matic-d019cab9.jpg",
+      "sha256": "71c4ec179b06f2f5b072568531bc19f724230fc58e94f9c69914bf023cb90fb3"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "Attack Synth",
+      "source_url": "https://line6.com/helix-models/images/legacy-pitchsynth-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-attack-synth-d019cab9.jpg",
+      "sha256": "71c4ec179b06f2f5b072568531bc19f724230fc58e94f9c69914bf023cb90fb3"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "Synth String",
+      "source_url": "https://line6.com/helix-models/images/legacy-pitchsynth-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-synth-string-d019cab9.jpg",
+      "sha256": "71c4ec179b06f2f5b072568531bc19f724230fc58e94f9c69914bf023cb90fb3"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "Growler",
+      "source_url": "https://line6.com/helix-models/images/legacy-pitchsynth-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-growler-d019cab9.jpg",
+      "sha256": "71c4ec179b06f2f5b072568531bc19f724230fc58e94f9c69914bf023cb90fb3"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "Buzz Wave",
+      "source_url": "https://line6.com/helix-models/images/legacy-pitchsynth-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-buzz-wave-d019cab9.jpg",
+      "sha256": "71c4ec179b06f2f5b072568531bc19f724230fc58e94f9c69914bf023cb90fb3"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "Rez Synth",
+      "source_url": "https://line6.com/helix-models/images/rez-synth-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-rez-synth-1bd875f9.jpg",
+      "sha256": "63a96091e7cbe67f7747237ec444517a40aa3f857178b83c7923985715483bbc"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "Seismik Synth",
+      "source_url": "https://line6.com/helix-models/images/seismik-synth-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-seismik-synth-e61ee760.jpg",
+      "sha256": "b6249fa79f43bda28945e2ee35dcec8207c9daa55326327067ffe3525abe45e2"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "Analog Synth",
+      "source_url": "https://line6.com/helix-models/images/analog-synth-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-analog-synth-01bb6ea6.jpg",
+      "sha256": "783c0d703f5660e0256a6f6aaa35d32d4eb0c1660e1a948c5e648765d47d1d55"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "Synth Lead",
+      "source_url": "https://line6.com/helix-models/images/synth-lead-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-synth-lead-a3374502.jpg",
+      "sha256": "5f5832eda6df86636a52585acd83d07e0fce6a0a7d98c3650af99cd008465671"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "String Theory",
+      "source_url": "https://line6.com/helix-models/images/legacy-pitchsynth-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-string-theory-d019cab9.jpg",
+      "sha256": "71c4ec179b06f2f5b072568531bc19f724230fc58e94f9c69914bf023cb90fb3"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "Synth FX",
+      "source_url": "https://line6.com/helix-models/images/synth-fx-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-synth-fx-e79ed922.jpg",
+      "sha256": "a61f56ccfd9f123fed26c8af223f02a1de5339a157cb6cc61a4b6e28196425a7"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "Saturn 5 Ring Mod",
+      "source_url": "https://line6.com/helix-models/images/saturn-5-ring-mod-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-saturn-5-ring-mod-d026cc2e.jpg",
+      "sha256": "0bc07f9e21154ae61fc3bd6f5cd97d2000619afedd1d2c77a01415fe8bb8be7f"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "Synth Harmony",
+      "source_url": "https://line6.com/helix-models/images/synth-harmony-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-synth-harmony-81a1cbb5.jpg",
+      "sha256": "8f67db24081f49ac49bf7a7c21a795612e722ff88102cfcfcaabe62fcbf7894d"
+    },
+    {
+      "category": "PITCH/SYNTH MODELS",
+      "name": "Double Bass",
+      "source_url": "https://line6.com/helix-models/images/double-bass-180x180.jpg",
+      "source_file": "line6_official/original/pitch-synth-models-double-bass-b4158681.jpg",
+      "sha256": "100b02012f9e82602f19e890fad3b5987c2a27ee709e08adf1ddbced51fa59e4"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Mutant Filter",
+      "source_url": "https://line6.com/helix-models/images/mutant-filter-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-mutant-filter-372e70dd.jpg",
+      "sha256": "99f5b6a47ba15c42aa4a997ebbd0cb84526eb6299e4ba7d73b327ba5fc5436bd"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Mystery Filter",
+      "source_url": "https://line6.com/helix-models/images/mystery-filter-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-mystery-filter-0e8cba81.jpg",
+      "sha256": "4a2360538a2644eb1cc7d6643c2dea8508b7b6016e36bd16896cbcbecca69884"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Autofilter",
+      "source_url": "https://line6.com/helix-models/images/autofilter-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-autofilter-c9159418.jpg",
+      "sha256": "7443b209073d92ae0bd188551775f02eca59226fd2cd83fb622e59122b4abd1e"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Asheville Pattrn",
+      "source_url": "https://line6.com/helix-models/images/asheville-pattern-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-asheville-pattrn-db3e4e92.jpg",
+      "sha256": "0a61ff8339a84d818e3078044daec94152437fe01d4ec7e115b97f1e09ae764f"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Voice Box",
+      "source_url": "https://line6.com/helix-models/images/legacy-filter-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-voice-box-dacd1d42.jpg",
+      "sha256": "40b71b6cff8f7a5ed7e4e19bc7790914b094ea78daf3129c166bbdd26575ef1f"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "V Tron",
+      "source_url": "https://line6.com/helix-models/images/legacy-filter-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-v-tron-dacd1d42.jpg",
+      "sha256": "40b71b6cff8f7a5ed7e4e19bc7790914b094ea78daf3129c166bbdd26575ef1f"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Q Filter",
+      "source_url": "https://line6.com/helix-models/images/legacy-filter-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-q-filter-dacd1d42.jpg",
+      "sha256": "40b71b6cff8f7a5ed7e4e19bc7790914b094ea78daf3129c166bbdd26575ef1f"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Seeker",
+      "source_url": "https://line6.com/helix-models/images/legacy-filter-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-seeker-dacd1d42.jpg",
+      "sha256": "40b71b6cff8f7a5ed7e4e19bc7790914b094ea78daf3129c166bbdd26575ef1f"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Obi Wah",
+      "source_url": "https://line6.com/helix-models/images/legacy-filter-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-obi-wah-dacd1d42.jpg",
+      "sha256": "40b71b6cff8f7a5ed7e4e19bc7790914b094ea78daf3129c166bbdd26575ef1f"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Tron Up",
+      "source_url": "https://line6.com/helix-models/images/legacy-filter-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-tron-up-dacd1d42.jpg",
+      "sha256": "40b71b6cff8f7a5ed7e4e19bc7790914b094ea78daf3129c166bbdd26575ef1f"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Tron Down",
+      "source_url": "https://line6.com/helix-models/images/legacy-filter-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-tron-down-dacd1d42.jpg",
+      "sha256": "40b71b6cff8f7a5ed7e4e19bc7790914b094ea78daf3129c166bbdd26575ef1f"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Throbber",
+      "source_url": "https://line6.com/helix-models/images/legacy-filter-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-throbber-dacd1d42.jpg",
+      "sha256": "40b71b6cff8f7a5ed7e4e19bc7790914b094ea78daf3129c166bbdd26575ef1f"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Slow Filter",
+      "source_url": "https://line6.com/helix-models/images/legacy-filter-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-slow-filter-dacd1d42.jpg",
+      "sha256": "40b71b6cff8f7a5ed7e4e19bc7790914b094ea78daf3129c166bbdd26575ef1f"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Spin Cycle",
+      "source_url": "https://line6.com/helix-models/images/legacy-filter-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-spin-cycle-dacd1d42.jpg",
+      "sha256": "40b71b6cff8f7a5ed7e4e19bc7790914b094ea78daf3129c166bbdd26575ef1f"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Comet Trails",
+      "source_url": "https://line6.com/helix-models/images/legacy-filter-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-comet-trails-dacd1d42.jpg",
+      "sha256": "40b71b6cff8f7a5ed7e4e19bc7790914b094ea78daf3129c166bbdd26575ef1f"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "UK Wah 846",
+      "source_url": "https://line6.com/helix-models/images/ukwah846-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-uk-wah-846-ba998cb8.jpg",
+      "sha256": "fa2c21f581340785dbf87b96b4d276c4e29192cfcb05d98ca601fb1d7de0298b"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Teardrop 310",
+      "source_url": "https://line6.com/helix-models/images/teardrop-310-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-teardrop-310-02d341a2.jpg",
+      "sha256": "37c19e3b293598a972b0bcdb007a66b21be162f4be53f3f7c3b59385a9309006"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Fassel",
+      "source_url": "https://line6.com/helix-models/images/fassel-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-fassel-5455f0e2.jpg",
+      "sha256": "8a2c99c2360c596114862ef3d1c8fcd928dfd8d7ed05d42b52cf5e71887df345"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Weeper",
+      "source_url": "https://line6.com/helix-models/images/weeper-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-weeper-9377b2a0.jpg",
+      "sha256": "0eb8c44ac8fa29bac112b5dd0f79b12a8108185b0b11a9effe41d96e97dfa56e"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Chrome",
+      "source_url": "https://line6.com/helix-models/images/chrome-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-chrome-308b72c2.jpg",
+      "sha256": "335f101a977a218c216318a025d3ee34cae6b3996ea23f37ab6b648ca807d633"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Chrome Custom",
+      "source_url": "https://line6.com/helix-models/images/chrome-custom-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-chrome-custom-54d15f86.jpg",
+      "sha256": "6a9a603d1562c2aae2eedf80439953da1b9c12a51e62cf678e9c9a08d6a7c5fd"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Throaty",
+      "source_url": "https://line6.com/helix-models/images/throaty-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-throaty-e300b8bc.jpg",
+      "sha256": "840cf2f13df46a73f85e17217d6c2ff4cdfa222854e774ac98e5ff5306044b15"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Vetta Wah",
+      "source_url": "https://line6.com/helix-models/images/vetta-wah-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-vetta-wah-13213970.jpg",
+      "sha256": "232f506953bba6f4b4c4e9bd2df119c54cbd5ecf418bca3a6219255951a44e8e"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Colorful",
+      "source_url": "https://line6.com/helix-models/images/colorful-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-colorful-7b38f433.jpg",
+      "sha256": "d9ebc387118923e03c0ff15bd1668155b9a5181d7b66c93d47658661610f89e7"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Conductor",
+      "source_url": "https://line6.com/helix-models/images/conductor-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-conductor-f22b91d7.jpg",
+      "sha256": "970405eb5a4cabcd8ed86e6b2b12b1b2570a582128e84eb2a9cfec47e052b935"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Teardrop Bass Q",
+      "source_url": "https://line6.com/helix-models/images/Teardrop-Bass-Q-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-teardrop-bass-q-d32d8d9a.jpg",
+      "sha256": "6a9a88b269c58f8645c4c5fcdbb9aca83483cf4265135b04e527ce06e261adff"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Volume Pedal",
+      "source_url": "https://line6.com/helix-models/images/volume-pedal-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-volume-pedal-ece332b8.jpg",
+      "sha256": "a11c6def84f7aac5f7826b980c2d2d0e6ddb9484150c7631f6ef42b3554a4783"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Gain",
+      "source_url": "https://line6.com/helix-models/images/gain-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-gain-90d8ed79.jpg",
+      "sha256": "0deb1f1609273d135546d22fc1106fd22c8c3395d59acd306ec93fed408eecee"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Pan",
+      "source_url": "https://line6.com/helix-models/images/pan-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-pan-59e06d6b.jpg",
+      "sha256": "892f4947669f962247a2be7928c4a62efe2935f61e4ee1e85b60f110ddbd41f0"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Stereo Width",
+      "source_url": "https://line6.com/helix-models/images/stereo-width-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-stereo-width-da8145ed.jpg",
+      "sha256": "3c817e43a27ef6d15bcd4a5589d39ca95784d19e3343229e837f9e6ae43eb826"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Stereo Imager",
+      "source_url": "https://line6.com/helix-models/images/stereo-imager-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-stereo-imager-38aa0e0c.jpg",
+      "sha256": "7f0060fe033f1fbe3d8282228313ef8317bc40c375da4118c1041290730239ab"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "6 Switch Looper",
+      "source_url": "https://line6.com/helix-models/images/6-switch-looper-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-6-switch-looper-0d294594.jpg",
+      "sha256": "4e8ba1db39efb423ee0d0ce2d6fcde26ccde1d7cbb5c4dad91881ec74c3b4070"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "1 Switch Looper",
+      "source_url": "https://line6.com/helix-models/images/1-switch-looper-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-1-switch-looper-981617c3.jpg",
+      "sha256": "f98c79d03465b04fad296904bbe2764682ce217105462d41faf7bd13a87b2c92"
+    },
+    {
+      "category": "FILTER, WAH, VOLUME/PAN, & LOOPER MODELS",
+      "name": "Shuffling Looper",
+      "source_url": "https://line6.com/helix-models/images/shuffling-looper-180x180.jpg",
+      "source_file": "line6_official/original/filter-wah-volume-pan-looper-models-shuffling-looper-318eae4a.jpg",
+      "sha256": "cfc24dbc54921b4aa6d88418e2a96413f524f158561d2f614dc6fa239e1e9e01"
+    }
+  ]
+}
