@@ -78,6 +78,7 @@ body:
         - Preset LED color
         - Tap command
         - Breathing line
+        - EXP display
         - Metronome
         - Gain-reduction meter
         - Tuner settings

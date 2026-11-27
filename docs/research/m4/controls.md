@@ -121,5 +121,5 @@ The 1 Switch Looper's footswitch: press records, plays, then toggles play and ov
 
 ## Out of reach
 
-- The VOLUME knob and the expression pedals: the host sends only keys and knob turns.
+- The VOLUME knob: the host sends only keys and knob turns. The expression pedals are not out of reach: a class-6 event from the host (`hx_input.event(6, jack, float bits)`) moves EXP 1 or EXP 2 as a pedal's does [verified offline]: [pedals.md](pedals.md).
 - Power-on combinations: the manual gives none, and the application, which reads the key queue, is not running yet.

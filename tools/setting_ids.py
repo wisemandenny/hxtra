@@ -74,6 +74,8 @@ VIRTUAL = (   # (virtual ID, container ID, first bit, bits, the '<feature>.<key>
     (0xe3, 107, 4, 4, 'dsp_meter.blocks', "past 0xd1's bits, which units may hold the removed DSP Display in"),
     (0xe4, 107, 8, 4, 'dsp_meter.total', ''),
     (0xe5, 107, 12, 4, 'dsp_meter.browser', ''),
+    (0xe9, 113, 8, 4, 'exp_display.left', "past Preset LED Color's bits 0..7"),
+    (0xea, 113, 12, 4, 'exp_display.right', ''),
 )
 
 
