@@ -74,6 +74,8 @@ VIRTUAL = (   # (virtual ID, container ID, first bit, bits, the '<feature>.<key>
     (0xe3, 107, 4, 4, 'dsp_meter.blocks', "past 0xd1's bits, which units may hold the removed DSP Display in"),
     (0xe4, 107, 8, 4, 'dsp_meter.total', ''),
     (0xe5, 107, 12, 4, 'dsp_meter.browser', ''),
+    (0xe7, 115, 0, 2, 'looper.stop_play', ''),
+    (0xe8, 115, 2, 2, 'looper.dbl_press', ''),
 )
 
 

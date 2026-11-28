@@ -365,7 +365,7 @@ class Built:
 
 
 ALL = {'HX_TUNER': '1', 'HX_BPM': '1', 'HX_DSP_METER': '1', 'HX_LONG_PRESS': '1', 'HX_MORE_SNAPSHOTS': '1', 'HX_BREATHING_LINE': '1',
-       'HX_TAP_COLOR': '1', 'HX_USB_MONITOR': '1', 'HX_PRESET_COLOR': '1'}
+       'HX_TAP_COLOR': '1', 'HX_USB_MONITOR': '1', 'HX_PRESET_COLOR': '1', 'HX_LOOPER': '1'}
 
 
 @pytest.mark.firmware
