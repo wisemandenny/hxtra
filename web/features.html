@@ -152,7 +152,7 @@
     </tr>
     <tr>
     <td><a href="#tuner-settings" data-i18n="tuner-settings.name">Extra tuner settings</a></td>
-    <td data-i18n="tuner-settings.desc">Open the tuner with a press of TAP instead of a hold (TAP then no longer taps the tempo), and lock the tuner's other settings: Output, Reference, Type, Trails and Offsets.</td>
+    <td data-i18n="tuner-settings.desc">Open the tuner with a press of TAP instead of a hold (TAP then no longer taps the tempo), lock the tuner's other settings (Output, Reference, Type, Trails and Offsets), and have the tuner name notes with sharps instead of flats.</td>
     <td data-i18n="tuner-settings.floc">The tuner</td>
     <td data-i18n="tuner-settings.where">The tuner's settings, page 3 (page right past Trails, Offsets and String 6)</td>
     </tr>
@@ -443,6 +443,11 @@
         <td><strong>Lock</strong> (Lock Tuner Settings)</td>
         <td><strong>Off</strong>, On</td>
         <td data-i18n="tuner-settings.what2">On stops the tuner's other settings (Output, Refrnc, Type, Trails, Offsets) from changing: knob turns and the knob presses that reset an item to its default are ignored. Paging still works, and this page's knobs still turn, so Lock can be turned off where it was turned on.</td>
+        </tr>
+        <tr>
+        <td><strong>Notes</strong></td>
+        <td><strong>Flats</strong>, Sharps</td>
+        <td data-i18n="tuner-settings.what3">How the tuner names the five notes that fall between two letters. <strong>Flats</strong> names them as the stock tuner does, with the letter above and a flat (Db, Eb, Gb, Ab, Bb); <strong>Sharps</strong> with the letter below and a sharp (C#, D#, F#, G#, A#).</td>
         </tr>
         </tbody>
         </table></div>
@@ -876,7 +881,7 @@ var LANGS = {
     "dsp-usage-display.floc": "Vista Edit y navegador de modelos",
     "dsp-usage-display.where": "Global Settings &gt; DSP Usage Display",
     "tuner-settings.name": "Ajustes extra del afinador",
-    "tuner-settings.desc": "Abre el afinador con una pulsación de TAP en vez de mantenerlo (TAP deja entonces de marcar el tempo) y bloquea los demás ajustes del afinador: Output, Reference, Type, Trails y Offsets.",
+    "tuner-settings.desc": "Abre el afinador con una pulsación de TAP en vez de mantenerlo (TAP deja entonces de marcar el tempo), bloquea los demás ajustes del afinador (Output, Reference, Type, Trails y Offsets) y haz que nombre las notas con sostenidos en vez de bemoles.",
     "tuner-settings.floc": "El afinador",
     "tuner-settings.where": "Los ajustes del afinador, página 3 (página a la derecha tras Trails, Offsets y String 6)",
     "long-press.name": "Pulsación larga de footswitch",
@@ -970,6 +975,7 @@ var LANGS = {
     "tuner-settings.p1": "Los ajustes propios del afinador tienen su propia página, la tercera: página a la derecha tras Trails, Offsets y String 6. Las páginas de cuerdas (Strings 5–3, luego 2 y 1) van detrás: pocos usan los offsets por cuerda, así que esta página va antes. Sus perillas los ajustan como las de las páginas originales: gira para cambiar, pulsa para volver al valor por defecto.",
     "tuner-settings.what1": "Un footswitch asignado a TAP/Tunr normalmente marca el tempo, y al mantenerlo se abre el afinador. En <strong>Press</strong>, pulsarlo abre el afinador al instante y ya no marca el tempo. Sigue la asignación, así que funciona en cualquier footswitch que tenga TAP/Tunr.",
     "tuner-settings.what2": "On impide que cambien los demás ajustes del afinador (Output, Refrnc, Type, Trails, Offsets): se ignoran los giros de perilla y las pulsaciones de perilla que devuelven un elemento a su valor por defecto. Se puede seguir pasando de página, y las perillas de esta página siguen girando, así que Lock se puede desactivar donde se activó.",
+    "tuner-settings.what3": "Cómo nombra el afinador las cinco notas que quedan entre dos letras. <strong>Flats</strong> las nombra como de fábrica, con la letra de arriba y un bemol (Db, Eb, Gb, Ab, Bb); <strong>Sharps</strong>, con la letra de abajo y un sostenido (C#, D#, F#, G#, A#).",
     "long-press.alt1": "Mantener FS1 apaga el bloque de FS6, y mantenerlo otra vez lo vuelve a encender",
     "long-press.p1": "En el modo de footswitch Stomp, cada uno de FS1–FS5 puede tener una acción Hold (Global Settings &gt; Footswitches, páginas 2 y 3: FS1 Hold Function … FS5 Hold Function). Mantener el footswitch 1 s la ejecuta; un toque sigue activando y desactivando los bloques del propio footswitch, al soltarlo en vez de al pulsarlo, porque al pulsar aún no se sabe si será una pulsación larga. Un footswitch con un looper (1 Switch Looper o Shuffling Looper) ignora su acción Hold y funciona como de serie, así el looper conserva su propia pulsación, deshacer y borrar.",
     "long-press.li1": "<strong>Tuner</strong> abre el afinador, como al mantener TAP.",
@@ -1094,7 +1100,7 @@ var LANGS = {
     "dsp-usage-display.floc": "Tela Edit e navegador de modelos",
     "dsp-usage-display.where": "Global Settings &gt; DSP Usage Display",
     "tuner-settings.name": "Ajustes extras do afinador",
-    "tuner-settings.desc": "Abra o afinador com um toque no TAP em vez de segurá-lo (aí o TAP deixa de marcar o andamento) e trave os outros ajustes do afinador: Output, Reference, Type, Trails e Offsets.",
+    "tuner-settings.desc": "Abra o afinador com um toque no TAP em vez de segurá-lo (aí o TAP deixa de marcar o andamento), trave os outros ajustes do afinador (Output, Reference, Type, Trails e Offsets) e faça-o nomear as notas com sustenidos em vez de bemóis.",
     "tuner-settings.floc": "O afinador",
     "tuner-settings.where": "Ajustes do afinador, página 3 (avance uma página depois de Trails, Offsets e String 6)",
     "long-press.name": "Pressão longa nos footswitches",
@@ -1188,6 +1194,7 @@ var LANGS = {
     "tuner-settings.p1": "Estes ajustes do afinador ganham uma página só deles, a terceira: avance uma página depois de Trails, Offsets e String 6. As páginas das cordas (Strings 5–3, depois 2 e 1) vêm em seguida: poucos guitarristas usam os offsets por corda, então esta página vem antes delas. Os knobs funcionam como nas páginas originais: gire para mudar, pressione para voltar ao padrão.",
     "tuner-settings.what1": "Um footswitch com TAP/Tunr normalmente marca o andamento, e segurá-lo abre o afinador. Em <strong>Press</strong>, pressioná-lo abre o afinador na hora e o andamento deixa de ser marcado. Segue a atribuição, então funciona em qualquer footswitch que tenha TAP/Tunr.",
     "tuner-settings.what2": "On impede que os outros ajustes do afinador (Output, Refrnc, Type, Trails, Offsets) mudem: giros de knob e os toques no knob que voltam um item ao padrão são ignorados. A troca de página continua funcionando, e os knobs desta página continuam girando, então dá para desligar o Lock onde ele foi ligado.",
+    "tuner-settings.what3": "Como o afinador nomeia as cinco notas que ficam entre duas letras. <strong>Flats</strong> nomeia como o afinador original, com a letra de cima e um bemol (Db, Eb, Gb, Ab, Bb); <strong>Sharps</strong>, com a letra de baixo e um sustenido (C#, D#, F#, G#, A#).",
     "long-press.alt1": "Segurar FS1 desliga o bloco do FS6, e segurar de novo o liga outra vez",
     "long-press.p1": "No modo de footswitch Stomp, cada um de FS1–FS5 pode ter uma ação de Hold (Global Settings &gt; Footswitches, páginas 2 e 3: FS1 Hold Function … FS5 Hold Function). Segurar o footswitch por 1 s a executa; um toque ainda liga e desliga os blocos do próprio footswitch, mas ao soltar em vez de ao pressionar, já que no momento da pressão ainda não dá para saber se ele vai ser segurado. Um footswitch com um looper (1 Switch Looper ou Shuffling Looper) ignora sua ação de Hold e funciona como de fábrica, assim o looper mantém seu próprio toque, desfazer e apagar.",
     "long-press.li1": "<strong>Tuner</strong> abre o afinador, como segurar o TAP.",
@@ -1312,7 +1319,7 @@ var LANGS = {
     "dsp-usage-display.floc": "Vue Edit et navigateur de modèles",
     "dsp-usage-display.where": "Global Settings &gt; DSP Usage Display",
     "tuner-settings.name": "Réglages supplémentaires de l'accordeur",
-    "tuner-settings.desc": "Ouvrez l'accordeur d'un simple appui sur TAP au lieu d'un appui maintenu (TAP ne bat alors plus le tempo), et verrouillez les autres réglages de l'accordeur : Output, Reference, Type, Trails et Offsets.",
+    "tuner-settings.desc": "Ouvrez l'accordeur d'un simple appui sur TAP au lieu d'un appui maintenu (TAP ne bat alors plus le tempo), verrouillez les autres réglages de l'accordeur (Output, Reference, Type, Trails et Offsets) et faites-lui nommer les notes avec des dièses plutôt qu'avec des bémols.",
     "tuner-settings.floc": "L'accordeur",
     "tuner-settings.where": "Réglages de l'accordeur, page 3 (page suivante après Trails, Offsets et String 6)",
     "long-press.name": "Appui long sur les footswitchs",
@@ -1406,6 +1413,7 @@ var LANGS = {
     "tuner-settings.p1": "Les réglages propres à l'accordeur ont leur propre page, la troisième : page suivante après Trails, Offsets et String 6. Les pages des cordes (Strings 5–3, puis 2 et 1) viennent après : peu de musiciens utilisent les offsets par corde, cette page passe donc avant elles. Ses potentiomètres règlent les valeurs comme ceux des pages d'origine : tournez pour changer, appuyez pour revenir à la valeur par défaut.",
     "tuner-settings.what1": "Un footswitch assigné à TAP/Tunr bat normalement le tempo, et le maintenir ouvre l'accordeur. Sur <strong>Press</strong>, un appui ouvre l'accordeur aussitôt et le tempo n'est plus battu. Le réglage suit l'assignation : il fonctionne sur n'importe quel footswitch assigné à TAP/Tunr.",
     "tuner-settings.what2": "On empêche les autres réglages de l'accordeur (Output, Refrnc, Type, Trails, Offsets) de changer : les rotations de potentiomètre et les appuis qui remettent un élément à sa valeur par défaut sont ignorés. Le changement de page fonctionne toujours, et les potentiomètres de cette page tournent toujours : Lock peut donc être désactivé là où il a été activé.",
+    "tuner-settings.what3": "Le nom que l'accordeur donne aux cinq notes situées entre deux lettres. <strong>Flats</strong> les nomme comme d'origine, avec la lettre du dessus et un bémol (Db, Eb, Gb, Ab, Bb) ; <strong>Sharps</strong>, avec la lettre du dessous et un dièse (C#, D#, F#, G#, A#).",
     "long-press.alt1": "Maintenir FS1 coupe le bloc de FS6, et le maintenir à nouveau le rallume",
     "long-press.p1": "En mode de footswitch Stomp, chacun des FS1–FS5 peut avoir une action Hold (Global Settings &gt; Footswitches, pages 2 et 3 : FS1 Hold Function … FS5 Hold Function). Maintenir le footswitch 1 s la déclenche ; un appui bref active ou désactive toujours les blocs du footswitch, mais au relâchement plutôt qu'à l'appui, car au moment de l'appui on ne sait pas encore s'il deviendra un maintien. Un footswitch qui porte un looper (1 Switch Looper ou Shuffling Looper) ignore son action Hold et fonctionne comme d'origine : le looper garde sa propre pression, son annulation et son effacement.",
     "long-press.li1": "<strong>Tuner</strong> ouvre l'accordeur, comme le maintien de TAP.",
@@ -1530,7 +1538,7 @@ var LANGS = {
     "dsp-usage-display.floc": "Edit-Ansicht und Modell-Browser",
     "dsp-usage-display.where": "Global Settings &gt; DSP Usage Display",
     "tuner-settings.name": "Zusätzliche Tuner-Einstellungen",
-    "tuner-settings.desc": "Öffne den Tuner mit einem Druck auf TAP statt durch Halten (TAP tappt dann kein Tempo mehr) und sperre die übrigen Einstellungen des Tuners: Output, Reference, Type, Trails und Offsets.",
+    "tuner-settings.desc": "Öffne den Tuner mit einem Druck auf TAP statt durch Halten (TAP tappt dann kein Tempo mehr), sperre die übrigen Einstellungen des Tuners (Output, Reference, Type, Trails und Offsets) und lass ihn die Töne mit Kreuz statt mit b benennen.",
     "tuner-settings.floc": "Der Tuner",
     "tuner-settings.where": "Die Einstellungen des Tuners, Seite 3 (nach rechts weiterblättern, an Trails, Offsets und String 6 vorbei)",
     "long-press.name": "Langes Drücken der Fußschalter",
@@ -1624,6 +1632,7 @@ var LANGS = {
     "tuner-settings.p1": "Die Einstellungen des Tuners bekommen eine eigene Seite, die dritte: nach rechts weiterblättern, an Trails, Offsets und String 6 vorbei. Die Saiten-Seiten (Strings 5–3, dann 2 und 1) folgen danach: Nur wenige nutzen die Offsets pro Saite, deshalb kommt die Seite vor ihnen. Ihre Regler funktionieren wie die der Originalseiten: drehen zum Ändern, drücken für den Standardwert.",
     "tuner-settings.what1": "Ein Fußschalter mit TAP/Tunr tappt normalerweise das Tempo, und Halten öffnet den Tuner. Auf <strong>Press</strong> öffnet ein Druck sofort den Tuner, und es wird kein Tempo mehr getappt. Die Einstellung folgt der Zuweisung und wirkt also auf jedem Fußschalter mit TAP/Tunr.",
     "tuner-settings.what2": "On verhindert, dass sich die übrigen Einstellungen des Tuners (Output, Refrnc, Type, Trails, Offsets) ändern: Reglerdrehungen und Reglerdrücke, die einen Wert auf den Standard zurücksetzen, werden ignoriert. Blättern funktioniert weiterhin, und die Regler dieser Seite lassen sich weiter drehen, sodass Lock dort wieder ausgeschaltet werden kann, wo es eingeschaltet wurde.",
+    "tuner-settings.what3": "Wie der Tuner die fünf Töne zwischen zwei Buchstaben benennt. <strong>Flats</strong> benennt sie wie ab Werk mit dem Buchstaben darüber und einem b (Db, Eb, Gb, Ab, Bb), <strong>Sharps</strong> mit dem Buchstaben darunter und einem Kreuz (C#, D#, F#, G#, A#).",
     "long-press.alt1": "FS1 halten schaltet den Block auf FS6 aus, erneut halten schaltet ihn wieder ein",
     "long-press.p1": "Im Fußschaltermodus Stomp kann jeder von FS1–FS5 eine Hold-Aktion haben (Global Settings &gt; Footswitches, Seiten 2 und 3: FS1 Hold Function … FS5 Hold Function). Hältst du den Schalter 1 s lang, wird sie ausgeführt; ein kurzes Antippen schaltet weiterhin die eigenen Blöcke des Schalters, aber beim Loslassen statt beim Drücken, denn beim Drücken steht noch nicht fest, ob daraus ein Halten wird. Ein Schalter mit einem Looper (1 Switch Looper oder Shuffling Looper) ignoriert seine Hold-Aktion und arbeitet wie ab Werk, sodass der Looper sein eigenes Drücken, Rückgängig und Löschen behält.",
     "long-press.li1": "<strong>Tuner</strong> öffnet den Tuner, wie das Halten von TAP.",
@@ -1748,7 +1757,7 @@ var LANGS = {
     "dsp-usage-display.floc": "Vista Edit e browser dei modelli",
     "dsp-usage-display.where": "Global Settings &gt; DSP Usage Display",
     "tuner-settings.name": "Impostazioni extra dell'accordatore",
-    "tuner-settings.desc": "Apri l'accordatore con una pressione di TAP invece di tenerlo premuto (TAP allora non batte più il tempo) e blocca le altre impostazioni dell'accordatore: Output, Reference, Type, Trails e Offsets.",
+    "tuner-settings.desc": "Apri l'accordatore con una pressione di TAP invece di tenerlo premuto (TAP allora non batte più il tempo), blocca le altre impostazioni dell'accordatore (Output, Reference, Type, Trails e Offsets) e fagli chiamare le note con i diesis invece che con i bemolle.",
     "tuner-settings.floc": "L'accordatore",
     "tuner-settings.where": "Le impostazioni dell'accordatore, pagina 3 (la pagina a destra dopo Trails, Offsets e String 6)",
     "long-press.name": "Pressione lunga dei footswitch",
@@ -1842,6 +1851,7 @@ var LANGS = {
     "tuner-settings.p1": "Le impostazioni dell'accordatore hanno una pagina tutta loro, la terza: la pagina a destra dopo Trails, Offsets e String 6. Le pagine delle corde (Strings 5–3, poi 2 e 1) vengono dopo: pochi chitarristi usano gli offset per corda, quindi questa pagina viene prima. Le sue manopole funzionano come quelle delle pagine originali: gira per cambiare, premi per tornare al valore di default.",
     "tuner-settings.what1": "Un footswitch assegnato a TAP/Tunr normalmente batte il tempo, e tenendolo premuto si apre l'accordatore. Su <strong>Press</strong>, premerlo apre subito l'accordatore e il tempo non viene più battuto. Segue l'assegnazione, quindi funziona su qualunque footswitch abbia TAP/Tunr.",
     "tuner-settings.what2": "On impedisce alle altre impostazioni dell'accordatore (Output, Refrnc, Type, Trails, Offsets) di cambiare: le rotazioni delle manopole e le pressioni che riportano una voce al default vengono ignorate. Si può ancora cambiare pagina, e le manopole di questa pagina girano ancora, quindi Lock si può disattivare da dove lo si è attivato.",
+    "tuner-settings.what3": "Come l'accordatore chiama le cinque note che stanno tra due lettere. <strong>Flats</strong> le chiama come di serie, con la lettera sopra e un bemolle (Db, Eb, Gb, Ab, Bb); <strong>Sharps</strong> con la lettera sotto e un diesis (C#, D#, F#, G#, A#).",
     "long-press.alt1": "Tenere premuto FS1 spegne il blocco su FS6, e tenerlo di nuovo lo riaccende",
     "long-press.p1": "In modalità footswitch Stomp, ciascuno di FS1–FS5 può avere un'azione Hold (Global Settings &gt; Footswitches, pagine 2 e 3: FS1 Hold Function … FS5 Hold Function). Tenere premuto il footswitch per 1 s la esegue; un tocco attiva/disattiva ancora i blocchi del footswitch, al rilascio invece che alla pressione, perché alla pressione non si sa ancora se diventerà una pressione lunga. Un footswitch con un looper (1 Switch Looper o Shuffling Looper) ignora la sua azione Hold e funziona come di fabbrica, così il looper mantiene la propria pressione, annullamento e cancellazione.",
     "long-press.li1": "<strong>Tuner</strong> apre l'accordatore, come tenere premuto TAP.",
@@ -1966,7 +1976,7 @@ var LANGS = {
     "dsp-usage-display.floc": "Edit 画面とモデルブラウザ",
     "dsp-usage-display.where": "Global Settings &gt; DSP Usage Display",
     "tuner-settings.name": "チューナーの追加設定",
-    "tuner-settings.desc": "TAP を長押しではなく 1 回押すだけでチューナーを開けるようにし（その場合 TAP でテンポはタップできなくなります）、チューナーのほかの設定（Output、Reference、Type、Trails、Offsets）をロックできます。",
+    "tuner-settings.desc": "TAP を長押しではなく 1 回押すだけでチューナーを開けるようにし（その場合 TAP でテンポはタップできなくなります）、チューナーのほかの設定（Output、Reference、Type、Trails、Offsets）をロックし、音名をフラットではなくシャープで表示できます。",
     "tuner-settings.floc": "チューナー",
     "tuner-settings.where": "チューナーの設定の 3 ページ目（Trails、Offsets、String 6 のページから右へ送った先）",
     "long-press.name": "フットスイッチ長押し",
@@ -2060,6 +2070,7 @@ var LANGS = {
     "tuner-settings.p1": "チューナー自身の設定に専用のページが 3 ページ目として追加されます。Trails、Offsets、String 6 のページから右へ送った先です。弦ごとのページ（Strings 5–3、続いて 2 と 1）はその後に続きます。弦ごとのオフセットを使う人は少ないため、このページを先にしています。ノブは純正ページのノブと同じように使えます。回すと変更、押すと初期値に戻ります。",
     "tuner-settings.what1": "TAP/Tunr を割り当てたフットスイッチは、通常はテンポをタップし、長押しでチューナーを開きます。<strong>Press</strong> にすると、押した瞬間にチューナーが開き、テンポはタップされなくなります。割り当てに従うので、TAP/Tunr を割り当てたどのフットスイッチでも機能します。",
     "tuner-settings.what2": "On にすると、チューナーのほかの設定（Output、Refrnc、Type、Trails、Offsets）が変わらなくなります。ノブを回す操作と、項目を初期値に戻すノブ押しは無視されます。ページ送りはでき、このページのノブも回せるので、Lock をオンにした場所でオフに戻せます。",
+    "tuner-settings.what3": "2 つの文字のあいだにある 5 つの音をチューナーがどう表示するかを決めます。<strong>Flats</strong> は標準どおり上の文字とフラットで（Db、Eb、Gb、Ab、Bb）、<strong>Sharps</strong> は下の文字とシャープで（C#、D#、F#、G#、A#）表示します。",
     "long-press.alt1": "FS1 の長押しで FS6 のブロックがオフに、もう一度長押しでオンに戻ります",
     "long-press.p1": "Stomp フットスイッチ・モードでは、FS1–FS5 のそれぞれに Hold の動作を設定できます（Global Settings &gt; Footswitches、2 ページ目と 3 ページ目：FS1 Hold Function … FS5 Hold Function）。スイッチを 1 s 押し続けるとその動作をします。タップすると従来どおりそのスイッチのブロックが切り替わりますが、押した時点ではまだ長押しになるか分からないため、切り替わるのは押したときではなく離したときになります。ルーパー（1 Switch Looper または Shuffling Looper）を割り当てたスイッチは Hold の動作を無視して純正どおりに動くので、ルーパー本来の押し・アンドゥ・クリアがそのまま使えます。",
     "long-press.li1": "<strong>Tuner</strong> は TAP の長押しと同じく、チューナーを開きます。",
@@ -2184,7 +2195,7 @@ var LANGS = {
     "dsp-usage-display.floc": "Edit 界面和模型浏览器",
     "dsp-usage-display.where": "Global Settings &gt; DSP Usage Display",
     "tuner-settings.name": "更多调音器设置",
-    "tuner-settings.desc": "按一下 TAP 即可打开调音器，无需长按（此后 TAP 不再用于敲击速度），还可锁定调音器的其他设置：Output、Reference、Type、Trails 和 Offsets。",
+    "tuner-settings.desc": "按一下 TAP 即可打开调音器，无需长按（此后 TAP 不再用于敲击速度），还可锁定调音器的其他设置（Output、Reference、Type、Trails 和 Offsets），并让调音器用升号而不是降号显示音名。",
     "tuner-settings.floc": "调音器",
     "tuner-settings.where": "调音器设置第 3 页（在 Trails、Offsets 和 String 6 那一页向右翻一页）",
     "long-press.name": "脚踏开关长按",
@@ -2278,6 +2289,7 @@ var LANGS = {
     "tuner-settings.p1": "调音器自己的设置拥有独立的一页，排在第三：在 Trails、Offsets 和 String 6 那一页向右翻一页。各弦页面（Strings 5–3，然后是 2 和 1）排在它之后：很少有人用到各弦的偏移，所以这一页放在它们前面。它的旋钮用法与原厂页面相同：旋转更改，按下恢复默认值。",
     "tuner-settings.what1": "分配为 TAP/Tunr 的脚踏开关通常用于敲击速度，长按则打开调音器。设为 <strong>Press</strong> 时，按下即立刻打开调音器，不再敲击速度。它跟随分配，所以对任何分配了 TAP/Tunr 的脚踏开关都有效。",
     "tuner-settings.what2": "On 会锁定调音器的其他设置（Output、Refrnc、Type、Trails、Offsets）：旋转旋钮以及按下旋钮恢复默认值的操作都会被忽略。翻页仍然可用，本页的旋钮也仍可旋转，因此可以在开启 Lock 的地方再将它关闭。",
+    "tuner-settings.what3": "调音器如何显示位于两个字母之间的五个音。<strong>Flats</strong> 与原厂相同，用上方的字母加降号（Db、Eb、Gb、Ab、Bb）；<strong>Sharps</strong> 用下方的字母加升号（C#、D#、F#、G#、A#）。",
     "long-press.alt1": "按住 FS1 关闭 FS6 上的模块，再次按住又重新打开",
     "long-press.p1": "在 Stomp 脚踏开关模式下，FS1–FS5 每个都可以设置一个 Hold 动作（Global Settings &gt; Footswitches，第 2 和第 3 页：FS1 Hold Function … FS5 Hold Function）。按住开关 1 s 即执行；轻踩仍会切换该开关自己的模块，但改为在松开时而不是按下时生效，因为按下时还无法判断是否会变成长按。带有 Looper（1 Switch Looper 或 Shuffling Looper）的开关会忽略其 Hold 动作，按原厂方式工作，因此 Looper 保留自己的按下、撤销和清除操作。",
     "long-press.li1": "<strong>Tuner</strong> 打开调音器，与长按 TAP 相同。",
@@ -2402,7 +2414,7 @@ var LANGS = {
     "dsp-usage-display.floc": "Edit 화면과 모델 브라우저",
     "dsp-usage-display.where": "Global Settings &gt; DSP Usage Display",
     "tuner-settings.name": "튜너 추가 설정",
-    "tuner-settings.desc": "TAP을 길게 누르는 대신 한 번 눌러 튜너를 열고(이때 TAP으로는 더 이상 템포를 탭하지 않습니다), 튜너의 다른 설정(Output, Reference, Type, Trails, Offsets)을 잠급니다.",
+    "tuner-settings.desc": "TAP을 길게 누르는 대신 한 번 눌러 튜너를 열고(이때 TAP으로는 더 이상 템포를 탭하지 않습니다), 튜너의 다른 설정(Output, Reference, Type, Trails, Offsets)을 잠그고, 음 이름을 플랫 대신 샤프로 표시합니다.",
     "tuner-settings.floc": "튜너",
     "tuner-settings.where": "튜너 설정 3페이지 (Trails, Offsets, String 6 페이지에서 오른쪽으로 넘긴 페이지)",
     "long-press.name": "풋스위치 길게 누르기",
@@ -2496,6 +2508,7 @@ var LANGS = {
     "tuner-settings.p1": "튜너 자체 설정에 전용 페이지가 세 번째로 생깁니다. Trails, Offsets, String 6 페이지에서 오른쪽으로 넘기면 나옵니다. 줄별 페이지(Strings 5–3, 그다음 2와 1)는 그 뒤에 옵니다. 줄별 오프셋을 쓰는 사람은 드물어서 이 페이지를 앞에 두었습니다. 노브는 순정 페이지의 노브처럼 동작합니다. 돌리면 바뀌고, 누르면 기본값으로 돌아갑니다.",
     "tuner-settings.what1": "TAP/Tunr가 할당된 풋스위치는 보통 템포를 탭하고, 길게 누르면 튜너가 열립니다. <strong>Press</strong>로 하면 누르자마자 튜너가 열리고 템포는 더 이상 탭되지 않습니다. 할당을 따르므로 TAP/Tunr가 있는 풋스위치라면 어디서든 동작합니다.",
     "tuner-settings.what2": "On이면 튜너의 다른 설정(Output, Refrnc, Type, Trails, Offsets)이 바뀌지 않습니다. 노브를 돌리거나 눌러 기본값으로 되돌리는 동작이 무시됩니다. 페이지 이동은 여전히 되고 이 페이지의 노브도 돌아가므로, Lock을 켠 곳에서 다시 끌 수 있습니다.",
+    "tuner-settings.what3": "두 글자 사이에 있는 다섯 음을 튜너가 어떻게 표시할지 정합니다. <strong>Flats</strong>는 기본과 같이 위 글자와 플랫으로(Db, Eb, Gb, Ab, Bb), <strong>Sharps</strong>는 아래 글자와 샤프로(C#, D#, F#, G#, A#) 표시합니다.",
     "long-press.alt1": "FS1을 길게 누르면 FS6의 블록이 꺼지고, 다시 길게 누르면 다시 켜집니다",
     "long-press.p1": "Stomp 풋스위치 모드에서 FS1–FS5에는 각각 Hold 동작을 지정할 수 있습니다(Global Settings &gt; Footswitches, 2페이지와 3페이지: FS1 Hold Function … FS5 Hold Function). 스위치를 1 s 동안 누르고 있으면 실행되고, 짧게 탭하면 여전히 그 스위치의 블록을 켜고 끕니다. 다만 누르는 순간에는 길게 누를지 아직 알 수 없으므로, 누를 때가 아니라 뗄 때 동작합니다. 루퍼(1 Switch Looper 또는 Shuffling Looper)가 있는 스위치는 Hold 동작을 무시하고 순정대로 작동하므로, 루퍼 자체의 누름·실행 취소·지우기가 그대로 유지됩니다.",
     "long-press.li1": "<strong>Tuner</strong>는 TAP을 길게 누를 때처럼 튜너를 엽니다.",
@@ -2620,7 +2633,7 @@ var LANGS = {
     "dsp-usage-display.floc": "Окно Edit и браузер моделей",
     "dsp-usage-display.where": "Global Settings &gt; DSP Usage Display",
     "tuner-settings.name": "Дополнительные настройки тюнера",
-    "tuner-settings.desc": "Открывайте тюнер нажатием TAP, а не удержанием (тогда TAP больше не задаёт темп), и блокируйте остальные настройки тюнера: Output, Reference, Type, Trails и Offsets.",
+    "tuner-settings.desc": "Открывайте тюнер нажатием TAP, а не удержанием (тогда TAP больше не задаёт темп), блокируйте остальные настройки тюнера (Output, Reference, Type, Trails и Offsets) и показывайте ноты с диезами вместо бемолей.",
     "tuner-settings.floc": "Тюнер",
     "tuner-settings.where": "Настройки тюнера, страница 3 (листайте вправо после Trails, Offsets и String 6)",
     "long-press.name": "Долгое нажатие футсвича",
@@ -2714,6 +2727,7 @@ var LANGS = {
     "tuner-settings.p1": "Собственные настройки тюнера получают отдельную, третью страницу: листайте вправо после Trails, Offsets и String 6. За ней идут страницы струн (Strings 5–3, затем 2 и 1): мало кто пользуется пострунными смещениями, поэтому эта страница стоит раньше. Её ручки работают как ручки стоковых страниц: поверните, чтобы изменить, нажмите, чтобы вернуть значение по умолчанию.",
     "tuner-settings.what1": "Футсвич с назначением TAP/Tunr обычно задаёт темп нажатиями, а удержание открывает тюнер. При <strong>Press</strong> нажатие сразу открывает тюнер, и темп больше не задаётся. Настройка следует за назначением, так что работает на любом футсвиче с TAP/Tunr.",
     "tuner-settings.what2": "On не даёт менять остальные настройки тюнера (Output, Refrnc, Type, Trails, Offsets): повороты ручек и нажатия на ручки, сбрасывающие значение по умолчанию, игнорируются. Листать страницы по-прежнему можно, и ручки этой страницы по-прежнему крутятся, так что Lock можно выключить там же, где его включили.",
+    "tuner-settings.what3": "Как тюнер называет пять нот между двумя буквами. <strong>Flats</strong> называет их как заводской тюнер — верхней буквой с бемолем (Db, Eb, Gb, Ab, Bb), <strong>Sharps</strong> — нижней буквой с диезом (C#, D#, F#, G#, A#).",
     "long-press.alt1": "Удержание FS1 выключает блок на FS6, повторное удержание включает его снова",
     "long-press.p1": "В режиме футсвичей Stomp каждому из FS1–FS5 можно назначить действие на удержание (Global Settings &gt; Footswitches, страницы 2 и 3: FS1 Hold Function … FS5 Hold Function). Удержание кнопки 1 s запускает его; короткое нажатие по-прежнему переключает блоки этой кнопки, но при отпускании, а не при нажатии, потому что в момент нажатия ещё неизвестно, станет ли оно удержанием. Кнопка с лупером (1 Switch Looper или Shuffling Looper) игнорирует своё действие на удержание и работает как в заводской прошивке, так что лупер сохраняет своё нажатие, отмену и очистку.",
     "long-press.li1": "<strong>Tuner</strong> открывает тюнер, как удержание TAP.",

@@ -1,13 +1,23 @@
-@ tuner.s - Tuner Activation and Lock Tuner Settings on a page of the tuner's settings, shown third; tools/features/tuner.py places the hooks.
+@ tuner.s - Tuner Activation, Lock Tuner Settings and the note names on a page of the tuner's settings, shown third, and the note names
+@ in the tuner; tools/features/tuner.py places the hooks.
 .syntax unified
 .thumb
 .include "hxtra.inc"
 .include "tuner_label.inc"          @ LABEL_COLOUR_FN: label_color's label_any, or the stock 0x28dc6454
+.include "tuner_sharp.inc"          @ SHARP_IMAGE: the sharp's picture, which tools/features/tuner.py adds
 .equ PAGE, 4                        @ its page at [view+0x74], after the stock ones; tools/features/tuner.py's PAGE
 .equ SHOWN_AT, 2                    @ its place in the order the pages are paged and dotted; tools/features/tuner.py's SHOWN_AT
 .equ STOCK_PAGES, 4
-.equ KNOBS, 2                       @ knob 2 of this page is empty
+.equ KNOBS, 3
+.equ NOTES_KNOB, 2
 .equ PRESS, 1                       @ Tuner Activation's Press
+.equ SHARPS, 1                      @ the note names' Sharps
+.equ NOTE_CONT, 0x28dcd82f          @ the tuner's update after its read of the letter: it sets the letter widget's image to r1
+.equ FLATS, 0x28e3b478              @ byte per note mod 12: 1 where the tuner names the note as the letter above it with a flat
+.equ ACCIDENTAL, 0x28d8d9b4         @ the flat's image widget, which the update shows on those notes
+.equ LAST_NOTE, 0x2800226c          @ the note the update last drew; it draws again when the note is not this one
+.equ SET_IMAGE, 0x28e24c19          @ (image widget, image)
+.equ FLAT_IMAGE, 0x19f              @ Tuner_Flat
 .equ GUARD, 0x28d96135              @ (5) -> 0 when the tuner may open, as the stock hold of TAP asks
 .equ REQUEST_TUNER, 0x28d96589
 .equ TAP_CORE, 0x28d9bfa9
@@ -185,7 +195,12 @@ tuner_press:                        @ r0 the view, r1 the knob pressed -> r0 1 w
 changed:                            @ r4 the knob, r1 its new value, r6 the view
     mov r0, r4
     bl knob_set
-    mov r0, r6
+    cmp r4, #NOTES_KNOB
+    bne 1f
+    ldr r3, =LAST_NOTE
+    mov.w r2, #-1                   @ no note: the tuner's next update draws the note it hears again, with the names just set
+    str r2, [r3]
+1:  mov r0, r6
     ldr r3, =PAINT
     blx r3
 handled:
@@ -197,7 +212,7 @@ locked:                             @ off page 4, Lock On keeps the stock from c
     pop {r4-r6, pc}
 
 .thumb_func
-tuner_paint:                        @ r0 the view, inside its paint: page 4's knobs, and knob 2 hidden
+tuner_paint:                        @ r0 the view, inside its paint: page 4's knobs
     push {r4-r6, lr}
     movs r5, #0
 paint_knob:
@@ -237,13 +252,40 @@ paint_colour:
     adds r5, #1
     cmp r5, #KNOBS
     bne paint_knob
-    movs r0, #KNOBS
-    movs r1, #0
-    ldr r3, =SHOW
-    blx r3
     pop {r4-r6, pc}
 
-knob_get:                           @ r0 knob 0..1 -> r0 its setting's value
+.thumb_func
+tuner_note:                         @ in place of the tuner update's read of a new note's letter (r0 the letter's image widget, r2 the
+                                    @ letters, r5 the note mod 12, r4 the view): with Sharps, the letter below where the stock has the
+                                    @ one above with a flat, and the sharp's picture in the flat's widget; r1 the letter, as the read left it
+    push {r0, r2, r4, lr}
+    movs r0, #SETTING_TUNER_NOTES
+    movs r1, #SETTING_TUNER_NOTES_MAX
+    movs r2, #SETTING_TUNER_NOTES_DEFAULT
+    bl hxtra_setting_get
+    mov r4, r0
+    ldr r0, =ACCIDENTAL
+    movw r1, #FLAT_IMAGE
+    cmp r4, #SHARPS
+    it eq
+    movweq r1, #SHARP_IMAGE
+    ldr r2, [r0]                    @ the widget's image now: set only on a change, so Flats keep the stock's calls
+    cmp r1, r2
+    beq 1f
+    ldr r3, =SET_IMAGE
+    blx r3
+1:  mov r1, r5
+    cmp r4, #SHARPS
+    bne 2f
+    ldr r3, =FLATS
+    ldrb r3, [r3, r5]
+    subs r1, r1, r3
+2:  ldr r2, [sp, #4]
+    ldr.w r1, [r2, r1, lsl #2]
+    pop {r0, r2, r4, lr}
+    ldr pc, =NOTE_CONT
+
+knob_get:                           @ r0 knob 0..2 -> r0 its setting's value
     adr r3, knobs
     add.w r3, r3, r0, lsl #2
     ldrh r0, [r3]
@@ -251,7 +293,7 @@ knob_get:                           @ r0 knob 0..1 -> r0 its setting's value
     ldrb r2, [r3, #3]
     b hxtra_setting_get
 
-knob_set:                           @ r0 knob 0..1, r1 its setting's new value, stored as an int
+knob_set:                           @ r0 knob 0..2, r1 its setting's new value, stored as an int
     adr r3, knobs
     ldrh.w r0, [r3, r0, lsl #2]
     b hxtra_setting_set
@@ -263,6 +305,8 @@ knobs:                              @ per knob: ID, max, default
     .byte SETTING_TUNER_ACTIVATE_MAX, SETTING_TUNER_ACTIVATE_DEFAULT
     .hword SETTING_TUNER_LOCK
     .byte SETTING_TUNER_LOCK_MAX, SETTING_TUNER_LOCK_DEFAULT
+    .hword SETTING_TUNER_NOTES
+    .byte SETTING_TUNER_NOTES_MAX, SETTING_TUNER_NOTES_DEFAULT
 colours:                            @ (function, colour) as the stock paints a knob that can be turned
     .word LABEL_COLOUR_FN, 0xffffff
     .word 0x28dc651d, 0x6b6b6b
@@ -276,6 +320,8 @@ labels:                             @ per knob, 16 bytes: tools/features/tuner.p
     .org labels + 16, 0
     .asciz "Lock"
     .org labels + 32, 0
+    .asciz "Notes"
+    .org labels + 48, 0
 values:                             @ per knob, 32 bytes: its two values, 16 bytes each
     .asciz "Hold"
     .org values + 16, 0
@@ -285,6 +331,10 @@ values:                             @ per knob, 32 bytes: its two values, 16 byt
     .org values + 48, 0
     .asciz "On"
     .org values + 64, 0
+    .asciz "Flats"
+    .org values + 80, 0
+    .asciz "Sharps"
+    .org values + 96, 0
 
 HXTRA_SETTING_GET
 HXTRA_SETTING_SET

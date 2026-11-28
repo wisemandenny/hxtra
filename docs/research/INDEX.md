@@ -64,7 +64,7 @@ Before writing anything, read [conventions.md](conventions.md): the status tags,
 | [features/dsp-meter-log.md](features/dsp-meter-log.md) | the DSP meter's images and results | checking what was tried |
 | [features/bpm.md](features/bpm.md) | the BPM on Home and its beat dot, the hooks, the boot stagger, the half-drawn-dot known issue | working on the BPM, or the beat |
 | [features/breathing-line.md](features/breathing-line.md) | the animated Home divider | working on the breathing line, or any animation on Home |
-| [features/tuner-page.md](features/tuner-page.md) | the tuner settings view and the page HXtra adds to it | changing the tuner's settings view |
+| [features/tuner-page.md](features/tuner-page.md) | the tuner settings view and the page HXtra adds to it; how the tuner draws a note's letter and flat | changing the tuner's settings view, or how it names notes |
 | [features/long-press.md](features/long-press.md) | holds per footswitch, FS6..FS10 on CC 20..24, CC text, the footswitch probes | working on long press, or footswitch holds |
 | [features/more-snapshots.md](features/more-snapshots.md) | bank B (snapshots 4..6), the bank marker, saving and the preset file key, next and previous across the banks | working on more snapshots |
 | [features/fx-gate.md](features/fx-gate.md) | the FX Loop gate (#69): decisions, the two designs and the boots, builds and their MD5s, what the unit has not checked | working on the gate in the FX Loop and Return blocks |
