@@ -525,7 +525,7 @@ def t_real_names(u):
         raise Skip(f'no renamed model in this preset (titles {sorted(set(titles))})')
 
 
-@case('tuner', 'Tuner settings: the tuner\'s third page has Activate and Lock')
+@case('tuner', 'Tuner settings: the tuner\'s third page has Activate, Lock and Notes')
 def t_tuner(u):
     u.home()
     u.hold(tap_footswitch(u), 1.3, settle=0.8)
@@ -536,6 +536,7 @@ def t_tuner(u):
             u.press('page_right')
         u.see('activate', what='the tuner page with Activate')
         u.see('lock')
+        u.see('notes')
     finally:
         u.home()
 

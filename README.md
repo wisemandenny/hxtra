@@ -68,6 +68,7 @@ HXtra's settings and block knobs have teal labels, so you can tell them from the
 
 - **Tuner button** (Hold, Press): "Hold" opens the tuner when you hold TAP (stock behavior); "Press" opens it with a press, and TAP no longer taps the tempo.
 - **Tuner lock** (Off, On): On locks the tuner's other settings (Output, Reference, Type, Trails, Offsets).
+- **Note names** (Flats, Sharps): "Flats" names the notes between two letters with a flat, as the stock tuner does (Db, Eb, Gb, Ab, Bb); "Sharps" with a sharp (C#, D#, F#, G#, A#).
 
 <a href="https://wisemandenny.github.io/hxtra/web/features.html#tuner-settings"><img src="docs/assets/icons/watch-demo.svg" width="124" height="28" alt="Watch demo"></a>
 

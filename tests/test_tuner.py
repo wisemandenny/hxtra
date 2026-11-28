@@ -1,5 +1,6 @@
-"""tools/features/tuner.py and src/m4/tuner.s: Tuner Activation and Lock Tuner Settings on a third page of the tuner's settings, run
-in unicorn (the tap, the page's paint, knob turns and presses, Lock On everywhere else, and the hooks around them), and the firmware."""
+"""tools/features/tuner.py and src/m4/tuner.s: Tuner Activation, Lock Tuner Settings and the note names on a third page of the tuner's
+settings, run in unicorn (the tap, the page's paint, knob turns and presses, Lock On everywhere else, the note's letter and sign, and the
+hooks around them), and the firmware."""
 import hashlib
 import struct
 
@@ -9,16 +10,24 @@ import features
 import patch_menu as pm
 import setting_ids
 from features import tuner
-from firmware import assert_virtual, built, built_e0, reader
+import image_store
+import patch_amp as pa
+from firmware import assert_virtual, branch_target, built, built_e0, reader, stock_entry
 
-TUNER_BEFORE_LABEL_COLOR = '8899a7604edc19a027a246e7cefd6de4'     # tuner.s of f7d0a6c, the stock label colour written in
+TUNER_STOCK_LABEL_COLOUR = 'e4967eda251d7f6d17bdef193553cc98'     # tuner.s with the note names and SHARP, the stock label colour written in
 MODS = features.load()
 IDS = setting_ids.by_name()
-ACTIVATE, LOCK = IDS['tuner.activate'], IDS['tuner.lock']
+ACTIVATE, LOCK, NOTES = IDS['tuner.activate'], IDS['tuner.lock'], IDS['tuner.notes']
 CODE, VIEW, EVENT, TRAMP = 0x28e60000, 0x28500000, 0x28510000, 0x28e70000
+LETTERS, LETTER_WIDGET, SHARP = 0x28520000, 0x28530000, 0x245     # a letters table and widget of the test's, and the sharp's index
+FLATS = (0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0)    # C, Db, D, Eb, E, F, Gb, G, Ab, A, Bb, B: the notes named with a flat
 VIRT_SET = 0x28e80000        # the virtual settings engine's store, as hxtra_setting_set calls it
 COLOURS = [fn for fn, _ in tuner.KNOB_COLOURS]
 FLOAT_ONE = 0x3f800000
+
+
+def inc(label_any=None):
+    return {'tuner_label.inc': tuner.label_inc(label_any), 'tuner_sharp.inc': tuner.sharp_inc(SHARP)}
 
 
 def cstr(m, va):
@@ -30,7 +39,7 @@ class Page:
     """tuner.s in unicorn: settings {ID: value} behind GET_VALUE and the engine's store, the view at VIEW on page `page`."""
 
     def __init__(self, m4emu, page=tuner.PAGE):
-        code, sym = m4emu.assemble('src/m4/tuner.s', MODS, IDS, VIRT_SET, inc={'tuner_label.inc': tuner.label_inc()})
+        code, sym = m4emu.assemble('src/m4/tuner.s', MODS, IDS, VIRT_SET, inc=inc())
         self.at = {k: CODE + v for k, v in sym.items()}
         self.m = m = m4emu.M4(code, CODE)
         self.settings, self.written, self.steps, self.guard = {}, [], 0, 0
@@ -50,6 +59,12 @@ class Page:
         for fn in (tuner.NEXT_READ + 4, tuner.PREV_READ + 4, tuner.DOTS_READ + 4):
             m.stub(fn, code=struct.pack('<H', 0xbd10))                 # pop {r4,pc}
         m.stub(tuner.PAGE_STORE + 4, code=struct.pack('<H', 0xbd30))   # pop {r4,r5,pc}
+        m.stub(tuner.NOTE_CONT, code=struct.pack('<H', 0xbd30))        # pop {r4,r5,pc}: what note() pushed
+        m.stub(tuner.SET_IMAGE, lambda m: m.u32(m.reg('r0'), m.reg('r1')))     # an image widget's image is its first word
+        m.write(tuner.FLATS, bytes(FLATS))
+        m.write(LETTERS, struct.pack('<12I', *range(100, 112)))
+        m.u32(tuner.ACCIDENTAL, tuner.TUNER_FLAT)
+        m.u32(tuner.LAST_NOTE, 57)
         self.page(page)
 
     def _get(self, m):
@@ -62,7 +77,7 @@ class Page:
 
     def _set(self, m):
         pid, value = m.reg('r0'), m.reg('r1')
-        assert pid in (ACTIVATE, LOCK), 'only virtual IDs reach the engine'
+        assert pid in (ACTIVATE, LOCK, NOTES), 'only virtual IDs reach the engine'
         self.written.append((pid, 2, value))
         self.settings[pid] = value
         m.reg('r0', 0)
@@ -90,11 +105,20 @@ class Page:
     def painted(self, fn):
         return [regs[:2] for regs in self.m.calls(fn)]
 
+    def note(self, n):
+        """tuner_note, as the tuner's update reaches it with a new note n mod 12 (r5), its letters (r2) and letter widget (r0): the
+        letter it hands on, and the update's r0 after it."""
+        self.m.call(self.via(self.at['tuner_note'], 0xb530, 0x460d), LETTER_WIDGET, n, LETTERS)    # push {r4,r5,lr}; mov r5,r1
+        (widget, letter, *_), = self.m.calls(tuner.NOTE_CONT)[-1:]
+        assert widget == LETTER_WIDGET
+        return letter - 100
+
 
 def test_settings_stay_off_hxtra():
     assert tuner.MENU is False
-    assert [s.label for s in tuner.SETTINGS] == [b'Activate', b'Lock']
-    assert [(s.values, s.default) for s in tuner.SETTINGS] == [((b'Hold', b'Press'), 0), ((b'Off', b'On'), 0)]
+    assert [s.label for s in tuner.SETTINGS] == [b'Activate', b'Lock', b'Notes']
+    assert [(s.values, s.default) for s in tuner.SETTINGS] == [((b'Hold', b'Press'), 0), ((b'Off', b'On'), 0),
+                                                               ((b'Flats', b'Sharps'), 0)]
 
 
 @pytest.mark.parametrize('activate', [None, 0, 2])
@@ -116,31 +140,32 @@ def test_tap_in_press_mode_asks_for_the_tuner_as_the_stock_hold_does(m4emu, guar
     assert len(t.m.calls(tuner.REQUEST_TUNER)) == opened and t.m.calls(tuner.TAP_CORE) == []
 
 
-@pytest.mark.parametrize('activate, lock', [(0, 0), (1, 1), (1, 0)])
-def test_paint_draws_both_knobs_and_hides_the_third(m4emu, activate, lock):
+@pytest.mark.parametrize('activate, lock, notes', [(0, 0, 0), (1, 1, 1), (1, 0, 1)])
+def test_paint_draws_the_three_knobs(m4emu, activate, lock, notes):
     t = Page(m4emu)
-    t.settings.update({ACTIVATE: activate, LOCK: lock})
+    t.settings.update({ACTIVATE: activate, LOCK: lock, NOTES: notes})
     t.m.call(t.at['tuner_paint'], VIEW)
-    assert t.painted(tuner.SHOW) == [(0, 1), (1, 1), (2, 0)]
+    assert t.painted(tuner.SHOW) == [(0, 1), (1, 1), (2, 1)]
+    values = (activate, lock, notes)
     texts = [(k, cstr(t.m, va)) for k, va in t.painted(tuner.VALUE_TEXT)]
-    assert texts == [(0, tuner.SETTINGS[0].values[activate]), (1, tuner.SETTINGS[1].values[lock])]
-    assert t.painted(tuner.POSITION) == [(0, FLOAT_ONE * activate), (1, FLOAT_ONE * lock)]
+    assert texts == [(k, s.values[v]) for k, (s, v) in enumerate(zip(tuner.SETTINGS, values))]
+    assert t.painted(tuner.POSITION) == [(k, FLOAT_ONE * v) for k, v in enumerate(values)]
     assert [(k, cstr(t.m, va)) for k, va in t.painted(tuner.LABEL)] == [(k, s.label) for k, s in enumerate(tuner.SETTINGS)]
     for fn, colour in tuner.KNOB_COLOURS:
-        assert t.painted(fn) == [(0, colour), (1, colour)]
+        assert t.painted(fn) == [(0, colour), (1, colour), (2, colour)]
 
 
 def test_paint_draws_unset_and_stray_values_as_the_default(m4emu):
     t = Page(m4emu)
-    t.settings[LOCK] = 7
+    t.settings.update({LOCK: 7, NOTES: 2})
     t.m.call(t.at['tuner_paint'], VIEW)
-    assert [cstr(t.m, va) for _, va in t.painted(tuner.VALUE_TEXT)] == [b'Hold', b'Off']
+    assert [cstr(t.m, va) for _, va in t.painted(tuner.VALUE_TEXT)] == [b'Hold', b'Off', b'Flats']
 
 
-@pytest.mark.parametrize('knob, pid', [(0, ACTIVATE), (1, LOCK)])
+@pytest.mark.parametrize('knob, pid', [(0, ACTIVATE), (1, LOCK), (2, NOTES)])
 def test_turn_steps_the_setting_and_repaints(m4emu, knob, pid):
     t = Page(m4emu)
-    t.settings.update({ACTIVATE: 0, LOCK: 0})
+    t.settings.update({ACTIVATE: 0, LOCK: 0, NOTES: 0})
     assert t.turn(knob, 1) == 1
     assert t.written == [(pid, 2, 1)] and [args[0] for args in t.m.calls(tuner.PAINT)] == [VIEW]
     assert t.m.calls(tuner.STEPS)[0][0] == 1234
@@ -156,12 +181,11 @@ def test_turn_past_an_end_changes_nothing(m4emu, value, steps):
     assert t.written == [] and t.m.calls(tuner.PAINT) == []
 
 
-@pytest.mark.parametrize('knob', [2, 3])
-def test_turn_of_the_empty_knob_changes_nothing(m4emu, knob):
+def test_turn_of_a_knob_past_the_page_changes_nothing(m4emu):
     t = Page(m4emu)
-    assert t.turn(knob, 1) == 1
+    assert t.turn(3, 1) == 1
     assert t.written == [] and t.m.calls(tuner.PAINT) == []
-    assert len(t.m.calls(tuner.STEPS)) == (knob == 2), 'the stock counts detents of knobs 0..2 only'
+    assert t.m.calls(tuner.STEPS) == [], 'the stock counts detents of knobs 0..2 only'
 
 
 def test_lock_on_does_not_lock_its_own_page(m4emu):
@@ -182,20 +206,20 @@ def test_other_pages_are_stock_unless_locked(m4emu, page, lock):
     assert t.written == [] and t.m.calls(tuner.STEPS) == []
 
 
-@pytest.mark.parametrize('knob, pid', [(0, ACTIVATE), (1, LOCK)])
+@pytest.mark.parametrize('knob, pid', [(0, ACTIVATE), (1, LOCK), (2, NOTES)])
 def test_press_resets_to_the_default(m4emu, knob, pid):
     t = Page(m4emu)
-    t.settings.update({ACTIVATE: 1, LOCK: 1})
+    t.settings.update({ACTIVATE: 1, LOCK: 1, NOTES: 1})
     assert t.press(knob) == 1
     assert t.written == [(pid, 2, 0)] and len(t.m.calls(tuner.PAINT)) == 1
     assert t.press(knob) == 1
     assert len(t.written) == 1 and len(t.m.calls(tuner.PAINT)) == 1, 'already the default'
 
 
-def test_press_of_the_empty_knob_changes_nothing(m4emu):
+def test_press_of_a_knob_past_the_page_changes_nothing(m4emu):
     t = Page(m4emu)
-    t.settings.update({ACTIVATE: 1, LOCK: 1})
-    assert t.press(2) == 1
+    t.settings.update({ACTIVATE: 1, LOCK: 1, NOTES: 1})
+    assert t.press(3) == 1
     assert t.written == []
 
 
@@ -212,12 +236,55 @@ def test_turn_hook_runs_the_stock_turn_only_when_the_handler_lets_it(m4emu, page
 @pytest.mark.parametrize('page, lock, stock', [(1, 0, True), (1, 1, False), (4, 1, False)])
 def test_reset_hooks_run_the_stock_reset_only_when_the_handler_lets_it(m4emu, site, knob, page, lock, stock):
     t = Page(m4emu, page=page)
-    t.settings.update({ACTIVATE: 1, LOCK: lock})
+    t.settings.update({ACTIVATE: 1, LOCK: lock, NOTES: 1})
     t.m.call(t.via(t.at[f'tuner_reset{knob}'], 0xb538, 0x460c), 0, VIEW)    # push {r3-r5,lr}; mov r4,r1: the view
     assert [args[1] for args in t.m.calls(site + 4)] == ([VIEW] if stock else [])
     assert len(t.m.calls(tuner.RESET_RET)) == (not stock)
     if page == tuner.PAGE:
-        assert t.written == ([(ACTIVATE, 2, 0)] if knob == 0 else [(LOCK, 2, 0)] if knob == 1 else [])
+        assert t.written == [((ACTIVATE, LOCK, NOTES)[knob], 2, 0)]
+
+
+@pytest.mark.parametrize('notes', [None, 0, 2])
+def test_flats_keep_the_stock_letter_and_sign(m4emu, notes):
+    t = Page(m4emu)
+    if notes is not None:
+        t.settings[NOTES] = notes
+    assert [t.note(n) for n in range(12)] == list(range(12))
+    assert t.m.calls(tuner.SET_IMAGE) == [], 'the flat\'s widget already shows Tuner_Flat'
+
+
+def test_sharps_name_the_letter_below_and_show_the_sharp(m4emu):
+    t = Page(m4emu)
+    t.settings[NOTES] = 1
+    assert [t.note(n) for n in range(12)] == [0, 0, 2, 2, 4, 5, 5, 7, 7, 9, 9, 11]     # C C# D D# E F F# G G# A A# B
+    assert [args[:2] for args in t.m.calls(tuner.SET_IMAGE)] == [(tuner.ACCIDENTAL, SHARP)], 'set once, then kept'
+    assert t.m.u32(tuner.ACCIDENTAL) == SHARP
+
+
+def test_back_to_flats_the_flat_returns(m4emu):
+    t = Page(m4emu)
+    t.settings[NOTES] = 1
+    t.note(1)
+    t.settings[NOTES] = 0
+    assert t.note(1) == 1
+    assert [args[:2] for args in t.m.calls(tuner.SET_IMAGE)] == [(tuner.ACCIDENTAL, SHARP), (tuner.ACCIDENTAL, tuner.TUNER_FLAT)]
+
+
+@pytest.mark.parametrize('knob, cleared', [(0, False), (1, False), (2, True)])
+def test_a_change_of_the_note_names_draws_the_note_again(m4emu, knob, cleared):
+    t = Page(m4emu)
+    t.settings.update({ACTIVATE: 0, LOCK: 0, NOTES: 0})
+    assert t.turn(knob, 1) == 1
+    assert t.m.u32(tuner.LAST_NOTE) == (0xffffffff if cleared else 57)
+
+
+def test_the_sharp_is_the_flats_size_in_the_stores_format():
+    w, h = len(tuner.SHARP[0]), len(tuner.SHARP)
+    assert (w, h) == (10, 28) and all(len(row) == w for row in tuner.SHARP)
+    px = tuner.sharp_pixels()
+    assert len(px) == 2 * w * h
+    at = lambda x, y: struct.unpack_from('<H', px, 2 * (x * h + (h - 1 - y)))[0]     # column by column from the bottom
+    assert at(2, 13) == 0xffff and at(0, 0) == 0, 'a stem white, the corner black'
 
 
 ORDER = [0, 1, tuner.PAGE, 2, 3]       # the pages as paged and dotted: this one third, the string pages after it
@@ -252,18 +319,18 @@ def test_paint_switch_sends_page_4_to_its_paint(m4emu, page, to):
     t.m.call(t.via(t.at['tuner_switch'], 0xb510, 0x4603, 0x460c), page, VIEW)   # push {r4,lr}; mov r3,r0; mov r4,r1
     shown = t.painted(tuner.SHOW)
     if to is None:
-        assert shown == [(0, 1), (1, 1), (2, 0)] and len(t.m.calls(tuner.PAINT_END)) == 1
+        assert shown == [(0, 1), (1, 1), (2, 1)] and len(t.m.calls(tuner.PAINT_END)) == 1
     else:
         assert shown == [] and len(t.m.calls(to)) == 1 and len(t.m.calls(tuner.PAINT_END)) == (to == tuner.PAINT_END)
 
 
-def test_without_label_color_the_module_is_the_one_before_it(m4emu):
-    now, _ = m4emu.assemble('src/m4/tuner.s', MODS, IDS, VIRT_SET, inc={'tuner_label.inc': tuner.label_inc()})
-    assert hashlib.md5(now).hexdigest() == TUNER_BEFORE_LABEL_COLOR
+def test_without_label_color_the_module_is_the_pinned_one(m4emu):
+    now, _ = m4emu.assemble('src/m4/tuner.s', MODS, IDS, VIRT_SET, inc=inc())
+    assert hashlib.md5(now).hexdigest() == TUNER_STOCK_LABEL_COLOUR
 
 
 def test_the_label_row_is_label_colors_when_it_is_built(m4emu):
-    code, sym = m4emu.assemble('src/m4/tuner.s', MODS, IDS, VIRT_SET, inc={'tuner_label.inc': tuner.label_inc(0x28e70120)})
+    code, sym = m4emu.assemble('src/m4/tuner.s', MODS, IDS, VIRT_SET, inc=inc(0x28e70120))
     rows = [struct.unpack_from('<II', code, sym['colours'] + 8 * k) for k in range(len(tuner.KNOB_COLOURS))]
     assert rows == [(0x28e70121, 0xffffff)] + [(fn | 1, c) for fn, c in tuner.KNOB_COLOURS[1:]]
 
@@ -295,7 +362,7 @@ def test_firmware_has_five_tuner_pages_and_no_hxtra_section_of_its_own():
     assert read(tuner.NEXT_PAGE, 2) == b'\x03\x2b' and read(tuner.PAGE_DOTS, 2) == b'\x05\x20'
     assert all(read(site, 2) == b'\x04\x2b' for site in tuner.PAGE_CLAMPS)
     for site in (tuner.PAINT_SWITCH, tuner.TURN_FN, tuner.TAP_SITE, *tuner.RESET_SITES, tuner.NEXT_READ, tuner.PREV_READ,
-                 tuner.PAGE_STORE, tuner.DOTS_READ):
+                 tuner.PAGE_STORE, tuner.DOTS_READ, tuner.NOTE_READ):
         hw1, hw2 = struct.unpack('<2H', read(site, 4))
         assert hw1 >> 11 == 0x1e and hw2 & 0xd000 == 0x9000, f'no b.w at {site:#x}'
 
@@ -307,6 +374,7 @@ def test_without_its_flag_the_tuner_is_stock():
     assert read(pm.NAV_CMP, 2) == pm.NAV_CMP_STOCK and read(pm.TEXT_FN, 4) == pm.TEXT_FN_STOCK, 'no HXtra section'
     assert read(tuner.NEXT_PAGE, 2) == tuner.NEXT_PAGE_STOCK and read(tuner.PAGE_DOTS, 2) == tuner.PAGE_DOTS_STOCK
     assert read(tuner.TAP_SITE, 4) == pm.thumb_bw(tuner.TAP_SITE, tuner.TAP_CORE) and read(tuner.TURN_FN, 4) == tuner.TURN_FN_STOCK
+    assert read(tuner.NOTE_READ, 4) == tuner.NOTE_READ_STOCK
 
 
 @pytest.mark.firmware
@@ -317,3 +385,29 @@ def test_hxtra_holds_only_the_other_features_settings():
     pages = struct.unpack('<I', read(pm.ARRAYS['pages'][1][0], 4))[0]
     assert struct.unpack('<I', read(pages + 4 * 6, 4))[0] == 1, "BPM's three settings: one page"
     assert read(pm.VIRTUAL_HOOKS['label'][0], 4) != pm.VIRTUAL_HOOKS['label'][1], 'the engine labels BPM\'s virtual settings'
+
+
+@pytest.mark.firmware
+@pytest.mark.parametrize('env', [{'HX_TUNER': '1'}, {'HX_TUNER': '1', 'HX_BPM': '1', 'HX_LABEL_COLOR': '1', 'HX_CLICK': '1'}])
+def test_firmware_sends_the_note_to_tuner_note_and_has_the_sharp(monkeypatch, env):
+    placed, real = {}, pm.Patch.module
+
+    def module(self, path, inc=None):
+        placed[path] = (real(self, path, inc), inc)
+        return placed[path][0]
+
+    monkeypatch.setattr(pm.Patch, 'module', module)
+    out, _ = pm.menu_entries(stock_entry, env=env)
+    read = reader(out[0])
+    m, inc = placed['src/m4/tuner.s']
+    assert branch_target(tuner.NOTE_READ, read(tuner.NOTE_READ, 4)) == m['tuner_note']
+    e7, e8 = out[7], out[8]
+    stock_count = struct.unpack_from('<I', stock_entry(7), 0x18)[0]
+    sharps = [i for i in range(stock_count, struct.unpack_from('<I', e7, 0x18)[0])
+              if (lambda im: (im.width, im.height, e8[im.offset:im.offset + im.length]))(image_store.image_at(e7, e8, i))
+              == (10, 28, tuner.sharp_pixels())]
+    assert len(sharps) == 1 and inc['tuner_sharp.inc'] == tuner.sharp_inc(sharps[0])
+    code = read(m.va, m.symbols['knob_get'])
+    assert pa._encode_thumb_movw(1, sharps[0]) in code[m.symbols['tuner_note']:], 'tuner_note gives that image'
+    flat = image_store.image_at(e7, e8, tuner.TUNER_FLAT)
+    assert (flat.width, flat.height) == (10, 28), 'Tuner_Flat, whose place the sharp takes'
